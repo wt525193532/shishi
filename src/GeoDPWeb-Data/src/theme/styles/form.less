@@ -1,0 +1,194 @@
+.form-wrapper {
+  .form-wapper-it {
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  .form-item {
+    border: 1px solid #dcdfe6;
+    margin: 15px;
+    margin-bottom: 30px;
+    // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
+  }
+
+  .form-item-step {
+    padding: 10px;
+    padding-right: 0px;
+    min-width: 500px;
+    .timeline-card{
+      padding:5px 10px;
+    }
+    .el-step__description {
+      width: 100%;
+      font-size: 14px;
+
+      .step-description {
+        display: block;
+        padding-bottom: 10px;
+
+      }
+
+      .step-description-comment {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .el-step__title {
+    font-size: 16px;
+  }
+
+  .el-step.is-vertical .el-step__title {
+    padding-bottom: 10px;
+  }
+
+  .form-attachment {
+    padding-left: 50px;
+    padding-right: 5px;
+  }
+
+  h2 {
+    padding: 15px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #dcdfe6;
+  }
+
+  .form-item-wapper {
+
+    // margin-left: 30px;
+    // 单独占一行的form-item
+    .form-item-row {
+      display: flex;
+
+      .el-form-item__content {
+        width: auto;
+      }
+    }
+
+    // 经纬度的form-item
+    .form-item-jwd {
+      .el-input-number {
+        width: 125px !important;
+      }
+    }
+.form-item-jwd-btn{
+  .el-input-number {
+        width: 95px !important;
+      }
+}
+//地图
+.map{
+  display: inline-block;
+}
+    // 带按钮的form-item
+    .form-item-btn {
+      .el-input {
+        width: 296px;
+        margin-right: 15px;
+      }
+    }
+
+    // 长label的form-item
+    .form-label-lg {
+      .el-form-item__label {
+        width: 240px !important;
+      }
+
+      .el-form-item__content {
+        width: 300px;
+      }
+    }
+
+    // 中长label的form-item
+    .form-label-long {
+      .el-form-item__label {
+        width: 180px !important;
+      }
+
+      .el-form-item__content {
+        width: 360px;
+      }
+    }
+
+    // 中等label的form-item
+    .form-label-medium {
+      .el-form-item__label {
+        width: 160px !important;
+      }
+
+      .el-form-item__content {
+        width: 380px;
+      }
+    }
+
+    // item内容区域长度
+    .el-form-item__content {
+      width: 400px;
+    }
+
+    .input-with-select,
+    .el-select,
+    .el-date-editor,
+    .el-cascader,
+    .el-input-number {
+      width: 100%;
+    }
+
+    .el-input__inner {
+      text-align: left !important;
+    }
+  }
+
+  .form-foot-btn {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+}
+
+.el-input.is-disabled .el-input__inner {
+  background-color: #fff;
+  color: #606266;
+
+}
+
+.el-checkbox__input.is-disabled+span.el-checkbox__label {
+  color: #606266;
+}
+
+.el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
+  background-color: #409EFF;
+
+}
+
+// .el-radio__input.is-disabled .el-radio__inner{
+//   background-color: #409EFF; 
+// }
+// .el-radio__input.is-disabled .el-radio__inner, .el-radio__input.is-disabled.is-checked .el-radio__inner {
+//   background-color: #409EFF; 
+
+// }
+.el-radio .el-radio__input.is-checked .el-radio__inner {
+
+  background: #409EFF;
+}
+
+.el-radio__input.is-disabled+span.el-radio__label {
+  color: #606266;
+}
+
+.el-textarea.is-disabled .el-textarea__inner {
+  background-color: #fff;
+  color: #606266;
+}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+// ::-webkit-scrollbar  
+// {  
+//     width: 0px;  
+//     height: 0px;  
+//     background-color: #F5F5F5;  
+// }  
+  

@@ -1,0 +1,74 @@
+/* 基础样式 */
+@import "~normalize.css/normalize.css"; // CSS resets
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: @font-family;
+  font-size: @font-size-small;
+  line-height: @line-height-base;
+  color: @text-color;
+  background-color: @body-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+input::-ms-clear,
+input::-ms-reveal {
+  display: none;
+}
+
+a {
+  color: @link-color;
+  background: transparent;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  transition: color @transition-time ease;
+
+  &:hover {
+    color: @link-color-hover;
+  }
+
+  &:active {
+    color: @link-color-active;
+  }
+
+  &:active,
+  &:hover {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &[disabled] {
+    color: #ccc;
+    cursor: @cursor-disabled;
+    pointer-events: none;
+  }
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: @code-family;
+}

@@ -1,0 +1,370 @@
+<template>
+  <div class="query">
+    <div class="query-form">
+      <el-form
+        ref="queryForm"
+        :model="queryForm"
+        label-width="100px"
+        :inline="true"
+        size="small"
+      >
+        <el-form-item label="行政区划" prop="adminCode">
+          <el-cascader
+            v-model="queryForm.adminCode"
+            :props="adminCodeProps"
+            placeholder="-- 请选择行政区划 --"
+            collapse-tags
+          ></el-cascader>
+        </el-form-item>
+        <el-form-item label="关键字" prop="key">
+          <el-input
+            class="input-min-width"
+            v-model="queryForm.key"
+            placeholder="请输入隐患点名称/村/组"
+          ></el-input>
+        </el-form-item>
+        <el-form-item v-if="!onShow">
+          <el-button type="primary" @click="query">查询</el-button>
+          <el-button @click="reset('queryForm')">重置</el-button>
+          <el-button
+            type="text"
+            icon="el-icon-arrow-down"
+            @click="onShow = !onShow"
+            >展开</el-button
+          >
+        </el-form-item>
+        <!-- <el-button type="warning" >清除</el-button> -->
+        <div v-if="onShow">
+          <el-form-item label="采集时间(起)" prop="creatStartTime">
+            <el-date-picker
+              v-model="queryForm.creatStartTime"
+              type="date"
+              placeholder="选择日期"
+            ></el-date-picker>
+          </el-form-item>
+          <el-form-item label="采集时间(止)" prop="creatEndTime">
+            <el-date-picker
+              v-model="queryForm.creatEndTime"
+              type="date"
+              placeholder="选择日期"
+            ></el-date-picker>
+          </el-form-item>
+          <el-form-item label="灾害类型" prop="disasterTypes">
+            <el-select
+              :multiple="true"
+              v-model="queryForm.disasterTypes"
+              placeholder="灾害类型"
+            >
+              <el-option
+                v-for="(value, key) in $t('codes.DisasterType')"
+                :key="key"
+                :label="value"
+                :value="key"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="销号状态" prop="isCanceled">
+            <el-select v-model="queryForm.isCanceled" placeholder="销号状态">
+              <el-option label="已销号" :value="true"></el-option>
+              <el-option label="未销号" :value="false"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="审核状态" prop="isApproval">
+            <el-select v-model="queryForm.isApproval" placeholder="审核状态">
+              <el-option label="已入库" :value="true"></el-option>
+              <el-option label="未入库" :value="false"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="query">查询</el-button>
+            <el-button @click="reset('queryForm')">重置</el-button>
+            <el-button
+              type="text"
+              icon="el-icon-arrow-up"
+              @click="onShow = !onShow"
+              >收起</el-button
+            >
+          </el-form-item>
+        </div>
+      </el-form>
+    </div>
+    <div class="gl-table">
+      <div class="gl-table-func">
+        <el-button
+          type="primary"
+          class="gl-table-func-btn"
+          @click="downLoad(selectList)"
+          >下载</el-button
+        >
+      </div>
+      <com-table
+        :columns="columns"
+        :dataSource="tableData"
+        :options="options"
+        :query="query"
+        :pagination="pagination"
+        :handleSelectionChange="handleSelectionChange"
+      >
+        <template slot="status" slot-scope="scoped">
+          <el-tag
+            :type="
+              scoped.row.status == $util.appconst.DataStatusEnum.Approval
+                ? 'success'
+                : scoped.row.status == $util.appconst.DataStatusEnum.Disapproval
+                ? 'danger'
+                : 'primary'
+            "
+            >{{ $t(`enums.DataStatus[${scoped.row.status}]`) }}</el-tag
+          >
+        </template>
+        <template slot="func" slot-scope="scoped">
+          <el-button size="mini" @click="view(scoped.row)">查看</el-button>
+          <!-- <el-button size="mini" type="primary" @click="downLoad(scoped.row)"
+            >下载</el-button
+          >-->
+        </template>
+      </com-table>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "RelocationQuery",
+  props: {
+    advancedSearch: {
+      type: Boolean,
+      default: false
+    },
+
+    onQuery: {
+      type: Function,
+      default: () => () => {}
+    }
+  },
+  data() {
+    return {
+      queryForm: {
+        creatStartTime: "",
+        creatEndTime: "",
+        disasterTypes: [],
+        isCanceled: null,
+        adminCode: "",
+        key: "",
+        isApproval: null
+      },
+      pagination: {
+        total: 0,
+        pageIndex: 1,
+        pageSize: 10
+      },
+      options: {
+        mutiSelect: true,
+        expand: false,
+        index: true, // 显示序号， 多选则 mutiSelect
+        loading: false, // 表格动画
+        initTable: true // 是否一挂载就加载数据
+      },
+      tableData: [],
+      selectList: [],
+      columns: [
+        {
+          prop: "isCanceled",
+          label: "是否销号",
+          render: row => {
+            if (row.site.isCanceled) {
+              return <el-tag type="success">已销号</el-tag>;
+            } else {
+              return <el-tag type="success">未销号</el-tag>;
+            }
+          }
+        },
+        {
+          parent: "site",
+          prop: "name",
+          label: "隐患点名称"
+        },
+        {
+          prop: "code",
+          label: "隐患点编号"
+        },
+        {
+          parent: "site",
+          prop: "disasterTypeCode",
+          label: "隐患点类型",
+          render: row => (
+            <span>
+              {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+            </span>
+          )
+        },
+        {
+          prop: "relocationTypeCode",
+          label: "搬迁户类型",
+          render: row => (
+            <span>
+              {this.$t(`codes.RelocationType[${row.relocationTypeCode}]`)}
+            </span>
+          )
+        },
+        {
+          prop: "relocationProcessCode",
+          label: "搬迁进度",
+          render: row => (
+            <span>
+              {this.$t(`codes.RelocationProcess[${row.relocationProcessCode}]`)}
+            </span>
+          )
+        },
+        {
+          prop: "placeTypeCode",
+          label: "安置方式",
+          render: row => (
+            <span>{this.$t(`codes.PlaceType[${row.placeTypeCode}]`)}</span>
+          )
+        },
+        {
+          prop: "houseHolder",
+          label: "户主"
+        },
+        {
+          prop: "familyMembers",
+          label: "家庭人口"
+        },
+        {
+          type: "func",
+          label: "操作",
+          width: 250,
+          fixed: "right"
+        }
+      ],
+      isDisplay: false,
+      onShow: false,
+      adminCodeProps: {
+        label: "displayName",
+        value: "adminCode",
+        multiple: false,
+        emitPath: false,
+        checkStrictly: true,
+        lazy: true,
+        lazyLoad: (node, resolve) => {
+          if (node.level == 0) {
+            resolve([this.user]);
+          } else if (node.level >= 1) {
+            this.$store
+              .dispatch("organization/getAdministrative", node.value)
+              .then(res => {
+                resolve(res.children);
+              });
+          }
+        }
+      }
+    };
+  },
+  computed: {
+    // tableData() {
+    //   return this.$store.state.query.tableData;
+    // },
+    user() {
+      return this.$store.getters.area;
+    }
+  },
+  created() {
+    this.query();
+  },
+  methods: {
+    reset(queryForm) {
+      this.$refs[queryForm].resetFields();
+    },
+    view(row) {
+      this.$router.push({
+        path: "/query/relocation/otherFormDetail",
+        query: { id: row.id, code: row.code }
+      });
+    },
+    handleSelectionChange(val) {
+      this.selectList = val;
+    },
+    query() {
+      this.$store
+        .dispatch("query/relocationInfoQuery", {
+          ...this.queryForm,
+          maxResultCount: this.pagination.pageSize,
+          skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize
+        })
+        .then(res => {
+          this.tableData = res.items;
+          this.pagination.total = res.totalCount || 0;
+        });
+    },
+    downLoad(dataList) {
+      if (dataList.length) {
+        import("@/lib/Export2Excel").then(excel => {
+          const tHeader = [
+            "是否销号",
+            "隐患点编号",
+            "隐患点名称",
+            "地理位置",
+            "灾害类型",
+            "搬迁户类型",
+            "搬迁进度",
+            "安置方式",
+            "户主",
+            "家庭人口",
+            "省厅任务下达文号"
+          ];
+          const filterVal = [
+            "isCanceled",
+            "code",
+            "name",
+            "location",
+            "disasterTypeCode",
+            "relocationTypeCode",
+            "relocationProcessCode",
+            "placeTypeCode",
+            "houseHolder",
+            "familyMembers"
+          ];
+          const data = this.formatJson(filterVal, dataList);
+          excel.export_json_to_excel({
+            header: tHeader,
+            data,
+            filename: "搬迁避让数据采集信息",
+            bookType: "xlsx"
+          });
+        });
+      } else {
+        this.$message.info("请先选择要下载的数据");
+      }
+    },
+    formatJson(filterVal, jsonData) {
+      return jsonData.map(v =>
+        filterVal.map(j => {
+          switch (j) {
+            case "isCanceled":
+              return v.site[j] ? "已销号" : "未销号";
+            case "name":
+              return v.site[j];
+            case "location":
+              return v.site[j];
+            case "disasterTypeCode":
+              return this.$t(`codes.DisasterType[${v.site.disasterTypeCode}]`);
+            case "disasterScaleLevel":
+              return this.$t(`enums.ScaleLevel[${v.site.disasterScaleLevel}]`);
+            case "relocationTypeCode":
+              return this.$t(`codes.RelocationType[${v.relocationTypeCode}]`);
+            case "relocationProcessCode":
+              return this.$t(
+                `codes.RelocationProcess[${v.relocationProcessCode}]`
+              );
+            case "placeTypeCode":
+              return this.$t(`codes.PlaceType[${v.placeTypeCode}]`);
+            default:
+              return v[j];
+          }
+        })
+      );
+    }
+  }
+};
+</script>
