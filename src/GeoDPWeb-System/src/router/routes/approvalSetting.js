@@ -7,9 +7,9 @@ export default [
     component: Layout,
     redirect: { name: "flow" },
     meta: {
-      displayName: "审核设置",
+      displayName: "审核管理",
       icon: "tianbao",
-      permission: ""
+      permission: "Pages.Admin.Approval"
     },
     children: [
       {
@@ -19,17 +19,7 @@ export default [
         meta: {
           displayName: "审核流程",
           icon: "xzqh",
-          permission: ""
-        }
-      },
-      {
-        name: "node",
-        path: "node",
-        component: () => import("@/view/approvalSetting/node"),
-        meta: {
-          displayName: "审核节点",
-          icon: "xzqh",
-          permission: ""
+          permission: "Pages.Admin.Approval"
         }
       },
       {
@@ -39,7 +29,7 @@ export default [
         meta: {
           displayName: "审核对象",
           icon: "xzqh",
-          permission: ""
+          permission: "Pages.Admin.Approval"
         }
       }
     ]

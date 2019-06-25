@@ -55,9 +55,7 @@ export default {
       this.$store.dispatch("closeSideBar", { withoutAnimation: false });
     }
   },
-  created() {
-    console.log(this.sidebarMenus);
-  }
+  created() {}
 };
 </script>
 <style lang="less">
@@ -69,6 +67,8 @@ export default {
   .main-content {
     display: flex;
     height: calc(100% - 60px);
+    min-width: 1280px;
+    overflow: auto;
     &-left {
       background: #fff;
       width: 200px;

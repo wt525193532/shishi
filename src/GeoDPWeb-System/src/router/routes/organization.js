@@ -5,41 +5,31 @@ export default [
     path: "/organization",
     name: "organization",
     component: Layout,
-    redirect: { name: "administrative" },
+    redirect: { name: "user" },
     meta: {
-      displayName: "行政体系设置",
+      displayName: "行政体系管理",
       icon: "tianbao",
-      permission: ""
+      permission: "Pages.Admin.Organization"
     },
     children: [
-      {
-        name: "administrative",
-        path: "administrative",
-        component: () => import("@/view/organization/administrative"),
-        meta: {
-          displayName: "行政区划",
-          icon: "xzqh",
-          permission: ""
-        }
-      },
+      // {
+      //   name: "administrative",
+      //   path: "administrative",
+      //   component: () => import("@/view/organization/administrative"),
+      //   meta: {
+      //     displayName: "行政区划",
+      //     icon: "xzqh",
+      //     permission: "Pages.Admin.Organization"
+      //   }
+      // },
       {
         name: "workspace",
         path: "workspace",
         component: () => import("@/view/organization/workspace"),
         meta: {
-          displayName: "工作单位",
+          displayName: "单位部门",
           icon: "xzqh",
-          permission: ""
-        }
-      },
-      {
-        name: "unit",
-        path: "unit",
-        component: () => import("@/view/organization/unit"),
-        meta: {
-          displayName: "工作部门",
-          icon: "xzqh",
-          permission: ""
+          permission: "Pages.Admin.Organization.Workspace"
         }
       },
       {
@@ -49,7 +39,7 @@ export default [
         meta: {
           displayName: "用户",
           icon: "xzqh",
-          permission: ""
+          permission: "Pages.Admin.User"
         }
       }
     ]

@@ -7,7 +7,7 @@ export default [
     component: Layout,
     redirect: { name: "logging" },
     meta: {
-      displayName: "其他设置",
+      displayName: "更多",
       icon: "tianbao",
       permission: ""
     },
