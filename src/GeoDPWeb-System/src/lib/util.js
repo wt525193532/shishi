@@ -1,20 +1,21 @@
 import Cookie from "js-cookie";
 import i18n from "@/locale";
 import appconst from "./appconst";
+import moment from "moment";
 
-class Util {
-  abp = window.abp;
+const util = {
+  abp: window.abp,
   loadScript(url) {
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.src = url;
     document.body.appendChild(script);
-  }
+  },
   title(title) {
     let appname = i18n.t("appName");
     let page = title;
     window.document.title = appname + "--" + page;
-  }
+  },
   inOf(arr, targetArr) {
     let res = true;
     arr.forEach(item => {
@@ -23,21 +24,21 @@ class Util {
       }
     });
     return res;
-  }
+  },
   oneOf(ele, targetArr) {
     if (targetArr.indexOf(ele) >= 0) {
       return true;
     } else {
       return false;
     }
-  }
+  },
   showThisRoute(itAccess, currentAccess) {
     if (typeof itAccess === "object" && Array.isArray(itAccess)) {
       return this.oneOf(currentAccess, itAccess);
     } else {
       return itAccess === currentAccess;
     }
-  }
+  },
   getRouterObjByName(routers, name) {
     if (!name || !routers || !routers.length) {
       return null;
@@ -54,7 +55,7 @@ class Util {
       }
     }
     return null;
-  }
+  },
   toDefaultPage(routers, name, route, next) {
     let len = routers.length;
     let i = 0;
@@ -77,10 +78,10 @@ class Util {
     if (notHandle) {
       next();
     }
-  }
+  },
   getToken() {
     return Cookie.get(appconst.cookieName.token);
-  }
+  },
 
   setToken(token, expires) {
     if (expires) {
@@ -88,7 +89,7 @@ class Util {
     } else {
       Cookie.set(appconst.cookieName.token, token);
     }
-  }
+  },
   extend(...args) {
     let options,
       name,
@@ -141,7 +142,13 @@ class Util {
       }
     }
     return target;
+  },
+
+  transDate(time) {
+    return time ? moment(time).format("YYYY年 MM月 DD日") : "--";
+  },
+  transTime(time) {
+    return time ? moment(time).format("YYYY年MM月DD日HH:mm:ss") : "--";
   }
-}
-const util = new Util();
+};
 export default util;

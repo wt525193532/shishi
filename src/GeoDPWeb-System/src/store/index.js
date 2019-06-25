@@ -2,10 +2,9 @@ import Vue from "vue";
 import Vuex from "vuex";
 import app from "./modules/app";
 import session from "./modules/session";
-import report from "./modules/report";
-import approval from "./modules/approval/index";
-import query from "./modules/query";
-import statistic from "./modules/statistic";
+import organizationManage from "./modules/organizationManage";
+import approvalSetting from "./modules/approvalSetting";
+import permissons from "./modules/permissons";
 
 Vue.use(Vuex);
 
@@ -22,10 +21,9 @@ export default new Vuex.Store({
   modules: {
     app,
     session,
-    report,
-    approval,
-    query,
-    statistic
+    organizationManage,
+    approvalSetting,
+    permissons
   },
   getters: {
     menuList: state => state.app.menuList,

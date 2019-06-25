@@ -41,14 +41,22 @@ const app = {
       {
         name: "organization",
         icon: "icon-geodp-shouye",
-        displayName: "行政体系设置",
+        displayName: "行政体系管理",
         url: "/organization",
         items: [
+          // {
+          //   isEnabled: true,
+          //   isVisible: true,
+          //   url: "/organization/administrative",
+          //   displayName: "行政区划",
+          //   icon: "icon-geodp-zhibanrenyuan",
+          //   items: []
+          // },
           {
             isEnabled: true,
             isVisible: true,
-            url: "/organization/administrative",
-            displayName: "行政区划",
+            url: "/organization/user",
+            displayName: "用户",
             icon: "icon-geodp-zhibanrenyuan",
             items: []
           },
@@ -56,23 +64,7 @@ const app = {
             isEnabled: true,
             isVisible: true,
             url: "/organization/workspace",
-            displayName: "工作单位",
-            icon: "icon-geodp-zhibanrenyuan",
-            items: []
-          },
-          {
-            isEnabled: true,
-            isVisible: true,
-            url: "/organization/unit",
-            displayName: "工作部门",
-            icon: "icon-geodp-zhibanrenyuan",
-            items: []
-          },
-          {
-            isEnabled: true,
-            isVisible: true,
-            url: "/organization/user",
-            displayName: "用户",
+            displayName: "单位部门",
             icon: "icon-geodp-zhibanrenyuan",
             items: []
           }
@@ -81,7 +73,7 @@ const app = {
       {
         name: "permissons",
         icon: "icon-geodp-shouye",
-        displayName: "权限设置",
+        displayName: "权限管理",
         url: "/permissons",
         items: [
           {
@@ -105,7 +97,7 @@ const app = {
       {
         name: "approvalSetting",
         icon: "icon-geodp-shouye",
-        displayName: "审核设置",
+        displayName: "审核管理",
         url: "/approvalSetting",
         items: [
           {
@@ -113,14 +105,6 @@ const app = {
             isVisible: true,
             url: "/approvalSetting/flow",
             displayName: "审核流程",
-            icon: "icon-geodp-zhibanrenyuan",
-            items: []
-          },
-          {
-            isEnabled: true,
-            isVisible: true,
-            url: "/approvalSetting/node",
-            displayName: "审核节点",
             icon: "icon-geodp-zhibanrenyuan",
             items: []
           },
@@ -137,7 +121,7 @@ const app = {
       {
         name: "otherSetting",
         icon: "icon-geodp-shouye",
-        displayName: "其他设置",
+        displayName: "更多",
         url: "/otherSetting",
         items: [
           {
@@ -200,14 +184,32 @@ const app = {
   },
   getters: {
     sidebarMenus: state => {
-      // let menus = [];
-      // let dr = state.menuList.filter(
-      //   item => item.name.toLowerCase() == "DataReportMenu".toLowerCase()
-      // );
-      // if (dr && dr.length == 1)
-      //   menus = dr[0].items.sort((a, b) => (a.order < b.order ? -1 : 1));
+      let menus = [];
+      let dr = state.menuList.filter(
+        item => item.name.toLowerCase() == "systemMenu".toLowerCase()
+      );
+      if (dr && dr.length == 1)
+        menus = dr[0].items.sort((a, b) => (a.order < b.order ? -1 : 1));
+
+      console.log(menus);
+      menus.forEach(menu => {
+        if (menu.items.length > 0) {
+          menu.items.forEach((subMenu, i, subMenus) => {
+            for (let j = 0; j < subMenus.length - 1 - i; j++) {
+              if (subMenus[j + 1].order < subMenus[j].order) {
+                let temp = subMenus[j + 1];
+                subMenus[j + 1] = subMenus[j];
+                subMenus[j] = temp;
+              }
+            }
+          });
+        }
+      });
+      console.log(menus);
+
       // return [...state.defaultMenuItems, ...menus];
-      return state.defaultMenuItems;
+      // return state.defaultMenuItems;
+      return menus;
     }
   }
 };

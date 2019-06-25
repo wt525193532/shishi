@@ -7,9 +7,9 @@ export default [
     component: Layout,
     redirect: { name: "role" },
     meta: {
-      displayName: "权限设置",
+      displayName: "权限管理",
       icon: "tianbao",
-      permission: ""
+      permission: "Pages.Admin"
     },
     children: [
       {
@@ -19,7 +19,7 @@ export default [
         meta: {
           displayName: "角色",
           icon: "xzqh",
-          permission: ""
+          permission: "Pages.Admin.Role"
         }
       },
       {
@@ -29,7 +29,7 @@ export default [
         meta: {
           displayName: "菜单",
           icon: "xzqh",
-          permission: ""
+          permission: "Pages.Admin.Navigation"
         }
       }
     ]

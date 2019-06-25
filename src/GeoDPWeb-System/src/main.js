@@ -6,7 +6,7 @@ import store from "./store";
 import ElementUI from "element-ui";
 import "./theme/index.less";
 import "@/assets/icons/iconfont-default";
-
+import util from "@/lib/util";
 import { svgIcon } from "@/components";
 
 import i18n from "./locale";
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 Vue.config.productionTip = false;
-
+Vue.prototype.$util = util;
 Vue.use(ElementUI, {
   size: "medium",
   zIndex: 3000,

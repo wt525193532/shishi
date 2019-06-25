@@ -8,7 +8,7 @@
         :key="item.name"
         :to="item.path"
         :style="{ color: index == breadData.length ? '#50a14f' : '#fff' }"
-        >{{ item.meta.title }}</el-breadcrumb-item
+        >{{ item.meta.displayName }}</el-breadcrumb-item
       >
     </el-breadcrumb>
     <!-- <div class="btn"
@@ -38,12 +38,10 @@ export default {
     },
     breadData() {
       let [...routeInfo] = this.$route.matched;
-      // routeInfo.splice(0, 1);
       let routes = routeInfo.filter(
-        item => item.meta.title && !item.path.includes("index")
+        item => item.meta.displayName && !item.path.includes("index")
       );
       if (this.$route.query.routeName) {
-        // routes.pop()
         routes.push({ path: "", meta: { role: this.$route.query.routeName } });
       }
       return routes;
@@ -56,6 +54,9 @@ export default {
   height: 50px;
   width: 100%;
   padding: 0 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ebeef5;
+  border-left: 1px solid #ebeef5;
   // position: fixed;
   // top: 100px;
   // border-bottom: 1px solid #e7e8ec;

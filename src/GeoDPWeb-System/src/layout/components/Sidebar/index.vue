@@ -62,7 +62,6 @@ export default {
       let activeItem = this.sidebarMenus.find(item => {
         return item.displayName === munuActive;
       });
-
       return activeItem.items;
     },
     // 子菜单激活项
