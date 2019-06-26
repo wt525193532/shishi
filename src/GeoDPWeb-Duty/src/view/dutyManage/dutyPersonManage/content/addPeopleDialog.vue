@@ -108,7 +108,7 @@ export default {
           label: "姓名"
         },
         {
-          prop: "department",
+          prop: "departmentName",
           label: "部门名称"
         },
         {
