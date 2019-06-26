@@ -3,30 +3,30 @@
     <el-input-number
       :controls="false"
       v-bind="$attrs"
-      :min="0"
-      :max="360"
       style="width: 31% !important"
       :precision="0"
-      v-model="obj.degree"
+      :value="obj.degree"
       @change="inputDegress"
     ></el-input-number
     >°
     <el-input-number
       :controls="false"
+      style="width: 31% !important"
       v-bind="$attrs"
       :min="0"
       :max="59"
-      style="width: 31% !important"
+      placeholder="0 ~ 59"
       :precision="0"
-      v-model="obj.minute"
+      :value="obj.minute"
       @change="inputMinute"
     ></el-input-number
     >′
     <el-input-number
       :controls="false"
       v-bind="$attrs"
-      :min="0"
-      :max="59"
+      :min="0.0"
+      :max="59.99"
+      placeholder="0 ~ 59"
       :precision="2"
       style="width: 30% !important"
       v-model="obj.second"
@@ -36,14 +36,9 @@
   </div>
 </template>
 <script>
-/* eslint-disable no-unused-vars */
 export default {
-  name: "ComJWD",
+  name: "JWDBoom",
   inheritAttrs: false,
-  model: {
-    prop: "value",
-    event: "input"
-  },
   props: {
     value: Number
   },
@@ -51,17 +46,26 @@ export default {
     return {};
   },
   computed: {
-    float() {
-      return (
-        this.obj.degree + this.obj.minute / 60.0 + this.obj.second / 3600.0
-      );
-    },
     obj() {
       return this.convert(this.value);
     }
   },
   methods: {
+    toFloat(d, f, m) {
+      return (
+        ((d || 0) + (f || 0) / 60.0 + (m || 0) / 3600.0 + 0.0000002).toFixed(
+          6
+        ) * 1
+      );
+    },
     convert(v) {
+      if (v === undefined) {
+        return {
+          degree: undefined,
+          minute: undefined,
+          second: undefined
+        };
+      }
       const d = Math.floor(v);
       const f = Math.floor((v - d) * 60);
       const m = ((v - d) * 60 - f) * 60;
@@ -72,13 +76,22 @@ export default {
       };
     },
     inputDegress(event) {
-      this.$emit("input", this.float.toFixed(6));
+      this.$emit(
+        "input",
+        this.toFloat(event, this.obj.minute, this.obj.second)
+      );
     },
     inputMinute(event) {
-      this.$emit("input", this.float.toFixed(6));
+      this.$emit(
+        "input",
+        this.toFloat(this.obj.degree, event, this.obj.second)
+      );
     },
     inputSecond(event) {
-      this.$emit("input", this.float.toFixed(6));
+      this.$emit(
+        "input",
+        this.toFloat(this.obj.degree, this.obj.minute, event)
+      );
     }
   }
 };
