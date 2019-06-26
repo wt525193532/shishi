@@ -67,7 +67,6 @@ export default {
   .main-content {
     display: flex;
     height: calc(100% - 60px);
-    min-width: 1280px;
     overflow: auto;
     &-left {
       background: #fff;
@@ -76,8 +75,9 @@ export default {
     }
     &-right {
       height: 100%;
-      width: 100%;
+      width: calc(100% - 200px);
       .content {
+        min-width: 760px;
         padding: 0 20px;
         height: calc(100% - 50px);
         overflow: auto;
