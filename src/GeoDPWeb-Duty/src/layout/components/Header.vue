@@ -46,15 +46,15 @@
             <i class="el-icon-arrow-down"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="profile">
-              {{ $t("navbar.profile") }}
-            </el-dropdown-item>
-            <el-dropdown-item command="switch" divided>
-              {{ $t("navbar.switch") }}
-            </el-dropdown-item>
-            <el-dropdown-item command="logout">
-              {{ $t("navbar.logout") }}
-            </el-dropdown-item>
+            <el-dropdown-item command="profile">{{
+              $t("navbar.profile")
+            }}</el-dropdown-item>
+            <el-dropdown-item command="switch" divided>{{
+              $t("navbar.switch")
+            }}</el-dropdown-item>
+            <el-dropdown-item command="logout">{{
+              $t("navbar.logout")
+            }}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -104,7 +104,10 @@ export default {
       //TODO...
     },
     switchSystem() {
-      window.location.href = process.env.VUE_APP_AUTH_URL;
+      window.location.href =
+        process.env.NODE_ENV === "production"
+          ? window.geodp.appconst.authURL
+          : process.env.VUE_APP_AUTH_URL;
     },
     logout() {
       this.$store.dispatch("app/logout").then(() => {

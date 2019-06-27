@@ -22,7 +22,7 @@
     </div>
     <el-row :gutter="60">
       <el-col v-if="shiftDatas.length == 0" :span="24" class="gl-text-center">
-        <h2>暂无信息</h2>
+        <h2>暂无班次</h2>
       </el-col>
 
       <el-col

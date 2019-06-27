@@ -144,10 +144,10 @@ export default {
           prop: "phoneNumber",
           label: "手机"
         },
-        {
-          prop: "emailAddress",
-          label: "邮箱"
-        },
+        // {
+        //   prop: "emailAddress",
+        //   label: "邮箱"
+        // },
         {
           prop: "func",
           label: "操作"

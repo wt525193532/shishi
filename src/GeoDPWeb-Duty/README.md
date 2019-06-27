@@ -26,6 +26,7 @@
     |-- public                          //HTML和静态资源
     |   |-- favicon.ico
     |   |-- index.html
+    |   |-- appconst.js                 //常数配置
     |-- src                             //项目源代码目录
         |-- App.vue                     //根组件
         |-- main.js                     //入口js文件
@@ -58,7 +59,6 @@
         |   |-- styles                   //公用样式 
         |       |-- index.less
         |-- utils                       //工具类脚本目录
-        |   |-- appconst.js             //常数配置
         |   |-- index.js                //工具类
         |   |-- request.js              //api请求
         |   |-- validate.js             //输入验证
