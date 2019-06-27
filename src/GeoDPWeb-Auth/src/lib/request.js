@@ -4,13 +4,22 @@ import util from "./util";
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL:
+    process.env.NODE_ENV === "production"
+      ? window.geodp.appconst.GEODP_BASE_API
+      : process.env.VUE_APP_BASE_API,
   timeout: 10000
 });
 
 // request interceptor
 service.interceptors.request.use(
   config => {
+    if (config.method == "get") {
+      config.params = {
+        _t: Date.parse(new Date()) / 1000,
+        ...config.params
+      };
+    }
     // Do something before request is sent
     const token = util.getToken();
     if (!!token && true) {
