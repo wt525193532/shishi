@@ -32,7 +32,11 @@
               <el-input v-model="formData.provinceTaskNumber"></el-input>
             </el-form-item>
             <br />
-            <el-form-item label="完成时限" class="form-label-medium">
+            <el-form-item
+              label="完成时限"
+              class="form-label-medium"
+              prop="finishDeadline"
+            >
               <el-date-picker
                 v-model="formData.finishDeadline"
                 type="date"
@@ -40,7 +44,11 @@
               ></el-date-picker>
             </el-form-item>
 
-            <el-form-item label="完成时间" class="form-label-medium">
+            <el-form-item
+              label="完成时间"
+              class="form-label-medium"
+              prop="finishTime"
+            >
               <el-date-picker
                 v-model="formData.finishTime"
                 type="date"
@@ -516,11 +524,25 @@ export default {
     return {
       ownDisabled: false,
       rules: {
+        finishTime: [
+          {
+            required: true,
+            message: "请选择时间",
+            trigger: "change"
+          }
+        ],
+        finishDeadline: [
+          {
+            required: true,
+            message: "请选择时间",
+            trigger: "change"
+          }
+        ],
         applyTime: [
           {
             required: true,
-            message: "必须输入数字值",
-            trigger: "blur"
+            message: "请选择时间",
+            trigger: "change"
           }
         ],
         relocationPersons: [

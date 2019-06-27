@@ -53,17 +53,7 @@ export default {
         centralFinancialFunds: 0,
         finalAccounts: 0,
         remark: "",
-        attachments: [
-          {
-            key: "",
-            name: "",
-            displayName: "",
-            tag: "",
-            extension: "",
-            url: "",
-            id: 0
-          }
-        ],
+        attachments: [],
         site: {
           disasterTypeCode: "",
           name: "",

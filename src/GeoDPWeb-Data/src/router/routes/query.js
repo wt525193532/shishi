@@ -380,7 +380,7 @@ export default [
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "heritageProtection",
+              formName: "mineInformation",
               permission: "Pages.Data.Query"
             }
           }

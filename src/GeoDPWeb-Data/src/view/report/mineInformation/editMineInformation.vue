@@ -42,17 +42,7 @@ export default {
         isLVSE: true,
         isGUOJIA: true,
         isZHUANYE: null,
-        attachments: [
-          {
-            key: "",
-            name: "",
-            displayName: "",
-            tag: "",
-            extension: "",
-            url: "",
-            id: 0
-          }
-        ],
+        attachments: [],
         id: 0
       },
       townList: {}

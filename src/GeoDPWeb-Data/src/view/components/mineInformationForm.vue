@@ -204,7 +204,7 @@
               ></el-input>
             </el-form-item>
           </div>
-          <div>
+          <!-- <div>
             <el-form-item
               label="环境恢复治理保证金缴纳情况"
               prop="bzj"
@@ -218,7 +218,7 @@
                 style="width:1000px"
               ></el-input>
             </el-form-item>
-          </div>
+          </div>-->
           <el-form-item label="备注" label-width="220px">
             <el-input
               type="textarea"
@@ -228,50 +228,59 @@
               v-model="formData.remark"
             ></el-input>
           </el-form-item>
-          <!-- <el-form-item label="方向(度)"
-                      prop="site.yaw">
-          <el-input-number :controls="false"
-                           :min="0"
-                           placeholder="请输入方向，范围在0°-359°"
-                           :max="359"
-                           v-model.number="formData.site.yaw"></el-input-number>
-          </el-form-item>-->
+          <div>
+            <el-form-item
+              label="环境影响评估情况"
+              prop="hjyxpg"
+              label-width="210px"
+            >
+              <el-radio-group v-model="formData.hjyxpg">
+                <el-radio label="是">已评估</el-radio>
+                <el-radio label="否">未评估</el-radio>
+              </el-radio-group>
+            </el-form-item>
 
-          <el-form-item
-            label="环境影响评估情况"
-            prop="predisposeFactors"
-            class="form-item-row form-label-medium"
-          >
-            <el-radio-group v-model="formData.predisposeFactors">
-              <el-radio :label="true">已评估</el-radio>
-              <el-radio :label="false">未评估</el-radio>
-            </el-radio-group>
-          </el-form-item>
-          <el-form-item
-            label="是否安装了专业设备"
-            label-width="180px"
-            prop="threatObjects"
-            class="form-item-row"
-          >
-            <!-- <el-checkbox v-for="(value, key) in $t('codes.ThreatObject')"
-                         :key="key"
-            :label="key">{{ value }}</el-checkbox>-->
-            <el-radio-group v-model="formData.isZHUANYE">
-              <el-radio :label="true">是</el-radio>
-              <el-radio :label="false">否</el-radio>
-            </el-radio-group>
-          </el-form-item>
-          <el-form-item
-            label="矿山地质环境回复治理保证金缴纳情况"
-            label-width="400"
-            prop="predisposeFactors"
-            class="form-item-row form-label-slg"
-          >
-            <el-radio-group v-model="formData.predisposeFactors">
-              <el-radio :label="true">已缴</el-radio>
-              <el-radio :label="false">未缴</el-radio>
-            </el-radio-group>
-          </el-form-item>
+            <el-form-item
+              label="是否安装了专业设备"
+              label-width="210px"
+              prop="threatObjects"
+            >
+              <el-radio-group v-model="formData.isZHUANYE">
+                <el-radio :label="true">是</el-radio>
+                <el-radio :label="false">否</el-radio>
+              </el-radio-group>
+            </el-form-item>
+            <el-form-item
+              label="是否安绿色矿山"
+              label-width="210px"
+              prop="threatObjects"
+            >
+              <el-radio-group v-model="formData.isLVSE">
+                <el-radio :label="true">是</el-radio>
+                <el-radio :label="false">否</el-radio>
+              </el-radio-group>
+            </el-form-item>
+            <el-form-item
+              label="是否安国家级"
+              label-width="210px"
+              prop="threatObjects"
+            >
+              <el-radio-group v-model="formData.isGUOJIA">
+                <el-radio :label="true">是</el-radio>
+                <el-radio :label="false">否</el-radio>
+              </el-radio-group>
+            </el-form-item>
+            <el-form-item
+              label="环境恢复治理保证金缴纳情况"
+              label-width="210px"
+              prop="predisposeFactors"
+            >
+              <el-radio-group v-model="formData.bzj">
+                <el-radio label="是">已缴纳</el-radio>
+                <el-radio label="否">未缴纳</el-radio>
+              </el-radio-group>
+            </el-form-item>
+          </div>
         </div>
       </div>
       <div class="form-item">

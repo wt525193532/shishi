@@ -160,6 +160,9 @@ export default {
           prop: "kaicaikzdm",
           label: "开采矿种",
           render: row => {
+            if (!row.kaicaikzdm) {
+              return <span>--</span>;
+            }
             return (
               <span>{this.$t(`codes.MineralType[${row.kaicaikzdm}]`)}</span>
             );

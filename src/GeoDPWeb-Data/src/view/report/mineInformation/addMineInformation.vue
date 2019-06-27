@@ -35,6 +35,7 @@ export default {
         dzhjgk: "",
         dzzhfyqk: "",
         bzj: "",
+        hjyxpg: "",
         fhzlqk: "",
         remark: "",
         lon: undefined,

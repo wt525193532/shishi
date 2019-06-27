@@ -613,16 +613,6 @@
             <el-form-item label="填报单位">
               <el-input
                 placeholder="请输入填报单位"
-                v-model="formData.ysbns"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="填报人">
-              <el-input
-                placeholder="请输入填报人"
-                v-model="formData.tbr"
-              ></el-input>
-              <el-input
-                placeholder="请输入填报单位"
                 v-model="formData.reportUnitName"
               ></el-input>
             </el-form-item>
