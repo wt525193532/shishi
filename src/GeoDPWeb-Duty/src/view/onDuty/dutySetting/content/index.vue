@@ -11,12 +11,11 @@
               @click="addDutyPerson"
               type="primary"
               plain
+              >新增值班人员</el-button
             >
-              新增值班人员
-            </el-button>
-            <el-button size="medium" @click="update" type="primary">
-              {{ canNotEdit ? "编辑" : "保存" }}
-            </el-button>
+            <el-button size="medium" @click="update" type="primary">{{
+              canNotEdit ? "编辑" : "保存"
+            }}</el-button>
             <el-button
               type="primary"
               icon="el-icon-plus"
@@ -46,14 +45,13 @@
                           :key="item.id"
                           :label="item.name"
                           :value="item.id"
-                        >
-                        </el-option>
+                        ></el-option>
                       </el-select>
                     </el-form-item>
                     <el-form-item label="电话">
                       <el-input
                         v-model="onDutyInfoData.dutyLeader.phoneNumber"
-                        placeholder=""
+                        placeholder
                         disabled
                       ></el-input>
                     </el-form-item>
@@ -77,14 +75,13 @@
                           :key="item.id"
                           :label="item.name"
                           :value="item.id"
-                        >
-                        </el-option>
+                        ></el-option>
                       </el-select>
                     </el-form-item>
                     <el-form-item label="电话">
                       <el-input
                         :value="onDutyInfoData.takeLeader.phoneNumber"
-                        placeholder=""
+                        placeholder
                         disabled
                       ></el-input>
                     </el-form-item>
@@ -108,14 +105,13 @@
                           :key="item.id"
                           :label="item.name"
                           :value="item.id"
-                        >
-                        </el-option>
+                        ></el-option>
                       </el-select>
                     </el-form-item>
                     <el-form-item label="电话">
                       <el-input
                         v-model="onDutyInfoData.dutyDriver.phoneNumber"
-                        placeholder=""
+                        placeholder
                         disabled
                       ></el-input>
                     </el-form-item>
@@ -139,14 +135,13 @@
                           :key="item.id"
                           :label="item.name"
                           :value="item.id"
-                        >
-                        </el-option>
+                        ></el-option>
                       </el-select>
                     </el-form-item>
                     <el-form-item label="电话">
                       <el-input
                         v-model="onDutyInfoData.emergencyTeam.phoneNumber"
-                        placeholder=""
+                        placeholder
                         disabled
                       ></el-input>
                     </el-form-item>
@@ -160,14 +155,14 @@
                     <el-form-item label="姓名">
                       <el-input
                         v-model="onDutyInfoData.mainDutyPerson.name"
-                        placeholder=""
+                        placeholder
                         disabled
                       ></el-input>
                     </el-form-item>
                     <el-form-item label="电话">
                       <el-input
                         v-model="onDutyInfoData.mainDutyPerson.phoneNumber"
-                        placeholder=""
+                        placeholder
                         disabled
                       ></el-input>
                     </el-form-item>
@@ -205,8 +200,7 @@
                           :key="item.id"
                           :label="item.name"
                           :value="item.id"
-                        >
-                        </el-option>
+                        ></el-option>
                       </el-select>
                     </el-form-item>
                     <el-form-item label="电话">
@@ -214,7 +208,7 @@
                         v-model="
                           onDutyInfoData.otherDutyPersons[index].phoneNumber
                         "
-                        placeholder=""
+                        placeholder
                         disabled
                       ></el-input>
                     </el-form-item>
@@ -330,7 +324,7 @@ export default {
           phoneNumber: undefined
         });
       } else {
-        this.$message.warning("超过总值班人员人数!");
+        this.$message.warning("超过总值班人员人数! 请联系管理员新增值班人员！");
       }
     },
     deleteCard(index) {

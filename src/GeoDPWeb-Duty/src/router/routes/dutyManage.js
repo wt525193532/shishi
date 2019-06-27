@@ -7,7 +7,7 @@ const dutyManage = [
     meta: {
       displayName: "值班管理",
       icon: "tianbao",
-      permission: ""
+      permission: "Pages.Duty.Manage"
     },
     redirect: { name: "dutyPersonManage" },
     children: [
@@ -19,7 +19,7 @@ const dutyManage = [
         meta: {
           displayName: "值班人员管理",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty.Manage"
         }
       },
       {
@@ -30,7 +30,7 @@ const dutyManage = [
         meta: {
           displayName: "排班管理",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty.Manage"
         }
       },
       {
@@ -41,7 +41,7 @@ const dutyManage = [
         meta: {
           displayName: "交接班管理",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty.Manage"
         }
       },
       {
@@ -52,7 +52,7 @@ const dutyManage = [
         meta: {
           displayName: "班次管理",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty.Manage"
         }
       }
     ]

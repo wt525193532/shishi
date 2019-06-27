@@ -41,7 +41,7 @@
             <el-button type="primary" :loading="options.loading" @click="fenth"
               >查询</el-button
             >
-            <el-button>重置</el-button>
+            <el-button @click="reset">重置</el-button>
           </el-form-item>
         </div>
       </el-form>
@@ -53,7 +53,7 @@
           <el-button size="medium" icon="el-icon-upload"
             >导出选中文件</el-button
           >
-        </div> -->
+        </div>-->
       </div>
       <com-table
         :columns="columns"
@@ -154,6 +154,18 @@ export default {
     };
   },
   methods: {
+    reset() {
+      this.fenthForm = {
+        types: [],
+        sender: "",
+        key: ""
+      };
+      this.pagination = {
+        total: 0,
+        pageIndex: 1,
+        pageSize: 10
+      };
+    },
     handleRowClick(row, event, column) {
       // 点击行的事件，同理可以绑定其他事件
       console.log("click row:", row, event, column);

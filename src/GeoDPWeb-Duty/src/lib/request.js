@@ -11,6 +11,12 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
+    if (config.method == "get") {
+      config.params = {
+        _t: Date.parse(new Date()) / 1000,
+        ...config.params
+      };
+    }
     // Do something before request is sent
     const token = util.getToken();
     if (!!token && true) {

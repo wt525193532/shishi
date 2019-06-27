@@ -8,7 +8,7 @@
           size="mini"
           @click="deleteCard(indexVal)"
           >删除</el-button
-        > -->
+      >-->
       <el-button
         :disabled="isDisabled"
         size="mini"
@@ -24,25 +24,23 @@
         <el-input v-model="formData.name"></el-input>
       </el-form-item>
       <el-form-item label="开始时间">
-        <el-select v-model="formData.startTime" placeholder="">
+        <el-select v-model="formData.startTime" placeholder>
           <el-option
             v-for="(item, index) in 37"
             :key="index"
             :label="item < 25 ? index + ':00' : '次日 ' + (index - 24) + ':00'"
             :value="index * 60"
-          >
-          </el-option>
+          ></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="结束时间">
-        <el-select v-model="formData.endTime" placeholder="">
+        <el-select v-model="formData.endTime" placeholder>
           <el-option
-            v-for="(item, index) in 37"
+            v-for="(item, index) in 36"
             :key="index"
-            :label="item < 25 ? index + ':00' : '次日 ' + (index - 24) + ':00'"
-            :value="index * 60"
-          >
-          </el-option>
+            :label="item < 25 ? item + ':00' : '次日 ' + (item - 24) + ':00'"
+            :value="item * 60"
+          ></el-option>
         </el-select>
       </el-form-item>
     </el-form>

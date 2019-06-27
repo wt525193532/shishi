@@ -47,11 +47,11 @@
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="profile">
-              {{ $t("navbar.profile") }}</el-dropdown-item
-            >
+              {{ $t("navbar.profile") }}
+            </el-dropdown-item>
             <el-dropdown-item command="switch" divided>
-              {{ $t("navbar.switch") }}</el-dropdown-item
-            >
+              {{ $t("navbar.switch") }}
+            </el-dropdown-item>
             <el-dropdown-item command="logout">
               {{ $t("navbar.logout") }}
             </el-dropdown-item>
@@ -104,7 +104,7 @@ export default {
       //TODO...
     },
     switchSystem() {
-      //TODO...
+      window.location.href = process.env.VUE_APP_AUTH_URL;
     },
     logout() {
       this.$store.dispatch("app/logout").then(() => {

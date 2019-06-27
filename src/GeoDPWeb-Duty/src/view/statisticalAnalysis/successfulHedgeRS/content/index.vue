@@ -17,28 +17,22 @@
 
         <el-form-item class="gl-form-item" label="是否已上报">
           <el-select
-            v-model="fenthForm.scaleLevels"
-            multiple
+            v-model="fenthForm.isReported"
+            clearable
             placeholder="请选择"
           >
             <el-option label="已上报" :value="true"></el-option>
             <el-option label="未上报" :value="false"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item class="gl-form-item" label="统计开始时间">
+        <el-form-item class="gl-form-item" label="统计周期" prop="sendTime">
           <el-date-picker
-            v-model="fenthForm.startTime"
-            type="date"
-            format="yyyy年MM月dd日"
-            placeholder="选择日期"
-          ></el-date-picker>
-        </el-form-item>
-        <el-form-item class="gl-form-item" label="统计结束时间">
-          <el-date-picker
-            v-model="fenthForm.endTime"
-            type="date"
-            format="yyyy年MM月dd日"
-            placeholder="选择日期"
+            v-model="fenthForm.statTime"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            :default-time="['00:00:00', '23:59:59']"
           ></el-date-picker>
         </el-form-item>
 
@@ -56,7 +50,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item class="gl-form-item" label="灾害发生时间">
+        <!-- <el-form-item class="gl-form-item" label="灾害发生时间">
           <el-date-picker
             v-model="fenthForm.happenStartTime"
             type="date"
@@ -71,8 +65,17 @@
             format="yyyy年MM月dd日"
             placeholder="选择日期"
           ></el-date-picker>
+        </el-form-item>-->
+        <el-form-item class="gl-form-item" label="灾害时间" prop="sendTime">
+          <el-date-picker
+            v-model="fenthForm.happenTime"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            :default-time="['00:00:00', '23:59:59']"
+          ></el-date-picker>
         </el-form-item>
-
         <div class="gl-text-center">
           <el-form-item class="gl-form-item">
             <el-button type="primary" :loading="queryLoad" @click="queryAll"
@@ -137,12 +140,10 @@ export default {
     return {
       fenthForm: {
         adminCode: "",
-        startTime: null,
-        endTime: null,
+        statTime: [],
         isReported: null,
         disasterTypes: [],
-        happenStartTime: null,
-        happenEndTime: null
+        happenTime: []
       },
       // Echart x轴名称
       xAxisData: [],
@@ -248,19 +249,34 @@ export default {
     reset() {
       this.fenthForm = {
         adminCode: "",
-        startTime: null,
-        endTime: null,
+        statTime: [],
         isReported: null,
         disasterTypes: [],
-        happenStartTime: null,
-        happenEndTime: null
+        happenTime: []
       };
     },
     queryAll() {
       this.queryLoad = true;
       this.queryTab(true);
+
+      const {
+        happenTime,
+        disasterTypes,
+        isReported,
+        adminCode,
+        statTime
+      } = this.fenthForm;
+      let params = {
+        happenStartTime: happenTime[0],
+        happenEndTime: happenTime[1],
+        disasterTypes,
+        isReported,
+        adminCode,
+        startTime: statTime[0],
+        endTime: statTime[1]
+      };
       this.$store
-        .dispatch("statisticalAnalysis/avoidRiskInfoSta", this.fenthForm)
+        .dispatch("statisticalAnalysis/avoidRiskInfoSta", params)
         .then(res => {
           flag += 1;
           let xData = [];
@@ -282,27 +298,25 @@ export default {
         this.options.loading = true;
       }
       const {
-        deathMax,
-        deathMin,
-        scaleLevels,
+        happenTime,
         disasterTypes,
         isReported,
         adminCode,
-        startTime,
-        endTime
+        statTime
       } = this.fenthForm;
       let params = {
-        deathMax,
-        deathMin,
-        scaleLevels,
+        happenStartTime: happenTime[0],
+        happenEndTime: happenTime[1],
         disasterTypes,
         isReported,
         adminCode,
-        startTime,
-        endTime,
+        startTime: statTime[0],
+        endTime: statTime[1],
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
         maxResultCount: this.pagination.pageSize
       };
+      console.log(this.fenthForm);
+
       this.$store
         .dispatch("statisticalAnalysis/avoidRiskInfoQuey", params)
         .then(res => {

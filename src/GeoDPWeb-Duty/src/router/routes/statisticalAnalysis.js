@@ -7,7 +7,7 @@ const statisticalAnalysis = [
     meta: {
       displayName: "统计分析",
       icon: "tianbao",
-      permission: ""
+      permission: "Pages.Duty"
     },
     redirect: { name: "disasterRS" },
     children: [
@@ -19,7 +19,7 @@ const statisticalAnalysis = [
         meta: {
           displayName: "灾情报送统计",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty"
         }
       },
       {
@@ -30,7 +30,7 @@ const statisticalAnalysis = [
         meta: {
           displayName: "险情报送统计",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty"
         }
       },
       {
@@ -41,31 +41,31 @@ const statisticalAnalysis = [
         meta: {
           displayName: "成功避险报送统计",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty"
         }
       },
-      {
-        path: "disasterSummaryRS",
-        name: "disasterSummaryRS",
-        component: () =>
-          import(/* webpackChunkName: "disasterSummaryRS" */ "@/view/statisticalAnalysis/disasterSummaryRS/content"),
-        meta: {
-          displayName: "防灾概述报送统计",
-          icon: "tianbao",
-          permission: ""
-        }
-      },
-      {
-        path: "disasterEmergencyWorkRS",
-        name: "disasterEmergencyWorkRS",
-        component: () =>
-          import(/* webpackChunkName: "disasterEmergencyWorkRS" */ "@/view/statisticalAnalysis/disasterEmergencyWorkRS/content"),
-        meta: {
-          displayName: "防灾应急工作统计报表报送统计",
-          icon: "tianbao",
-          permission: ""
-        }
-      },
+      // {
+      //   path: "disasterSummaryRS",
+      //   name: "disasterSummaryRS",
+      //   component: () =>
+      //     import(/* webpackChunkName: "disasterSummaryRS" */ "@/view/statisticalAnalysis/disasterSummaryRS/content"),
+      //   meta: {
+      //     displayName: "防灾概述报送统计",
+      //     icon: "tianbao",
+      //     permission: "Pages.Duty"
+      //   }
+      // },
+      // {
+      //   path: "disasterEmergencyWorkRS",
+      //   name: "disasterEmergencyWorkRS",
+      //   component: () =>
+      //     import(/* webpackChunkName: "disasterEmergencyWorkRS" */ "@/view/statisticalAnalysis/disasterEmergencyWorkRS/content"),
+      //   meta: {
+      //     displayName: "防灾应急工作统计报表报送统计",
+      //     icon: "tianbao",
+      //     permission: "Pages.Duty"
+      //   }
+      // },
       {
         path: "postStatistics",
         name: "postStatistics",
@@ -74,7 +74,7 @@ const statisticalAnalysis = [
         meta: {
           displayName: "发文统计",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty"
         }
       },
       {
@@ -85,7 +85,7 @@ const statisticalAnalysis = [
         meta: {
           displayName: "收文统计",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty"
         }
       },
       {
@@ -96,7 +96,7 @@ const statisticalAnalysis = [
         meta: {
           displayName: "短信统计",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty"
         }
       }
     ]

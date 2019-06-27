@@ -3,20 +3,20 @@
     <el-input-number
       :controls="false"
       v-bind="$attrs"
-      style="width: 31% !important"
       :precision="0"
       :value="obj.degree"
+      style="width: 31% !important"
       @change="inputDegress"
     ></el-input-number
     >°
     <el-input-number
       :controls="false"
-      style="width: 31% !important"
       v-bind="$attrs"
       :min="0"
       :max="59"
       placeholder="0 ~ 59"
       :precision="0"
+      style="width: 31% !important"
       :value="obj.minute"
       @change="inputMinute"
     ></el-input-number
@@ -27,8 +27,8 @@
       :min="0.0"
       :max="59.99"
       placeholder="0 ~ 59"
-      :precision="2"
       style="width: 30% !important"
+      :precision="2"
       v-model="obj.second"
       @change="inputSecond"
     ></el-input-number

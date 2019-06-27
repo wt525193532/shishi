@@ -17,29 +17,13 @@
 
         <el-form-item class="gl-form-item" label="是否已上报">
           <el-select
-            v-model="fenthForm.scaleLevels"
-            multiple
+            v-model="fenthForm.isReported"
+            clearable
             placeholder="请选择"
           >
             <el-option label="已上报" :value="true"></el-option>
             <el-option label="未上报" :value="false"></el-option>
           </el-select>
-        </el-form-item>
-        <el-form-item class="gl-form-item" label="开始时间">
-          <el-date-picker
-            v-model="fenthForm.startTime"
-            type="date"
-            format="yyyy年MM月dd日"
-            placeholder="选择日期"
-          ></el-date-picker>
-        </el-form-item>
-        <el-form-item class="gl-form-item" label="结束时间">
-          <el-date-picker
-            v-model="fenthForm.endTime"
-            type="date"
-            format="yyyy年MM月dd日"
-            placeholder="选择日期"
-          ></el-date-picker>
         </el-form-item>
 
         <el-form-item class="gl-form-item" label="灾害类型">
@@ -69,13 +53,23 @@
             <el-option label="特大型" value="特大型"></el-option>
           </el-select>
         </el-form-item>
-
+        <el-form-item class="gl-form-item" label="统计周期" prop="sendTime">
+          <el-date-picker
+            v-model="fenthForm.statTime"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            :default-time="['00:00:00', '23:59:59']"
+          ></el-date-picker>
+        </el-form-item>
         <el-form-item class="gl-form-item" label="死亡人口(人)">
           <el-input-number
             :controls="false"
             v-model="fenthForm.deathMin"
             style="width: 129px !important"
             controls-position="right"
+            @change="deathChange"
             :min="0"
           ></el-input-number
           >至
@@ -83,7 +77,7 @@
             :controls="false"
             controls-position="right"
             style="width: 129px !important"
-            :min="0"
+            :min="fenthForm.deathMin"
             v-model="fenthForm.deathMax"
           ></el-input-number>
         </el-form-item>
@@ -152,8 +146,7 @@ export default {
     return {
       fenthForm: {
         adminCode: "",
-        startTime: null,
-        endTime: null,
+        statTime: [],
         isReported: null,
         disasterTypes: [],
         scaleLevels: [],
@@ -258,11 +251,15 @@ export default {
     }
   },
   methods: {
+    deathChange(minDeath) {
+      if (minDeath > this.fenthForm.deathMax) {
+        this.fenthForm.deathMax = minDeath;
+      }
+    },
     reset() {
       this.fenthForm = {
         adminCode: "",
-        startTime: null,
-        endTime: null,
+        statTime: [],
         isReported: null,
         disasterTypes: [],
         scaleLevels: [],
@@ -273,8 +270,28 @@ export default {
     queryAll() {
       this.queryLoad = true;
       this.queryTab(true);
+
+      const {
+        deathMax,
+        deathMin,
+        scaleLevels,
+        disasterTypes,
+        isReported,
+        adminCode,
+        statTime
+      } = this.fenthForm;
+      let params = {
+        deathMax,
+        deathMin,
+        scaleLevels,
+        disasterTypes,
+        isReported,
+        adminCode,
+        startTime: statTime[0],
+        endTime: statTime[1]
+      };
       this.$store
-        .dispatch("statisticalAnalysis/dangerInfoSta", this.fenthForm)
+        .dispatch("statisticalAnalysis/dangerInfoSta", params)
         .then(res => {
           flag += 1;
           let xData = [];
@@ -302,8 +319,7 @@ export default {
         disasterTypes,
         isReported,
         adminCode,
-        startTime,
-        endTime
+        statTime
       } = this.fenthForm;
       let params = {
         deathMax,
@@ -312,8 +328,8 @@ export default {
         disasterTypes,
         isReported,
         adminCode,
-        startTime,
-        endTime,
+        startTime: statTime[0],
+        endTime: statTime[1],
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
         maxResultCount: this.pagination.pageSize
       };

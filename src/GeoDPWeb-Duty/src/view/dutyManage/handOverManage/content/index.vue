@@ -19,7 +19,17 @@
             placeholder="请输入交接内容"
           ></el-input>
         </el-form-item>
-        <el-form-item class="gl-form-item" label="交接开始时间">
+        <el-form-item class="gl-form-item" label="交接时间" prop="sendTime">
+          <el-date-picker
+            v-model="queryData.handOverTime"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            :default-time="['00:00:00', '23:59:59']"
+          ></el-date-picker>
+        </el-form-item>
+        <!-- <el-form-item class="gl-form-item" label="交接开始时间">
           <el-date-picker
             v-model="queryData.handOverStartTime"
             type="date"
@@ -36,14 +46,12 @@
             placeholder="选择日期"
           >
           </el-date-picker>
-        </el-form-item>
+        </el-form-item>-->
         <div class="gl-text-center">
-          <el-button type="primary" @click="fetch" size="medium">
-            查询
-          </el-button>
-          <el-button @click="rest" size="medium">
-            重置
-          </el-button>
+          <el-button type="primary" @click="fetch" size="medium"
+            >查询</el-button
+          >
+          <el-button @click="rest" size="medium">重置</el-button>
         </div>
       </el-form>
     </div>
@@ -80,8 +88,7 @@ export default {
   data() {
     return {
       queryData: {
-        handOverStartTime: null,
-        handOverEndTime: null,
+        handOverTime: [],
         content: "",
         name: ""
       },
@@ -150,11 +157,17 @@ export default {
   methods: {
     fetch() {
       this.options.loading = true;
-      this.queryData.skipCount =
-        (this.pagination.pageIndex - 1) * this.pagination.pageSize;
-      this.queryData.maxResultCount = this.pagination.pageSize;
+      const { handOverTime, name, content } = this.queryData;
+      let params = {
+        handOverStartTime: handOverTime[0],
+        handOverEndTime: handOverTime[1],
+        content: content,
+        name: name,
+        skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
+        maxResultCount: this.pagination.pageSize
+      };
       this.$store
-        .dispatch("dutyManage/schedueManage/getAllHandOverInfo", this.queryData)
+        .dispatch("dutyManage/schedueManage/getAllHandOverInfo", params)
         // eslint-disable-next-line no-unused-vars
         .then(res => {
           this.options.loading = false;
@@ -164,12 +177,16 @@ export default {
         });
     },
     rest() {
+      this.queryData = {
+        handOverTime: [],
+        content: "",
+        name: ""
+      };
       this.pagination = {
         total: 0,
         pageIndex: 1,
         pageSize: 10
       };
-      this.fetch();
     },
     check(row) {
       this.$refs.dialogForm.openDialog(row.attachments);
