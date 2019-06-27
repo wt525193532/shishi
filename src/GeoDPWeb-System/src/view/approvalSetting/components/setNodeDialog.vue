@@ -84,6 +84,7 @@
           lazy
           node-key="id"
           show-checkbox
+          check-strictly
           @check="getCheckNodes"
           :render-content="renderContent"
         ></el-tree>

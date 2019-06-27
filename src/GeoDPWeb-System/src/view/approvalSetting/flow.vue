@@ -17,7 +17,6 @@
       :dataSource="tableData"
       :options="options"
       :query="queryTab"
-      :pagination="pagination"
     >
       <template slot="node" slot-scope="scoped">
         <el-button
@@ -112,11 +111,6 @@ export default {
         }
       ],
       tableData: [],
-      pagination: {
-        total: 0,
-        pageIndex: 1,
-        pageSize: 10
-      },
       options: {
         // maxHeight: 500,
         mutiSelect: false,
