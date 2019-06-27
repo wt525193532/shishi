@@ -6,7 +6,7 @@ import util from "./util";
 const service = axios.create({
   baseURL:
     process.env.NODE_ENV === "production"
-      ? window.geodp.appconst.GEODP_BASE_API
+      ? window.geodp.appconst.baseAPI
       : process.env.VUE_APP_BASE_API,
   timeout: 10000
 });
