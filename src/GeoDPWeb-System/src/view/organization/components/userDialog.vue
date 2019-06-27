@@ -35,20 +35,26 @@
             placeholder="请输入用户名"
           ></el-input>
         </el-form-item>
-        <el-form-item label="名称" prop="name">
-          <el-input v-model="userForm.name" placeholder="请输入名称"></el-input>
-        </el-form-item>
-        <el-form-item label="邮箱地址" prop="emailAddress">
-          <el-input
-            v-model="userForm.emailAddress"
-            placeholder="请输入邮箱"
-          ></el-input>
-        </el-form-item>
         <el-form-item v-if="title != '编辑用户'" label="密码" prop="password">
           <el-input
             type="password"
             placeholder="请输入密码"
             v-model="userForm.password"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="名称" prop="name">
+          <el-input v-model="userForm.name" placeholder="请输入名称"></el-input>
+        </el-form-item>
+        <!-- <el-form-item label="邮箱地址" prop="emailAddress">
+          <el-input
+            v-model="userForm.emailAddress"
+            placeholder="请输入邮箱"
+          ></el-input>
+        </el-form-item>-->
+        <el-form-item label="电话" prop="phoneNumber">
+          <el-input
+            v-model="userForm.phoneNumber"
+            placeholder="请输入电话号码"
           ></el-input>
         </el-form-item>
         <el-form-item label="用户角色" prop="roleNames">
@@ -101,7 +107,8 @@ export default {
         password: "",
         workspaceId: null,
         departmentId: null,
-        jobPost: ""
+        jobPost: "",
+        phoneNumber: null
       },
       workspaceList: [],
       workspace: [],
@@ -121,10 +128,10 @@ export default {
           { required: true, message: "请输入用户名!", trigger: "blur" },
           { max: 256, message: "长度在 256 个字符以内!", trigger: "blur" }
         ],
-        emailAddress: [
-          { required: true, message: "请输入用户邮箱!", trigger: "blur" },
-          { max: 256, message: "长度在 256 个字符以内!", trigger: "blur" }
-        ],
+        // emailAddress: [
+        //   { required: true, message: "请输入用户邮箱!", trigger: "blur" },
+        //   { max: 256, message: "长度在 256 个字符以内!", trigger: "blur" }
+        // ],
         password: [
           { required: true, message: "请输入用户密码!", trigger: "blur" },
           { min: 3, max: 32, message: "长度在 3 - 32 个字符!", trigger: "blur" }
@@ -134,6 +141,15 @@ export default {
         ],
         jobPost: [
           { min: 0, max: 20, message: "长度在 20 个字符以内!", trigger: "blur" }
+        ],
+        phoneNumber: [
+          { required: true, message: "请输入用户电话号码!", trigger: "blur" },
+          {
+            pattern: /((^0\d{2}-\d{8})|(^1[34578]\d{9}))$/,
+            message:
+              "请输入有效的电话号码，如：13996633888 或者 027-87588000！",
+            trigger: "blur"
+          }
         ]
       }
     };
@@ -152,6 +168,7 @@ export default {
           } else {
             api = "update";
           }
+          this.userForm.emailAddress = this.userForm.phoneNumber + "@dhz.com";
           this.$store
             .dispatch("organizationManage/user/" + api, this.userForm)
             // eslint-disable-next-line no-unused-vars
@@ -199,7 +216,8 @@ export default {
         password: "",
         workspaceId: null,
         departmentId: null,
-        jobPost: ""
+        jobPost: "",
+        phoneNumber: null
       };
       this.workspace = [];
       this.$refs.userForm.resetFields();
@@ -218,7 +236,8 @@ export default {
       roleNames,
       workspaceId,
       departmentId,
-      jobPost
+      jobPost,
+      phoneNumber
     }) {
       this.userForm = {
         id,
@@ -229,7 +248,8 @@ export default {
         roleNames,
         workspaceId,
         departmentId,
-        jobPost
+        jobPost,
+        phoneNumber
       };
       let tempSpace = [];
       tempSpace.push(workspaceId);
