@@ -18,7 +18,7 @@ var geodp = geodp || {};
     cookieName: {
       token: "Abp.AuthToken"
     },
-    baseAPI: "http://172.18.2.251:8012",
-    baseURL: "http://172.18.2.251:8010/auth/"
+    baseAPI: "http://cdyj-s00:8013",
+    baseURL: "http://cdyj-s00:8010/auth/"
   };
 })();
