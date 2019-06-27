@@ -647,9 +647,9 @@
       </div>
     </div>
     <div class="form-foot-btn">
-      <el-button type="primary" @click="saveFormData" :disabled="ownDisabled">
-        {{ !canEdit ? "返回" : "保存" }}
-      </el-button>
+      <el-button type="primary" @click="saveFormData" :disabled="ownDisabled">{{
+        !canEdit ? "返回" : "保存"
+      }}</el-button>
     </div>
   </div>
 </template>

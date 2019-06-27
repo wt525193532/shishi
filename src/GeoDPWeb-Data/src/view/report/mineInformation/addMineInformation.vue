@@ -54,7 +54,11 @@ export default {
       return this.$store.getters.area.adminCode;
     },
     myssqx() {
+      console.log("1", this.$store.getters.area.level);
       return this.$store.getters.area.level == 3 ? this.displayName : "";
+    },
+    area() {
+      return this.$store.getters.area;
     },
     displayName() {
       return this.$store.getters.area.displayName;
@@ -66,7 +70,8 @@ export default {
       .then(res => {
         this.townList = res.data.result;
       });
-    this.formData.ssqx = this.displayName;
+
+    this.formData.ssqx = this.myssqx;
   },
   methods: {
     save() {
