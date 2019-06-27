@@ -9,8 +9,19 @@ const onDuty = [
       icon: "tianbao",
       permission: "Pages.Duty"
     },
-    redirect: { name: "dutyReport" },
+    redirect: { name: "dutyRecordQuery" },
     children: [
+      {
+        path: "dutyRecordQuery",
+        name: "dutyRecordQuery",
+        component: () =>
+          import(/* webpackChunkName: "dutyRecord" */ "@/view/onDuty/dutyRecordQuery/content"),
+        meta: {
+          displayName: "值班记录查询",
+          icon: "tianbao",
+          permission: "Pages.Duty"
+        }
+      },
       {
         path: "dutyRecord",
         name: "dutyRecord",

@@ -24,7 +24,7 @@ export default {
     },
     async getAll({ commit }, data) {
       const res = await api.getAll(data);
-      return res;
+      return res.data.result;
     },
     async getAllByKey({ commit }, data) {
       const res = await api.getAllByKey(data);
