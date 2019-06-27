@@ -5,10 +5,18 @@
         <i class="el-icon-plus el-icon--left" />
         新增班次
       </el-button>
-      <el-button size="medium" @click="editBatch" type="primary"
+      <el-button
+        v-if="shiftDatas.length != 0"
+        size="medium"
+        @click="editBatch"
+        type="primary"
         >编 辑</el-button
       >
-      <el-button size="medium" @click="saveBatch" type="primary"
+      <el-button
+        v-if="shiftDatas.length != 0"
+        size="medium"
+        @click="saveBatch"
+        type="primary"
         >保 存</el-button
       >
     </div>
