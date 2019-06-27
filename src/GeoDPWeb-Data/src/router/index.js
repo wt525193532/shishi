@@ -22,7 +22,10 @@ const router = new Router({
   }),
   routes: allRoutes
 });
-const authPath = process.env.VUE_APP_AUTH_URL;
+const authPath =
+  process.env.NODE_ENV === "production"
+    ? window.geodp.appconst.authURL
+    : process.env.VUE_APP_AUTH_URL;
 
 router.beforeEach((to, from, next) => {
   NProgress.start();

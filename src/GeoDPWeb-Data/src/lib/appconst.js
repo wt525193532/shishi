@@ -2,18 +2,6 @@
  * 系统静态变量
  */
 const AppConst = {
-  userManagement: {
-    defaultAdminUserName: "admin"
-  },
-  localization: {
-    defaultLocalizationSourceName: "GeoDP"
-  },
-  authorization: {
-    encrptedAuthTokenName: "enc_auth_token"
-  },
-  cookieName: {
-    token: "Abp.AuthToken"
-  },
   /// <summary>
   /// 数据状态
   /// </summary>

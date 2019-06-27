@@ -1,6 +1,12 @@
 <template>
   <div class="report-engineer">
-    <report-layout :tab="tab" :queryForm="queryForm" :query="query" :submit="submit" :add="add">
+    <report-layout
+      :tab="tab"
+      :queryForm="queryForm"
+      :query="query"
+      :submit="submit"
+      :add="add"
+    >
       <com-table
         v-if="tableShow"
         :columns="columns[tab.activeName].title"
@@ -26,19 +32,22 @@
             size="mini"
             @click="view(scoped.row)"
             v-if="tab.activeName != $util.appconst.DataStatusEnum.Processing"
-          >查看</el-button>
+            >查看</el-button
+          >
           <el-button
             size="mini"
             type="primary"
             @click="edit(scoped.row)"
             v-if="tab.activeName == $util.appconst.DataStatusEnum.UnCommit"
-          >编辑</el-button>
+            >编辑</el-button
+          >
           <el-button
             size="mini"
             type="danger"
             @click="delData(scoped.row)"
             v-if="tab.activeName == $util.appconst.DataStatusEnum.UnCommit"
-          >删除</el-button>
+            >删除</el-button
+          >
           <el-button
             size="mini"
             @click="pullBack(scoped.row)"
@@ -47,7 +56,8 @@
               tab.activeName == $util.appconst.DataStatusEnum.Processing &&
                 scoped.row.cancelable
             "
-          >撤销</el-button>
+            >撤销</el-button
+          >
         </template>
       </com-table>
     </report-layout>

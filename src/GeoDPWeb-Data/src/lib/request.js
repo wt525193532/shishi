@@ -5,13 +5,22 @@ import store from "@/store";
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API
+  baseURL:
+    process.env.NODE_ENV === "production"
+      ? window.geodp.appconst.baseAPI
+      : process.env.VUE_APP_BASE_API
   // timeout: 10000
 });
 
 // request interceptor
 service.interceptors.request.use(
   config => {
+    if (config.method == "get") {
+      config.params = {
+        _t: Date.parse(new Date()) / 1000,
+        ...config.params
+      };
+    }
     // Do something before request is sent
     store.commit("app/loading", true);
     const token = util.getToken();
