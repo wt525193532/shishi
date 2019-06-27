@@ -157,8 +157,14 @@ export default {
           this.allPlans = res.data.result;
           this.events = [];
           this.allPlans.forEach(item => {
+            let otherPerson = "";
+            if (item.otherDutyPersons.length > 0) {
+              item.otherDutyPersons.forEach(item => {
+                otherPerson += item.name;
+              });
+            }
             this.events.push({
-              title: ``,
+              title: item.mainDutyPerson.name + " " + otherPerson,
               start: item.startTime,
               end: item.endTime,
               info: item
