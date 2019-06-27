@@ -160,9 +160,13 @@ export default {
         });
     },
     getAllRole() {
-      this.$store.dispatch("permissons/role/getAll").then(res => {
-        this.roleList = res.items;
-      });
+      this.$store
+        .dispatch("permissons/role/getRolesByPermission", {
+          permission: "Pages.Data.Approval"
+        })
+        .then(res => {
+          this.roleList = res.items;
+        });
     },
     loadNode(node, resolve) {
       if (node.level === 0) {

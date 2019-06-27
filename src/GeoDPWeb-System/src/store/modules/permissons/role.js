@@ -17,6 +17,10 @@ const role = {
       const res = await api.getAll(params);
       return res.data.result;
     },
+    async getRolesByPermission({ commit }, params) {
+      const res = await api.getRolesByPermission(params);
+      return res.data.result;
+    },
     async edit({ commit }, id) {
       const res = await api.edit(id);
       return res.data.result;

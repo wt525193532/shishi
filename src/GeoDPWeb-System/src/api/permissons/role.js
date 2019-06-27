@@ -3,6 +3,9 @@ export default {
   getAll(params) {
     return request.post(`./api/services/app/Role/GetAll`, params);
   },
+  getRolesByPermission(params) {
+    return request.post(`./api/services/app/Role/GetRolesByPermission`, params);
+  },
   edit(rid) {
     return request.get(`./api/services/app/Role/Edit?rid=${rid}`);
   },

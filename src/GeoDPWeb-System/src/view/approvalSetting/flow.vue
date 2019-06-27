@@ -142,14 +142,15 @@ export default {
         let node1 = this.firstNode(nodes);
         snodes = this.findNextNode(nodes, snodes, node1);
         snodes.forEach((item, index) => {
-          if (item.roleHandlers) {
+          snodes[index].approvaPeople = "";
+          if (item.roleHandlers.length > 0) {
             item.roleHandlers.forEach(role => {
-              snodes[index].approvaPeople = role.displayName + "、";
+              snodes[index].approvaPeople += role.displayName + "、";
             });
           }
-          if (item.userHandlers) {
+          if (item.userHandlers.length > 0) {
             item.userHandlers.forEach(user => {
-              snodes[index].approvaPeople = user.name + "、";
+              snodes[index].approvaPeople += user.name + "、";
             });
           }
           if (snodes[index].approvaPeople) {
