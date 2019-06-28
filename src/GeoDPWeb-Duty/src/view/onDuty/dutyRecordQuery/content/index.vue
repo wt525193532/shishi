@@ -9,7 +9,7 @@
       >
         <el-form-item class="gl-form-item" label="关键字">
           <el-input
-            v-model="queryData.content"
+            v-model="queryData.key"
             placeholder="请输入关键词、内容"
           ></el-input>
         </el-form-item>
@@ -52,9 +52,7 @@ export default {
   data() {
     return {
       queryData: {
-        handOverTime: [],
-        content: "",
-        name: ""
+        key: ""
       },
       columns: [
         {
