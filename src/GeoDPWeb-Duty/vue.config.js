@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   publicPath: process.env.NODE_ENV === "production" ? "./" : "/",
   //生成的生产环境构建文件的目录
-  outputDir: "dist",
+  outputDir: "duty",
   //静态资源 (js、css、img、fonts) 目录 (相对于 outputDir 的)
   assetsDir: "assets",
   //指定生成的 index.html 的输出路径 (相对于 outputDir)
