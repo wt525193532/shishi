@@ -27,6 +27,7 @@
       :locale="config.locale"
       :events="events"
       :header="config.header"
+      @eventClick="eventClick"
     />
     <!-- <full-calendar
       :config="config"
@@ -43,6 +44,7 @@
       :sure="sure"
       :handleClose="handleClose"
     ></dialogCom>
+    <infoDialog ref="infoDialog" />
     <dialogBanchDelete ref="delDialog" :query="query"></dialogBanchDelete>
   </div>
 </template>
@@ -57,12 +59,14 @@ import { eachDay } from "date-fns";
 
 // import "fullcalendar/dist/locale/zh-cn";
 import dialogCom from "./dialogCom";
+import infoDialog from "./infoDialog";
 import dialogBanchDelete from "./dialogBanchDelete";
 // import { constants } from "crypto";
 export default {
   name: "Hello",
   components: {
     dialogCom,
+    infoDialog,
     dialogBanchDelete,
     FullCalendar
   },
@@ -119,8 +123,10 @@ export default {
       this.$refs.calendar.$emit("remove-event", this.selected);
       this.selected = {};
     },
-    // 日历事件-选中事件
-    // eventSelected(event) {},
+    // 日历事件-点击事件
+    eventClick(day) {
+      this.$refs.infoDialog.viewOpen(day.event.extendedProps.info);
+    },
     // 日历事件-创立事件
     // eslint-disable-next-line no-unused-vars
     eventCreated(...test) {
@@ -160,9 +166,10 @@ export default {
             let otherPerson = "";
             if (item.otherDutyPersons.length > 0) {
               item.otherDutyPersons.forEach(item => {
-                otherPerson += item.name;
+                otherPerson += item.name + " ";
               });
             }
+            item.allDutyPerson = item.mainDutyPerson.name + " " + otherPerson;
             this.events.push({
               title: item.mainDutyPerson.name + " " + otherPerson,
               start: item.startTime,
