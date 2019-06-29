@@ -94,6 +94,11 @@ export default {
               name: "training",
               icon: "trainingPromotion",
               title: "培训演练"
+            },
+            {
+              name: "heritageProtection",
+              icon: "geodisasterPrevention",
+              title: "地质遗迹数据采集"
             }
           ]
         },
@@ -107,11 +112,6 @@ export default {
               name: "mineInformation",
               icon: "hiddenTrouble",
               title: "矿山基本信息"
-            },
-            {
-              name: "heritageProtection",
-              icon: "geodisasterPrevention",
-              title: "地质遗迹数据采集"
             },
             {
               name: "governDataCollect",
