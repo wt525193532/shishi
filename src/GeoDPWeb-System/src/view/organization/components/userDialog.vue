@@ -168,7 +168,6 @@ export default {
           } else {
             api = "update";
           }
-          this.userForm.emailAddress = this.userForm.phoneNumber + "@dhz.com";
           this.$store
             .dispatch("organizationManage/user/" + api, this.userForm)
             // eslint-disable-next-line no-unused-vars
