@@ -85,7 +85,7 @@ export default {
       this.activeItem = null;
       for (let i = 0; i < routes.length; i++) {
         if (this.activeItem) return;
-        if (!routes[i].items.length && routes[i].url.includes(pathName)) {
+        if (!routes[i].items.length && routes[i].url == pathName) {
           this.activeItem = routes[i];
           break;
           // return routes[i];

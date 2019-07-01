@@ -21,7 +21,7 @@
     </div>
     <div class="gl-content-item">
       <div class="gl-btn-row">
-        <span class="gl-second-title">交接班信息</span>
+        <span class="gl-second-title">值班记录信息</span>
       </div>
       <div>
         <Com-Table

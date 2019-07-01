@@ -15,7 +15,7 @@ const onDuty = [
         path: "dutyRecordQuery",
         name: "dutyRecordQuery",
         component: () =>
-          import(/* webpackChunkName: "dutyRecord" */ "@/view/onDuty/dutyRecordQuery/content"),
+          import(/* webpackChunkName: "dutyRecordQuery" */ "@/view/onDuty/dutyRecordQuery/content"),
         meta: {
           displayName: "值班记录查询",
           icon: "tianbao",

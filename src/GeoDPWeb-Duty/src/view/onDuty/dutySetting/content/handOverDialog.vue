@@ -111,6 +111,7 @@ export default {
               this.handleClose();
               this.islaod = false;
               this.$message.success("交班成功！");
+              this.$router.push({ path: "/onDuty/dutyRecordQuery" });
               location.reload();
             });
         } else {
