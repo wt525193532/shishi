@@ -69,11 +69,28 @@ export default {
       columns: [
         {
           prop: "name",
-          label: "名称"
+          label: "数据类型"
         },
         {
           prop: "displayName",
-          label: "显示名"
+          label: "名称"
+        },
+        {
+          prop: "approvalType",
+          label: "审核类型",
+          render: row => {
+            if (row.approvalType == 1) {
+              return <span>新增</span>;
+            } else if (row.approvalType == 2) {
+              return <span>修改</span>;
+            } else if (row.approvalType == 3) {
+              return <span>删除</span>;
+            } else if (row.approvalType == 4) {
+              return <span>销号</span>;
+            } else {
+              return <span>--</span>;
+            }
+          }
         },
         {
           prop: "isActive",

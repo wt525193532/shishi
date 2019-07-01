@@ -14,6 +14,14 @@
       inline
       label-width="90px"
     >
+      <el-form-item label="审核类型">
+        <el-input
+          v-model="approvalTypeName"
+          disabled
+          class="input-min-width"
+          placeholder
+        ></el-input>
+      </el-form-item>
       <el-form-item label="显示名称" prop="displayName">
         <el-input
           placeholder="请输入名称"
@@ -72,6 +80,13 @@ export default {
         remark: "",
         id: 0
       },
+      approvalTypeEnum: {
+        1: "新增",
+        2: "修改",
+        3: "删除",
+        4: "销号"
+      },
+      approvalType: 1,
       allFlow: [],
       rules: {
         displayName: [
@@ -86,6 +101,11 @@ export default {
         ]
       }
     };
+  },
+  computed: {
+    approvalTypeName: function() {
+      return this.approvalTypeEnum[this.approvalType];
+    }
   },
   created() {
     this.getAllFlow();
@@ -123,11 +143,13 @@ export default {
         remark: "",
         id: 0
       };
+      this.approvalType = null;
       this.$refs.objectForm.resetFields();
       this.dialogVisible = false;
     },
-    editOpen({ displayName, isActive, flowId, remark, id }) {
-      this.title = "编辑对象信息";
+    editOpen({ displayName, isActive, flowId, remark, id, approvalType }) {
+      this.title = "编辑审核对象";
+      this.approvalType = approvalType * 1;
       this.objectForm = { displayName, isActive, flowId, remark, id };
       this.dialogVisible = true;
     }
