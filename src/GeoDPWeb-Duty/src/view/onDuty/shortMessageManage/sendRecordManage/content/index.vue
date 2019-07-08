@@ -39,14 +39,14 @@
             <el-button type="primary" :loading="options.loading" @click="fenth"
               >查询</el-button
             >
-            <el-button>重置</el-button>
+            <el-button @click="reset">重置</el-button>
           </el-form-item>
         </div>
       </el-form>
     </div>
     <div class="gl-content-item">
       <div class="gl-btn-row">
-        <span class="gl-second-title">发文箱</span>
+        <span class="gl-second-title">发信箱</span>
         <!-- <div class="gl-btnList">
           <el-button size="medium" icon="el-icon-upload">导出记录</el-button>
         </div>-->
@@ -57,7 +57,6 @@
         :options="options"
         :fetch="fenth"
         :pagination="pagination"
-        @selection-change="handleSelectionChange"
       ></com-table>
     </div>
   </div>
@@ -69,7 +68,7 @@ export default {
   data() {
     return {
       fenthForm: {
-        sendTime: "",
+        sendTime: [],
         status: []
       },
       columns: [
@@ -122,12 +121,16 @@ export default {
     };
   },
   methods: {
-    handleRowClick(row, event, column) {
-      // 点击行的事件，同理可以绑定其他事件
-      console.log("click row:", row, event, column);
-    },
-    handleSelectionChange(selection) {
-      console.log(this.pagination, selection);
+    reset() {
+      this.fenthForm = {
+        sendTime: [],
+        status: []
+      };
+      this.pagination = {
+        total: 0,
+        pageIndex: 1,
+        pageSize: 10
+      };
     },
     fenth() {
       this.options.loading = true;
@@ -144,12 +147,6 @@ export default {
         this.pagination.total = res.totalCount;
         this.options.loading = false;
       });
-    },
-    check(row) {
-      console.log(row);
-    },
-    report(row) {
-      console.log(row);
     }
   }
 };

@@ -108,8 +108,16 @@ export default {
           label: "姓名"
         },
         {
-          prop: "department",
-          label: "部门名称"
+          prop: "departmentName",
+          label: "部门名称",
+          render: row => {
+            if (row.jobPost) {
+              return (
+                <span>{row.departmentName + "[" + row.jobPost + "]"}</span>
+              );
+            }
+            return <span>{row.departmentName}</span>;
+          }
         },
         {
           prop: "func",

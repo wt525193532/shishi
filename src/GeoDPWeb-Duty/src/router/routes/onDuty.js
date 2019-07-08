@@ -7,10 +7,21 @@ const onDuty = [
     meta: {
       displayName: "值班值守",
       icon: "tianbao",
-      permission: ""
+      permission: "Pages.Duty"
     },
-    redirect: { name: "dutyReport" },
+    redirect: { name: "dutyRecordQuery" },
     children: [
+      {
+        path: "dutyRecordQuery",
+        name: "dutyRecordQuery",
+        component: () =>
+          import(/* webpackChunkName: "dutyRecordQuery" */ "@/view/onDuty/dutyRecordQuery/content"),
+        meta: {
+          displayName: "值班记录查询",
+          icon: "tianbao",
+          permission: "Pages.Duty"
+        }
+      },
       {
         path: "dutyRecord",
         name: "dutyRecord",
@@ -19,7 +30,7 @@ const onDuty = [
         meta: {
           displayName: "值班记录",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty.Record"
         }
       },
       {
@@ -30,7 +41,7 @@ const onDuty = [
         meta: {
           displayName: "值班设置",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty.Setting"
         }
       },
       {
@@ -41,7 +52,7 @@ const onDuty = [
         meta: {
           displayName: "灾险情上报",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty"
         },
         redirect: { name: "disasterReport" },
         children: [
@@ -53,7 +64,7 @@ const onDuty = [
             meta: {
               displayName: "灾情报送（表一）",
               icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty"
             }
           },
           {
@@ -64,7 +75,7 @@ const onDuty = [
             meta: {
               displayName: "险情报送（表二）",
               icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty"
             }
           },
           {
@@ -75,7 +86,7 @@ const onDuty = [
             meta: {
               displayName: "成功避险报送（表三）",
               icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty"
             }
           },
           {
@@ -86,7 +97,7 @@ const onDuty = [
             meta: {
               displayName: "防灾概述报送（表四）",
               icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty"
             }
           },
           {
@@ -97,7 +108,7 @@ const onDuty = [
             meta: {
               displayName: "地灾应急工作统计表报送（表五）",
               icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty"
             }
           }
         ]
@@ -110,7 +121,7 @@ const onDuty = [
         meta: {
           displayName: "文件收发",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty"
         },
         redirect: { name: "sendFile" },
         children: [
@@ -122,7 +133,7 @@ const onDuty = [
             meta: {
               displayName: "发送文件",
               icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty"
             }
           },
           {
@@ -133,7 +144,7 @@ const onDuty = [
             meta: {
               displayName: "收文箱",
               icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty"
             }
           },
           {
@@ -144,7 +155,7 @@ const onDuty = [
             meta: {
               displayName: "发文箱",
               icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty"
             }
           },
           {
@@ -155,29 +166,7 @@ const onDuty = [
             meta: {
               displayName: "草稿箱",
               icon: "tianbao",
-              permission: ""
-            }
-          },
-          {
-            path: "starFile",
-            name: "starFile",
-            component: () =>
-              import(/* webpackChunkName: "starFile" */ "@/view/onDuty/fileReceive/starFile/content"),
-            meta: {
-              displayName: "标星文件",
-              icon: "tianbao",
-              permission: ""
-            }
-          },
-          {
-            path: "notDealFile",
-            name: "notDealFile",
-            component: () =>
-              import(/* webpackChunkName: "notDealFile" */ "@/view/onDuty/fileReceive/notDealFile/content"),
-            meta: {
-              displayName: "待办文件",
-              icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty"
             }
           }
         ]
@@ -190,7 +179,7 @@ const onDuty = [
         meta: {
           displayName: "短信管理",
           icon: "tianbao",
-          permission: ""
+          permission: "Pages.Duty.Sms"
         },
         redirect: { name: "shortMesSend" },
         children: [
@@ -202,7 +191,7 @@ const onDuty = [
             meta: {
               displayName: "短信发送",
               icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty.Sms"
             }
           },
           {
@@ -213,18 +202,7 @@ const onDuty = [
             meta: {
               displayName: "短信模板",
               icon: "tianbao",
-              permission: ""
-            }
-          },
-          {
-            path: "comLanguage",
-            name: "comLanguage",
-            component: () =>
-              import(/* webpackChunkName: "comLanguage" */ "@/view/onDuty/shortMessageManage/comLanguage/content"),
-            meta: {
-              displayName: "常用语管理",
-              icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty.Sms"
             }
           },
           {
@@ -235,18 +213,7 @@ const onDuty = [
             meta: {
               displayName: "发送记录管理",
               icon: "tianbao",
-              permission: ""
-            }
-          },
-          {
-            path: "rainFallManage",
-            name: "rainFallManage",
-            component: () =>
-              import(/* webpackChunkName: "rainFallManage" */ "@/view/onDuty/shortMessageManage/rainFallManage/content"),
-            meta: {
-              displayName: "雨量阈值管理",
-              icon: "tianbao",
-              permission: ""
+              permission: "Pages.Duty.Sms"
             }
           }
         ]

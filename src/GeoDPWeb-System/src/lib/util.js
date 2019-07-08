@@ -1,6 +1,5 @@
 import Cookie from "js-cookie";
 import i18n from "@/locale";
-import appconst from "./appconst";
 import moment from "moment";
 
 const util = {
@@ -80,14 +79,14 @@ const util = {
     }
   },
   getToken() {
-    return Cookie.get(appconst.cookieName.token);
+    return Cookie.get(window.geodp.appconst.cookieName.token);
   },
 
   setToken(token, expires) {
     if (expires) {
-      Cookie.set(appconst.cookieName.token, token, { expires });
+      Cookie.set(window.geodp.appconst.cookieName.token, token, { expires });
     } else {
-      Cookie.set(appconst.cookieName.token, token);
+      Cookie.set(window.geodp.appconst.cookieName.token, token);
     }
   },
   extend(...args) {

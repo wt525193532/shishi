@@ -143,6 +143,9 @@ export default {
               prop: "kaicaikzdm",
               label: "开采矿种",
               render: row => {
+                if (!row.kaicaikzdm) {
+                  return <span>未分类</span>;
+                }
                 return (
                   <span>{this.$t(`codes.MineralType[${row.kaicaikzdm}]`)}</span>
                 );
@@ -171,7 +174,8 @@ export default {
             },
             {
               prop: "scgm",
-              label: "生产规模（万吨/年）"
+              label: "生产规模（万吨/年）",
+              width: 180
             },
             {
               prop: "area",
@@ -242,6 +246,9 @@ export default {
               prop: "kaicaikzdm",
               label: "开采矿种",
               render: row => {
+                if (!row.kaicaikzdm) {
+                  return <span>未分类</span>;
+                }
                 return (
                   <span>{this.$t(`codes.MineralType[${row.kaicaikzdm}]`)}</span>
                 );
@@ -270,7 +277,8 @@ export default {
             },
             {
               prop: "scgm",
-              label: "生产规模（万吨/年）"
+              label: "生产规模（万吨/年）",
+              width: 180
             },
             {
               prop: "area",
@@ -301,6 +309,9 @@ export default {
               prop: "kaicaikzdm",
               label: "开采矿种",
               render: row => {
+                if (!row.kaicaikzdm) {
+                  return <span>未分类</span>;
+                }
                 return (
                   <span>{this.$t(`codes.MineralType[${row.kaicaikzdm}]`)}</span>
                 );
@@ -329,7 +340,8 @@ export default {
             },
             {
               prop: "scgm",
-              label: "生产规模（万吨/年）"
+              label: "生产规模（万吨/年）",
+              width: 180
             },
             {
               prop: "area",

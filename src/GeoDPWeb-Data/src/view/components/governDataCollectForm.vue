@@ -283,15 +283,10 @@
             </div>
           </div>
         </div>
-        <div class="form-item">
-          <h2 ref="reportGovernDataCollectFormH1">文件或照片</h2>
-          <comAttachment
-            v-model="formData.attachments"
-            :fileOption="fileOption"
-            class="form-attachment"
-          />
-        </div>
       </el-form>
+      <div class="form-item-step" v-show="isShowAudit">
+        <time-line :processes="formData.processes"></time-line>
+      </div>
     </div>
     <div class="form-foot-btn">
       <el-button type="primary" @click="saveFormData">{{
@@ -303,7 +298,7 @@
 <script>
 // import JWDBoom from "./JWDBoom";
 // import comAttachment from "@/components/comAttachment";
-
+import timeLine from "@/view/components/timeLine.vue";
 export default {
   name: "GovernDataCollectForm",
   props: {
@@ -325,6 +320,7 @@ export default {
       default: () => {}
     }
   },
+  components: { timeLine },
   updated() {
     if (!this.canEdit) {
       this.$refs["governDataCollect-form"].clearValidate();
@@ -390,6 +386,16 @@ export default {
           }
         });
       }
+    }
+  },
+  computed: {
+    proccessActive() {
+      return this.formData.processes
+        ? this.formData.processes.length
+        : undefined;
+    },
+    isShowAudit() {
+      return !this.canEdit ? (this.proccessActive ? true : false) : false;
     }
   }
 };

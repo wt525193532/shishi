@@ -5,16 +5,24 @@
         <i class="el-icon-plus el-icon--left" />
         新增班次
       </el-button>
-      <el-button size="medium" @click="editBatch" type="primary"
+      <el-button
+        v-if="shiftDatas.length != 0"
+        size="medium"
+        @click="editBatch"
+        type="primary"
         >编 辑</el-button
       >
-      <el-button size="medium" @click="saveBatch" type="primary"
+      <el-button
+        v-if="shiftDatas.length != 0"
+        size="medium"
+        @click="saveBatch"
+        type="primary"
         >保 存</el-button
       >
     </div>
     <el-row :gutter="60">
       <el-col v-if="shiftDatas.length == 0" :span="24" class="gl-text-center">
-        <h2>暂无信息</h2>
+        <h2>暂无班次</h2>
       </el-col>
 
       <el-col
@@ -63,12 +71,12 @@
             <el-form-item label="结束时间" prop="endTime">
               <el-select v-model="shiftFormDate.endTime" placeholder="请选择">
                 <el-option
-                  v-for="(item, index) in 37"
-                  :key="index"
+                  v-for="item in 36"
+                  :key="item"
                   :label="
-                    item < 25 ? index + ':00' : '次日 ' + (index - 24) + ':00'
+                    item < 25 ? item + ':00' : '次日 ' + (item - 24) + ':00'
                   "
-                  :value="index * 60"
+                  :value="item * 60"
                 ></el-option>
               </el-select>
             </el-form-item>
@@ -135,13 +143,17 @@ export default {
     addShiftDatas() {
       this.$refs["addShiftForm"].validate(valid => {
         if (valid) {
-          this.$store
-            .dispatch("dutyManage/shiftManage/save", this.shiftFormDate)
-            // eslint-disable-next-line no-unused-vars
-            .then(res => {
-              this.closeAddShift();
-              this.getAllShift();
-            });
+          if (this.shiftFormDate.endTime > this.shiftFormDate.startTime) {
+            this.$store
+              .dispatch("dutyManage/shiftManage/save", this.shiftFormDate)
+              // eslint-disable-next-line no-unused-vars
+              .then(res => {
+                this.closeAddShift();
+                this.getAllShift();
+              });
+          } else {
+            this.$message.warning("结束时间应大于开始时间！请重新选择！");
+          }
         } else {
           this.$message.warning("验证不通过，请输入正确信息！");
           return false;
@@ -183,14 +195,30 @@ export default {
       if (this.isDisabled) {
         this.$message.warning("请先修改班次信息");
       } else {
-        this.$store
-          .dispatch("dutyManage/shiftManage/saveBatch", this.shiftDatas)
-          // eslint-disable-next-line no-unused-vars
-          .then(res => {
-            this.getAllShift();
-            this.isDisabled = true;
-            this.$message.success("保存成功");
-          });
+        let flag = true;
+        this.shiftDatas.forEach((item, index) => {
+          if (item.endTime < item.startTime) {
+            flag = false;
+            this.$message({
+              type: "warning",
+              message:
+                "班次：'" +
+                item.name +
+                "' 结束时间应大于开始时间！请重新选择！",
+              offset: 35 * index + 20
+            });
+          }
+        });
+        if (flag) {
+          this.$store
+            .dispatch("dutyManage/shiftManage/saveBatch", this.shiftDatas)
+            // eslint-disable-next-line no-unused-vars
+            .then(res => {
+              this.getAllShift();
+              this.isDisabled = true;
+              this.$message.success("保存成功");
+            });
+        }
       }
     }
   }

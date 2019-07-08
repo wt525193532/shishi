@@ -901,6 +901,121 @@ export default {
             width: 250,
             fixed: "right"
           }
+        ],
+        GovernDataCollect: [
+          {
+            prop: "projectName",
+            label: "项目名称"
+          },
+          {
+            prop: "supervisionUnit",
+            label: "项目监管单位"
+          },
+          {
+            prop: "governNumber",
+            label: "治理期数"
+          },
+          {
+            prop: "implementUnit",
+            label: "项目实施单位"
+          },
+          {
+            prop: "threatPeople",
+            label: "项目任务书"
+          },
+          {
+            type: "func",
+            label: "操作",
+            width: 250,
+            fixed: "right"
+          },
+          {
+            prop: "fundDoc",
+            label: "资金文件"
+          }
+        ],
+        HeritageProtection: [
+          {
+            prop: "projectName",
+            label: "项目名称"
+          },
+          {
+            prop: "implementUnit",
+            label: "项目实施单位"
+          },
+          {
+            prop: "taskBook",
+            label: "项目任务书"
+          },
+          {
+            prop: "governNumber",
+            label: "治理期数"
+          },
+
+          {
+            type: "func",
+            label: "操作",
+            width: 250,
+            fixed: "right"
+          }
+        ],
+        MineInfo: [
+          {
+            prop: "name",
+            label: "矿山名称"
+          },
+          {
+            prop: "kaicaikzdm",
+            label: "开采矿种",
+            render: row => {
+              if (!row.kaicaikzdm) {
+                return <span>未分类</span>;
+              }
+              return (
+                <span>{this.$t(`codes.MineralType[${row.kaicaikzdm}]`)}</span>
+              );
+            }
+          },
+          {
+            prop: "xkz",
+            label: "采矿许可证号"
+          },
+          {
+            prop: "fzjg",
+            label: "发证机关"
+          },
+          {
+            prop: "yxqx",
+            label: "矿山有效期限"
+          },
+
+          {
+            prop: "ssqx",
+            label: "所属区县"
+          },
+          {
+            prop: "weizhi",
+            label: "位置"
+          },
+          {
+            prop: "scgm",
+            label: "生产规模（万吨/年）",
+            width: 180
+          },
+          {
+            prop: "area",
+            label: "矿区面积（km²）"
+          },
+          {
+            prop: "kczt",
+            label: "开采状态"
+          },
+          {
+            type: "func",
+            label: "操作",
+            width: 250,
+            fixed: "right"
+          }
         ]
       },
 
@@ -941,7 +1056,10 @@ export default {
         EliminateDanger: "eliminateDanger",
         RelocationInfo: "relocation",
         EmShelter: "emergencyShelter",
-        EliminateInfo: "eliminateDanger"
+        EliminateInfo: "eliminateDanger",
+        HeritageProtection: "HeritageProtection",
+        MineInfo: "MineInfo",
+        GovernDataCollect: "GovernDataCollect"
       }
     };
   },

@@ -124,7 +124,7 @@
             placeholder="请选择应急处理组"
           >
             <el-option
-              v-for="item in common.allTeams"
+              v-for="item in common.allTeams.items"
               :key="item.id"
               :label="item.name"
               :value="item.id"

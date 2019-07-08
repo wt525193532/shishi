@@ -49,6 +49,7 @@
             >编辑</el-button
           >
           <el-button
+            :disabled="scoped.row.isStatic"
             type="danger"
             icon="el-icon-delete"
             size="mini"
@@ -85,10 +86,6 @@ export default {
         {
           prop: "description",
           label: "描述"
-        },
-        {
-          prop: "longitude",
-          label: "是否内置"
         },
         {
           prop: "func",

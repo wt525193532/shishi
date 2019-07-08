@@ -5,7 +5,7 @@
 <script>
 import mineInformationForm from "@/view/components/mineInformationForm.vue";
 export default {
-  name: "ViewBasicInfo",
+  name: "ViewMineInformation",
   components: { mineInformationForm },
   data() {
     return {
@@ -50,11 +50,9 @@ export default {
   },
   mounted() {
     this.$store
-      .dispatch("report/mineInformation/getMineInfoById", this.$route.query.id)
+      .dispatch("querypage/mineInformation/getById", this.$route.query.id)
       .then(res => {
-        if (res.data.success) {
-          this.formData = res.data.result;
-        }
+        this.formData = res.result;
       });
   }
 };

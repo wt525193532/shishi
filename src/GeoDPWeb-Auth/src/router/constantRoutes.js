@@ -4,7 +4,12 @@ const constantRoutes = [
     path: "/login",
     name: "login",
     component: () => import("@/view/login"),
-    hidden: true
+    hidden: true,
+    meta: {
+      title: "登录页",
+      icon: "component",
+      permission: "Pages"
+    }
   },
   {
     path: "/404",

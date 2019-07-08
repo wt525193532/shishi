@@ -36,7 +36,6 @@ const session = {
   actions: {
     async init({ commit }) {
       const response = await getUserConfig();
-
       const session = response.data.result;
       util.abp = util.extend(true, util.abp, session);
       commit("SET_SESSION", session);

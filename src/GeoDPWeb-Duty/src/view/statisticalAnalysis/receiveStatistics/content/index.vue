@@ -25,7 +25,17 @@
             placeholder="请输入主题"
           ></el-input>
         </el-form-item>
-        <el-form-item class="gl-form-item" label="开始时间">
+        <el-form-item class="gl-form-item" label="统计周期" prop="sendTime">
+          <el-date-picker
+            v-model="fenthForm.statTime"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            :default-time="['00:00:00', '23:59:59']"
+          ></el-date-picker>
+        </el-form-item>
+        <!-- <el-form-item class="gl-form-item" label="开始时间">
           <el-date-picker
             v-model="fenthForm.startTime"
             type="date"
@@ -40,7 +50,7 @@
             format="yyyy年MM月dd日"
             placeholder="选择日期"
           ></el-date-picker>
-        </el-form-item>
+        </el-form-item>-->
 
         <div class="gl-text-center">
           <el-form-item class="gl-form-item">
@@ -106,8 +116,7 @@ export default {
       fenthForm: {
         types: [],
         theme: "",
-        startTime: null,
-        endTime: null
+        statTime: []
       },
       // Echart x轴名称
       xAxisData: [],
@@ -188,15 +197,23 @@ export default {
       this.fenthForm = {
         types: [],
         theme: "",
-        startTime: null,
-        endTime: null
+        statTime: []
       };
     },
     queryAll() {
       this.queryLoad = true;
       this.queryTab(true);
+      const { types, theme, statTime } = this.fenthForm;
+      let params = {
+        types,
+        theme,
+        startTime: statTime[0],
+        endTime: statTime[1],
+        skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
+        maxResultCount: this.pagination.pageSize
+      };
       this.$store
-        .dispatch("statisticalAnalysis/mailStaReceived", this.fenthForm)
+        .dispatch("statisticalAnalysis/mailStaReceived", params)
         .then(res => {
           flag += 1;
           let xData = [];
@@ -217,12 +234,12 @@ export default {
       if (!tabLoad) {
         this.options.loading = true;
       }
-      const { types, theme, startTime, endTime } = this.fenthForm;
+      const { types, theme, statTime } = this.fenthForm;
       let params = {
         types,
         theme,
-        startTime,
-        endTime,
+        startTime: statTime[0],
+        endTime: statTime[1],
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
         maxResultCount: this.pagination.pageSize
       };

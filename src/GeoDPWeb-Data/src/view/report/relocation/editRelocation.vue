@@ -61,17 +61,7 @@ export default {
         townOpinions: "",
         landBureauOpinions: "",
         acceptanceTime: null,
-        attachments: [
-          {
-            key: "",
-            name: "",
-            displayName: "",
-            tag: "",
-            extension: "",
-            url: "",
-            id: 0
-          }
-        ],
+        attachments: [],
         site: {
           disasterTypeCode: "",
           name: "",

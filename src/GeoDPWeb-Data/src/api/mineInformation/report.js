@@ -14,7 +14,7 @@ export default {
     return request.post("/api/services/dr/MineInfo/Create", data); // 创建基本信息
   },
   getByStatus(data) {
-    return request.post("./api/services/dr/MineInfoQuery/GetByStatus", data); // 获取各个状态的矿山基本信息数据
+    return request.post("./api/services/dr/MineInfo/GetByStatus", data); // 获取各个状态的矿山基本信息数据
   },
   getFormProcessing(data) {
     return request.post("./api/services/dr/MineInfo/GetFormProcessing", data); // 分页查询审核单（审核中的）
@@ -32,7 +32,7 @@ export default {
     return request.delete(`./api/services/dr/MineInfo/Delete?Id=${id}`); // 删除矿山
   },
   getById(id) {
-    return request.get(`./api/services/dr/MineInfoQuery/GetById/?id=${id}`); // 查询基本信息（按矿山id）
+    return request.get(`./api/services/dr/MineInfo/GetById/?id=${id}`); // 查询基本信息（按矿山id）
   },
   edit(id) {
     return request.get(`./api/services/dr/MineInfo/Edit?id=${id}`); // 查询基本信息（按矿山id）

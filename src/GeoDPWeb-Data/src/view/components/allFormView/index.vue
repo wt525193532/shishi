@@ -17,6 +17,9 @@ import relocation from "./viewRelocation";
 import emergencyShelter from "./viewEmergencyShelter";
 import training from "./viewTraining";
 import riskAversion from "./viewRiskAversion";
+import HeritageProtection from "@/view/components/formViewId/viewHeritageProtection";
+import GovernDataCollect from "@/view/components/formViewId/viewGovernDataCollect.vue";
+import MineInfo from "@/view/components/formViewId/viewMineInformation";
 export default {
   name: "Detail",
   props: {
@@ -35,7 +38,10 @@ export default {
     relocation,
     emergencyShelter,
     training,
-    riskAversion
+    riskAversion,
+    MineInfo,
+    HeritageProtection,
+    GovernDataCollect
   },
   computed: {
     bodyLoading() {

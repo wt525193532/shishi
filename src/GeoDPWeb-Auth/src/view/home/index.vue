@@ -60,27 +60,30 @@ export default {
     loginNew() {
       let token = util._getLocalStorage("token");
       if (token) {
-        this.$store.dispatch("app/getCurrentUserConfig").then(res => {
-          let data = res.data;
-          if (data.success) {
-            let auth = data.result.auth.grantedPermissions;
-            let permissions = Object.keys(auth);
-            if (permissions.length > 0) {
-              let appList = data.result.nav.menus.MainMenu.items;
+        // this.$store.dispatch("session/init");
+        this.systemData = this.userConfig.nav.menus.MainMenu.items;
+        this.loading = false;
 
-              this.systemData = appList;
-              this.loading = false;
-            } else {
-              util._clearStorage();
-              this.$message({
-                message: "token失效请重新登录",
-                type: "warning"
-              });
-              this.$router.push({ path: "/" });
-            }
-          }
-        });
-        this.$store.dispatch("session/init");
+        // this.loading = false;
+        // this.$store.dispatch("app/getUserConfig").then(res => {
+        //   let data = res.data;
+        //   if (data.success) {
+        //     let auth = data.result.auth.grantedPermissions;
+        //     let permissions = Object.keys(auth);
+        //     if (permissions.length > 0) {
+        //       let appList = data.result.nav.menus.MainMenu.items;
+        //       this.systemData = appList;
+        //       this.loading = false;
+        //     } else {
+        //       util._clearStorage();
+        //       this.$message({
+        //         message: "token失效请重新登录",
+        //         type: "warning"
+        //       });
+        //       this.$router.push({ path: "/" });
+        //     }
+        //   }
+        // });
       } else {
         this.$router.push({ path: "/" });
       }
@@ -96,6 +99,9 @@ export default {
     }
   },
   computed: {
+    userConfig() {
+      return this.$store.state.session;
+    },
     userName() {
       return this.$store.state.session.user.userName;
     },

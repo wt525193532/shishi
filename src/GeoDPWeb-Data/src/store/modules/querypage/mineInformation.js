@@ -1,6 +1,6 @@
 /**填报防灾预案表模块 */
 /* eslint-disable */
-import api from "@/api/preventPlan/query";
+import api from "@/api/mineInformation/query";
 import appconst from "@/lib/appconst";
 
 export default {

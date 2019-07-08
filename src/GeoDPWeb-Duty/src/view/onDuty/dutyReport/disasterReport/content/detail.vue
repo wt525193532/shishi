@@ -50,13 +50,17 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item class="gl-form-item" label="灾害规模" prop="scale">
+      <el-form-item class="gl-form-item" prop="scale">
+        <template slot="label">
+          灾害规模(m
+          <sup>2</sup>)：
+        </template>
         <el-input-number
           :controls="false"
           :min="0"
           :precision="0"
           v-model="disasterForm.scale"
-          placeholder="请选择灾害规模"
+          placeholder="请输入灾害规模(内容为数字)"
         ></el-input-number>
       </el-form-item>
       <el-form-item class="gl-form-item" label="地点" prop="location">

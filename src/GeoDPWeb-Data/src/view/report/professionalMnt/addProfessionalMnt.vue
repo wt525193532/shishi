@@ -25,17 +25,7 @@ export default {
         longitude: undefined,
         latitude: undefined,
         fillYear: 0,
-        attachments: [
-          {
-            key: "",
-            name: "",
-            displayName: "",
-            tag: "",
-            extension: "",
-            url: "",
-            id: 0
-          }
-        ],
+        attachments: [],
         site: {
           disasterTypeCode: "",
           name: "",

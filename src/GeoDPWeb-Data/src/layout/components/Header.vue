@@ -119,7 +119,10 @@ export default {
       //TODO...
     },
     switchSystem() {
-      window.location.href = process.env.VUE_APP_AUTH_URL;
+      window.location.href =
+        process.env.NODE_ENV === "production"
+          ? window.geodp.appconst.authURL
+          : process.env.VUE_APP_AUTH_URL;
     },
     logout() {
       this.$store.dispatch("app/logout").then(() => {
