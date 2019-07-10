@@ -35,9 +35,19 @@ export default {
       }
       return res.data.result;
     },
-    //   获取所有排班信息
+    //   获取所有计划排班信息
     async getAllPlan({ commit }, parmas) {
       let res = await api.getAllPlan(parmas);
+      return res;
+    },
+    //   获取所有实际排班信息
+    async getAllActualSchedule({ commit }, parmas) {
+      let res = await api.getAllActualSchedule(parmas);
+      return res;
+    },
+    //   更新排班信息
+    async updatePlan({ commit }, parmas) {
+      let res = await api.updatePlan(parmas);
       return res;
     },
     //   分页查询交接班信息

@@ -27,10 +27,19 @@ export default {
   getAllPlan(parmas) {
     return request.post("./api/services/duty/DutySchedule/GetAllPlan", parmas); // 获取全部计划的排班信息
   },
+  getAllActualSchedule(parmas) {
+    return request.post(
+      "./api/services/duty/DutySchedule/GetAllActualSchedule",
+      parmas
+    ); // 获取全部实际的排班信息
+  },
   createPlan(parmas) {
     return request.post("./api/services/duty/DutySchedule/CreatePlan", parmas); // 新增计划的排班信息
   },
   deletePlan(ids) {
     return request.post(`./api/services/duty/DutySchedule/DeletePlan`, ids); // 删除计划的排班信息
+  },
+  updatePlan(parmas) {
+    return request.put(`./api/services/duty/DutySchedule/UpdatePlan`, parmas); // 更新计划的排班信息
   }
 };
