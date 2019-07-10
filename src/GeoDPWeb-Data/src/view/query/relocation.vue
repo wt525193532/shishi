@@ -172,7 +172,7 @@ export default {
           prop: "isCanceled",
           label: "是否销号",
           render: row => {
-            if (row.site.isCanceled) {
+            if (row.isCanceled) {
               return <el-tag type="success">已销号</el-tag>;
             } else {
               return <el-tag type="success">未销号</el-tag>;
@@ -180,8 +180,8 @@ export default {
           }
         },
         {
-          parent: "site",
-          prop: "name",
+         
+          prop: "site_Name",
           label: "隐患点名称"
         },
         {
@@ -189,12 +189,12 @@ export default {
           label: "隐患点编号"
         },
         {
-          parent: "site",
+         
           prop: "disasterTypeCode",
           label: "隐患点类型",
           render: row => (
             <span>
-              {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+              {this.$t(`codes.DisasterType[${row.disasterTypeCode}]`)}
             </span>
           )
         },
@@ -287,7 +287,7 @@ export default {
     },
     query() {
       this.$store
-        .dispatch("query/relocationInfoQuery", {
+        .dispatch("query/relocationInfoQueryAll", {
           ...this.queryForm,
           maxResultCount: this.pagination.pageSize,
           skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize
@@ -342,15 +342,15 @@ export default {
         filterVal.map(j => {
           switch (j) {
             case "isCanceled":
-              return v.site[j] ? "已销号" : "未销号";
+              return v[j] ? "已销号" : "未销号";
             case "name":
-              return v.site[j];
+              return v[j];
             case "location":
-              return v.site[j];
+              return v[j];
             case "disasterTypeCode":
-              return this.$t(`codes.DisasterType[${v.site.disasterTypeCode}]`);
+              return this.$t(`codes.DisasterType[${v.disasterTypeCode}]`);
             case "disasterScaleLevel":
-              return this.$t(`enums.ScaleLevel[${v.site.disasterScaleLevel}]`);
+              return this.$t(`enums.ScaleLevel[${v.disasterScaleLevel}]`);
             case "relocationTypeCode":
               return this.$t(`codes.RelocationType[${v.relocationTypeCode}]`);
             case "relocationProcessCode":

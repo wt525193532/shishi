@@ -157,7 +157,7 @@ export default {
           prop: "isCanceled",
           label: "是否销号",
           render: row => {
-            if (row.site.isCanceled) {
+            if (row.isCanceled) {
               return <el-tag type="success">已销号</el-tag>;
             } else {
               return <el-tag type="success">未销号</el-tag>;
@@ -165,57 +165,57 @@ export default {
           }
         },
         {
-          parent: "site",
-          prop: "name",
+         
+          prop: "site_Name",
           label: "隐患点名称"
         },
         {
-          parent: "site",
+          
           prop: "code",
           label: "隐患点编号"
         },
         {
-          parent: "site",
+         
           prop: "disasterTypeCode",
           label: "隐患点类型",
           render: row => (
             <span>
-              {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+              {this.$t(`codes.DisasterType[${row.disasterTypeCode}]`)}
             </span>
           )
         },
         {
-          parent: "site",
+         
           prop: "disasterScaleLevel",
           label: "灾害规模",
           render: row => (
             <span>
-              {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
+              {this.$t(`enums.ScaleLevel[${row.disasterScaleLevel}]`)}
             </span>
           )
         },
         {
-          parent: "site",
-          prop: "location",
+          
+          prop: "site_Location",
           label: "地理位置"
         },
         {
-          parent: "site",
+         
           prop: "threatPeople",
           label: "威胁人数"
         },
         {
-          parent: "site",
+        
           prop: "threatHouses",
           label: "威胁户数"
         },
         {
-          parent: "site",
+         
           prop: "threatProperty",
           label: "威胁财产"
         },
         {
-          parent: "site",
+         
           prop: "preventOwnerName",
           label: "防灾负责人",
           render: r => (
@@ -278,7 +278,7 @@ export default {
     },
     query() {
       this.$store
-        .dispatch("query/preventionPlanQuery", {
+        .dispatch("query/preventionPlanQueryAll", {
           ...this.queryForm,
           maxResultCount: this.pagination.pageSize,
           skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize
@@ -332,13 +332,13 @@ export default {
             case "status":
               return this.$t(`enums.DataStatus[${v[j]}]`);
             case "isCanceled":
-              return v.site[j] ? "已销号" : "未销号";
+              return v[j] ? "已销号" : "未销号";
             case "name":
-              return v.site[j];
+              return v[j];
             case "location":
-              return v.site[j];
+              return v[j];
             case "disasterTypeCode":
-              return this.$t(`codes.DisasterType[${v.site.disasterTypeCode}]`);
+              return this.$t(`codes.DisasterType[${v.disasterTypeCode}]`);
             default:
               return v[j];
           }

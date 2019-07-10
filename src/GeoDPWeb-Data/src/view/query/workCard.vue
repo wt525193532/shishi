@@ -153,11 +153,10 @@ export default {
       selectList: [],
       columns: [
         {
-          parent: "site",
           prop: "isCanceled",
           label: "是否销号",
           render: row => {
-            if (row.site.isCanceled) {
+            if (row.isCanceled) {
               return <el-tag type="success">已销号</el-tag>;
             } else {
               return <el-tag type="success">未销号</el-tag>;
@@ -165,8 +164,7 @@ export default {
           }
         },
         {
-          parent: "site",
-          prop: "name",
+          prop: "site_Name",
           label: "隐患点名称"
         },
         {
@@ -174,28 +172,25 @@ export default {
           label: "隐患点编号"
         },
         {
-          parent: "site",
           prop: "disasterTypeCode",
           label: "隐患点类型",
           render: row => (
             <span>
-              {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+              {this.$t(`codes.DisasterType[${row.disasterTypeCode}]`)}
             </span>
           )
         },
         {
-          parent: "site",
           prop: "disasterScaleLevel",
           label: "灾害规模",
           render: row => (
             <span>
-              {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
+              {this.$t(`enums.ScaleLevel[${row.disasterScaleLevel}]`)}
             </span>
           )
         },
         {
-          parent: "site",
-          prop: "location",
+          prop: "site_Location",
           label: "地理位置"
         },
         {
@@ -266,7 +261,7 @@ export default {
     },
     query() {
       this.$store
-        .dispatch("query/workCardQuery", {
+        .dispatch("query/workCardQueryAll", {
           ...this.queryForm,
           maxResultCount: this.pagination.pageSize,
           skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize

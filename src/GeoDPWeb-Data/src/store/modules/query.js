@@ -78,7 +78,47 @@ const query = {
     async MineInfoQuery({ commit }, data) {
       const res = await api.MineInfoQuery(data);
       return res.data.result;
-    }
+    },
+    // 防灾工作明白卡信息
+    async workCardQueryAll({ commit }, data) {
+      const res = await api.workCardQueryAll(data);
+      return res.data.result;
+    },
+    //简易监测信息数据查询
+    async simpleMntQueryAll({ commit }, data) {
+      const res = await api.simpleMntQueryAll(data);
+      return res.data.result;
+    },
+    //避险明白卡数据查询
+    async riskCardQueryAll({ commit }, data) {
+      const res = await api.riskCardQueryAll(data);
+      return res.data.result;
+    },
+    //避让搬迁数据查询
+    async relocationInfoQueryAll({ commit }, data) {
+      const res = await api.relocationInfoQueryAll(data);
+      return res.data.result;
+    },
+    //专业监测数据查询
+    async professionalMntQueryAll({ commit }, data) {
+      const res = await api.professionalMntQueryAll(data);
+      return res.data.result;
+    },
+    //防灾预案数据查询
+    async preventionPlanQueryAll({ commit }, data) {
+      const res = await api.preventionPlanQueryAll(data);
+      return res.data.result;
+    },
+    //治理工程数据查询
+    async engineerInfoQueryAll({ commit }, data) {
+      const res = await api.engineerInfoQueryAll(data);
+      return res.data.result;
+    },
+    //应急排危信息数据查询
+    async eliminateInfoQueryAll({ commit }, data) {
+      const res = await api.eliminateInfoQueryAll(data);
+      return res.data.result;
+    },
   }
 };
 
