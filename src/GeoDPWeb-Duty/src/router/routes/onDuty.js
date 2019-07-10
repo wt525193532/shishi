@@ -23,6 +23,28 @@ const onDuty = [
         }
       },
       {
+        path: "actualSchedule",
+        name: "actualSchedule",
+        component: () =>
+          import(/* webpackChunkName: "actualSchedule" */ "@/view/onDuty/actualSchedule/content"),
+        meta: {
+          displayName: "实际排班查询",
+          icon: "tianbao",
+          permission: "Pages.Duty"
+        }
+      },
+      // {
+      //   path: "dutyRapport",
+      //   name: "dutyRapport",
+      //   component: () =>
+      //     import(/* webpackChunkName: "dutyRecordQuery" */ "@/view/onDuty/dutyRapport/content"),
+      //   meta: {
+      //     displayName: "值班报告",
+      //     icon: "tianbao",
+      //     permission: "Pages.Duty"
+      //   }
+      // },
+      {
         path: "dutyRecord",
         name: "dutyRecord",
         component: () =>

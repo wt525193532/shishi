@@ -13,7 +13,7 @@
         style="margin-left: 10px;"
         format="yyyy年MM月"
         v-model="config.defaultDate"
-        @change="timeChange"
+        @blur="timeChange"
         type="month"
         placeholder="选择日期"
       ></el-date-picker>
@@ -44,7 +44,7 @@
       :sure="sure"
       :handleClose="handleClose"
     ></dialogCom>
-    <infoDialog ref="infoDialog" />
+    <infoDialog ref="infoDialog" :query="query" />
     <dialogBanchDelete ref="delDialog" :query="query"></dialogBanchDelete>
   </div>
 </template>
@@ -53,7 +53,7 @@
 import FullCalendar from "@fullcalendar/vue";
 import dayGrid from "@fullcalendar/daygrid";
 import zh from "@fullcalendar/core/locales/zh-cn";
-import moment from "moment";
+// import moment from "moment";
 // eslint-disable-next-line no-unused-vars
 import { eachDay } from "date-fns";
 
@@ -99,7 +99,34 @@ export default {
       },
       allPlans: [],
       // 日历事件列表
-      events: [],
+      events: (info, callback) => {
+        let parmas = {
+          startDate: info.start,
+          endDate: info.end
+        };
+        this.$store
+          .dispatch("dutyManage/schedueManage/getAllPlan", parmas)
+          .then(res => {
+            this.allPlans = res.data.result;
+            let events = [];
+            this.allPlans.forEach(item => {
+              let otherPerson = "";
+              if (item.otherDutyPersons.length > 0) {
+                item.otherDutyPersons.forEach(item => {
+                  otherPerson += item.name + " ";
+                });
+              }
+              item.allDutyPerson = item.mainDutyPerson.name + " " + otherPerson;
+              events.push({
+                title: item.mainDutyPerson.name + " " + otherPerson,
+                start: item.startTime,
+                end: item.endTime,
+                info: item
+              });
+            });
+            callback(events);
+          });
+      },
       selected: {},
       // 日历配置属性
       config: {
@@ -114,10 +141,6 @@ export default {
     };
   },
   methods: {
-    // 日历事件-刷新事件
-    refreshEvents() {
-      this.$refs.calendar.$emit("refetch-events");
-    },
     // 日历事件-删除事件
     removeEvent() {
       this.$refs.calendar.$emit("remove-event", this.selected);
@@ -125,59 +148,44 @@ export default {
     },
     // 日历事件-点击事件
     eventClick(day) {
-      this.$refs.infoDialog.viewOpen(day.event.extendedProps.info);
-    },
-    // 日历事件-创立事件
-    // eslint-disable-next-line no-unused-vars
-    eventCreated(...test) {
-      debugger;
-      this.dialogShow = true;
+      this.$refs.infoDialog.viewOpen(day.event.extendedProps.info, false);
     },
     // fullCalendar日期跳转，跳转后会自动刷新
-    async timeChange(val) {
-      console.log(val, FullCalendar);
-      await this.query();
-      this.$refs.fullCalendar.getApi().gotoDate(val);
-    },
-    // 使新增排班的数据变为单天的数据列表
-    transSingleDay() {
-      // let startDate = this.dialogForm.schDate[0]
-      // let endDate = this.dialogForm.schDate[1]
+    timeChange() {
+      this.$refs.fullCalendar.getApi().gotoDate(this.config.defaultDate);
     },
     // 打开批量删除
     openBatchDelete() {
       this.$refs.delDialog.open();
     },
+    // 日历事件-刷新事件
     query() {
-      let parmas = {
-        startDate: moment(this.config.defaultDate)
-          .month(moment().month())
-          .startOf("month"),
-        endDate: moment(this.config.defaultDate)
-          .month(moment().month())
-          .endOf("month")
-      };
-      this.$store
-        .dispatch("dutyManage/schedueManage/getAllPlan", parmas)
-        .then(res => {
-          this.allPlans = res.data.result;
-          this.events = [];
-          this.allPlans.forEach(item => {
-            let otherPerson = "";
-            if (item.otherDutyPersons.length > 0) {
-              item.otherDutyPersons.forEach(item => {
-                otherPerson += item.name + " ";
-              });
-            }
-            item.allDutyPerson = item.mainDutyPerson.name + " " + otherPerson;
-            this.events.push({
-              title: item.mainDutyPerson.name + " " + otherPerson,
-              start: item.startTime,
-              end: item.endTime,
-              info: item
-            });
-          });
-        });
+      this.$refs.fullCalendar.getApi().refetchEvents();
+      // let parmas = {
+      //   startDate: moment(this.config.defaultDate).startOf("month"),
+      //   endDate: moment(this.config.defaultDate).endOf("month")
+      // };
+      // this.$store
+      //   .dispatch("dutyManage/schedueManage/getAllPlan", parmas)
+      //   .then(res => {
+      //     this.allPlans = res.data.result;
+      //     this.events = [];
+      //     this.allPlans.forEach(item => {
+      //       let otherPerson = "";
+      //       if (item.otherDutyPersons.length > 0) {
+      //         item.otherDutyPersons.forEach(item => {
+      //           otherPerson += item.name + " ";
+      //         });
+      //       }
+      //       item.allDutyPerson = item.mainDutyPerson.name + " " + otherPerson;
+      //       this.events.push({
+      //         title: item.mainDutyPerson.name + " " + otherPerson,
+      //         start: item.startTime,
+      //         end: item.endTime,
+      //         info: item
+      //       });
+      //     });
+      //   });
     },
     sure() {
       this.$refs.dialogForm.$refs.dialogForm.validate(valid => {
@@ -209,9 +217,6 @@ export default {
       this.$refs.dialogForm.$refs.dialogForm.resetFields();
       this.dialogShow = false;
     }
-  },
-  created() {
-    this.query();
   }
 };
 </script>
