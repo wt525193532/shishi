@@ -6,6 +6,18 @@ const approvalSetting = {
   state: {},
   mutations: {},
   actions: {
+    async createFlow({ commit }, params) {
+      const res = await api.createFlow(params);
+      return res.data.result;
+    },
+    async deleteFlow({ commit }, fid) {
+      const res = await api.deleteFlow(fid);
+      return res.data.result;
+    },
+    async updateFlow({ commit }, params) {
+      const res = await api.updateFlow(params);
+      return res.data.result;
+    },
     async getAllFlow({ commit }) {
       const res = await api.getAllFlow();
       return res.data.result;
