@@ -190,8 +190,6 @@ const app = {
       );
       if (dr && dr.length == 1)
         menus = dr[0].items.sort((a, b) => (a.order < b.order ? -1 : 1));
-
-      console.log(menus);
       menus.forEach(menu => {
         if (menu.items.length > 0) {
           menu.items.forEach((subMenu, i, subMenus) => {
@@ -205,8 +203,6 @@ const app = {
           });
         }
       });
-      console.log(menus);
-
       // return [...state.defaultMenuItems, ...menus];
       // return state.defaultMenuItems;
       return menus;

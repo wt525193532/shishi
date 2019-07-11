@@ -2,15 +2,15 @@
   <div class="gl-content-item">
     <div class="gl-btn-row">
       <span class="gl-second-title">流程配置</span>
-      <!-- <div class="gl-btnList">
+      <div class="gl-btnList">
         <el-button
           size="small"
-          @click="openAdd"
+          @click="openAddFlow"
           type="primary"
           icon="el-icon-plus"
-          >添加</el-button
+          >新增流程</el-button
         >
-      </div>-->
+      </div>
     </div>
     <com-table
       :columns="columns"
@@ -65,28 +65,38 @@
               </div>
             </template>
           </el-step>
-          <!-- <el-step
-            title="地环站"
-            description="这是一段很长很长很长的描述性文字"
-          />
-          <el-step
-            title="地环处"
-            description="这是一段很长很长很长的描述性文字"
-          />
-          <el-step title="省" description="这是一段很长很长很长的描述性文字" />-->
         </el-steps>
+      </template>
+      <template slot="func" slot-scope="scoped">
+        <el-button
+          type="primary"
+          icon="el-icon-edit"
+          size="mini"
+          @click="editFlow(scoped.row)"
+          >编辑</el-button
+        >
+        <el-button
+          type="danger"
+          icon="el-icon-delete"
+          size="mini"
+          @click="delFlow(scoped.row.id)"
+          >删除</el-button
+        >
       </template>
     </com-table>
     <setNodeDialog ref="setNodeDialog" :queryTab="queryTab" />
+    <setflowDialog ref="setflowDialog" :queryTab="queryTab" />
   </div>
 </template>
 
 <script>
 import setNodeDialog from "./components/setNodeDialog";
+import setflowDialog from "./components/flowDialog";
 export default {
   name: "Role",
   components: {
-    setNodeDialog
+    setNodeDialog,
+    setflowDialog
   },
   data() {
     return {
@@ -101,13 +111,18 @@ export default {
         },
         {
           prop: "remark",
-          label: "说明",
+          label: "备注",
           width: 200
         },
         {
           prop: "node",
           label: "节点",
           align: "left"
+        },
+        {
+          prop: "func",
+          label: "操作",
+          width: 180
         }
       ],
       tableData: [],
@@ -191,16 +206,24 @@ export default {
         });
       });
     },
-    delFunc() {},
-    openAdd() {
-      this.$refs.menuDialog.addOpen();
+    openAddFlow() {
+      this.$refs.setflowDialog.addOpen();
     },
-    copyArr(arr) {
-      let res = [];
-      for (let i = 0; i < arr.length; i++) {
-        res.push(arr[i]);
-      }
-      return res;
+    editFlow(row) {
+      this.$refs.setflowDialog.editOpen(row);
+    },
+    delFlow(fid) {
+      this.$confirm("是否确认删除?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "info"
+      }).then(() => {
+        // eslint-disable-next-line no-unused-vars
+        this.$store.dispatch("approvalSetting/deleteFlow", fid).then(res => {
+          this.$message.success("删除成功！");
+          this.queryTab();
+        });
+      });
     }
   }
 };
