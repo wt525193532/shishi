@@ -12,7 +12,7 @@
         <el-button
           v-if="activeName == 'people'"
           type="primary"
-          @click="fetchPeople()"
+          @click="fetchPeopleBtn()"
           size="medium"
           >查询</el-button
         >
@@ -34,10 +34,6 @@
             <i class="el-icon-plus el-icon--left"></i>
             {{ activeName == "people" ? "新增人员" : "新增应急处理组" }}
           </el-button>
-          <!-- <el-button size="medium" @click="batchExport">
-            <i class="el-icon-download el-icon--left"></i>
-            批量导出
-          </el-button>-->
         </div>
       </div>
       <el-tabs
@@ -245,12 +241,15 @@ export default {
     }
   },
   methods: {
+    fetchPeopleBtn() {
+      this.peoplePagination.pageIndex = 1;
+      this.fetchPeople(this.fetchData);
+    },
     // 查询全部人员信息
-    fetchPeople() {
-      // this.peopleOptions.loading = true;
-      // if (this.allPeople == null || flag) {
+    fetchPeople(queryData) {
+      this.peopleOptions.loading = true;
       let parms = {
-        key: this.fetchData,
+        key: queryData,
         SkipCount:
           (this.peoplePagination.pageIndex - 1) *
           this.peoplePagination.pageSize,
@@ -263,15 +262,10 @@ export default {
           this.peopleDataList = res.items;
           this.peopleOptions.loading = false;
         });
-      // } else {
-      //   this.$store
-      //     .dispatch("dutyManage/dutyPersonManage/getAllPeople", {})
-      //     .then(res => {
-      //       this.peoplePagination.total = res.totalCount;
-      //       this.peopleDataList = res.items;
-      //       this.peopleOptions.loading = false;
-      //     });
-      // }
+    },
+    fetchTeamBtn() {
+      this.teamPagination.pageIndex = 1;
+      this.fetchTeam();
     },
     // 查询全部应急处理组信息
     fetchTeam() {
