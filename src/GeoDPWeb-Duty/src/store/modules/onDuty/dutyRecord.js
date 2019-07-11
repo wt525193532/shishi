@@ -28,7 +28,15 @@ export default {
     },
     async getAllByKey({ commit }, data) {
       const res = await api.getAllByKey(data);
-      return res;
+      return res.data.result;
+    },
+    async delRecord({ commit }, data) {
+      let recordList = { ids: [] };
+      data.forEach(item => {
+        recordList.ids.push(item.id);
+      });
+      const res = await api.delRecord(recordList);
+      return res.data.result;
     }
   }
 };
