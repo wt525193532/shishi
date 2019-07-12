@@ -79,6 +79,7 @@
     <!-- 分页 -->
     <el-pagination
       v-if="pagination"
+      :current-page.sync="pagination.pageIndex"
       :total="pagination.total"
       :page-size="pagination.pageSize"
       :page-sizes="pageSizes"

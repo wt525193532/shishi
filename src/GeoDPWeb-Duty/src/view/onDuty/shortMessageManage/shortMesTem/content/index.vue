@@ -4,7 +4,7 @@
       <!-- <div class="gl-btn-row">
         <span class="gl-second-title">短信模版</span>
       </div>  
-      <hr style="color: #DCDFE6"> -->
+      <hr style="color: #DCDFE6">-->
       <div>
         <el-form :model="queryForm" ref="queryForm" inline size="medium">
           <el-form-item class="gl-form-item">
@@ -14,7 +14,7 @@
             ></el-input>
           </el-form-item>
           <el-form-item class="gl-form-item">
-            <el-button type="primary" @click="fenth">查询</el-button>
+            <el-button type="primary" @click="queryBtn">查询</el-button>
             <el-button @click="openTemplateForm">新建模版</el-button>
           </el-form-item>
         </el-form>
@@ -90,6 +90,10 @@ export default {
     };
   },
   methods: {
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.fenth();
+    },
     fenth() {
       this.options.loading = true;
       let params = {

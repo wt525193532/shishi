@@ -36,7 +36,10 @@
 
         <div class="gl-text-center">
           <el-form-item class="gl-form-item">
-            <el-button type="primary" :loading="options.loading" @click="fenth"
+            <el-button
+              type="primary"
+              :loading="options.loading"
+              @click="queryBtn"
               >查询</el-button
             >
             <el-button @click="reset">重置</el-button>
@@ -131,6 +134,10 @@ export default {
         pageIndex: 1,
         pageSize: 10
       };
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.fenth();
     },
     fenth() {
       this.options.loading = true;

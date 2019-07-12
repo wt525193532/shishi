@@ -44,7 +44,7 @@
             <el-button
               type="primary"
               :loading="options.loading"
-              @click="query"
+              @click="queryBtn"
               size="medium"
               >查询</el-button
             >
@@ -294,6 +294,10 @@ export default {
         disasterType: "",
         adminCode: ""
       };
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.query();
     },
     query() {
       this.options.loading = true;

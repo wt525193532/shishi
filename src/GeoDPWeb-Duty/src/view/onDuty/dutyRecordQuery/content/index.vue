@@ -13,7 +13,9 @@
             placeholder="请输入类型、内容"
           ></el-input>
         </el-form-item>
-        <el-button type="primary" @click="fetch" size="medium">查询</el-button>
+        <el-button type="primary" @click="queryBtn" size="medium"
+          >查询</el-button
+        >
         <el-form-item
           class="gl-form-item"
           label="值班记录类型"
@@ -160,6 +162,10 @@ export default {
     // 查看记录
     check(row) {
       this.$refs.RecordInfoDialog.openViewDutyRecord(row);
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.fetch();
     },
     fetch() {
       this.options.loading = true;

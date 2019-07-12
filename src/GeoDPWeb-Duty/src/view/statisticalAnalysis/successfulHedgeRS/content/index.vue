@@ -78,7 +78,7 @@
         </el-form-item>
         <div class="gl-text-center">
           <el-form-item class="gl-form-item">
-            <el-button type="primary" :loading="queryLoad" @click="queryAll"
+            <el-button type="primary" :loading="queryLoad" @click="queryBtn"
               >查询</el-button
             >
             <el-button @click="reset">重置</el-button>
@@ -254,6 +254,10 @@ export default {
         disasterTypes: [],
         happenTime: []
       };
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.queryAll();
     },
     queryAll() {
       this.queryLoad = true;
