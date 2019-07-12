@@ -11,12 +11,12 @@
         <el-form-item label="关键字">
           <el-input
             class="input-min-width"
-            placeholder="显示名"
+            placeholder="请输入显示名"
             v-model="queryForm.key"
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="queryAllObj">查询</el-button>
+          <el-button type="primary" @click="queryAllObjBtn">查询</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -138,6 +138,10 @@ export default {
     };
   },
   methods: {
+    queryAllObjBtn() {
+      this.pagination.pageIndex = 1;
+      this.queryAllObj();
+    },
     queryAllObj() {
       this.options.loading = true;
       let params = {
@@ -159,7 +163,3 @@ export default {
   }
 };
 </script>
-<style lang="less" scoped>
-.approvalObject {
-}
-</style>
