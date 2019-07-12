@@ -16,7 +16,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="queryAllUser">查询</el-button>
+          <el-button type="primary" @click="queryAllUserBtn">查询</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -109,6 +109,10 @@ export default {
     };
   },
   methods: {
+    queryAllUserBtn() {
+      this.pagination.pageIndex = 1;
+      this.queryAllUser();
+    },
     queryAllUser() {
       this.options.loading = true;
       let params = {

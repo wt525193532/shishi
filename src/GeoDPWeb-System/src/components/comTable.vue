@@ -79,6 +79,7 @@
     <!-- 分页 -->
     <el-pagination
       v-if="pagination"
+      :current-page.sync="pagination.pageIndex"
       :total="pagination.total"
       :page-size="pagination.pageSize"
       :page-sizes="pageSizes"
@@ -154,13 +155,13 @@ export default {
     this.options.initTable && this.query();
   },
   methods: {
+    // 切换每页显示的数量
     handleSizeChange(size) {
-      // 切换每页显示的数量
       this.pagination.pageSize = size;
       this.query();
     },
+    // 切换页码
     handleIndexChange(current) {
-      // 切换页码
       this.pagination.pageIndex = current;
       this.query();
     }
