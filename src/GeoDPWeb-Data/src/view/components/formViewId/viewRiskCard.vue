@@ -1,6 +1,20 @@
 <template>
   <div>
-    <risk-card-form :disabled="disabled" :formData="formData" />
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#riskCardPrint'"
+        >打印表单</el-button
+      >
+    </div>
+    <risk-card-form
+      id="riskCardPrint"
+      :disabled="disabled"
+      :formData="formData"
+    />
   </div>
 </template>
 

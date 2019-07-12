@@ -15,7 +15,7 @@
         </template>
         <el-breadcrumb-item>{{ pageName }}</el-breadcrumb-item>
       </el-breadcrumb>
-    </div> -->
+    </div>-->
     <div class="page-container">
       <transition name="fade-transverse">
         <router-view></router-view>
@@ -59,7 +59,7 @@ export default {
 .report {
   position: relative;
   background: #ffffff;
-  padding: 15px;
+  // padding: 15px;
   &-header {
     position: fixed;
     // z-index: @zindex-spin;

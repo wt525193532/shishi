@@ -18,7 +18,7 @@ var geodp = geodp || {};
     cookieName: {
       token: "Abp.AuthToken"
     },
-    baseAPI: "http://172.18.2.251:8013",
+    baseAPI: "http://172.18.2.251:8012",
     baseURL: "http://172.18.2.251:8010/data",
     authURL: "http://172.18.2.251:8010/auth",
     fileURL: "http://172.18.2.251:8001"

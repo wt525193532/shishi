@@ -27,9 +27,9 @@
           </el-select>
         </el-form-item>
         <el-form-item label="是否销号">
-          <el-select v-model="form.registration">
+          <el-select v-model="form.isCanceled">
             <el-option
-              v-for="item in registrationOption"
+              v-for="item in isCanceledOption"
               :key="item.value"
               :label="item.label"
               :value="item.value"
@@ -96,7 +96,7 @@ export default {
         }
       },
       areaList: [],
-      registrationOption: [
+      isCanceledOption: [
         {
           value: true,
           label: "是"
@@ -113,7 +113,7 @@ export default {
       form: {
         areaCode: "",
         disasterTypes: [],
-        registration: null,
+        isCanceled: null,
         disaterScales: []
       },
       activeName: "type",
@@ -351,7 +351,6 @@ export default {
       await this.$store
         .dispatch("statistic/getAreaList", this.administrative.adminCode)
         .then(res => {
-          console.log(res, "area");
           if (this.administrative.level === 3) {
             this.areaList = [
               {

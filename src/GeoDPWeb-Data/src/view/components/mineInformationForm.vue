@@ -299,9 +299,9 @@
       </div>
     </div>
     <div class="form-foot-btn">
-      <el-button type="primary" @click="saveFormData">{{
-        !canEdit ? "返回" : "保存"
-      }}</el-button>
+      <el-button type="primary" @click="saveFormData">
+        {{ !canEdit ? "返回" : "保存" }}
+      </el-button>
     </div>
   </div>
 </template>
@@ -360,7 +360,7 @@ export default {
     return {
       fileOption: {
         tag: ["附件上传"],
-        upload: true,
+        upload: this.canEdit,
         accept: ""
       },
       rules: {

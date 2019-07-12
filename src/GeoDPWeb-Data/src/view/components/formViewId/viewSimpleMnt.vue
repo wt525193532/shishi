@@ -1,6 +1,20 @@
 <template>
   <div>
-    <simple-mnt-form :formData="formData" :disabled="true" />
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#simpleMntPrint'"
+        >打印表单</el-button
+      >
+    </div>
+    <simple-mnt-form
+      id="simpleMntPrint"
+      :formData="formData"
+      :disabled="true"
+    />
   </div>
 </template>
 

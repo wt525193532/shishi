@@ -1,6 +1,21 @@
 <template>
   <div>
-    <govern-data-collect-form :formData="formData" disabled type="view" />
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#governDataCollectPrint'"
+        >打印表单</el-button
+      >
+    </div>
+    <govern-data-collect-form
+      id="governDataCollectPrint"
+      :formData="formData"
+      disabled
+      type="view"
+    />
   </div>
 </template>
 

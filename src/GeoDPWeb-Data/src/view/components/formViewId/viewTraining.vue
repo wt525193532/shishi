@@ -1,6 +1,21 @@
 <template>
   <div>
-    <training-form :formData="formData" disabled :canEdit="false" />
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#trainingPrint'"
+        >打印表单</el-button
+      >
+    </div>
+    <training-form
+      id="trainingPrint"
+      :formData="formData"
+      disabled
+      :canEdit="false"
+    />
   </div>
 </template>
 

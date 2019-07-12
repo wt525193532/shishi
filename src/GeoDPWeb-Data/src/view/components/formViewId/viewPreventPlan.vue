@@ -1,6 +1,20 @@
 <template>
   <div>
-    <prevent-plan-form :formData="formData" :disabled="true" />
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#preventPlanPrint'"
+        >打印表单</el-button
+      >
+    </div>
+    <prevent-plan-form
+      id="preventPlanPrint"
+      :formData="formData"
+      :disabled="true"
+    />
   </div>
 </template>
 

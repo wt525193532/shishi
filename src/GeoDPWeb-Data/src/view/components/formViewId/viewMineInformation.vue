@@ -1,5 +1,22 @@
 <template>
-  <mine-information-form :formData="formData" :canEdit="false" disabled />
+  <div>
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#mineInformationPrint'"
+        >打印表单</el-button
+      >
+    </div>
+    <mine-information-form
+      id="mineInformationPrint"
+      :formData="formData"
+      :canEdit="false"
+      disabled
+    />
+  </div>
 </template>
 
 <script>
@@ -57,5 +74,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less"></style>

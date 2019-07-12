@@ -1,6 +1,20 @@
 <template>
   <div>
-    <work-card-form :disabled="disabled" :formData="formData"></work-card-form>
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#workCardPrint'"
+        >打印表单</el-button
+      >
+    </div>
+    <work-card-form
+      id="workCardPrint"
+      :disabled="disabled"
+      :formData="formData"
+    ></work-card-form>
   </div>
 </template>
 

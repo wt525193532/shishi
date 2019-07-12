@@ -1,6 +1,17 @@
 <template>
   <div>
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#heritageProtectionPrint'"
+        >打印表单</el-button
+      >
+    </div>
     <heritageProtectionForm
+      id="heritageProtectionPrint"
       :formData="formData"
       :disabled="disabled"
       :btnExcuteFunc="view"

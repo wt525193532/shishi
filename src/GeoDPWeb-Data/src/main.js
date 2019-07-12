@@ -7,11 +7,13 @@ import ElementUI from "element-ui";
 import "./theme/index.less";
 import "@/assets/icons/iconfont-default";
 import util from "@/lib/util";
+import Print from "vue-print-nb";
 
 // import { svgIcon } from "@/components";
 import "@/components";
 import i18n from "./locale";
 
+Vue.use(Print);
 if (process.env.NODE_ENV === "development") {
   require("./mock"); // simulation data
 }

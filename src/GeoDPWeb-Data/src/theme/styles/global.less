@@ -55,3 +55,19 @@
   background-color: #fff;
   padding: 15px;
 }
+.print-btn {
+  float: right;
+  margin-bottom: 10px;
+  // position: absolute;
+}
+@media print {
+  body {
+    zoom: 0.84;
+  }
+  .form-foot-btn {
+    display: none;
+  }
+  .page-next {
+    page-break-before: always;
+  }
+}

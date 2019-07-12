@@ -1,6 +1,20 @@
 <template>
   <div>
-    <eliminate-danger-form :disabled="disabled" :formData="formData" />
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#eliminateDangerPrint'"
+        >打印表单</el-button
+      >
+    </div>
+    <eliminate-danger-form
+      id="eliminateDangerPrint"
+      :disabled="disabled"
+      :formData="formData"
+    />
   </div>
 </template>
 
@@ -219,5 +233,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less"></style>
