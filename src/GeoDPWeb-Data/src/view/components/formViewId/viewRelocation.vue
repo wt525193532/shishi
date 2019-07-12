@@ -1,6 +1,17 @@
 <template>
   <div>
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#relocationPrint'"
+        >打印表单</el-button
+      >
+    </div>
     <relocation-form
+      id="relocationPrint"
       :disabled="disabled"
       :formData="formData"
     ></relocation-form>

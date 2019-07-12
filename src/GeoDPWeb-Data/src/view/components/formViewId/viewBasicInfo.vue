@@ -1,5 +1,22 @@
 <template>
-  <basicinfo-form :formData="formData" :canEdit="false" :isDisabled="false" />
+  <div>
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#basicInfoPrint'"
+        >打印表单</el-button
+      >
+    </div>
+    <basicinfo-form
+      id="basicInfoPrint"
+      :formData="formData"
+      :canEdit="false"
+      :isDisabled="false"
+    />
+  </div>
 </template>
 
 <script>
@@ -167,5 +184,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less"></style>

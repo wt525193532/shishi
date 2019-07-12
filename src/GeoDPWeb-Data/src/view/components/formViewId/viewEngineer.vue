@@ -1,6 +1,17 @@
 <template>
   <div>
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#engineerPrint'"
+        >打印表单</el-button
+      >
+    </div>
     <engineer-form
+      id="engineerPrint"
       :disabled="disabled"
       :formData="formData"
       :btnExcuteFunc="view"

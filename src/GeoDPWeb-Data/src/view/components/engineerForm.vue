@@ -311,7 +311,7 @@
             </el-form-item>
           </div>
         </div>
-        <div class="form-item">
+        <div class="form-item page-next">
           <h2 ref="governProjectH4">文件或照片</h2>
           <comAttachment
             v-model="formData.attachments"

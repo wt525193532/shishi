@@ -1,6 +1,20 @@
 <template>
   <div>
-    <professional-mnt-form :formData="formData" :disabled="true" />
+    <div class="clearfix">
+      <el-button
+        icon="el-icon-printer"
+        class="print-btn"
+        type="primary"
+        size="mini"
+        v-print="'#professionalMntPrint'"
+        >打印表单</el-button
+      >
+    </div>
+    <professional-mnt-form
+      id="professionalMntPrint"
+      :formData="formData"
+      :disabled="true"
+    />
   </div>
 </template>
 

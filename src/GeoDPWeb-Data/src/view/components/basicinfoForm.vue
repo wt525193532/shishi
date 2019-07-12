@@ -500,7 +500,8 @@
             </div>
           </div>
         </div>
-        <div class="form-item">
+        <br />
+        <div class="form-item page-next">
           <h2>防灾措施</h2>
           <div class="form-item-wapper">
             <el-form-item label="是否开展搬迁避让" label-width="140px">
@@ -647,9 +648,9 @@
       </div>
     </div>
     <div class="form-foot-btn">
-      <el-button type="primary" @click="saveFormData" :disabled="ownDisabled">{{
-        !canEdit ? "返回" : "保存"
-      }}</el-button>
+      <el-button type="primary" @click="saveFormData" :disabled="ownDisabled">
+        {{ !canEdit ? "返回" : "保存" }}
+      </el-button>
     </div>
   </div>
 </template>
