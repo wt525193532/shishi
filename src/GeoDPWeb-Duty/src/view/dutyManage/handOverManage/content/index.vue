@@ -48,7 +48,7 @@
           </el-date-picker>
         </el-form-item>-->
         <div class="gl-text-center">
-          <el-button type="primary" @click="fetch" size="medium"
+          <el-button type="primary" @click="querybtn" size="medium"
             >查询</el-button
           >
           <el-button @click="rest" size="medium">重置</el-button>
@@ -155,6 +155,10 @@ export default {
     };
   },
   methods: {
+    querybtn() {
+      this.pagination.pageIndex = 1;
+      this.fetch();
+    },
     fetch() {
       this.options.loading = true;
       const { handOverTime, name, content } = this.queryData;

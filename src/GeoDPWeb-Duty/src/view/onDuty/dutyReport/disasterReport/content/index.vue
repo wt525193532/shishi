@@ -11,13 +11,17 @@
           :inline="true"
           size="medium"
         >
-          <el-form-item class="gl-form-item" label="行政区划" prop="">
-            <el-cascader v-model="fetchForm.adminCode" :props="props">
-            </el-cascader>
+          <el-form-item class="gl-form-item" label="行政区划" prop>
+            <el-cascader
+              v-model="fetchForm.adminCode"
+              :props="props"
+            ></el-cascader>
           </el-form-item>
           <el-form-item class="gl-form-item" label="地点" prop="location">
-            <el-input v-model="fetchForm.location" placeholder="请输入地点">
-            </el-input>
+            <el-input
+              v-model="fetchForm.location"
+              placeholder="请输入地点"
+            ></el-input>
           </el-form-item>
           <el-form-item
             class="gl-form-item"
@@ -33,22 +37,18 @@
                 :key="item"
                 :label="item"
                 :value="item"
-              >
-              </el-option>
+              ></el-option>
             </el-select>
           </el-form-item>
           <div class="gl-text-center">
             <el-button
               type="primary"
               :loading="options.loading"
-              @click="query"
+              @click="queryBtn"
               size="medium"
+              >查询</el-button
             >
-              查询
-            </el-button>
-            <el-button @click="reset" size="medium">
-              重置
-            </el-button>
+            <el-button @click="reset" size="medium">重置</el-button>
           </div>
         </el-form>
       </div>
@@ -61,20 +61,18 @@
               icon="el-icon-upload2"
               @click="upReport"
               v-if="activeName === 'awaitRoported'"
+              >上报至总站</el-button
             >
-              上报至总站
-            </el-button>
             <el-button
               v-if="userUnit.level >= 3"
               size="medium"
               icon="el-icon-plus"
               @click="addForm"
+              >新增待上报数据</el-button
             >
-              新增待上报数据
-            </el-button>
             <!-- <el-button size="medium" icon="el-icon-download">
               导出记录
-            </el-button> -->
+            </el-button>-->
           </div>
         </div>
         <el-tabs
@@ -102,8 +100,7 @@
                   size="mini"
                   icon="el-icon-view"
                   @click="check(scope.row)"
-                >
-                  浏览</el-button
+                  >浏览</el-button
                 >
                 <el-button
                   v-if="activeName === 'awaitRoported' && userUnit.level >= 3"
@@ -111,8 +108,7 @@
                   type="primary"
                   size="mini"
                   @click="edit(scope.row)"
-                >
-                  编辑</el-button
+                  >编辑</el-button
                 >
                 <el-button
                   v-if="activeName === 'awaitRoported' && userUnit.level >= 3"
@@ -320,6 +316,10 @@ export default {
         disasterType: "",
         adminCode: ""
       };
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.query();
     },
     query() {
       this.options.loading = true;

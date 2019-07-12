@@ -243,13 +243,13 @@ export default {
   methods: {
     fetchPeopleBtn() {
       this.peoplePagination.pageIndex = 1;
-      this.fetchPeople(this.fetchData);
+      this.fetchPeople();
     },
     // 查询全部人员信息
-    fetchPeople(queryData) {
+    fetchPeople() {
       this.peopleOptions.loading = true;
       let parms = {
-        key: queryData,
+        key: this.fetchData,
         SkipCount:
           (this.peoplePagination.pageIndex - 1) *
           this.peoplePagination.pageSize,

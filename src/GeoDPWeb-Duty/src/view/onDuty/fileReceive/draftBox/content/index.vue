@@ -31,7 +31,7 @@
         </el-form-item>
         <div class="gl-text-center">
           <el-form-item class="gl-form-item">
-            <el-button type="primary" @click="fenth">查询</el-button>
+            <el-button type="primary" @click="queryBtn">查询</el-button>
             <el-button @click="reset">重置</el-button>
           </el-form-item>
         </div>
@@ -159,6 +159,10 @@ export default {
     },
     handleSelectionChange(selection) {
       console.log(this.pagination, selection);
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.fenth();
     },
     fenth() {
       this.options.loading = true;

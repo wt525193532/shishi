@@ -3,7 +3,7 @@ const statisticalAnalysis = [
     path: "statisticalAnalysis",
     name: "statisticalAnalysis",
     component: () =>
-      import(/* webpackChunkName: "systemManage" */ "@/components/comRouterView"),
+      import(/* webpackChunkName: "statisticalAnalysis" */ "@/components/comRouterView"),
     meta: {
       displayName: "统计分析",
       icon: "tianbao",
