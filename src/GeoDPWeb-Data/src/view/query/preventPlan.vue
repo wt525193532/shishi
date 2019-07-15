@@ -24,7 +24,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item v-if="!onShow">
-          <el-button type="primary" @click="query">查询</el-button>
+          <el-button type="primary" @click="queryBtn">查询</el-button>
           <el-button @click="reset('queryForm')">重置</el-button>
           <el-button
             type="text"
@@ -50,19 +50,27 @@
             </el-select>
           </el-form-item>
           <el-form-item label="销号状态" prop="isCanceled">
-            <el-select v-model="queryForm.isCanceled" placeholder="销号状态">
+            <el-select
+              v-model="queryForm.isCanceled"
+              clearable
+              placeholder="销号状态"
+            >
               <el-option label="已销号" :value="true"></el-option>
               <el-option label="未销号" :value="false"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="审核状态" prop="isApproval">
-            <el-select v-model="queryForm.isApproval" placeholder="审核状态">
+            <el-select
+              v-model="queryForm.isApproval"
+              clearable
+              placeholder="审核状态"
+            >
               <el-option label="已入库" :value="true"></el-option>
               <el-option label="未入库" :value="false"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="query">查询</el-button>
+            <el-button type="primary" @click="queryBtn">查询</el-button>
             <el-button @click="reset('queryForm')">重置</el-button>
             <el-button
               type="text"
@@ -275,6 +283,10 @@ export default {
     },
     handleSelectionChange(val) {
       this.selectList = val;
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.query();
     },
     query() {
       this.$store

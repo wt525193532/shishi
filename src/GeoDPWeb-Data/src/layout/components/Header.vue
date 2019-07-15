@@ -57,15 +57,15 @@
             <i class="el-icon-arrow-down"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="profile">
-              {{ $t("navbar.profile") }}
-            </el-dropdown-item>
-            <el-dropdown-item command="switch" divided>
-              {{ $t("navbar.switch") }}
-            </el-dropdown-item>
-            <el-dropdown-item command="logout">
-              {{ $t("navbar.logout") }}
-            </el-dropdown-item>
+            <el-dropdown-item command="profile">{{
+              $t("navbar.profile")
+            }}</el-dropdown-item>
+            <el-dropdown-item command="switch" divided>{{
+              $t("navbar.switch")
+            }}</el-dropdown-item>
+            <el-dropdown-item command="logout">{{
+              $t("navbar.logout")
+            }}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -83,10 +83,6 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-    console.log(this.sidebarMenus);
-  },
-
   computed: {
     ...mapGetters(["sidebar", "user", "area"]),
     activeIndex() {
