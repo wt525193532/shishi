@@ -4,7 +4,7 @@
       :tab="tab"
       :queryForm="queryForm"
       :query="query"
-      :submit="submit"
+      :submit="submitBtn"
       :add="add"
     >
       <com-table
@@ -431,6 +431,10 @@ export default {
   methods: {
     handleSelectionChange(selection) {
       this.selectionList = selection;
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.query();
     },
     query() {
       let parmas = {

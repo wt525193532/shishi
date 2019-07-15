@@ -3,7 +3,7 @@
     <report-layout
       :tab="tab"
       :queryForm="queryForm"
-      :query="query"
+      :query="queryBtn"
       :submit="submit"
       :add="add"
     >
@@ -248,6 +248,10 @@ export default {
   methods: {
     handleSelectionChange(selection) {
       this.selectionList = selection;
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.query();
     },
     query() {
       let parmas = {

@@ -173,17 +173,14 @@ export default {
           }
         },
         {
-         
           prop: "site_Name",
           label: "隐患点名称"
         },
         {
-          
           prop: "code",
           label: "隐患点编号"
         },
         {
-         
           prop: "disasterTypeCode",
           label: "隐患点类型",
           render: row => (
@@ -193,7 +190,6 @@ export default {
           )
         },
         {
-         
           prop: "disasterScaleLevel",
           label: "灾害规模",
           render: row => (
@@ -203,27 +199,22 @@ export default {
           )
         },
         {
-          
           prop: "site_Location",
           label: "地理位置"
         },
         {
-         
           prop: "threatPeople",
           label: "威胁人数"
         },
         {
-        
           prop: "threatHouses",
           label: "威胁户数"
         },
         {
-         
           prop: "threatProperty",
           label: "威胁财产"
         },
         {
-         
           prop: "preventOwnerName",
           label: "防灾负责人",
           render: r => (

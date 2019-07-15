@@ -21,8 +21,10 @@ service.interceptors.request.use(
         ...config.params
       };
     }
+    if (config.url.indexOf("GetAdministrative") == -1) {
+      store.commit("app/loading", true);
+    }
     // Do something before request is sent
-    store.commit("app/loading", true);
     const token = util.getToken();
     if (!!token && true) {
       // 让每个请求携带token

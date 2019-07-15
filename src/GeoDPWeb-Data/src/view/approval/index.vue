@@ -1,6 +1,6 @@
 <template>
   <div class="approval-basicinfo">
-    <approval-layout :tab="tab" :queryForm="queryForm" :query="query">
+    <approval-layout :tab="tab" :queryForm="queryForm" :query="queryBtn">
       <com-table
         v-if="tableShow"
         :columns="columns[tab.activeName]"
@@ -1138,6 +1138,10 @@ export default {
           }
         });
       });
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.query();
     },
     query() {
       let payLoad = {

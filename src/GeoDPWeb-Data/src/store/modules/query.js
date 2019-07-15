@@ -118,7 +118,7 @@ const query = {
     async eliminateInfoQueryAll({ commit }, data) {
       const res = await api.eliminateInfoQueryAll(data);
       return res.data.result;
-    },
+    }
   }
 };
 

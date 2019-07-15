@@ -162,7 +162,6 @@ export default {
       selectList: [],
       columns: [
         {
-         
           prop: "site_Name",
           label: "隐患点名称"
         },
@@ -172,7 +171,6 @@ export default {
         },
 
         {
-          
           prop: "site_Location",
           label: "地理位置"
         },
