@@ -24,7 +24,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item v-if="!onShow">
-          <el-button type="primary" @click="query">查询</el-button>
+          <el-button type="primary" @click="queryBtn">查询</el-button>
           <el-button @click="reset('queryForm')">重置</el-button>
           <el-button
             type="text"
@@ -51,6 +51,7 @@
           <el-form-item label="是否转行业" prop="isTransferred">
             <el-select
               v-model="queryForm.isTransferred"
+              clearable
               placeholder="-- 请选择是否转行业 --"
             >
               <el-option label="是" :value="true"></el-option>
@@ -60,6 +61,7 @@
           <el-form-item label="纳入省级补助" prop="isProvincial">
             <el-select
               v-model="queryForm.isProvincial"
+              clearable
               placeholder="-- 请选择是否纳入省级补助 --"
             >
               <el-option label="是" :value="true"></el-option>
@@ -69,6 +71,7 @@
           <el-form-item label="销号状态" prop="isCanceled">
             <el-select
               v-model="queryForm.isCanceled"
+              clearable
               placeholder="-- 请选择销号状态 --"
             >
               <el-option label="已销号" :value="true"></el-option>
@@ -78,6 +81,7 @@
           <el-form-item label="审核状态" prop="status">
             <el-select
               v-model="queryForm.isApproval"
+              clearable
               placeholder="-- 请选择审核状态 --"
             >
               <el-option label="已入库" :value="true"></el-option>
@@ -85,7 +89,7 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="query">查询</el-button>
+            <el-button type="primary" @click="queryBtn">查询</el-button>
             <el-button @click="reset('queryForm')">重置</el-button>
             <el-button
               type="text"
@@ -347,6 +351,10 @@ export default {
     },
     handleSelectionChange(val) {
       this.selectList = val;
+    },
+    queryBtn() {
+      this.pagination.pageIndex = 1;
+      this.query();
     },
     query() {
       this.$store

@@ -72,6 +72,7 @@
     <!-- 分页 -->
     <el-pagination
       v-if="pagination"
+      :current-page.sync="pagination.pageIndex"
       :total="pagination.total"
       :page-sizes="[10, 20, 50, 100]"
       layout="total, sizes, prev, pager, next, jumper"
