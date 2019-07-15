@@ -188,7 +188,6 @@ export default {
           }
         },
         {
-        
           prop: "site_Name",
           label: "隐患点名称"
         },
@@ -197,7 +196,6 @@ export default {
           label: "隐患点编号"
         },
         {
-          
           prop: "disasterTypeCode",
           label: "隐患点类型",
           render: row => (
@@ -207,7 +205,6 @@ export default {
           )
         },
         {
-        
           prop: "disasterScaleLevel",
           label: "灾害规模",
           render: row => (
@@ -217,7 +214,6 @@ export default {
           )
         },
         {
-         
           prop: "site_Location",
           label: "地理位置"
         },

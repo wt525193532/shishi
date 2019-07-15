@@ -68,15 +68,24 @@ export default {
   },
   //避让搬迁数据查询
   relocationInfoQueryAll(par) {
-    return request.post("/api/services/dr/RelocationInfoQuery/QueryAllExt", par);
+    return request.post(
+      "/api/services/dr/RelocationInfoQuery/QueryAllExt",
+      par
+    );
   },
   //专业监测数据查询
   professionalMntQueryAll(par) {
-    return request.post("/api/services/dr/ProfessionalMntQuery/QueryAllExt", par);
+    return request.post(
+      "/api/services/dr/ProfessionalMntQuery/QueryAllExt",
+      par
+    );
   },
   //防灾预案数据查询
   preventionPlanQueryAll(par) {
-    return request.post("/api/services/dr/PreventionPlanQuery/QueryAllExt", par);
+    return request.post(
+      "/api/services/dr/PreventionPlanQuery/QueryAllExt",
+      par
+    );
   },
   //治理工程数据查询
   engineerInfoQueryAll(par) {
@@ -85,5 +94,5 @@ export default {
   //应急排危信息数据查询
   eliminateInfoQueryAll(par) {
     return request.post("/api/services/dr/EliminateInfoQuery/QueryAllExt", par);
-  },
+  }
 };
