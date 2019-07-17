@@ -170,7 +170,8 @@ export default {
         },
         {
           prop: "xkz",
-          label: "采矿许可证号"
+          label: "采矿许可证号",
+          width:120
         },
         {
           prop: "fzjg",
@@ -178,7 +179,8 @@ export default {
         },
         {
           prop: "yxqx",
-          label: "矿山有效期限"
+          label: "矿山有效期限",
+          width:120
         },
 
         {
@@ -191,11 +193,13 @@ export default {
         },
         {
           prop: "scgm",
-          label: "生产规模（万吨/年）"
+          label: "生产规模（万吨/年）",
+          width:153
         },
         {
           prop: "area",
-          label: "矿区面积（km²）"
+          label: "矿区面积（km²）",
+          width:130
         },
         {
           prop: "kczt",
