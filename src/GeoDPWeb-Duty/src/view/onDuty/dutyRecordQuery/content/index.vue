@@ -182,6 +182,7 @@ export default {
       });
     },
     dutyTypeChange(val) {
+      this.pagination.pageIndex = 1;
       this.options.loading = true;
       let params = {
         key: val,
