@@ -25,13 +25,11 @@ Vue.use(ElementUI, {
 });
 Vue.component("svg-icon", svgIcon); // 注册svgIcon为全局组件
 
-store.dispatch("session/init").then(() => {
-  new Vue({
-    render: h => h(App),
-    i18n,
-    router,
-    store,
-    created() {},
-    mounted() {}
-  }).$mount("#app");
-});
+new Vue({
+  render: h => h(App),
+  i18n,
+  router,
+  store,
+  created() {},
+  mounted() {}
+}).$mount("#app");

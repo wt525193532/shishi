@@ -12,6 +12,12 @@ const constantRoutes = [
     }
   },
   {
+    path: "/500",
+    name: "errorPage-500",
+    component: () => import("@/view/errorPage/500"),
+    hidden: true
+  },
+  {
     path: "/404",
     name: "errorPage-404",
     component: () => import("@/view/errorPage/404"),
