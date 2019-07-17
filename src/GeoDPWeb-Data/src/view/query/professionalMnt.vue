@@ -189,15 +189,18 @@ export default {
         },
         {
           prop: "site_Name",
-          label: "隐患点名称"
+          label: "隐患点名称",
+          width:100
         },
         {
           prop: "code",
-          label: "隐患点编号"
+          label: "隐患点编号",
+          width:100
         },
         {
           prop: "disasterTypeCode",
           label: "隐患点类型",
+          width:100,
           render: row => (
             <span>
               {this.$t(`codes.DisasterType[${row.disasterTypeCode}]`)}
@@ -228,7 +231,8 @@ export default {
         },
         {
           prop: "mntSiteCode",
-          label: "监测点编号"
+          label: "监测点编号",
+          width:100
         },
         {
           prop: "alarmThreshold",
@@ -236,7 +240,8 @@ export default {
         },
         {
           prop: "alarmThresholdUnit",
-          label: "预警阈值单位"
+          label: "预警阈值单位",
+          width:120
         },
         {
           prop: "fillYear",

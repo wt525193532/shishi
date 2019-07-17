@@ -174,15 +174,18 @@ export default {
         },
         {
           prop: "site_Name",
-          label: "隐患点名称"
+          label: "隐患点名称",
+          width:100
         },
         {
           prop: "code",
-          label: "隐患点编号"
+          label: "隐患点编号",
+          width:100
         },
         {
           prop: "disasterTypeCode",
           label: "隐患点类型",
+          width:100,
           render: row => (
             <span>
               {this.$t(`codes.DisasterType[${row.disasterTypeCode}]`)}
@@ -205,6 +208,7 @@ export default {
         {
           prop: "mntMethods",
           label: "简易监测方法",
+          width:120,
           render: row => {
             let transArr = row.mntMethods.map(item =>
               this.$t(`codes.SimpleMntMethod["${item}"]`)
@@ -214,11 +218,13 @@ export default {
         },
         {
           prop: "landslideDeviceNumber",
-          label: "滑坡伸缩仪套数"
+          label: "滑坡伸缩仪套数",
+          width:120
         },
         {
           prop: "crackDeviceNumber",
-          label: "裂缝报警器套数"
+          label: "裂缝报警器套数",
+          width:120
         },
         {
           type: "func",

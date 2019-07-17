@@ -173,15 +173,18 @@ export default {
         },
         {
           prop: "site_Name",
-          label: "隐患点名称"
+          label: "隐患点名称",
+          width:100
         },
         {
           prop: "code",
-          label: "隐患点编号"
+          label: "隐患点编号",
+          width:100
         },
         {
           prop: "disasterTypeCode",
           label: "隐患点类型",
+          width:100,
           render: row => (
             <span>
               {this.$t(`codes.DisasterType[${row.disasterTypeCode}]`)}
@@ -203,15 +206,18 @@ export default {
         },
         {
           prop: "rescueCoName",
-          label: "抢排险单位名称"
+          label: "抢排险单位名称",
+          width: 120
         },
         {
           prop: "safetyCoName",
-          label: "治安保卫单位名称"
+          label: "治安保卫单位名称",
+          width:140
         },
         {
           prop: "medicalCoName",
-          label: "医疗救护单位名称"
+          label: "医疗救护单位名称",
+          width:140
         },
         {
           type: "func",
