@@ -123,7 +123,6 @@ const app = {
     },
     async getUserConfig({ commit }) {
       let rep = await getUserConfig();
-
       return rep;
     }
   },

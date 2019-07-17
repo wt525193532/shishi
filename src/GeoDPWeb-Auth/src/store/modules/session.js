@@ -36,11 +36,14 @@ const session = {
   actions: {
     async init({ commit }) {
       const response = await getUserConfig();
-      const session = response.data.result;
-      util.abp = util.extend(true, util.abp, session);
-      commit("SET_SESSION", session);
-      var menus = session.nav.menus.MainMenu.items;
-      commit("app/SET_MENU_LIST", menus, { root: true });
+      if (response.data) {
+        const session = response.data.result;
+        util.abp = util.extend(true, util.abp, session);
+        commit("SET_SESSION", session);
+        var menus = session.nav.menus.MainMenu.items;
+        commit("app/SET_MENU_LIST", menus, { root: true });
+      }
+      return response;
     }
   }
 };
