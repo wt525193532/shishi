@@ -12,6 +12,7 @@ import relocation from "./relocation";
 import emergencyShelter from "./emergencyShelter";
 import heritageProtection from "./heritageProtection";
 import mineInformation from "./mineInformation";
+import governDataCollect from "./governDataCollect";
 export default {
   namespaced: true,
   modules: {
@@ -26,7 +27,8 @@ export default {
     relocation,
     emergencyShelter,
     heritageProtection,
-    mineInformation
+    mineInformation,
+    governDataCollect
   },
   state: {},
   mutations: {},

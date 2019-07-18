@@ -35,11 +35,13 @@
             </el-form-item>
 
             <el-form-item label="实施年度" prop="buildYear">
-              <el-date-picker
-                type="year"
-                placeholder="选择年度"
+              <el-input-number
+                :controls="false"
+                placeholder="请输入年度"
                 v-model="formData.buildYear"
-              ></el-date-picker>
+                :min="999"
+                :max="9999"
+              ></el-input-number>
             </el-form-item>
             <br />
             <el-form-item label="建设单位" prop="buildUnit.name">
@@ -242,9 +244,9 @@
       </div>
     </div>
     <div class="form-foot-btn" v-show="noBtn">
-      <el-button type="primary" @click="saveFormSub" :disabled="ownDisabled">{{
-        disabled === false ? "保存" : "返回"
-      }}</el-button>
+      <el-button type="primary" @click="saveFormSub" :disabled="ownDisabled">
+        {{ disabled === false ? "保存" : "返回" }}
+      </el-button>
     </div>
   </div>
 </template>
@@ -271,8 +273,14 @@ export default {
         features: [{ max: 3000, message: "长度在3000 个字符以内" }],
         structure: [{ max: 2000, message: "长度在2000 个字符以内" }],
         info: [{ max: 2000, message: "长度在2000 个字符以内" }],
+        buildYear: [
+          {
+            required: true,
+            trigger: "change",
+            message: "请选择实施年度"
+          }
+        ],
         budgetFunds: [{ type: "number" }],
-        finalAccounts: [{ type: "number" }],
         acceptanceUnit: [{ max: 200, message: "长度在200 个字符以内" }],
         acceptanceMainPersons: [{ max: 500, message: "长度在500 个字符以内" }],
         acceptanceOptions: [{ max: 1000, message: "长度在1000 个字符以内" }],

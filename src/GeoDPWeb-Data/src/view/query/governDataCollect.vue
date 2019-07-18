@@ -239,7 +239,7 @@ export default {
     },
     query() {
       this.$store
-        .dispatch("query/governDataCollectQuery", {
+        .dispatch("query/MineEngineerQuery", {
           ...this.queryForm,
           maxResultCount: this.pagination.pageSize,
           skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize

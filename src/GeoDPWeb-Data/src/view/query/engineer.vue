@@ -174,20 +174,22 @@ export default {
         {
           prop: "site_Name",
           label: "隐患点名称",
-          width:100
+          width: 100
         },
         {
           prop: "code",
           label: "隐患点编号",
-          width:100
+          width: 100
         },
         {
           prop: "disasterTypeCode",
           label: "隐患点类型",
-          width:100,
+          width: 100,
           render: row => (
             <span>
-              {this.$t(`codes.DisasterType[${row.disasterTypeCode}]`)}
+              {row.site_DisasterTypeCode
+                ? this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)
+                : "--"}
             </span>
           )
         },
@@ -196,7 +198,9 @@ export default {
           label: "灾害规模",
           render: row => (
             <span>
-              {this.$t(`enums.ScaleLevel[${row.disasterScaleLevel}]`)}
+              {row.site_DisasterScaleLevel
+                ? this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)
+                : "--"}
             </span>
           )
         },
@@ -207,7 +211,7 @@ export default {
         {
           prop: "projectName",
           label: "治理工程名称",
-          width:120
+          width: 120
         },
         {
           prop: "period",
@@ -216,17 +220,17 @@ export default {
         {
           prop: "mainTask",
           label: "工程主要建设内容",
-          width:140
+          width: 140
         },
         {
           prop: "regulatoryUnit",
           label: "项目监管单位",
-          width:120
+          width: 120
         },
         {
           prop: "buildUnit",
           label: "项目实施单位",
-          width:120
+          width: 120
         },
         {
           type: "func",
