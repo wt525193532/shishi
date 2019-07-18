@@ -4,22 +4,22 @@
   </div>
 </template>
 <script>
-import basicInfo from "./viewBasicInfo";
-import preventPlan from "./viewPreventPlan";
-import workCard from "./viewWorkCard";
-import riskCard from "./viewRiskCard";
-import emergencyInvestigation from "./viewEmergencyInvestigation";
-import professionalMnt from "./viewProfessionalMnt";
-import simpleMnt from "./viewSimpleMnt";
-import engineer from "./viewEngineer";
-import eliminateDanger from "./viewEliminateDanger";
-import relocation from "./viewRelocation";
-import emergencyShelter from "./viewEmergencyShelter";
-import training from "./viewTraining";
+import basicInfo from "../formViewId/viewBasicInfo";
+import preventPlan from "../formViewId/viewPreventPlan";
+import workCard from "../formViewId/viewWorkCard";
+import riskCard from "../formViewId/viewRiskCard";
+import emergencyInvestigation from "../formViewId/viewEmergencyInvestigation";
+import professionalMnt from "../formViewId/viewProfessionalMnt";
+import simpleMnt from "../formViewId/viewSimpleMnt";
+import engineer from "../formViewId/viewEngineer";
+import eliminateDanger from "../formViewId/viewEliminateDanger";
+import relocation from "../formViewId/viewRelocation";
+import emergencyShelter from "../formViewId/viewEmergencyShelter";
+import training from "../formViewId/viewTraining";
 import riskAversion from "./viewRiskAversion";
-import HeritageProtection from "@/view/components/formViewId/viewHeritageProtection";
-import GovernDataCollect from "@/view/components/formViewId/viewGovernDataCollect.vue";
-import MineInfo from "@/view/components/formViewId/viewMineInformation";
+import HeritageProtection from "../formViewId/viewHeritageProtection";
+import MineEngineer from "../formViewId/viewGovernDataCollect";
+import MineInfo from "../formViewId/viewMineInformation";
 export default {
   name: "Detail",
   props: {
@@ -41,7 +41,7 @@ export default {
     riskAversion,
     MineInfo,
     HeritageProtection,
-    GovernDataCollect
+    MineEngineer
   },
   computed: {
     bodyLoading() {

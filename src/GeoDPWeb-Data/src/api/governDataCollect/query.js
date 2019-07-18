@@ -4,13 +4,7 @@ export default {
   //查询全部信息
   getById: id => {
     var res = request.get(
-      `./api/services/dr/MineEngineerQuery/GetById/?id=${id}`
-    ); // 查询基本信息（按隐患点id）
-    return res;
-  },
-  getByCode: code => {
-    var res = request.get(
-      `./api/services/dr/MineEngineerQuery/GetByCode/?code=${code}`
+      `./api/services/dr/MineEngineerQuery/GetById?id=${id}`
     ); // 查询基本信息（按隐患点id）
     return res;
   }

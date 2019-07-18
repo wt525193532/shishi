@@ -200,7 +200,9 @@ export default {
           label: "隐患点类型",
           render: row => (
             <span>
-              {this.$t(`codes.DisasterType[${row.disasterTypeCode}]`)}
+              {row.site_DisasterTypeCode
+                ? this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)
+                : "--"}
             </span>
           )
         },

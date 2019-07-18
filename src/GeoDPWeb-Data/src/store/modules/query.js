@@ -70,8 +70,8 @@ const query = {
       return res.data.result;
     },
     //矿山治理工程进展数据
-    async governDataCollectQuery({ commit }, data) {
-      const res = await api.governDataCollectQuery(data);
+    async MineEngineerQuery({ commit }, data) {
+      const res = await api.MineEngineerQuery(data);
       return res.data.result;
     },
     //矿山基本信息

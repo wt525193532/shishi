@@ -403,6 +403,7 @@ export default {
       this.query();
     },
     query() {
+      // let sta = parseInt(this.tab.activeName);
       let parmas = {
         status: [this.tab.activeName], // 审核状态
         key: this.queryForm.key, // 查询字段

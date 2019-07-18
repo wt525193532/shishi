@@ -254,11 +254,10 @@ export default {
         ],
         PreventionPlan: [
           {
-            prop: "isCanceled",
+            prop: "site_IsCanceled",
             label: "是否销号",
-            parent: "site",
             render: row => {
-              if (row.site.isCanceled) {
+              if (row.site_IsCanceled) {
                 return <el-tag type="success">已销号</el-tag>;
               } else {
                 return <el-tag type="warning">未销号</el-tag>;
@@ -266,8 +265,7 @@ export default {
             }
           },
           {
-            parent: "site",
-            prop: "name",
+            prop: "site_Name",
             label: "隐患点名称"
           },
           {
@@ -275,47 +273,40 @@ export default {
             label: "隐患点编号"
           },
           {
-            parent: "site",
-            prop: "disasterTypeCode",
+            prop: "site_DisasterTypeCode",
             label: "隐患点类型",
             render: row => (
               <span>
-                {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+                {this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)}
               </span>
             )
           },
           {
-            parent: "site",
-            prop: "disasterScaleLevel",
+            prop: "site_DisasterScaleLevel",
             label: "灾害规模",
             render: row => (
               <span>
-                {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
+                {this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)}
               </span>
             )
           },
           {
-            parent: "site",
-            prop: "location",
+            prop: "site_Location",
             label: "地理位置"
           },
           {
-            parent: "site",
-            prop: "threatPeople",
+            prop: "site_ThreatPeople",
             label: "威胁人数"
           },
           {
-            parent: "site",
-            prop: "threatHouses",
+            prop: "site_ThreatHouses",
             label: "威胁户数"
           },
           {
-            parent: "site",
-            prop: "threatProperty",
+            prop: "site_ThreatProperty",
             label: "威胁财产"
           },
           {
-            parent: "site",
             prop: "preventOwnerName",
             label: "防灾责任人",
             render: r => (
@@ -332,19 +323,18 @@ export default {
         ],
         WorkCard: [
           {
-            prop: "isCanceled",
+            prop: "site_IsCanceled",
             label: "是否销号",
             render: row => {
-              if (row.site.isCanceled) {
+              if (row.site_IsCanceled) {
                 return <el-tag type="success">已销号</el-tag>;
               } else {
-                return <el-tag type="success">未销号</el-tag>;
+                return <el-tag type="warning">未销号</el-tag>;
               }
             }
           },
           {
-            parent: "site",
-            prop: "name",
+            prop: "site_Name",
             label: "隐患点名称"
           },
           {
@@ -352,49 +342,45 @@ export default {
             label: "隐患点编号"
           },
           {
-            parent: "site",
-            prop: "disasterTypeCode",
+            prop: "site_DisasterTypeCode",
             label: "隐患点类型",
             render: row => (
               <span>
-                {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+                {this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)}
               </span>
             )
           },
           {
-            parent: "site",
-            prop: "disasterScaleLevel",
+            prop: "site_DisasterScaleLevel",
             label: "灾害规模",
             render: row => (
               <span>
-                {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
+                {this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)}
               </span>
             )
           },
           {
-            parent: "site",
-            prop: "location",
+            prop: "site_Location",
             label: "地理位置"
           },
           {
-            parent: "site",
-            prop: "threatPeople",
+            prop: "site_ThreatPeople",
             label: "威胁人数"
           },
           {
-            parent: "site",
-            prop: "threatHouses",
+            prop: "site_ThreatHouses",
             label: "威胁户数"
           },
           {
-            parent: "site",
-            prop: "threatProperty",
+            prop: "site_ThreatProperty",
             label: "威胁财产"
           },
           {
-            parent: "site",
             prop: "preventOwnerName",
-            label: "防灾责任人"
+            label: "防灾责任人",
+            render: r => (
+              <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
+            )
           },
 
           {
@@ -406,19 +392,18 @@ export default {
         ],
         RiskCard: [
           {
-            prop: "isCanceled",
+            prop: "site_IsCanceled",
             label: "是否销号",
             render: row => {
-              if (row.site.isCanceled) {
+              if (row.site_IsCanceled) {
                 return <el-tag type="success">已销号</el-tag>;
               } else {
-                return <el-tag type="success">未销号</el-tag>;
+                return <el-tag type="warning">未销号</el-tag>;
               }
             }
           },
           {
-            parent: "site",
-            prop: "name",
+            prop: "site_Name",
             label: "隐患点名称"
           },
           {
@@ -426,53 +411,38 @@ export default {
             label: "隐患点编号"
           },
           {
-            parent: "site",
-            prop: "disasterTypeCode",
+            prop: "site_DisasterTypeCode",
             label: "隐患点类型",
             render: row => (
               <span>
-                {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+                {this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)}
               </span>
             )
-            // trans: "disasterTypeCode"
           },
           {
-            parent: "site",
-            prop: "disasterScaleLevel",
+            prop: "site_DisasterScaleLevel",
             label: "灾害规模",
             render: row => (
               <span>
-                {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
+                {this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)}
               </span>
             )
           },
           {
-            parent: "site",
-            prop: "location",
+            prop: "site_Location",
             label: "地理位置"
           },
           {
-            parent: "site",
             prop: "houseHoldName",
             label: "户主"
           },
           {
-            parent: "site",
             prop: "familyMemberCount",
             label: "家庭人数"
           },
           {
             prop: "houseType",
             label: "房屋类型"
-          },
-          {
-            prop: "forcastSignal",
-            label: "预警信号",
-            render: row => (
-              <span>
-                {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
-              </span>
-            )
           },
           {
             type: "func",
@@ -483,19 +453,18 @@ export default {
         ],
         ProfessionalMnt: [
           {
-            prop: "isCanceled",
+            prop: "site_IsCanceled",
             label: "是否销号",
             render: row => {
-              if (row.site.isCanceled) {
+              if (row.site_IsCanceled) {
                 return <el-tag type="success">已销号</el-tag>;
               } else {
-                return <el-tag type="success">未销号</el-tag>;
+                return <el-tag type="warning">未销号</el-tag>;
               }
             }
           },
           {
-            parent: "site",
-            prop: "name",
+            prop: "site_Name",
             label: "隐患点名称"
           },
           {
@@ -503,31 +472,33 @@ export default {
             label: "隐患点编号"
           },
           {
-            parent: "site",
-            prop: "disasterTypeCode",
+            prop: "site_DisasterTypeCode",
             label: "隐患点类型",
             render: row => (
               <span>
-                {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+                {this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)}
               </span>
             )
           },
           {
-            parent: "site",
-            prop: "location",
+            prop: "site_Location",
             label: "地理位置"
           },
           {
             prop: "mntTypeCode",
-            label: "监测类型"
+            label: "监测类型",
+            render: row => (
+              <span>
+                {this.$t("codes.ProfessionalMntType." + row.mntTypeCode)}
+              </span>
+            )
           },
           {
             prop: "mntSiteCode",
             label: "监测点编号"
           },
           {
-            parent: "site",
-            prop: "location",
+            prop: "alarmThreshold",
             label: "预警阈值"
           },
           {
@@ -547,44 +518,48 @@ export default {
         ],
         SimpleMnt: [
           {
-            prop: "isCanceled",
+            prop: "site_IsCanceled",
             label: "是否销号",
             render: row => {
-              if (row.site.isCanceled) {
+              if (row.site_IsCanceled) {
                 return <el-tag type="success">已销号</el-tag>;
               } else {
-                return <el-tag type="success">未销号</el-tag>;
+                return <el-tag type="warning">未销号</el-tag>;
               }
             }
           },
           {
-            parent: "site",
-            prop: "name",
+            prop: "site_Name",
             label: "隐患点名称"
           },
           {
-            parent: "site",
-            prop: "disasterTypeCode",
+            prop: "code",
+            label: "隐患点编号"
+          },
+          {
+            prop: "site_DisasterTypeCode",
             label: "隐患点类型",
             render: row => (
               <span>
-                {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+                {this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)}
               </span>
             )
           },
           {
-            parent: "site",
-            prop: "location",
+            prop: "site_Location",
             label: "地理位置"
           },
           {
             prop: "mntMethods",
             label: "简易监测方法",
             render: row => {
-              let transArr = row.mntMethods.map(item =>
-                this.$t(`codes.SimpleMntMethod["${item}"]`)
-              );
-              return <span>{transArr.join("、")}</span>;
+              if (row.mntMethods) {
+                let transArr = row.mntMethods.map(item =>
+                  this.$t(`codes.SimpleMntMethod["${item}"]`)
+                );
+                return <span>{transArr.join("、")}</span>;
+              }
+              return <span>--</span>;
             }
           },
           {
@@ -604,19 +579,18 @@ export default {
         ],
         EngineerInfo: [
           {
-            prop: "isCanceled",
+            prop: "site_IsCanceled",
             label: "是否销号",
             render: row => {
-              if (row.site.isCanceled) {
+              if (row.site_IsCanceled) {
                 return <el-tag type="success">已销号</el-tag>;
               } else {
-                return <el-tag type="success">未销号</el-tag>;
+                return <el-tag type="warning">未销号</el-tag>;
               }
             }
           },
           {
-            parent: "site",
-            prop: "name",
+            prop: "site_Name",
             label: "隐患点名称"
           },
           {
@@ -624,18 +598,16 @@ export default {
             label: "隐患点编号"
           },
           {
-            parent: "site",
-            prop: "disasterTypeCode",
+            prop: "site_DisasterTypeCode",
             label: "隐患点类型",
             render: row => (
               <span>
-                {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+                {this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)}
               </span>
             )
           },
           {
-            parent: "site",
-            prop: "location",
+            prop: "site_Location",
             label: "地理位置"
           },
           {
@@ -693,19 +665,18 @@ export default {
         ],
         RelocationInfo: [
           {
-            prop: "isCanceled",
+            prop: "site_IsCanceled",
             label: "是否销号",
             render: row => {
-              if (row.site.isCanceled) {
+              if (row.site_IsCanceled) {
                 return <el-tag type="success">已销号</el-tag>;
               } else {
-                return <el-tag type="success">未销号</el-tag>;
+                return <el-tag type="warning">未销号</el-tag>;
               }
             }
           },
           {
-            parent: "site",
-            prop: "name",
+            prop: "site_Name",
             label: "隐患点名称"
           },
           {
@@ -713,12 +684,11 @@ export default {
             label: "隐患点编号"
           },
           {
-            parent: "site",
-            prop: "disasterTypeCode",
+            prop: "site_DisasterTypeCode",
             label: "隐患点类型",
             render: row => (
               <span>
-                {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+                {this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)}
               </span>
             )
           },
@@ -777,8 +747,7 @@ export default {
             }
           },
           {
-            parent: "site",
-            prop: "name",
+            prop: "site_Name",
             label: "隐患点名称"
           },
           {
@@ -791,7 +760,7 @@ export default {
             label: "隐患点类型",
             render: row => (
               <span>
-                {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+                {this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)}
               </span>
             )
           },
@@ -842,10 +811,10 @@ export default {
         ],
         EliminateInfo: [
           {
-            prop: "isCanceled",
-            label: "是否销号",
+            prop: "site_IsCanceled",
+            label: "是否销号1",
             render: row => {
-              if (row.site.isCanceled) {
+              if (row.site_IsCanceled) {
                 return <el-tag type="success">已销号</el-tag>;
               } else {
                 return <el-tag type="success">未销号</el-tag>;
@@ -853,8 +822,7 @@ export default {
             }
           },
           {
-            parent: "site",
-            prop: "name",
+            prop: "site_Name",
             label: "隐患点名称"
           },
           {
@@ -862,12 +830,11 @@ export default {
             label: "隐患点编号"
           },
           {
-            parent: "site",
-            prop: "disasterTypeCode",
+            prop: "site_DisasterTypeCode",
             label: "隐患点类型",
             render: row => (
               <span>
-                {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
+                {this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)}
               </span>
             )
           },
@@ -876,23 +843,19 @@ export default {
             label: "实施年度"
           },
           {
-            parent: "buildUnit",
-            prop: "name",
+            prop: "buildUnitName",
             label: "建设单位"
           },
           {
-            parent: "surveyUnit",
-            prop: "name",
+            prop: "surveyUnitName",
             label: "勘察单位"
           },
           {
-            parent: "designUnit",
-            prop: "name",
+            prop: "designUnitName",
             label: "设计单位"
           },
           {
-            parent: "constructionUnit",
-            prop: "name",
+            prop: "constructionUnitName",
             label: "施工单位"
           },
           {
@@ -902,7 +865,7 @@ export default {
             fixed: "right"
           }
         ],
-        GovernDataCollect: [
+        MineEngineer: [
           {
             prop: "projectName",
             label: "项目名称"
@@ -1016,6 +979,42 @@ export default {
             width: 250,
             fixed: "right"
           }
+        ],
+        Training: [
+          {
+            prop: "countryName",
+            label: "区县"
+          },
+          {
+            prop: "trainTime",
+            label: "培训课时"
+          },
+          {
+            prop: "trainPeoCount",
+            label: "总参训人数"
+          },
+          {
+            prop: "prevenName",
+            label: "防治负责人"
+          },
+          {
+            prop: "disasterName",
+            label: "防灾负责人"
+          },
+          {
+            prop: "propagandaCount",
+            label: "宣传场次"
+          },
+          {
+            prop: "propagandaPeople",
+            label: "宣传人数"
+          },
+          {
+            type: "func",
+            label: "操作",
+            width: 180,
+            fixed: "right"
+          }
         ]
       },
 
@@ -1059,7 +1058,8 @@ export default {
         EliminateInfo: "eliminateDanger",
         HeritageProtection: "HeritageProtection",
         MineInfo: "MineInfo",
-        GovernDataCollect: "GovernDataCollect"
+        MineEngineer: "MineEngineer",
+        Training: "training"
       }
     };
   },
@@ -1076,6 +1076,7 @@ export default {
   created() {
     this.tab.activeName = sessionStorage.approvalActiveName || "1";
     this.query();
+    console.log(this.$i18n);
   },
   methods: {
     handleClose() {

@@ -85,9 +85,9 @@ export default {
   },
   mounted() {
     this.$store
-      .dispatch("report/governDataCollect/getById", this.$route.query.id)
+      .dispatch("querypage/governDataCollect/getById", this.$route.query.id)
       .then(res => {
-        if (res.data.success) {
+        if (res.data) {
           this.formData = res.data.result;
         }
       });

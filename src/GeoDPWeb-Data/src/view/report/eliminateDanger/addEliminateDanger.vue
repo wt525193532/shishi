@@ -20,9 +20,9 @@ export default {
       disabled: false,
       formData: {
         provinceTaskNumber: "",
-        buildYear: 0,
+        buildYear: null,
         isPovertyProject: true,
-        povertyYear: 0,
+        povertyYear: null,
         buildTask: "",
         mainMeasures: "",
         features: "",
