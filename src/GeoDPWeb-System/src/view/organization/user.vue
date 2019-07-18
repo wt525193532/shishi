@@ -149,6 +149,11 @@ export default {
       }
     };
   },
+  computed: {
+    user() {
+      return this.$store.state.session.user;
+    }
+  },
   methods: {
     queryAllUserBtn() {
       this.pagination.pageIndex = 1;
@@ -157,6 +162,8 @@ export default {
     queryAllUser() {
       this.options.loading = true;
       let params = {
+        workspaceId: this.user.workspaceId,
+        departmentId: this.user.departmentId,
         key: this.queryForm.key,
         IsActive: this.queryForm.IsActive,
         SkipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,

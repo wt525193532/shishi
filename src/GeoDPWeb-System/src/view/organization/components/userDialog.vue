@@ -101,7 +101,7 @@ export default {
       userForm: {
         userName: "",
         name: "",
-        emailAddress: "",
+        emailAddress: null,
         isActive: true,
         roleNames: [],
         password: "",
@@ -158,6 +158,11 @@ export default {
     this.getWorkspaceList();
     this.getAllRole();
   },
+  computed: {
+    adminCode() {
+      return this.$store.state.session.administrative.adminCode;
+    }
+  },
   methods: {
     save() {
       this.$refs.userForm.validate(valid => {
@@ -195,7 +200,7 @@ export default {
     },
     getWorkspaceList() {
       this.$store
-        .dispatch("organizationManage/workspace/getAllByCode")
+        .dispatch("organizationManage/workspace/getAllByCode", this.adminCode)
         .then(res => {
           this.workspaceList = res;
         });
@@ -209,7 +214,7 @@ export default {
       this.userForm = {
         userName: "",
         name: "",
-        emailAddress: "",
+        emailAddress: null,
         isActive: null,
         roleNames: [],
         password: "",
