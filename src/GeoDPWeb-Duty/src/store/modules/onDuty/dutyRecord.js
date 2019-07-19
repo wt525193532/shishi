@@ -6,40 +6,40 @@ export default {
   state: {},
   mutations: {},
   actions: {
-    async create ( { commit }, parms ) {
-      parms.attachments.forEach( ( item, index ) => {
+    async create({ commit }, parms) {
+      parms.attachments.forEach((item, index) => {
         delete parms.attachments[index].uid;
         delete parms.attachments[index].status;
-      } );
-      const res = await api.create( parms );
+      });
+      const res = await api.create(parms);
       return res;
     },
-    async update ( { commit }, parms ) {
-      const res = await api.update( parms );
+    async update({ commit }, parms) {
+      const res = await api.update(parms);
       return res;
     },
-    async getAllCurrent ( { commit }, data ) {
-      const res = await api.getAllCurrent( data );
+    async getAllCurrent({ commit }, data) {
+      const res = await api.getAllCurrent(data);
       return res.data.result;
     },
-    async getAll ( { commit }, data ) {
-      const res = await api.getAll( data );
+    async getAll({ commit }, data) {
+      const res = await api.getAll(data);
       return res.data.result;
     },
-    async getAllByKey ( { commit }, data ) {
-      const res = await api.getAllByKey( data );
+    async getAllByKey({ commit }, data) {
+      const res = await api.getAllByKey(data);
       return res.data.result;
     },
-    async exportToWord ( { commit }, data ) {
-      const res = await api.exportToWord( data );
+    async exportToWord({ commit }, data) {
+      const res = await api.exportToWord(data);
       return res.data;
     },
-    async delRecord ( { commit }, data ) {
+    async delRecord({ commit }, data) {
       let recordList = { ids: [] };
-      data.forEach( item => {
-        recordList.ids.push( item.id );
-      } );
-      const res = await api.delRecord( recordList );
+      data.forEach(item => {
+        recordList.ids.push(item.id);
+      });
+      const res = await api.delRecord(recordList);
       return res.data.result;
     }
   }
