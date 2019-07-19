@@ -24,8 +24,7 @@
             type="datetime"
             style="min-width: 300px;"
             placeholder="请选择日期时间"
-          >
-          </el-date-picker>
+          ></el-date-picker>
         </el-form-item>
         <el-form-item label="类型">
           <el-select
@@ -39,8 +38,7 @@
               :key="item.label"
               :label="item.label"
               :value="item.label"
-            >
-            </el-option>
+            ></el-option>
           </el-select>
           <!-- <div>
             <el-tag
@@ -73,7 +71,7 @@
                 >+ 新增关键词</el-button
               >
             </span>
-          </div> -->
+          </div>-->
         </el-form-item>
         <div>
           <el-form-item class="gl-form-item" prop="content" label="记录内容">
@@ -143,9 +141,9 @@ export default {
   computed: {
     fileOption() {
       return {
-        tag: ["附件"],
         upload: this.title != "查看记录",
-        accept: ""
+        accept: "",
+        tag: ["附件"]
       };
     }
   },

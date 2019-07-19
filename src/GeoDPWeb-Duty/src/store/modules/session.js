@@ -37,8 +37,6 @@ const session = {
     async init({ commit }) {
       const response = await getUserConfig();
       const session = response.data.result;
-      console.log(session, "sisssss");
-
       util.abp = util.extend(true, util.abp, session);
       commit("SET_SESSION", session);
       var menus = session.nav.menus.MainMenu.items;

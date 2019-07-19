@@ -172,6 +172,7 @@
             <comAttachment
               v-model="onDotyInfo.takeOverInfo.attachments"
               :fileOption="fileOption"
+              ref="comAttachment"
             />
           </el-form>
         </div>
@@ -279,6 +280,9 @@ export default {
       }
     };
   },
+  // created() {
+  //   console.log(this.fileOption);
+  // },
   computed: {
     fileOption() {
       return {
@@ -288,7 +292,7 @@ export default {
       };
     }
   },
-  mounted() {
+  created() {
     this.$store
       .dispatch("dutyManage/schedueManage/getCurrent")
       // eslint-disable-next-line no-unused-vars

@@ -30,6 +30,10 @@ export default {
       const res = await api.getAllByKey(data);
       return res.data.result;
     },
+    async exportToWord({ commit }, data) {
+      const res = await api.exportToWord(data);
+      return res.data;
+    },
     async delRecord({ commit }, data) {
       let recordList = { ids: [] };
       data.forEach(item => {

@@ -40,8 +40,12 @@
     <div class="gl-content-item">
       <div class="gl-btn-row">
         <span class="gl-second-title">值班记录信息</span>
-        <div class="gl-btnList" v-if="isShowDel">
+        <div class="gl-btnList">
+          <el-button size="small" icon="el-icon-download" @click="exportRecord"
+            >导出记录</el-button
+          >
           <el-button
+            v-if="isShowDel"
             size="small"
             type="danger"
             icon="el-icon-delete"
@@ -68,13 +72,16 @@
       </div>
     </div>
     <RecordInfoDialog ref="RecordInfoDialog"></RecordInfoDialog>
+    <exportDialog ref="exportDialog"></exportDialog>
   </div>
 </template>
 <script>
 import RecordInfoDialog from "../../dutyRecord/content/dutyRecordDialog";
+import exportDialog from "./exportDialog";
 export default {
   components: {
-    RecordInfoDialog
+    RecordInfoDialog,
+    exportDialog
   },
   data() {
     return {
@@ -142,7 +149,7 @@ export default {
         pageSize: 10
       },
       options: {
-        mutiSelect: this.isShowDel ? true : false,
+        mutiSelect: true,
         index: true, // 显示序号， 多选则 mutiSelect
         loading: false, // 表格动画
         initTable: true // 是否一挂载就加载数据
@@ -150,6 +157,13 @@ export default {
       },
       recordList: []
     };
+  },
+  mounted() {
+    if (!this.isShowDel) {
+      this.options.mutiSelect = false;
+    } else {
+      this.options.mutiSelect = true;
+    }
   },
   computed: {
     isShowDel() {
@@ -162,6 +176,10 @@ export default {
     // 查看记录
     check(row) {
       this.$refs.RecordInfoDialog.openViewDutyRecord(row);
+    },
+    // 导出记录
+    exportRecord() {
+      this.$refs.exportDialog.open();
     },
     queryBtn() {
       this.pagination.pageIndex = 1;
