@@ -208,15 +208,15 @@ export default {
           label: "地理位置"
         },
         {
-          prop: "threatPeople",
+          prop: "site_ThreatPeople",
           label: "威胁人数"
         },
         {
-          prop: "threatHouses",
+          prop: "site_ThreatHouses",
           label: "威胁户数"
         },
         {
-          prop: "threatProperty",
+          prop: "site_ThreatProperty",
           label: "威胁财产"
         },
         {
