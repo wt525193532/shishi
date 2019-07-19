@@ -228,6 +228,7 @@ export default {
 .file-box {
   overflow: hidden;
   .upload-pic {
+    display: inline;
     .el-upload {
       .el-icon-plus {
         width: 148px;
