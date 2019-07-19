@@ -1076,6 +1076,7 @@ export default {
   created() {
     this.tab.activeName = sessionStorage.approvalActiveName || "1";
     this.query();
+    console.log(this.$i18n);
   },
   methods: {
     handleClose() {

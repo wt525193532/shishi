@@ -1,31 +1,13 @@
 <template>
   <div>
     <div class="gl-content-item">
-      <el-form
-        label-width="110px"
-        label-suffix="："
-        :inline="true"
-        size="medium"
-      >
+      <el-form label-width="110px" label-suffix="：" :inline="true" size="medium">
         <el-form-item class="gl-form-item" label="关键字">
-          <el-input
-            v-model="queryData.key"
-            placeholder="请输入类型、内容"
-          ></el-input>
+          <el-input v-model="queryData.key" placeholder="请输入类型、内容"></el-input>
         </el-form-item>
-        <el-button type="primary" @click="queryBtn" size="medium"
-          >查询</el-button
-        >
-        <el-form-item
-          class="gl-form-item"
-          label="值班记录类型"
-          label-width="180px"
-        >
-          <el-select
-            v-model="dutyType"
-            @change="dutyTypeChange"
-            placeholder="请选择类型"
-          >
+        <el-button type="primary" @click="queryBtn" size="medium">查询</el-button>
+        <el-form-item class="gl-form-item" label="值班记录类型" label-width="180px">
+          <el-select v-model="dutyType" @change="dutyTypeChange" placeholder="请选择类型">
             <el-option
               v-for="item in dutyTypes"
               :key="item.label"
@@ -41,17 +23,14 @@
       <div class="gl-btn-row">
         <span class="gl-second-title">值班记录信息</span>
         <div class="gl-btnList">
-          <el-button size="small" icon="el-icon-download" @click="exportRecord"
-            >导出记录</el-button
-          >
+          <el-button size="small" icon="el-icon-download" @click="exportRecord">导出记录</el-button>
           <el-button
             v-if="isShowDel"
             size="small"
             type="danger"
             icon="el-icon-delete"
             @click="delRecord"
-            >删除记录</el-button
-          >
+          >删除记录</el-button>
         </div>
       </div>
       <div>
@@ -64,15 +43,14 @@
           :handleSelectionChange="handleSelectionChange"
         >
           <template slot="func" slot-scope="scope">
-            <el-button size="mini" icon="el-icon-view" @click="check(scope.row)"
-              >浏览</el-button
-            >
+            <el-button size="mini" icon="el-icon-view" @click="check(scope.row)">浏览</el-button>
           </template>
         </Com-Table>
       </div>
     </div>
-    <RecordInfoDialog ref="RecordInfoDialog"></RecordInfoDialog>
-    <exportDialog ref="exportDialog"></exportDialog>
+    <RecordInfoDialog ref="RecordInfoDialog"></RecordInfoDialog><<<<<<< HEAD
+    <exportDialog ref="exportDialog"></exportDialog>=======
+    >>>>>>> dev
   </div>
 </template>
 <script>
