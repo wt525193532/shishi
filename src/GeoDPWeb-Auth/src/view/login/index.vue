@@ -100,10 +100,11 @@ export default {
   data() {
     let validateCode = (rule, value, callback) => {
       let newCode = this.checkCode;
-      if (value !== newCode) {
-        if (newCode.toLocaleLowerCase() == value) {
-          callback(new Error("请区分大小写"));
-        }
+
+      if (value.toUpperCase() !== newCode) {
+        // if (newCode.toLocaleLowerCase() == value) {
+        //   callback(new Error("请区分大小写"));
+        // }
         callback(new Error("请输入正确的验证码"));
       } else {
         callback();
@@ -146,12 +147,14 @@ export default {
           this.load.tag = true;
           this.load.name = "正在登录...";
           let checkPassCode = this.user.verificationCode;
-          if (this.checkCode === checkPassCode) {
+          if (this.checkCode === checkPassCode.toUpperCase()) {
             let parmas = {
               userNameOrEmailAddress: this.user.admin,
               password: this.user.passWrod,
               rememberClient: false
             };
+            console.log(parmas);
+
             this.$store
               .dispatch("app/login", parmas)
               .then(res => {
