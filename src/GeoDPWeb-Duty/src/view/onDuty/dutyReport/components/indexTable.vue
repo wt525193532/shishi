@@ -12,7 +12,7 @@
                        @click="$router.push({query: {routeName: '新增灾情报送'}})">
               <i class="el-icon-plus el-icon--left"></i>
               新增灾情报送
-            </el-button> -->
+            </el-button>-->
             <slot></slot>
             <el-button
               size="medium"
@@ -22,10 +22,10 @@
               <i class="el-icon-upload2 el-icon--left"></i>
               上报
             </el-button>
-            <el-button size="medium" @click="exportRecord">
+            <!-- <el-button size="medium" @click="exportRecord">
               <i class="el-icon-download el-icon--left"></i>
               导出记录
-            </el-button>
+            </el-button>-->
           </div>
         </div>
         <Com-Table
@@ -36,12 +36,12 @@
           :handleSelectionChange="handleSelectionChange"
           :pagination="pagination"
         >
-          <template slot=""></template>
+          <template slot></template>
           <template slot="func" slot-scope="scope">
             <el-button size="mini" @click="check(scope.row)">
               <i class="el-icon-view el-icon--left"></i>
-              浏览</el-button
-            >
+              浏览
+            </el-button>
             <el-button
               type="primary"
               size="mini"
@@ -49,8 +49,8 @@
               v-if="fetchForm.defaultActive === '成都市灾情'"
             >
               <i class="el-icon-edit el-icon--left"></i>
-              编辑</el-button
-            >
+              编辑
+            </el-button>
             <el-button
               type="danger"
               size="mini"
@@ -58,13 +58,13 @@
               v-if="fetchForm.defaultActive === '成都市灾情'"
             >
               <i class="el-icon-delete el-icon--left"></i>
-              删除</el-button
-            >
+              删除
+            </el-button>
           </template>
         </Com-Table>
       </div>
     </div>
-    <detail v-else :detailSure="detailSure"> </detail>
+    <detail v-else :detailSure="detailSure"></detail>
   </div>
 </template>
 <script>
