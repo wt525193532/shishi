@@ -291,16 +291,16 @@ export default {
         accept: ""
       };
     }
+    // onDotyInfo() {
+    //   return this.$store.state.common.onDotyInfo;
+    // }
   },
   created() {
-    this.$store
-      .dispatch("dutyManage/schedueManage/getCurrent")
-      // eslint-disable-next-line no-unused-vars
-      .then(res => {
-        if (res) {
-          this.onDotyInfo = res;
-        }
-      });
+    this.$store.dispatch("dutyManage/schedueManage/getCurrent").then(res => {
+      if (res) {
+        this.onDotyInfo = res;
+      }
+    });
   }
 };
 </script>

@@ -26,7 +26,17 @@
       <div class="item"></div>
     </div>
     <div class="item-wrap right">
-      <div class="item" style="width: 50px;"></div>
+      <div class="item" style="width: 160px;">
+        <el-popover
+          class="on-record-info"
+          placement="bottom"
+          width="300"
+          trigger="hover"
+        >
+          <span>{{ "值班员：" + allPersons }}</span>
+          <el-button slot="reference">当班信息</el-button>
+        </el-popover>
+      </div>
       <el-tooltip
         :content="$t('navbar.message')"
         effect="dark"
@@ -82,6 +92,16 @@ export default {
         item.url.includes(nowRoter)
       );
       return activeItem.url;
+    },
+    allPersons() {
+      let info = this.$store.state.common.onDotyInfo;
+      let persons = info.mainDutyPerson.name;
+      if (info.otherDutyPersons.length > 0) {
+        info.otherDutyPersons.forEach(item => {
+          persons += " " + item.name;
+        });
+      }
+      return persons;
     }
   },
   methods: {
@@ -125,6 +145,11 @@ export default {
   .btn-message,
   .user-avatar {
     font-size: 0.75em; //24px
+  }
+  .on-record-info .el-button {
+    background-color: #063c78;
+    border: 0;
+    color: #fff;
   }
   .el-menu-item.is-active {
     background-color: #cee4fc !important;

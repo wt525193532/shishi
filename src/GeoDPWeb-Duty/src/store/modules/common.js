@@ -8,7 +8,98 @@ export default {
     allDutyLeaders: [], // 所有站值班领导
     allDutyDrivers: [], // 所有值班人员
     allTeams: [], // 所有应急处理组
-    allDutyOrders: [] // 所有班次,
+    allDutyOrders: [], // 所有班次,
+    onDotyInfo: {
+      startTime: null,
+      mainDutyPerson: {
+        type: 0,
+        userId: 0,
+        name: "",
+        phoneNumber: "",
+        emailAddress: "",
+        department: "",
+        id: 0
+      },
+      emergencyTeam: {
+        name: "",
+        phoneNumber: "",
+        members: [
+          {
+            type: 0,
+            userId: 0,
+            name: "",
+            phoneNumber: "",
+            emailAddress: "",
+            department: "",
+            id: 0
+          }
+        ],
+        id: 0
+      },
+      takeLeader: {
+        type: 0,
+        userId: 0,
+        name: "",
+        phoneNumber: "",
+        emailAddress: "",
+        department: "",
+        id: 0
+      },
+      dutyLeader: {
+        type: 0,
+        userId: 0,
+        name: "",
+        phoneNumber: "",
+        emailAddress: "",
+        department: "",
+        id: 0
+      },
+      dutyDriver: {
+        type: 0,
+        userId: 0,
+        name: "",
+        phoneNumber: "",
+        emailAddress: "",
+        department: "",
+        id: 0
+      },
+      otherDutyPersons: [
+        {
+          type: 0,
+          userId: 0,
+          name: "",
+          phoneNumber: "",
+          emailAddress: "",
+          department: "",
+          id: 0
+        }
+      ],
+      takeOverInfo: {
+        handOverPerson: {
+          type: 0,
+          userId: 0,
+          name: "",
+          phoneNumber: "",
+          emailAddress: "",
+          department: "",
+          id: 0
+        },
+        takeOverPerson: {
+          type: 0,
+          userId: 0,
+          name: "",
+          phoneNumber: "",
+          emailAddress: "",
+          department: "",
+          id: 0
+        },
+        content: "",
+        attachments: [],
+        handTime: null,
+        id: 0
+      },
+      id: 0
+    }
   },
   mutations: {
     allPeople(state, data) {
@@ -31,6 +122,9 @@ export default {
     },
     allDutyOrders(state, data) {
       state.allDutyOrders = data;
+    },
+    allOnDotyInfo(state, data) {
+      state.onDotyInfo = data;
     }
   },
   actions: {
@@ -87,6 +181,17 @@ export default {
     async getAllDutyOrders({ commit }) {
       let res = await api.getAll();
       commit("allDutyOrders", res.data.result);
+      return res.data.result;
+    },
+    // 获取当前排班信息
+    async getCurrent({ commit }) {
+      let res = await api.getCurrent();
+      for (let k in res.data.result) {
+        if (res.data.result[k] == null) {
+          res.data.result[k] = {};
+        }
+      }
+      commit("allOnDotyInfo", res.data.result);
       return res.data.result;
     }
   }

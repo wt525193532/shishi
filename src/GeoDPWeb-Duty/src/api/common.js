@@ -8,5 +8,8 @@ export default {
   },
   getAllTeam(parmas) {
     return request.post("./api/services/duty/DutyPerson/GetAllTeam", parmas); // 获取全部应急小组信息
+  },
+  getCurrent() {
+    return request.get("./api/services/duty/DutySchedule/GetCurrent"); // 获取当前排班信息
   }
 };
