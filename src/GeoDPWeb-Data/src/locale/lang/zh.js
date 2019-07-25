@@ -1,5 +1,5 @@
 export default {
-  appName: "地质环境基础数据填报系统",
+  appName: "地质灾害数据信息采集",
   route: {
     dashboard: "首页",
     icons: "图标",
