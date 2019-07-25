@@ -200,7 +200,7 @@ export default {
   },
   watch: {
     list(v) {
-      if (v.length > 0) {
+      if (v.length > 0 && v[0] != null) {
         let attch = this.tagClassification();
         this.attch.map(items => {
           for (let i = 0; i < attch.length; i++) {
