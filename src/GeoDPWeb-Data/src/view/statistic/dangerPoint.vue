@@ -4,7 +4,7 @@
       <el-form :inline="true" class="demo-form-inline" ref="form" :model="form">
         <el-form-item label="统计区域">
           <el-select
-            :disabled="administrative.level === 3"
+            :disabled="!administrative ? false : administrative.level === 3"
             v-model="form.areaCode"
             placeholder="请选择"
           >
@@ -349,9 +349,19 @@ export default {
     },
     async getAdministrative() {
       await this.$store
-        .dispatch("statistic/getAreaList", this.administrative.adminCode)
+        .dispatch(
+          "statistic/getAreaList",
+          !this.administrative ? "510100000000" : this.administrative.adminCode
+        )
         .then(res => {
-          if (this.administrative.level === 3) {
+          if (!this.administrative || this.administrative.level !== 3) {
+            this.areaList = res.data.result.children;
+            this.areaList.unshift({
+              displayName: res.data.result.displayName,
+              adminCode: res.data.result.adminCode
+            });
+            this.form.areaCode = res.data.result.adminCode;
+          } else {
             this.areaList = [
               {
                 adminCode: this.administrative.adminCode,
@@ -359,13 +369,6 @@ export default {
               }
             ];
             this.form.areaCode = this.administrative.adminCode;
-          } else {
-            this.areaList = res.data.result.children;
-            this.areaList.unshift({
-              displayName: res.data.result.displayName,
-              adminCode: res.data.result.adminCode
-            });
-            this.form.areaCode = res.data.result.adminCode;
           }
         });
       await this.fetch();

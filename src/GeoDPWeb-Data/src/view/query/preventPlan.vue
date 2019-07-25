@@ -244,7 +244,11 @@ export default {
         lazy: true,
         lazyLoad: (node, resolve) => {
           if (node.level == 0) {
-            resolve([this.user]);
+            if (!this.user) {
+              resolve([{ adminCode: "510100000000", displayName: "成都市" }]);
+            } else {
+              resolve([this.user]);
+            }
           } else if (node.level >= 1) {
             this.$store
               .dispatch("organization/getAdministrative", node.value)
