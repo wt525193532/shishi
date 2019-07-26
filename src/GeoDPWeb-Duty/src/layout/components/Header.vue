@@ -26,15 +26,20 @@
       <div class="item"></div>
     </div>
     <div class="item-wrap right">
-      <div class="item" style="width: 160px;">
+      <div class="item" style="width: 100px;">
         <el-popover
           class="on-record-info"
           placement="bottom"
-          width="300"
+          width="150"
           trigger="hover"
         >
-          <span>{{ "值班员：" + allPersons }}</span>
-          <el-button slot="reference">当班信息</el-button>
+          <div>{{ "值班人1：" + mainDutyPerson }}</div>
+          <div v-for="(item, index) in otherPersons" :key="index">
+            {{ "值班人" + (index + 2) + "：" + item.name }}
+          </div>
+          <el-button slot="reference">
+            <svg-icon name="jiaojieban" />&nbsp;当班信息
+          </el-button>
         </el-popover>
       </div>
       <el-tooltip
@@ -56,15 +61,15 @@
             <i class="el-icon-arrow-down"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="profile">
-              {{ $t("navbar.profile") }}
-            </el-dropdown-item>
-            <el-dropdown-item command="switch" divided>
-              {{ $t("navbar.switch") }}
-            </el-dropdown-item>
-            <el-dropdown-item command="logout">
-              {{ $t("navbar.logout") }}
-            </el-dropdown-item>
+            <el-dropdown-item command="profile">{{
+              $t("navbar.profile")
+            }}</el-dropdown-item>
+            <el-dropdown-item command="switch" divided>{{
+              $t("navbar.switch")
+            }}</el-dropdown-item>
+            <el-dropdown-item command="logout">{{
+              $t("navbar.logout")
+            }}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -93,15 +98,11 @@ export default {
       );
       return activeItem.url;
     },
-    allPersons() {
-      let info = this.$store.state.common.onDotyInfo;
-      let persons = info.mainDutyPerson.name;
-      if (info.otherDutyPersons.length > 0) {
-        info.otherDutyPersons.forEach(item => {
-          persons += " " + item.name;
-        });
-      }
-      return persons;
+    mainDutyPerson() {
+      return this.$store.state.common.onDotyInfo.mainDutyPerson.name;
+    },
+    otherPersons() {
+      return this.$store.state.common.onDotyInfo.otherDutyPersons;
     }
   },
   methods: {
