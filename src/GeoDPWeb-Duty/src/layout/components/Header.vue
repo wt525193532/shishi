@@ -3,7 +3,9 @@
     <div class="item-wrap left">
       <div class="sysname">
         {{ $t("appName") }}
-        <div class="location">{{ area.displayName || "[成都市]" }}</div>
+        <div class="location">
+          {{ area ? area.displayName || "[成都市]" : "[成都市]" }}
+        </div>
       </div>
       <el-menu
         background-color="#063c78"
@@ -61,15 +63,15 @@
             <i class="el-icon-arrow-down"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="profile">{{
-              $t("navbar.profile")
-            }}</el-dropdown-item>
-            <el-dropdown-item command="switch" divided>{{
-              $t("navbar.switch")
-            }}</el-dropdown-item>
-            <el-dropdown-item command="logout">{{
-              $t("navbar.logout")
-            }}</el-dropdown-item>
+            <el-dropdown-item command="profile">
+              {{ $t("navbar.profile") }}
+            </el-dropdown-item>
+            <el-dropdown-item command="switch" divided>
+              {{ $t("navbar.switch") }}
+            </el-dropdown-item>
+            <el-dropdown-item command="logout">
+              {{ $t("navbar.logout") }}
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
