@@ -3,9 +3,9 @@
  */
 var geodp = geodp || {};
 
-( function () {
+(function() {
   geodp.appconst = geodp.appconst || {
-    version: "1.1.0",
+    version: "1.1.1",
     userManagement: {
       defaultAdminUserName: "admin"
     },
@@ -21,4 +21,4 @@ var geodp = geodp || {};
     baseAPI: "http://cdyj-s00:8013",
     baseURL: "http://cdyj-s00:8010/auth/"
   };
-} )();
+})();
