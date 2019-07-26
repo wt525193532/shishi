@@ -3,7 +3,9 @@
     <div class="item-wrap left">
       <div class="sysname">
         {{ $t("appName") }}
-        <div class="location">{{ area.displayName || "[成都市]" }}</div>
+        <div class="location">
+          {{ area ? area.displayName || "成都市" : "成都市" }}
+        </div>
       </div>
       <el-menu
         background-color="#063c78"
