@@ -208,15 +208,15 @@ export default {
           label: "地理位置"
         },
         {
-          prop: "threatPeople",
+          prop: "site_ThreatPeople",
           label: "威胁人数"
         },
         {
-          prop: "threatHouses",
+          prop: "site_ThreatHouses",
           label: "威胁户数"
         },
         {
-          prop: "threatProperty",
+          prop: "site_ThreatProperty",
           label: "威胁财产"
         },
         {
@@ -244,7 +244,11 @@ export default {
         lazy: true,
         lazyLoad: (node, resolve) => {
           if (node.level == 0) {
-            resolve([this.user]);
+            if (!this.user) {
+              resolve([{ adminCode: "510100000000", displayName: "成都市" }]);
+            } else {
+              resolve([this.user]);
+            }
           } else if (node.level >= 1) {
             this.$store
               .dispatch("organization/getAdministrative", node.value)

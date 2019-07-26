@@ -172,6 +172,7 @@
             <comAttachment
               v-model="onDotyInfo.takeOverInfo.attachments"
               :fileOption="fileOption"
+              ref="comAttachment"
             />
           </el-form>
         </div>
@@ -279,6 +280,9 @@ export default {
       }
     };
   },
+  // created() {
+  //   console.log(this.fileOption);
+  // },
   computed: {
     fileOption() {
       return {
@@ -287,16 +291,16 @@ export default {
         accept: ""
       };
     }
+    // onDotyInfo() {
+    //   return this.$store.state.common.onDotyInfo;
+    // }
   },
-  mounted() {
-    this.$store
-      .dispatch("dutyManage/schedueManage/getCurrent")
-      // eslint-disable-next-line no-unused-vars
-      .then(res => {
-        if (res) {
-          this.onDotyInfo = res;
-        }
-      });
+  created() {
+    this.$store.dispatch("dutyManage/schedueManage/getCurrent").then(res => {
+      if (res) {
+        this.onDotyInfo = res;
+      }
+    });
   }
 };
 </script>

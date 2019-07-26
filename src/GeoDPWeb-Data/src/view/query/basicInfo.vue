@@ -78,7 +78,7 @@
               <el-option label="未销号" :value="false"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="审核状态" prop="status">
+          <el-form-item label="审核状态" prop="isApproval">
             <el-select
               v-model="queryForm.isApproval"
               clearable
@@ -175,7 +175,11 @@ export default {
       queryForm: {
         key: "",
         adminCode: "",
-        isApproval: null
+        isApproval: null,
+        disasterTypes: null,
+        isTransferred: null,
+        isProvincial: null,
+        isCanceled: null
       },
       pagination: {
         total: 0,
@@ -324,7 +328,11 @@ export default {
         lazy: true,
         lazyLoad: (node, resolve) => {
           if (node.level == 0) {
-            resolve([this.user]);
+            if (!this.user) {
+              resolve([{ adminCode: "510100000000", displayName: "成都市" }]);
+            } else {
+              resolve([this.user]);
+            }
           } else if (node.level >= 1) {
             this.$store
               .dispatch("organization/getAdministrative", node.value)

@@ -6,7 +6,7 @@
       <span class="system-header-position">
         |
         <span class="system-header-site">
-          {{ area.displayName || "[成都市]" }}
+          {{ area ? area.displayName || "成都市" : "成都市" }}
         </span>
       </span>
     </div>
@@ -14,7 +14,7 @@
       <span class="system-header-infospan">{{ nowDate }}</span>
       <span class="system-header-infospan">{{ nowTime }}</span>
       <span class="system-header-infospan">
-        <x-icon :icon="weatherIcon"></x-icon>12℃
+        <x-icon :icon="weatherIcon"></x-icon>22℃
       </span>
       <x-icon icon="icon-geodp-xaioxi"></x-icon>
       <el-dropdown

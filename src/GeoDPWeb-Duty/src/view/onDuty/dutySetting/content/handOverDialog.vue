@@ -107,11 +107,11 @@ export default {
           this.$store
             .dispatch("dutyManage/schedueManage/handOver", this.handOverForm)
             // eslint-disable-next-line no-unused-vars
-            .then(res => {
+            .then(async res => {
               this.handleClose();
               this.islaod = false;
               this.$message.success("交班成功！");
-              this.$router.push({ path: "/onDuty/dutyRecordQuery" });
+              await this.$router.push({ path: "/onDuty/dutyRecordQuery" });
               location.reload();
             });
         } else {

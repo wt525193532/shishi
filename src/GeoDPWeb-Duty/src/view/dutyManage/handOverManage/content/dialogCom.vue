@@ -3,7 +3,7 @@
     title="附件浏览"
     :visible.sync="dialogShow"
     :close-on-click-modal="false"
-    width="1100px"
+    width="600px"
     :before-close="handleClose"
   >
     <div>

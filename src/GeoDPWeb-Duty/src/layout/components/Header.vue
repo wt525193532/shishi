@@ -3,7 +3,9 @@
     <div class="item-wrap left">
       <div class="sysname">
         {{ $t("appName") }}
-        <div class="location">{{ area.displayName || "[成都市]" }}</div>
+        <div class="location">
+          {{ area ? area.displayName || "[成都市]" : "[成都市]" }}
+        </div>
       </div>
       <el-menu
         background-color="#063c78"
@@ -26,7 +28,22 @@
       <div class="item"></div>
     </div>
     <div class="item-wrap right">
-      <div class="item" style="width: 50px;"></div>
+      <div class="item" style="width: 100px;">
+        <el-popover
+          class="on-record-info"
+          placement="bottom"
+          width="150"
+          trigger="hover"
+        >
+          <div>{{ "值班人1：" + mainDutyPerson }}</div>
+          <div v-for="(item, index) in otherPersons" :key="index">
+            {{ "值班人" + (index + 2) + "：" + item.name }}
+          </div>
+          <el-button slot="reference">
+            <svg-icon name="jiaojieban" />&nbsp;当班信息
+          </el-button>
+        </el-popover>
+      </div>
       <el-tooltip
         :content="$t('navbar.message')"
         effect="dark"
@@ -82,6 +99,12 @@ export default {
         item.url.includes(nowRoter)
       );
       return activeItem.url;
+    },
+    mainDutyPerson() {
+      return this.$store.state.common.onDotyInfo.mainDutyPerson.name;
+    },
+    otherPersons() {
+      return this.$store.state.common.onDotyInfo.otherDutyPersons;
     }
   },
   methods: {
@@ -125,6 +148,11 @@ export default {
   .btn-message,
   .user-avatar {
     font-size: 0.75em; //24px
+  }
+  .on-record-info .el-button {
+    background-color: #063c78;
+    border: 0;
+    color: #fff;
   }
   .el-menu-item.is-active {
     background-color: #cee4fc !important;

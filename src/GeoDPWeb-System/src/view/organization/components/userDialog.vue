@@ -160,7 +160,8 @@ export default {
   },
   computed: {
     adminCode() {
-      return this.$store.state.session.administrative.adminCode;
+      let administrative = this.$store.state.session.administrative;
+      return administrative ? administrative.adminCode : "";
     }
   },
   methods: {

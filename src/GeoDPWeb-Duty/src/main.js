@@ -7,6 +7,7 @@ import ElementUI from "element-ui";
 import "./theme/index.less";
 import "@/assets/icons/iconfont-default";
 import "@/assets/icons/iconfont";
+// import "@/assets/icons/iconfont-duty";
 
 import { svgIcon } from "@/components";
 

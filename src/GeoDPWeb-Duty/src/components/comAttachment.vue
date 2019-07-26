@@ -216,7 +216,7 @@ export default {
   },
   watch: {
     list(v) {
-      if (v.length >= 0 && v) {
+      if (v.length >= 0 && v[0] != null && v) {
         this.init();
       }
     }

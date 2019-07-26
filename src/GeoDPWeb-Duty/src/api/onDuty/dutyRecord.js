@@ -18,5 +18,10 @@ export default {
   },
   delRecord(data) {
     return request.post(`./api/services/duty/DutyRecord/Delete`, data); // 删除值班记录
+  },
+  exportToWord(data) {
+    return request.post(`./api/services/duty/DutyRecord/ExportToWord`, data, {
+      responseType: "blob"
+    }); // 导出值班记录
   }
 };

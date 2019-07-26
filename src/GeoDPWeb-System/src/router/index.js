@@ -10,7 +10,7 @@ import store from "@/store";
 Vue.use(Router);
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
 
-//const whiteList = ["/login"]; // no redirect whitelist
+const whiteList = ["/login", "/404", "/403", "/401"]; // no redirect whitelist
 const allRoutes = [...constantRouteMap, ...appRouteMap];
 const router = new Router({
   mode: process.env.NODE_ENV === "production" ? "hash" : "history",
@@ -31,14 +31,26 @@ router.beforeEach((to, from, next) => {
     window.location.href = authPath;
   } else if (!!util.abp.user && (to.path === authPath || to.path === "/")) {
     util.title(to.meta.displayName);
-    let defaultRoute = store.getters["app/sidebarMenus"][0].name;
-    next({
-      name: defaultRoute
-    });
+    if (store.getters["app/sidebarMenus"][0]) {
+      let defaultRoute = store.getters["app/sidebarMenus"][0].name;
+      next({
+        name: defaultRoute
+      });
+    } else {
+      next({
+        replace: true,
+        name: "errorPage-403"
+      });
+    }
   } else {
+    if (whiteList.indexOf(to.path) !== -1) {
+      // in the free login whitelist, go directly
+      next();
+      return;
+    }
     const curRouterObj = util.getRouterObjByName(allRoutes, to.name);
-    if (curRouterObj && curRouterObj.permission) {
-      if (util.abp.auth.isGranted(curRouterObj.permission)) {
+    if (curRouterObj && curRouterObj.meta.permission) {
+      if (util.abp.auth.isGranted(curRouterObj.meta.permission)) {
         util.toDefaultPage(allRoutes, to.name, router, next);
       } else {
         next({
@@ -49,7 +61,6 @@ router.beforeEach((to, from, next) => {
     } else if (curRouterObj) {
       util.toDefaultPage(allRoutes, to.name, router, next);
     } else {
-      debugger;
       next({
         replace: true,
         name: "errorPage-404"

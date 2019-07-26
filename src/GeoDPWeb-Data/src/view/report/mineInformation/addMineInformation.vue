@@ -54,7 +54,6 @@ export default {
       return this.$store.getters.area.adminCode;
     },
     myssqx() {
-      console.log("1", this.$store.getters.area.level);
       return this.$store.getters.area.level == 3 ? this.displayName : "";
     },
     area() {
@@ -85,6 +84,7 @@ export default {
               type: "warning"
             })
               .then(() => {
+                this.formData.code = "";
                 this.$message({
                   type: "success",
                   message: "保存成功!"

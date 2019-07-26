@@ -39,7 +39,10 @@
             size="mini"
             type="primary"
             @click="edit(scoped.row)"
-            v-if="tab.activeName == $util.appconst.DataStatusEnum.UnCommit"
+            v-if="
+              tab.activeName == $util.appconst.DataStatusEnum.UnCommit ||
+                tab.activeName == $util.appconst.DataStatusEnum.Approval
+            "
             >编辑</el-button
           >
           <el-button

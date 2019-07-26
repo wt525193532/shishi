@@ -10,10 +10,10 @@
                 <i class="el-icon-plus el-icon--left"></i>
                 新增记录
               </el-button>
-              <el-button size="medium" @click="exportFile">
+              <!-- <el-button size="medium" @click="exportFile">
                 <i class="el-icon-download el-icon--left"></i>
                 导出记录
-              </el-button>
+              </el-button> -->
             </div>
           </div>
           <Com-Table
@@ -127,13 +127,13 @@ export default {
           this.tableData = res.items;
         });
     },
-    exportFile() {
-      if (this.selectList.length) {
-        console.log(this.selectList);
-      } else {
-        this.$message.warning("请先选择要导出的数据");
-      }
-    },
+    // exportFile() {
+    //   if (this.selectList.length) {
+    //     console.log(this.selectList);
+    //   } else {
+    //     this.$message.warning("请先选择要导出的数据");
+    //   }
+    // },
     handleSelectionChange(val) {
       this.selectList = val;
     },

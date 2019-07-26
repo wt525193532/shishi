@@ -5,7 +5,7 @@ var geodp = geodp || {};
 
 (function() {
   geodp.appconst = geodp.appconst || {
-    version: "1.0.1",
+    version: "1.1.1",
     userManagement: {
       defaultAdminUserName: "admin"
     },

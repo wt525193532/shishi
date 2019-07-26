@@ -212,8 +212,7 @@ export default {
           label: "实施年度"
         },
         {
-          parent: "buildUnitName",
-          prop: "name",
+          prop: "buildUnitName",
           label: "建设单位"
           // render: row => {
           //   return (
@@ -223,8 +222,7 @@ export default {
           // }
         },
         {
-          parent: "surveyUnitName",
-          prop: "name",
+          prop: "surveyUnitName",
           label: "勘察单位"
           // render: row => {
           //   return (
@@ -234,8 +232,7 @@ export default {
           // }
         },
         {
-          parent: "designUnitName",
-          prop: "name",
+          prop: "designUnitName",
           label: "设计单位"
           // render: row => {
           //   return (
@@ -245,8 +242,7 @@ export default {
           // }
         },
         {
-          parent: "constructionUnitName",
-          prop: "name",
+          prop: "constructionUnitName",
           label: "施工单位"
           // render: row => {
           //   return (
@@ -273,7 +269,11 @@ export default {
         lazy: true,
         lazyLoad: (node, resolve) => {
           if (node.level == 0) {
-            resolve([this.user]);
+            if (!this.user) {
+              resolve([{ adminCode: "510100000000", displayName: "成都市" }]);
+            } else {
+              resolve([this.user]);
+            }
           } else if (node.level >= 1) {
             this.$store
               .dispatch("organization/getAdministrative", node.value)

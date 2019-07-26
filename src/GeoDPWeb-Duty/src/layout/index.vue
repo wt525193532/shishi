@@ -55,8 +55,8 @@ export default {
       await this.$store.dispatch("common/getAllDutys");
       await this.$store.dispatch("common/getAllTeams");
       await this.$store.dispatch("common/getAllDutyOrders");
+      await this.$store.dispatch("common/getCurrent");
       await this.$store.dispatch("organization/getAllByCode");
-      // console.log(this.$store.state.common, "commonData");
       this.$store.dispatch("dutyManage/schedueManage/canTakeOver").then(res => {
         if (res) {
           this.$confirm("是否接班?", "提示", {
