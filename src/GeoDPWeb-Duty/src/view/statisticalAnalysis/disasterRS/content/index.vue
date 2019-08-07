@@ -344,8 +344,8 @@ export default {
         disasterTypes,
         isReported,
         adminCode,
-        startTime: statTime[0],
-        endTime: statTime[1],
+        startTime: statTime ? statTime[0] : null,
+        endTime: statTime ? statTime[1] : null,
         affectedMax,
         affectedMin
       };
@@ -389,8 +389,8 @@ export default {
         disasterTypes,
         isReported,
         adminCode,
-        startTime: statTime[0],
-        endTime: statTime[1],
+        startTime: statTime ? statTime[0] : null,
+        endTime: statTime ? statTime[1] : null,
         affectedMax,
         affectedMin,
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,

@@ -211,8 +211,8 @@ export default {
       let params = {
         types,
         theme,
-        startTime: statTime[0],
-        endTime: statTime[1],
+        startTime: statTime ? statTime[0] : null,
+        endTime: statTime ? statTime[1] : null,
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
         maxResultCount: this.pagination.pageSize
       };
@@ -242,8 +242,8 @@ export default {
       let params = {
         types,
         theme,
-        startTime: statTime[0],
-        endTime: statTime[1],
+        startTime: statTime ? statTime[0] : null,
+        endTime: statTime ? statTime[1] : null,
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
         maxResultCount: this.pagination.pageSize
       };

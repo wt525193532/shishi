@@ -20,6 +20,7 @@
       <el-dropdown
         class="cancellation"
         placement="bottom"
+        trigger="click"
         @command="handleUserCommand"
       >
         <span class="el-dropdown-link">
@@ -181,6 +182,10 @@ export default {
     font-size: 16px;
     font-family: monospace;
   }
+}
+.el-dropdown-link {
+  cursor: pointer;
+  color: #fff;
 }
 .icon {
   width: 25px;

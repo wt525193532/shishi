@@ -70,7 +70,7 @@ export default {
                 // eslint-disable-next-line no-unused-vars
                 .then(res => {
                   this.$message.success("接班成功！");
-                  location.reload();
+                  this.$store.dispatch("session/init");
                 });
             })
             .catch(() => {

@@ -23,63 +23,20 @@
             placeholder="请输入矿山名称/位置"
           ></el-input>
         </el-form-item>
-        <el-form-item v-if="!onShow">
-          <el-button type="primary" @click="queryBtn">查询</el-button>
-          <el-button @click="reset('queryForm')">重置</el-button>
-          <el-button
-            type="text"
-            icon="el-icon-arrow-down"
-            @click="onShow = !onShow"
-            >展开</el-button
+        <el-form-item label="审核状态" prop="isApproval">
+          <el-select
+            v-model="queryForm.isApproval"
+            clearable
+            placeholder="审核状态"
           >
+            <el-option label="已入库" :value="true"></el-option>
+            <el-option label="未入库" :value="false"></el-option>
+          </el-select>
         </el-form-item>
-        <!-- <el-button type="warning" >清除</el-button> -->
-        <div v-if="onShow">
-          <el-form-item label="灾害类型" prop="disasterTypes">
-            <el-select
-              :multiple="true"
-              v-model="queryForm.disasterTypes"
-              placeholder="灾害类型"
-            >
-              <el-option
-                v-for="(value, key) in $t('codes.DisasterType')"
-                :key="key"
-                :label="value"
-                :value="key"
-              ></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="销号状态" prop="isCanceled">
-            <el-select
-              v-model="queryForm.isCanceled"
-              clearable
-              placeholder="销号状态"
-            >
-              <el-option label="已销号" :value="true"></el-option>
-              <el-option label="未销号" :value="false"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="审核状态">
-            <el-select
-              v-model="queryForm.isApproval"
-              clearable
-              placeholder="审核状态"
-            >
-              <el-option label="已入库" :value="true"></el-option>
-              <el-option label="未入库" :value="false"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="queryBtn">查询</el-button>
-            <el-button @click="reset">重置</el-button>
-            <el-button
-              type="text"
-              icon="el-icon-arrow-up"
-              @click="onShow = !onShow"
-              >收起</el-button
-            >
-          </el-form-item>
-        </div>
+        <el-form-item>
+          <el-button type="primary" @click="queryBtn">查询</el-button>
+          <el-button @click="reset">重置</el-button>
+        </el-form-item>
       </el-form>
     </div>
     <div class="gl-table">

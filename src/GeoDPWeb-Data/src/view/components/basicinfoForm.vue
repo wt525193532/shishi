@@ -312,8 +312,8 @@
             <el-form-item label="应急演练时间">
               <el-date-picker
                 v-model="formData.drillDate"
-                type="year"
-                placeholder="选择年份"
+                type="date"
+                placeholder="请选择日期"
               ></el-date-picker>
             </el-form-item>
 

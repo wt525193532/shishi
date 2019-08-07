@@ -111,8 +111,8 @@ export default {
               this.handleClose();
               this.islaod = false;
               this.$message.success("交班成功！");
+              this.$store.dispatch("session/init");
               await this.$router.push({ path: "/onDuty/dutyRecordQuery" });
-              location.reload();
             });
         } else {
           this.$message.warning("验证不通过，请输入正确信息！");

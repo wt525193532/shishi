@@ -143,8 +143,7 @@ export default {
         isCanceled: null,
         adminCode: "",
         key: "",
-        isApproval: null,
-        route: ""
+        isApproval: null
       },
       pagination: {
         total: 0,

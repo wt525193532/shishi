@@ -45,7 +45,7 @@
                   v-for="(value, key) in 5"
                   :key="key"
                   :label="value"
-                  :value="key"
+                  :value="value"
                 ></el-option>
               </el-select>
             </el-form-item>

@@ -271,13 +271,13 @@ export default {
         statTime
       } = this.fenthForm;
       let params = {
-        happenStartTime: happenTime[0],
-        happenEndTime: happenTime[1],
+        happenStartTime: happenTime ? happenTime[0] : null,
+        happenEndTime: happenTime ? happenTime[1] : null,
         disasterTypes,
         isReported,
         adminCode,
-        startTime: statTime[0],
-        endTime: statTime[1]
+        startTime: statTime ? statTime[0] : null,
+        endTime: statTime ? statTime[1] : null
       };
       this.$store
         .dispatch("statisticalAnalysis/avoidRiskInfoSta", params)
@@ -309,18 +309,16 @@ export default {
         statTime
       } = this.fenthForm;
       let params = {
-        happenStartTime: happenTime[0],
-        happenEndTime: happenTime[1],
+        happenStartTime: happenTime ? happenTime[0] : null,
+        happenEndTime: happenTime ? happenTime[1] : null,
         disasterTypes,
         isReported,
         adminCode,
-        startTime: statTime[0],
-        endTime: statTime[1],
+        startTime: statTime ? statTime[0] : null,
+        endTime: statTime ? statTime[1] : null,
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
         maxResultCount: this.pagination.pageSize
       };
-      console.log(this.fenthForm);
-
       this.$store
         .dispatch("statisticalAnalysis/avoidRiskInfoQuey", params)
         .then(res => {

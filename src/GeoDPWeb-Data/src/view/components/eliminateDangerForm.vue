@@ -35,11 +35,18 @@
             </el-form-item>
 
             <el-form-item label="实施年度" prop="buildYear">
+              <!-- <el-date-picker
+                @change="testdata"
+                v-model.number="formData.buildYear"
+                type="year"
+                placeholder="选择年"
+                value-format="yyyy"
+              ></el-date-picker>-->
               <el-input-number
                 :controls="false"
                 placeholder="请输入年度"
                 v-model="formData.buildYear"
-                :min="999"
+                :min="0"
                 :max="9999"
               ></el-input-number>
             </el-form-item>
@@ -244,9 +251,9 @@
       </div>
     </div>
     <div class="form-foot-btn" v-show="noBtn">
-      <el-button type="primary" @click="saveFormSub" :disabled="ownDisabled">
-        {{ disabled === false ? "保存" : "返回" }}
-      </el-button>
+      <el-button type="primary" @click="saveFormSub" :disabled="ownDisabled">{{
+        disabled === false ? "保存" : "返回"
+      }}</el-button>
     </div>
   </div>
 </template>
@@ -276,8 +283,13 @@ export default {
         buildYear: [
           {
             required: true,
-            trigger: "change",
-            message: "请选择实施年度"
+            trigger: "blur",
+            message: "请输入实施年度"
+          },
+          {
+            pattern: /^(1949|19[5-9]\d|20\d{2}|2100)$/,
+            trigger: "blur",
+            message: "请输入正确的年份！"
           }
         ],
         budgetFunds: [{ type: "number" }],
@@ -416,6 +428,10 @@ export default {
     }
   },
   methods: {
+    testdata() {
+      console.log(this.formData.buildYear);
+      console.log(this.formData.buildYear === 2017);
+    },
     valueChanged() {
       this.formData.code = this.formData.site.code;
     },

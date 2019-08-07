@@ -194,8 +194,8 @@ export default {
         types,
         sendStatus,
         content,
-        startTime: sendTime[0],
-        endTime: sendTime[1]
+        startTime: sendTime ? sendTime[0] : null,
+        endTime: sendTime ? sendTime[1] : null
       };
       this.$store.dispatch("statisticalAnalysis/smsSta", params).then(res => {
         flag += 1;
@@ -222,8 +222,8 @@ export default {
         types,
         sendStatus,
         content,
-        startTime: sendTime[0],
-        endTime: sendTime[1],
+        startTime: sendTime ? sendTime[0] : null,
+        endTime: sendTime ? sendTime[1] : null,
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
         maxResultCount: this.pagination.pageSize
       };

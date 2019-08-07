@@ -155,18 +155,18 @@ export default {
               label: "项目实施单位"
             },
             {
-              prop: "threatPeople",
+              prop: "taskBook",
               label: "项目任务书"
+            },
+            {
+              prop: "fundDoc",
+              label: "资金文件"
             },
             {
               type: "func",
               label: "操作",
               width: 250,
               fixed: "right"
-            },
-            {
-              prop: "fundDoc",
-              label: "资金文件"
             }
           ],
           data: []
@@ -231,18 +231,18 @@ export default {
               label: "项目实施单位"
             },
             {
-              prop: "threatPeople",
+              prop: "taskBook",
               label: "项目任务书"
+            },
+            {
+              prop: "fundDoc",
+              label: "资金文件"
             },
             {
               type: "func",
               label: "操作",
               width: 250,
               fixed: "right"
-            },
-            {
-              prop: "fundDoc",
-              label: "资金文件"
             }
           ],
           data: []
@@ -251,54 +251,28 @@ export default {
         [this.$util.appconst.DataStatusEnum.Disapproval]: {
           title: [
             {
-              prop: "isCanceled",
-              label: "是否销号",
-              render: row => {
-                if (row.isCanceled) {
-                  return <el-tag type="success">{"已销号"}</el-tag>;
-                } else {
-                  return <el-tag type="warning">{"未销号"}</el-tag>;
-                }
-              }
+              prop: "projectName",
+              label: "项目名称"
             },
             {
-              prop: "name",
-              label: "隐患点名称",
-              render: r => <span>{r.name}</span>
+              prop: "supervisionUnit",
+              label: "项目监管单位"
             },
             {
-              prop: "code",
-              label: "隐患点编号"
+              prop: "governNumber",
+              label: "治理期数"
             },
             {
-              prop: "disasterTypeCode",
-              label: "隐患点类型",
-              render: row => (
-                <span>
-                  {this.$t(`codes.DisasterType[${row.disasterTypeCode}]`)}
-                </span>
-              )
+              prop: "implementUnit",
+              label: "项目实施单位"
             },
             {
-              prop: "disasterScaleLevel",
-              label: "灾害规模",
-              render: row => (
-                <span>
-                  {this.$t(`enums.ScaleLevel[${row.disasterScaleLevel}]`)}
-                </span>
-              )
+              prop: "taskBook",
+              label: "项目任务书"
             },
-            // {
-            //   prop: "",
-            //   label: "驳回节点"
-            // },
-            // {
-            //   prop: "",
-            //   label: "驳回原因"
-            // },
             {
-              prop: "location",
-              label: "地理位置"
+              prop: "fundDoc",
+              label: "资金文件"
             },
             {
               type: "func",

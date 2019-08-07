@@ -76,6 +76,13 @@ export default {
       },
       columns: [
         {
+          prop: "sendTime",
+          label: "发送时间",
+          render: row => {
+            return <span>{this.$util.transTime(row.sendTime)}</span>;
+          }
+        },
+        {
           prop: "receiverName",
           label: "收信人"
         },
@@ -143,8 +150,8 @@ export default {
       this.options.loading = true;
       const { sendTime, status } = this.fenthForm;
       let params = {
-        sendTimeStart: sendTime[0],
-        sendTimeEnd: sendTime[1],
+        sendTimeStart: sendTime ? sendTime[0] : null,
+        sendTimeEnd: sendTime ? sendTime[1] : null,
         status,
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
         maxResultCount: this.pagination.pageSize

@@ -228,9 +228,9 @@ export default {
         [this.$util.appconst.DataStatusEnum.Approval]: {
           title: [
             {
+              parent: "site",
               prop: "isCanceled",
               label: "是否销号",
-              parent: "site",
               render: row => {
                 if (row.site.isCanceled) {
                   return <el-tag type="success">已销号</el-tag>;
@@ -275,27 +275,16 @@ export default {
               label: "地理位置"
             },
             {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
+              prop: "rescueCoName",
+              label: "抢排险单位名称"
             },
             {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
+              prop: "safetyCoName",
+              label: "治安保卫单位名称"
             },
             {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
-            },
-            {
-              parent: "site",
-              prop: "preventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
+              prop: "medicalCoName",
+              label: "医疗救护单位名称"
             },
 
             {
@@ -310,8 +299,8 @@ export default {
         [this.$util.appconst.DataStatusEnum.Disapproval]: {
           title: [
             {
-              prop: "isCanceled",
               parent: "site",
+              prop: "isCanceled",
               label: "是否销号",
               render: row => {
                 if (row.site.isCanceled) {
@@ -357,27 +346,16 @@ export default {
               label: "地理位置"
             },
             {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
+              prop: "rescueCoName",
+              label: "抢排险单位名称"
             },
             {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
+              prop: "safetyCoName",
+              label: "治安保卫单位名称"
             },
             {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
-            },
-            {
-              parent: "site",
-              prop: "preventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
+              prop: "medicalCoName",
+              label: "医疗救护单位名称"
             },
 
             {

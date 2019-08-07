@@ -32,15 +32,19 @@
         <el-popover
           class="on-record-info"
           placement="bottom"
+          :disabled="!mainDutyPerson"
           width="150"
           trigger="hover"
         >
-          <div>{{ "值班人1：" + mainDutyPerson }}</div>
-          <div v-for="(item, index) in otherPersons" :key="index">
-            {{ "值班人" + (index + 2) + "：" + item.name }}
+          <div v-if="mainDutyPerson">
+            <div>{{ "值班人1：" + mainDutyPerson }}</div>
+            <div v-for="(item, index) in otherPersons" :key="index">
+              {{ "值班人" + (index + 2) + "：" + item.name }}
+            </div>
           </div>
           <el-button slot="reference">
-            <svg-icon name="jiaojieban" />&nbsp;当班信息
+            <svg-icon name="jiaojieban" />
+            {{ mainDutyPerson ? " 值班人员" : "无人值班" }}
           </el-button>
         </el-popover>
       </div>
@@ -63,15 +67,15 @@
             <i class="el-icon-arrow-down"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="profile">
-              {{ $t("navbar.profile") }}
-            </el-dropdown-item>
-            <el-dropdown-item command="switch" divided>
-              {{ $t("navbar.switch") }}
-            </el-dropdown-item>
-            <el-dropdown-item command="logout">
-              {{ $t("navbar.logout") }}
-            </el-dropdown-item>
+            <el-dropdown-item command="profile">{{
+              $t("navbar.profile")
+            }}</el-dropdown-item>
+            <el-dropdown-item command="switch" divided>{{
+              $t("navbar.switch")
+            }}</el-dropdown-item>
+            <el-dropdown-item command="logout">{{
+              $t("navbar.logout")
+            }}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -101,7 +105,8 @@ export default {
       return activeItem.url;
     },
     mainDutyPerson() {
-      return this.$store.state.common.onDotyInfo.mainDutyPerson.name;
+      let onDotyInfo = this.$store.state.common.onDotyInfo;
+      return onDotyInfo ? onDotyInfo.mainDutyPerson.name : false;
     },
     otherPersons() {
       return this.$store.state.common.onDotyInfo.otherDutyPersons;
@@ -150,7 +155,7 @@ export default {
     font-size: 0.75em; //24px
   }
   .on-record-info .el-button {
-    background-color: #063c78;
+    background-color: #1c5696;
     border: 0;
     color: #fff;
   }

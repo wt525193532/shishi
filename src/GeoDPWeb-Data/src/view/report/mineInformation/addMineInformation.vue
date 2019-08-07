@@ -73,39 +73,50 @@ export default {
     this.formData.ssqx = this.myssqx;
   },
   methods: {
-    save() {
-      this.$store
+    async save() {
+      let r;
+      await this.$store
         .dispatch("report/mineInformation/create", this.formData)
-        .then(res => {
-          if (res.data.success) {
-            this.$confirm("保存成功, 是否继续填写?", "提示", {
-              confirmButtonText: "继续",
-              cancelButtonText: "退出",
-              type: "warning"
-            })
-              .then(() => {
-                this.formData.code = "";
-                this.$message({
-                  type: "success",
-                  message: "保存成功!"
-                });
-                // location.reload();
-                // this.$router.push({ name: "report.addmineInformation" });
-              })
-              .catch(() => {
-                this.$router.go(-1);
-                this.$message({
-                  type: "success",
-                  message: "保存成功!"
-                });
-              });
-          } else {
-            this.$message({
-              type: "info",
-              message: "保存不成功，验证未通过"
-            });
+        .then(async res => {
+          r = await this.$util.addSaveConfirm(res.data.success);
+          if (!r) {
+            this.formData.code = "";
           }
+          return r;
         });
+      return r;
+      // this.$store
+      //   .dispatch("report/mineInformation/create", this.formData)
+      //   .then(res => {
+      //     if (res.data.success) {
+      //       this.$confirm("保存成功, 是否继续填写?", "提示", {
+      //         confirmButtonText: "退出",
+      //         cancelButtonText: "继续",
+      //         type: "warning"
+      //       })
+      //         .then(() => {
+      //           this.$router.go(-1);
+      //           this.$message({
+      //             type: "success",
+      //             message: "保存成功!"
+      //           });
+      //           // location.reload();
+      //           // this.$router.push({ name: "report.addmineInformation" });
+      //         })
+      //         .catch(() => {
+      //           this.formData.code = "";
+      //           this.$message({
+      //             type: "success",
+      //             message: "保存成功!"
+      //           });
+      //         });
+      //     } else {
+      //       this.$message({
+      //         type: "info",
+      //         message: "保存不成功，验证未通过"
+      //       });
+      //     }
+      //   });
     },
     handleClose() {
       this.creatDialogVisible = false;

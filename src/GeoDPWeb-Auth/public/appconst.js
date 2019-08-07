@@ -5,7 +5,7 @@ var geodp = geodp || {};
 
 (function() {
   geodp.appconst = geodp.appconst || {
-    version: "1.1.1",
+    version: "1.1.2",
     userManagement: {
       defaultAdminUserName: "admin"
     },
@@ -18,7 +18,7 @@ var geodp = geodp || {};
     cookieName: {
       token: "Abp.AuthToken"
     },
-    baseAPI: "http://cdyj-s00:8013",
-    baseURL: "http://cdyj-s00:8010/auth/"
+    baseAPI: "https://geodp.cdgeo.cn/test",
+    baseURL: "https://geodp.cdgeo.cn/test/auth/"
   };
 })();

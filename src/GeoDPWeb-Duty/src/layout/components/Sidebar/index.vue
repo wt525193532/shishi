@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    class="gl-margin-top-15 sidebar"
+    class="sidebar"
     :default-active="defaultActive"
     :router="true"
     :unique-opened="true"

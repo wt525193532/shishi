@@ -56,11 +56,11 @@
       <div class="gl-content-item">
         <div class="gl-btn-row">
           <span class="gl-second-title">发送文件信息</span>
-          <div class="gl-btnList">
+          <!-- <div class="gl-btnList">
             <el-button type size="medium" icon="el-icon-upload"
               >批量导出</el-button
             >
-          </div>
+          </div>-->
         </div>
         <com-table
           :columns="columns"
@@ -200,8 +200,8 @@ export default {
       let params = {
         types,
         theme,
-        startTime: statTime[0],
-        endTime: statTime[1],
+        startTime: statTime ? statTime[0] : null,
+        endTime: statTime ? statTime[1] : null,
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
         maxResultCount: this.pagination.pageSize
       };
@@ -231,8 +231,8 @@ export default {
       let params = {
         types,
         theme,
-        startTime: statTime[0],
-        endTime: statTime[1],
+        startTime: statTime ? statTime[0] : null,
+        endTime: statTime ? statTime[1] : null,
         skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize,
         maxResultCount: this.pagination.pageSize
       };
@@ -259,7 +259,7 @@ export default {
       console.log(this.pagination, selection);
     },
     check(row) {
-      this.$refs.receiveDialog.viewReceive(row);
+      this.$refs.sendBoxDialog.viewReceive(row);
     }
   }
 };

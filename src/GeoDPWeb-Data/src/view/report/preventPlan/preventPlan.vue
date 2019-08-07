@@ -181,7 +181,11 @@ export default {
               prop: "prenventOwnerName",
               label: "防灾负责人",
               render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
+                <span>
+                  {r.site.preventOwnerName
+                    ? r.site.preventOwnerName + "-" + r.site.preventOwnerPhone
+                    : "--"}
+                </span>
               )
             },
 
@@ -300,10 +304,14 @@ export default {
             },
             {
               parent: "site",
-              prop: "preventOwnerName",
+              prop: "prenventOwnerName",
               label: "防灾负责人",
               render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
+                <span>
+                  {r.site.preventOwnerName
+                    ? r.site.preventOwnerName + "-" + r.site.preventOwnerPhone
+                    : "--"}
+                </span>
               )
             },
 
@@ -382,10 +390,14 @@ export default {
             },
             {
               parent: "site",
-              prop: "preventOwnerName",
+              prop: "prenventOwnerName",
               label: "防灾负责人",
               render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
+                <span>
+                  {r.site.preventOwnerName
+                    ? r.site.preventOwnerName + "-" + r.site.preventOwnerPhone
+                    : "--"}
+                </span>
               )
             },
 

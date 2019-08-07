@@ -349,6 +349,7 @@ export default {
       }
     }
     .login-content-title {
+      font-size: 20px;
       height: 50px;
       line-height: 50px;
       color: #113c9c;

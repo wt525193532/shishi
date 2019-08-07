@@ -21,8 +21,8 @@ var geodp = geodp || {};
     // baseAPI: "http://172.18.2.251:8012",
     // baseURL: "http://172.18.2.251:8010/system",
     // authURL: "http://172.18.2.251:8010/auth"
-    baseAPI: "http://cdyj-s00:8013",
-    baseURL: "http://cdyj-s00:8010/system",
-    authURL: "http://cdyj-s00:8010/auth"
+    baseAPI: "https://geodp.cdgeo.cn/test",
+    baseURL: "https://geodp.cdgeo.cn/test/system",
+    authURL: "https://geodp.cdgeo.cn/test/auth"
   };
 })();
