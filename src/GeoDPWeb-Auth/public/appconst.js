@@ -18,7 +18,7 @@ var geodp = geodp || {};
     cookieName: {
       token: "Abp.AuthToken"
     },
-    baseAPI: "/",
-    baseURL: "/auth"
+    baseAPI: "/dev",
+    baseURL: "/dev/auth"
   };
 } )();

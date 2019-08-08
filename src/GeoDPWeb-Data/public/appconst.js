@@ -18,9 +18,9 @@ var geodp = geodp || {};
     cookieName: {
       token: "Abp.AuthToken"
     },
-    baseAPI: "/",
-    baseURL: "/data",
-    authURL: "/auth",
-    fileURL: "/files"
+    baseAPI: "https://geodp.cdgeo.cn/dev",
+    baseURL: "https://geodp.cdgeo.cn/dev/data",
+    authURL: "https://geodp.cdgeo.cn/dev/auth",
+    fileURL: "http://www.cdgeo.cn:8000"
   };
 })();
