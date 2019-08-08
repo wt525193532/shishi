@@ -68,9 +68,10 @@ export default {
               this.$store
                 .dispatch("dutyManage/schedueManage/takeOver")
                 // eslint-disable-next-line no-unused-vars
-                .then(res => {
+                .then(async res => {
                   this.$message.success("接班成功！");
-                  this.$store.dispatch("session/init");
+                  await this.$store.dispatch("session/init");
+                  this.$store.dispatch("common/getCurrent");
                 });
             })
             .catch(() => {
