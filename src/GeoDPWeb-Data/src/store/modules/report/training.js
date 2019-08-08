@@ -27,19 +27,19 @@ export default {
     },
     // 撤销
     // eslint-disable-next-line
-    async cancelCommit({ commit }, formId) {
+    async cancelCommit ( { commit }, formId ) {
       const res = await api.cancelCommit({ formId });
       return res;
     },
     // 提交
     // eslint-disable-next-line
-    async commit({ commit }, data) {
+    async commit ( { commit }, data ) {
       const res = await api.commit(data);
       return res;
     },
     // 删除
     // eslint-disable-next-line
-    async delData({ commit }, id) {
+    async delData ( { commit }, id ) {
       const res = await api.delData(id);
       return res;
     },
@@ -52,16 +52,16 @@ export default {
     //获取详情
     async getById({ commit }, id) {
       const res = await api.getById(id);
-      return res.data;
+      return res;
     },
     // 编辑
     // eslint-disable-next-line
-    async update({ commit }, data) {
+    async update ( { commit }, data ) {
       return await api.update(data);
     },
     // 新增
     // eslint-disable-next-line
-    async create({ commit }, data) {
+    async create ( { commit }, data ) {
       return await api.create(data);
     }
   }

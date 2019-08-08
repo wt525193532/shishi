@@ -43,7 +43,7 @@ export default {
         {
           name: "basic",
           icon: "",
-          title: "基本信息",
+          title: "地质灾害数据信息采集",
           items: [
             {
               name: "basicInfo",
@@ -100,13 +100,62 @@ export default {
               icon: "geodisasterPrevention",
               title: "地质遗迹数据采集"
             }
+            // {
+            //   name: "bqgh",
+            //   icon: "geodisasterPrevention",
+            //   title: "搬迁规划"
+            // },
+            // {
+            //   name: "zzjc",
+            //   icon: "geodisasterPrevention",
+            //   title: "专职监测"
+            // },
+            // {
+            //   name: "lljs",
+            //   icon: "geodisasterPrevention",
+            //   title: "能力建设"
+            // },
+            // {
+            //   name: "zhzz",
+            //   icon: "geodisasterPrevention",
+            //   title: "综合整治"
+            // },
+            // {
+            //   name: "dzxpc",
+            //   icon: "geodisasterPrevention",
+            //   title: "地质灾害年度巡、排查"
+            // },
+            // {
+            //   name: "dzzsqx",
+            //   icon: "geodisasterPrevention",
+            //   title: "地灾驻守技术支撑抢险调查表"
+            // },
+            // {
+            //   name: "msgc",
+            //   icon: "geodisasterPrevention",
+            //   title: "民生工程"
+            // },
+            // {
+            //   name: "dzzsdw",
+            //   icon: "geodisasterPrevention",
+            //   title: "地灾驻守技术支撑单位一览表"
+            // },
+            // {
+            //   name: "dzzsbb",
+            //   icon: "geodisasterPrevention",
+            //   title: "地灾驻守技术支撑工作报表"
+            // },
+            // {
+            //   name: "ssjcyj",
+            //   icon: "geodisasterPrevention",
+            //   title: "自动化实时监测预警明细表"
+            // }
           ]
         },
-
         {
           name: "DataCollect",
           icon: "",
-          title: "矿山数据采集信息",
+          title: "矿山数据信息采集",
           items: [
             {
               name: "mineInformation",

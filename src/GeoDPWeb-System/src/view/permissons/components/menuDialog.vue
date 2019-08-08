@@ -50,18 +50,18 @@
             v-model="menuForm.order"
           ></el-input>
         </el-form-item>
-        <el-form-item label="菜单是否可见" prop="isVisible">
+        <!-- <el-form-item label="菜单是否可见" prop="isVisible">
           <el-select v-model="menuForm.isVisible" placeholder>
             <el-option label="是" :value="true"></el-option>
             <el-option label="否" :value="false"></el-option>
           </el-select>
-        </el-form-item>
-        <el-form-item label="菜单是否激活可用" prop="isActive">
+        </el-form-item>-->
+        <!-- <el-form-item label="菜单是否激活可用" prop="isActive">
           <el-select v-model="menuForm.isActive" placeholder>
             <el-option label="是" :value="true"></el-option>
             <el-option label="否" :value="false"></el-option>
           </el-select>
-        </el-form-item>
+        </el-form-item>-->
 
         <el-form-item label="是否登录后可用" prop="requiresAuthentication">
           <el-select v-model="menuForm.requiresAuthentication" placeholder>
@@ -90,14 +90,14 @@
             v-model="menuForm.parentId"
           ></el-input>
         </el-form-item>
-        <el-form-item label="菜单跳转目标">
+        <!-- <el-form-item label="菜单跳转目标">
           <el-radio-group v-model="menuForm.target">
             <el-radio label="_blank"></el-radio>
             <el-radio label="_self"></el-radio>
             <el-radio label="_parent"></el-radio>
             <el-radio label="_top"></el-radio>
           </el-radio-group>
-        </el-form-item>
+        </el-form-item>-->
       </el-form>
     </div>
     <span slot="footer" class="dialog-footer">
@@ -126,8 +126,8 @@ export default {
         url: "",
         icon: "",
         order: null,
-        isVisible: null,
-        isActive: null,
+        isVisible: true,
+        isActive: true,
         customData: null,
         target: "",
         requiresAuthentication: null,
@@ -171,8 +171,8 @@ export default {
         url: "",
         icon: "",
         order: null,
-        isVisible: null,
-        isActive: null,
+        isVisible: true,
+        isActive: true,
         customData: null,
         target: "",
         requiresAuthentication: null,

@@ -29,12 +29,12 @@ export default {
       return res.data;
     },
     // eslint-disable-next-line
-    async getById({ commit }, id) {
+    async getById ( { commit }, id ) {
       const rep = await api.getById(id);
-      return rep.data;
+      return rep;
     },
     // eslint-disable-next-line
-    async getByCode({ commit }, code) {
+    async getByCode ( { commit }, code ) {
       const rep = await api.getByCode(code);
       const data = rep.data.result;
       return data;

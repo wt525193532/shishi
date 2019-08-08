@@ -29,7 +29,8 @@ export default [
         component: () => import("@/view/approval/view"),
         meta: {
           title: "查看",
-          permission: "Pages.Data.Approval"
+          permission: "Pages.Data.Approval",
+          formType: "view"
         }
       }
       // {

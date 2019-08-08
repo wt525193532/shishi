@@ -48,30 +48,31 @@ export default [
           {
             name: "report.addBasicInfo",
             path: "add",
-            component: () => import("@/view/report/basicInfo/addBasicInfo"),
+            component: () => import("@/view/forms/basicinfoForm/default"),
             meta: {
               title: "新增隐患点基本信息",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editBasicInfo",
             path: "edit",
-            component: () => import("@/view/report/basicInfo/editBasicInfo"),
+            component: () => import("@/view/forms/basicinfoForm/default"),
             meta: {
               title: "编辑隐患点基本信息",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewBasicInfo",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewBasicInfo"),
+            component: () => import("@/view/forms/basicinfoForm/default"),
             meta: {
               title: "查看隐患点基本信息",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -100,31 +101,32 @@ export default [
           {
             name: "report.addPreventPlan",
             path: "add",
-            component: () => import("@/view/report/preventPlan/addPreventPlan"),
+            component: () => import("@/view/forms/preventPlanForm/default"),
             meta: {
               title: "新增防灾预案表",
               permission: "Pages.Data.Report",
-              icon: ""
+              icon: "",
+              formType: "create"
             }
           },
           {
             name: "report.editPreventPlan",
             path: "edit",
-            component: () =>
-              import("@/view/report/preventPlan/editPreventPlan"),
+            component: () => import("@/view/forms/preventPlanForm/default"),
             meta: {
               title: "编辑防灾预案表",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewPreventPlan",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewPreventPlan"),
+            component: () => import("@/view/forms/preventPlanForm/default"),
             meta: {
               title: "查看防灾预案表",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -153,30 +155,31 @@ export default [
           {
             name: "report.addWorkCard",
             path: "add",
-            component: () => import("@/view/report/workCard/addWorkCard"),
+            component: () => import("@/view/forms/workCardForm/default"),
             meta: {
               title: "新增防灾工作明白卡",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editWorkCard",
             path: "edit",
-            component: () => import("@/view/report/workCard/editWorkCard"),
+            component: () => import("@/view/forms/workCardForm/default"),
             meta: {
               title: "编辑防灾工作明白卡",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewWorkCard",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewWorkCard"),
+            component: () => import("@/view/forms/workCardForm/default"),
             meta: {
               title: "查看防灾工作明白卡",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -205,85 +208,31 @@ export default [
           {
             name: "report.addRiskCard",
             path: "add",
-            component: () => import("@/view/report/riskCard/addRiskCard"),
+            component: () => import("@/view/forms/riskCardForm/default"),
             meta: {
               title: "新增避险明白卡",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editRiskCard",
             path: "edit",
-            component: () => import("@/view/report/riskCard/editRiskCard"),
+            component: () => import("@/view/forms/riskCardForm/default"),
             meta: {
               title: "编辑避险明白卡",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewRiskCard",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewRiskCard"),
+            component: () => import("@/view/forms/riskCardForm/default"),
             meta: {
               title: "查看避险明白卡",
-              permission: "Pages.Data.Report"
-            }
-          }
-        ]
-      },
-      {
-        name: "report.emergencyInvestigation",
-        path: "emergencyInvestigation",
-        component: ReportLayout,
-        meta: {
-          title: "应急调查数据采集",
-          permission: "Pages.Data.Report",
-          icon: ""
-        },
-        redirect: "/report/emergencyInvestigation/index",
-        children: [
-          {
-            name: "report.emergencyInvestigationIndex",
-            path: "index",
-            component: () =>
-              import("@/view/report/emergencyInvestigation/emergencyInvestigation"),
-            meta: {
-              title: "应急调查数据采集",
               permission: "Pages.Data.Report",
-              icon: ""
-            }
-          },
-          {
-            name: "report.addEmergencyInvestigation",
-            path: "add",
-            component: () =>
-              import("@/view/report/emergencyInvestigation/addEmergencyInvestigation"),
-            meta: {
-              title: "新增应急调查数据采集",
-              permission: "Pages.Data.Report",
-              icon: ""
-            }
-          },
-          {
-            name: "report.editEmergencyInvestigation",
-            path: "edit",
-            component: () =>
-              import("@/view/report/emergencyInvestigation/editEmergencyInvestigation"),
-            meta: {
-              title: "编辑应急调查数据采集",
-              permission: "Pages.Data.Report"
-            }
-          },
-          {
-            name: "report.viewEmergencyInvestigation",
-            path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewEmergencyInvestigation"),
-            meta: {
-              title: "查看应急调查数据采集",
-              permission: "Pages.Data.Report"
+              formType: "view"
             }
           }
         ]
@@ -313,32 +262,31 @@ export default [
           {
             name: "report.addProfessionalMnt",
             path: "add",
-            component: () =>
-              import("@/view/report/professionalMnt/addProfessionalMnt"),
+            component: () => import("@/view/forms/professionalMntForm/default"),
             meta: {
               title: "新增专业监测点数据采集",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editProfessionalMnt",
             path: "edit",
-            component: () =>
-              import("@/view/report/professionalMnt/editProfessionalMnt"),
+            component: () => import("@/view/forms/professionalMntForm/default"),
             meta: {
               title: "编辑专业监测点数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewProfessionalMnt",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewProfessionalMnt"),
+            component: () => import("@/view/forms/professionalMntForm/default"),
             meta: {
               title: "查看专业监测点数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -367,30 +315,31 @@ export default [
           {
             name: "report.addSimpleMnt",
             path: "add",
-            component: () => import("@/view/report/simpleMnt/addSimpleMnt"),
+            component: () => import("@/view/forms/simpleMntForm/default"),
             meta: {
               title: "新增简易监测点数据采集",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editSimpleMnt",
             path: "edit",
-            component: () => import("@/view/report/simpleMnt/editSimpleMnt"),
+            component: () => import("@/view/forms/simpleMntForm/default"),
             meta: {
               title: "编辑简易监测点数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewSimpleMnt",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewSimpleMnt"),
+            component: () => import("@/view/forms/simpleMntForm/default"),
             meta: {
               title: "查看简易监测点数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -419,30 +368,31 @@ export default [
           {
             name: "report.addEngineer",
             path: "add",
-            component: () => import("@/view/report/engineer/addEngineer"),
+            component: () => import("@/view/forms/engineerForm/default"),
             meta: {
               title: "新增治理工程数据采集",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editEngineer",
             path: "edit",
-            component: () => import("@/view/report/engineer/editEngineer"),
+            component: () => import("@/view/forms/engineerForm/default"),
             meta: {
               title: "编辑治理工程数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewEngineer",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewEngineer"),
+            component: () => import("@/view/forms/engineerForm/default"),
             meta: {
               title: "查看治理工程数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -472,32 +422,31 @@ export default [
           {
             name: "report.addEliminateDanger",
             path: "add",
-            component: () =>
-              import("@/view/report/eliminateDanger/addEliminateDanger"),
+            component: () => import("@/view/forms/eliminateDangerForm/default"),
             meta: {
               title: "新增应急排危数据采集",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editEliminateDanger",
             path: "edit",
-            component: () =>
-              import("@/view/report/eliminateDanger/editEliminateDanger"),
+            component: () => import("@/view/forms/eliminateDangerForm/default"),
             meta: {
               title: "编辑应急排危数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewEliminateDanger",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewEliminateDanger"),
+            component: () => import("@/view/forms/eliminateDangerForm/default"),
             meta: {
               title: "查看应急排危数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -526,85 +475,31 @@ export default [
           {
             name: "report.addRelocation",
             path: "add",
-            component: () => import("@/view/report/relocation/addRelocation"),
+            component: () => import("@/view/forms/relocationForm/default"),
             meta: {
               title: "新增搬迁避让数据采集",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editRelocation",
             path: "edit",
-            component: () => import("@/view/report/relocation/editRelocation"),
+            component: () => import("@/view/forms/relocationForm/default"),
             meta: {
               title: "编辑搬迁避让数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewRelocation",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewRelocation"),
+            component: () => import("@/view/forms/relocationForm/default"),
             meta: {
               title: "查看搬迁避让数据采集",
-              permission: "Pages.Data.Report"
-            }
-          }
-        ]
-      },
-      {
-        name: "report.emergencyShelter",
-        path: "emergencyShelter",
-        component: ReportLayout,
-        meta: {
-          title: "应急避让场所采集",
-          permission: "Pages.Data.Report",
-          icon: ""
-        },
-        redirect: "/report/emergencyShelter/index",
-        children: [
-          {
-            name: "report.emergencyShelterIndex",
-            path: "index",
-            component: () =>
-              import("@/view/report/emergencyShelter/emergencyShelter"),
-            meta: {
-              title: "应急避让场所采集",
               permission: "Pages.Data.Report",
-              icon: ""
-            }
-          },
-          {
-            name: "report.addEmergencyShelter",
-            path: "add",
-            component: () =>
-              import("@/view/report/emergencyShelter/addEmergencyShelter"),
-            meta: {
-              title: "新增应急避让场所采集",
-              permission: "Pages.Data.Report",
-              icon: ""
-            }
-          },
-          {
-            name: "report.editEmergencyShelter",
-            path: "edit",
-            component: () =>
-              import("@/view/report/emergencyShelter/editEmergencyShelter"),
-            meta: {
-              title: "编辑应急避让场所采集",
-              permission: "Pages.Data.Report"
-            }
-          },
-          {
-            name: "report.viewEmergencyShelter",
-            path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewEmergencyShelter"),
-            meta: {
-              title: "查看应急避让场所采集",
-              permission: "Pages.Data.Report"
+              formType: "view"
             }
           }
         ]
@@ -633,30 +528,31 @@ export default [
           {
             name: "report.addTaining",
             path: "add",
-            component: () => import("@/view/report/training/addTraining"),
+            component: () => import("@/view/forms/trainingForm/default"),
             meta: {
               title: "新增培训演练",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editTraining",
             path: "edit",
-            component: () => import("@/view/report/training/editTraining"),
+            component: () => import("@/view/forms/trainingForm/default"),
             meta: {
               title: "编辑培训演练",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewTraining",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewTraining"),
+            component: () => import("@/view/forms/trainingForm/default"),
             meta: {
               title: "查看培训演练",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -686,32 +582,31 @@ export default [
           {
             name: "report.addMineInformation",
             path: "add",
-            component: () =>
-              import("@/view/report/mineInformation/addMineInformation"),
+            component: () => import("@/view/forms/mineInformationForm/default"),
             meta: {
               title: "新增矿山基本信息",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editMineInformation",
             path: "edit",
-            component: () =>
-              import("@/view/report/mineInformation/editMineInformation"),
+            component: () => import("@/view/forms/mineInformationForm/default"),
             meta: {
               title: "编辑矿山基本信息",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewMineInformation",
             path: "view",
-            component: () =>
-              import("@/view/components/formViewId/viewMineInformation"),
+            component: () => import("@/view/forms/mineInformationForm/default"),
             meta: {
               title: "查看矿山基本信息",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -742,31 +637,33 @@ export default [
             name: "report.addHeritageProtection",
             path: "add",
             component: () =>
-              import("@/view/report/heritageProtection/addHeritageProtection"),
+              import("@/view/forms/heritageProtectionForm/default"),
             meta: {
               title: "新增地质遗迹数据采集",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editHeritageProtection",
             path: "edit",
             component: () =>
-              import("@/view/report/heritageProtection/editHeritageProtection"),
+              import("@/view/forms/heritageProtectionForm/default"),
             meta: {
               title: "编辑地质遗迹数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewHeritageProtection",
             path: "view",
             component: () =>
-              import("@/view/components/formViewId/viewHeritageProtection"),
+              import("@/view/forms/heritageProtectionForm/default"),
             meta: {
               title: "查看地质遗迹数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -797,30 +694,542 @@ export default [
             name: "report.addGovernDataCollect",
             path: "add",
             component: () =>
-              import("@/view/report/governDataCollect/addGovernDataCollect"),
+              import("@/view/forms/governDataCollectForm/default"),
             meta: {
               title: "新增矿山治理数据采集",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editGovernDataCollect",
             path: "edit",
             component: () =>
-              import("@/view/report/governDataCollect/editGovernDataCollect"),
+              import("@/view/forms/governDataCollectForm/default"),
             meta: {
               title: "编辑矿山治理数据采集",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewGovernDataCollect",
             path: "view",
             component: () =>
-              import("@/view/components/formViewId/viewGovernDataCollect"),
+              import("@/view/forms/governDataCollectForm/default"),
             meta: {
               title: "查看矿山治理数据采集",
+              permission: "Pages.Data.Report",
+              formType: "view"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.bqgh",
+        path: "bqgh",
+        component: ReportLayout,
+        meta: {
+          title: "搬迁规划",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/bqgh/index",
+        children: [
+          {
+            name: "report.bqghIndex",
+            path: "index",
+            component: () => import("@/view/report/bqgh/bqgh"),
+            meta: {
+              title: "搬迁规划",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addBqgh",
+            path: "add",
+            component: () => import("@/view/report/bqgh/addBqgh"),
+            meta: {
+              title: "新增搬迁规划",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.editBqgh",
+            path: "edit",
+            component: () => import("@/view/report/bqgh/editBqgh"),
+            meta: {
+              title: "编辑搬迁规划",
+              permission: "Pages.Data.Report"
+            }
+          },
+          {
+            name: "report.viewBqgh",
+            path: "view",
+            component: () => import("@/view/components/formViewId/viewBqgh"),
+            meta: {
+              title: "查看搬迁规划",
+              permission: "Pages.Data.Report"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.zzjc",
+        path: "zzjc",
+        component: ReportLayout,
+        meta: {
+          title: "专职监测",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/zzjc/index",
+        children: [
+          {
+            name: "report.zzjcIndex",
+            path: "index",
+            component: () => import("@/view/report/zzjc/zzjc"),
+            meta: {
+              title: "专职监测",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addZzjc",
+            path: "add",
+            component: () => import("@/view/report/zzjc/addZzjc"),
+            meta: {
+              title: "新增专职监测",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.editZzjc",
+            path: "edit",
+            component: () => import("@/view/report/zzjc/editZzjc"),
+            meta: {
+              title: "编辑专职监测",
+              permission: "Pages.Data.Report"
+            }
+          },
+          {
+            name: "report.viewZzjc",
+            path: "view",
+            component: () => import("@/view/components/formViewId/viewZzjc"),
+            meta: {
+              title: "查看专职监测",
+              permission: "Pages.Data.Report"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.lljs",
+        path: "lljs",
+        component: ReportLayout,
+        meta: {
+          title: "能力建设",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/lljs/index",
+        children: [
+          {
+            name: "report.lljsIndex",
+            path: "index",
+            component: () => import("@/view/report/lljs/lljs"),
+            meta: {
+              title: "能力建设",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addLljs",
+            path: "add",
+            component: () => import("@/view/report/lljs/addLljs"),
+            meta: {
+              title: "新增能力建设",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.editLljs",
+            path: "edit",
+            component: () => import("@/view/report/lljs/editLljs"),
+            meta: {
+              title: "编辑能力建设",
+              permission: "Pages.Data.Report"
+            }
+          },
+          {
+            name: "report.viewLljs",
+            path: "view",
+            component: () => import("@/view/components/formViewId/viewLljs"),
+            meta: {
+              title: "查看能力建设",
+              permission: "Pages.Data.Report"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.zhzz",
+        path: "zhzz",
+        component: ReportLayout,
+        meta: {
+          title: "综合整治",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/zhzz/index",
+        children: [
+          {
+            name: "report.zhzzIndex",
+            path: "index",
+            component: () => import("@/view/report/zhzz/zhzz"),
+            meta: {
+              title: "综合整治",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addZhzz",
+            path: "add",
+            component: () => import("@/view/report/zhzz/addZhzz"),
+            meta: {
+              title: "新增综合整治",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.editZhzz",
+            path: "edit",
+            component: () => import("@/view/report/zhzz/editZhzz"),
+            meta: {
+              title: "编辑综合整治",
+              permission: "Pages.Data.Report"
+            }
+          },
+          {
+            name: "report.viewZhzz",
+            path: "view",
+            component: () => import("@/view/components/formViewId/viewZhzz"),
+            meta: {
+              title: "查看综合整治",
+              permission: "Pages.Data.Report"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.dzxpc",
+        path: "dzxpc",
+        component: ReportLayout,
+        meta: {
+          title: "地质灾害巡、排查",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/dzxpc/index",
+        children: [
+          {
+            name: "report.dzxpcIndex",
+            path: "index",
+            component: () => import("@/view/report/dzxpc/dzxpc"),
+            meta: {
+              title: "地质灾害巡、排查",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addDzxpc",
+            path: "add",
+            component: () => import("@/view/report/dzxpc/addDzxpc"),
+            meta: {
+              title: "新增地质灾害巡、排查",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.editDzxpc",
+            path: "edit",
+            component: () => import("@/view/report/dzxpc/editDzxpc"),
+            meta: {
+              title: "编辑地质灾害巡、排查",
+              permission: "Pages.Data.Report"
+            }
+          },
+          {
+            name: "report.viewDzxpc",
+            path: "view",
+            component: () => import("@/view/components/formViewId/viewDzxpc"),
+            meta: {
+              title: "查看地质灾害巡、排查",
+              permission: "Pages.Data.Report"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.dzzsqx",
+        path: "dzzsqx",
+        component: ReportLayout,
+        meta: {
+          title: "地质灾害驻守技术支撑抢险调查表",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/dzzsqx/index",
+        children: [
+          {
+            name: "report.dzzsqxIndex",
+            path: "index",
+            component: () => import("@/view/report/dzzsqx/dzzsqx"),
+            meta: {
+              title: "地质灾害驻守技术支撑抢险调查表",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addDzzsqx",
+            path: "add",
+            component: () => import("@/view/report/dzzsqx/addDzzsqx"),
+            meta: {
+              title: "新增地质灾害驻守技术支撑抢险调查表",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.editDzzsqx",
+            path: "edit",
+            component: () => import("@/view/report/dzzsqx/editDzzsqx"),
+            meta: {
+              title: "编辑地质灾害驻守技术支撑抢险调查表",
+              permission: "Pages.Data.Report"
+            }
+          },
+          {
+            name: "report.viewDzzsqx",
+            path: "view",
+            component: () => import("@/view/components/formViewId/viewDzzsqx"),
+            meta: {
+              title: "查看地质灾害驻守技术支撑抢险调查表",
+              permission: "Pages.Data.Report"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.msgc",
+        path: "msgc",
+        component: ReportLayout,
+        meta: {
+          title: "民生工程",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/msgc/index",
+        children: [
+          {
+            name: "report.msgcIndex",
+            path: "index",
+            component: () => import("@/view/report/msgc/msgc"),
+            meta: {
+              title: "民生工程",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addMsgc",
+            path: "add",
+            component: () => import("@/view/report/msgc/addMsgc"),
+            meta: {
+              title: "新增民生工程",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.editMsgc",
+            path: "edit",
+            component: () => import("@/view/report/msgc/editMsgc"),
+            meta: {
+              title: "编辑民生工程",
+              permission: "Pages.Data.Report"
+            }
+          },
+          {
+            name: "report.viewMsgc",
+            path: "view",
+            component: () => import("@/view/components/formViewId/viewMsgc"),
+            meta: {
+              title: "查看民生工程",
+              permission: "Pages.Data.Report"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.dzzsdw",
+        path: "dzzsdw",
+        component: ReportLayout,
+        meta: {
+          title: "地质灾害驻守技术支撑单位一览表",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/dzzsdw/index",
+        children: [
+          {
+            name: "report.dzzsdwIndex",
+            path: "index",
+            component: () => import("@/view/report/dzzsdw/dzzsdw"),
+            meta: {
+              title: "地质灾害驻守技术支撑单位一览表",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addDzzsdw",
+            path: "add",
+            component: () => import("@/view/report/dzzsdw/addDzzsdw"),
+            meta: {
+              title: "新增地质灾害驻守技术支撑单位一览表",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.editDzzsdw",
+            path: "edit",
+            component: () => import("@/view/report/dzzsdw/editDzzsdw"),
+            meta: {
+              title: "编辑地质灾害驻守技术支撑单位一览表",
+              permission: "Pages.Data.Report"
+            }
+          },
+          {
+            name: "report.viewDzzsdw",
+            path: "view",
+            component: () => import("@/view/components/formViewId/viewDzzsdw"),
+            meta: {
+              title: "查看地质灾害驻守技术支撑单位一览表",
+              permission: "Pages.Data.Report"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.dzzsbb",
+        path: "dzzsbb",
+        component: ReportLayout,
+        meta: {
+          title: "地质灾害驻守技术支撑工作报表",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/dzzsbb/index",
+        children: [
+          {
+            name: "report.dzzsbbIndex",
+            path: "index",
+            component: () => import("@/view/report/dzzsbb/dzzsbb"),
+            meta: {
+              title: "地质灾害驻守技术支撑工作报表",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addDzzsbb",
+            path: "add",
+            component: () => import("@/view/report/dzzsbb/addDzzsbb"),
+            meta: {
+              title: "新增地质灾害驻守技术支撑工作报表",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.editDzzsbb",
+            path: "edit",
+            component: () => import("@/view/report/dzzsbb/editDzzsbb"),
+            meta: {
+              title: "编辑地质灾害驻守技术支撑工作报表",
+              permission: "Pages.Data.Report"
+            }
+          },
+          {
+            name: "report.viewDzzsbb",
+            path: "view",
+            component: () => import("@/view/components/formViewId/viewDzzsbb"),
+            meta: {
+              title: "查看地质灾害驻守技术支撑工作报表",
+              permission: "Pages.Data.Report"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.ssjcyj",
+        path: "ssjcyj",
+        component: ReportLayout,
+        meta: {
+          title: "自动化实时监测预警明细表",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/ssjcyj/index",
+        children: [
+          {
+            name: "report.ssjcyjIndex",
+            path: "index",
+            component: () => import("@/view/report/ssjcyj/ssjcyj"),
+            meta: {
+              title: "自动化实时监测预警明细表",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addSsjcyj",
+            path: "add",
+            component: () => import("@/view/report/ssjcyj/addSsjcyj"),
+            meta: {
+              title: "新增自动化实时监测预警明细表",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.editSsjcyj",
+            path: "edit",
+            component: () => import("@/view/report/ssjcyj/editSsjcyj"),
+            meta: {
+              title: "编辑自动化实时监测预警明细表",
+              permission: "Pages.Data.Report"
+            }
+          },
+          {
+            name: "report.viewSsjcyj",
+            path: "view",
+            component: () => import("@/view/components/formViewId/viewSsjcyj"),
+            meta: {
+              title: "查看自动化实时监测预警明细表",
               permission: "Pages.Data.Report"
             }
           }

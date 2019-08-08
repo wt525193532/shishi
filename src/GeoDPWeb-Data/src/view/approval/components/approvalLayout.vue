@@ -43,8 +43,5 @@ export default {
   width: 100%;
   padding: 15px;
   background: #fff;
-  .funcArea {
-    // margin-top: 15px;
-  }
 }
 </style>

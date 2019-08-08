@@ -29,7 +29,7 @@ export default {
         },
         async getById ( { commit }, id ) {
             const rep = await api.getById( id );
-            return rep.data;
+            return rep;
         },
         async getByCode ( { commit }, code ) {
             const rep = await api.getByCode( code );

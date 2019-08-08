@@ -34,7 +34,6 @@ export default {
     async getByCode ( { commit }, code ) {
       const rep = await api.getByCode( code );
       const data = rep.data.result;
-      console.log( data );
       return data;
     }
   },

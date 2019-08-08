@@ -15,16 +15,8 @@
       label-suffix="："
       inline
     >
-      <el-form-item
-        class="gl-form-item"
-        label="接班人员"
-        prop="takeOverPersonId"
-      >
-        <el-select
-          v-model="handOverForm.takeOverPersonId"
-          filterable
-          placeholder="请选择值班人员"
-        >
+      <el-form-item class="gl-form-item" label="接班人员" prop="takeOverPersonId">
+        <el-select v-model="handOverForm.takeOverPersonId" filterable placeholder="请选择值班人员">
           <el-option
             v-for="(item, index) in allDutyPersons"
             :key="index"
@@ -44,21 +36,12 @@
           ></el-input>
         </el-form-item>
       </div>
-      <comAttachment
-        v-model="handOverForm.attachments"
-        :fileOption="fileOption"
-      />
+      <comAttachment v-model="handOverForm.attachments" :fileOption="fileOption" />
     </el-form>
     <div class="gl-text-center gl-margin-top-15">
       <span slot="footer" class="dialog-footer">
         <el-button @click="handleClose" size="medium">取 消</el-button>
-        <el-button
-          type="primary"
-          size="medium"
-          :loading="islaod"
-          @click="addHandleOver"
-          >确 定</el-button
-        >
+        <el-button type="primary" size="medium" :loading="islaod" @click="addHandleOver">确 定</el-button>
       </span>
     </div>
   </el-dialog>
@@ -111,6 +94,7 @@ export default {
               this.handleClose();
               this.islaod = false;
               this.$message.success("交班成功！");
+              this.$store.dispatch("session/init");
               await this.$router.push({ path: "/onDuty/dutyRecordQuery" });
               await this.$store.dispatch("session/init");
               this.$store.dispatch("common/getCurrent");

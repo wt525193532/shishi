@@ -3,7 +3,7 @@
  */
 var geodp = geodp || {};
 
-(function() {
+( function () {
   geodp.appconst = geodp.appconst || {
     version: "1.1.5",
     userManagement: {
@@ -23,4 +23,4 @@ var geodp = geodp || {};
     authURL: "/auth",
     fileURL: "/files"
   };
-})();
+} )();

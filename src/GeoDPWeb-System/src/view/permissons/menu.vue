@@ -88,22 +88,22 @@ export default {
           prop: "requiredPermissionName",
           label: "菜单权限"
         },
-        {
-          prop: "isVisible",
-          label: "菜单是否可见",
-          width: 105,
-          render: row => {
-            return <span>{row.isVisible ? "是" : "否"}</span>;
-          }
-        },
-        {
-          prop: "isActive",
-          label: "菜单是否激活可用",
-          width: 140,
-          render: row => {
-            return <span>{row.isActive ? "是" : "否"}</span>;
-          }
-        },
+        // {
+        //   prop: "isVisible",
+        //   label: "菜单是否可见",
+        //   width: 105,
+        //   render: row => {
+        //     return <span>{row.isVisible ? "是" : "否"}</span>;
+        //   }
+        // },
+        // {
+        //   prop: "isActive",
+        //   label: "菜单是否激活可用",
+        //   width: 140,
+        //   render: row => {
+        //     return <span>{row.isActive ? "是" : "否"}</span>;
+        //   }
+        // },
         {
           prop: "requiresAuthentication",
           label: "是否需要用户登录后才可用",

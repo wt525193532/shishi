@@ -36,7 +36,7 @@
   </div>
 </template>
 <script>
-import allFormView from "@/view/components/allFormView";
+import allFormView from "../components/basicinfoView";
 export default {
   name: "BasicInfoDetail",
   components: {
@@ -104,7 +104,7 @@ export default {
             {
               name: "simpleMnt",
               icon: "simpleMonitoring",
-              title: "简易监测点数据采集(X)"
+              title: "简易监测点数据采集"
             }
           ]
         },

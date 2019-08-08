@@ -41,6 +41,7 @@ export default [
             meta: {
               title: "详情",
               icon: "chaxun",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -70,11 +71,11 @@ export default [
           {
             name: "query.preventPlanQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () => import("@/view/forms/preventPlanForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "preventPlan",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -104,11 +105,11 @@ export default [
           {
             name: "query.workCardQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () => import("@/view/forms/workCardForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "workCard",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -138,11 +139,11 @@ export default [
           {
             name: "query.riskCardQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () => import("@/view/forms/riskCardForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "riskCard",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -172,11 +173,11 @@ export default [
           {
             name: "query.professionalMntQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () => import("@/view/forms/professionalMntForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "professionalMnt",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -206,11 +207,11 @@ export default [
           {
             name: "query.simpleMntQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () => import("@/view/forms/simpleMntForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "simpleMnt",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -240,11 +241,11 @@ export default [
           {
             name: "query.engineerQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () => import("@/view/forms/engineerForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "engineer",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -274,11 +275,11 @@ export default [
           {
             name: "query.eliminateDangerQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () => import("@/view/forms/eliminateDangerForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "eliminateDanger",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -308,11 +309,11 @@ export default [
           {
             name: "query.relocationQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () => import("@/view/forms/relocationForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "relocation",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -342,11 +343,11 @@ export default [
           {
             name: "query.trainingQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () => import("@/view/forms/trainingForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "training",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -376,11 +377,11 @@ export default [
           {
             name: "query.mineInformationOtherForm",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () => import("@/view/forms/mineInformationForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "mineInformation",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -410,11 +411,12 @@ export default [
           {
             name: "query.heritageProtectionQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () =>
+              import("@/view/forms/heritageProtectionForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "heritageProtection",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
@@ -444,11 +446,12 @@ export default [
           {
             name: "query.governDataCollectQueryDetail",
             path: "otherFormDetail",
-            component: () => import("@/view/query/detail/otherForm"),
+            component: () =>
+              import("@/view/forms/governDataCollectForm/default"),
             meta: {
               title: "详情",
               icon: "chaxun",
-              formName: "governDataCollect",
+              formType: "view",
               permission: "Pages.Data.Query"
             }
           }
