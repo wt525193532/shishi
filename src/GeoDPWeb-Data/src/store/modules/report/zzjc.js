@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /**填报防灾预案表模块 */
 // eslint-disable-next-line
-import api from "@/api/bqgh/report";
+import api from "@/api/zzjc/report";
 import appconst from "@/lib/appconst";
 export default {
   namespaced: true,
@@ -51,25 +51,25 @@ export default {
     async edit({ commit }, id) {
       const res = await api.edit(id);
       commit("setCurrentData", res);
-      res.data.result.zgaA05A030 = res.data.result.zgaA05A030 + "000000";
+      res.data.result.zgaA02A030 = res.data.result.zgaA02A030 + "000000";
       return res;
     },
     // 编辑
     async update({ commit }, data) {
-      data.zgaA05A030 = data.zgaA05A030.substring(0, 6);
+      data.zgaA02A030 = data.zgaA02A030.substring(0, 6);
       const res = await api.update(data);
       return res;
     },
     // 新增
     async create({ commit }, data) {
-      data.zgaA05A030 = data.zgaA05A030.substring(0, 6);
+      data.zgaA02A030 = data.zgaA02A030.substring(0, 6);
       const res = await api.create(data);
       return res;
     },
     async getById({ commit }, id) {
       const res = await api.getById(id);
       commit("setCurrentData", res);
-      res.data.result.zgaA05A030 = res.data.result.zgaA05A030 + "000000";
+      res.data.result.zgaA02A030 = res.data.result.zgaA02A030 + "000000";
       return res;
     },
     async cancelCommit({ commit }, formId) {
