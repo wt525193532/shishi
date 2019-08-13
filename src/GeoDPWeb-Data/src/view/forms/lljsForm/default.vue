@@ -7,135 +7,148 @@
         inline
         :model="formData"
         label-width="140px"
-        ref="zzjc"
+        ref="lljs"
         :rules="rules"
-        :disabled="disabled"
+        :disabled="!canEdit"
       >
         <div class="form-item">
-          <h2 ref="zzjcH1">基本信息</h2>
+          <h2 ref="lljsH1">基本信息</h2>
           <div class="form-item-wapper">
-            <el-form-item label="市州">
+            <el-form-item label="市州" prop="zgaA03A020">
               <el-select value="成都市" disabled></el-select>
             </el-form-item>
-            <el-form-item label="区县">
-              <el-select value="浦江县" disabled></el-select>
+            <el-form-item label="区县" prop="zgaA03A030">
+              <el-select
+                v-model="formData.zgaA03A030"
+                :disabled="currenLevel == 3 || !canEdit"
+                placeholder
+              >
+                <el-option
+                  v-for="item in townList.children"
+                  :key="item.adminCode"
+                  :label="item.displayName"
+                  :value="item.adminCode"
+                ></el-option>
+              </el-select>
             </el-form-item>
             <el-form-item label="项目名称">
-              <el-input v-model="formData.name" placeholder></el-input>
+              <el-input v-model="formData.zgaA03A050" placeholder></el-input>
             </el-form-item>
             <el-form-item label="下达年度">
               <el-date-picker
                 type="year"
-                v-model="formData.date"
+                v-model="formData.zgaA03A060"
                 placeholder="选择年度"
+                value-format="yyyy"
               ></el-date-picker>
             </el-form-item>
-            <el-form-item label="省级任务书编号">
-              <el-cascader :options="options" clearable></el-cascader>
+            <el-form-item label="省级任务书编号" prop="zgaA03A070">
+              <!-- <el-cascader :options="options" clearable></el-cascader> -->
+              <el-input v-model="formData.zgaA03A070" placeholder></el-input>
             </el-form-item>
             <el-form-item label="市州任务书编号">
-              <el-input v-model="formData.name" placeholder></el-input>
+              <el-input v-model="formData.zgaA03A080" placeholder></el-input>
             </el-form-item>
           </div>
         </div>
 
         <div class="form-item">
-          <h2 ref="zzjcH4">设计阶段</h2>
+          <h2 ref="lljsH4">设计阶段</h2>
           <div class="form-item-wapper">
             <el-form-item label="方案设计单位">
-              <el-input v-model="formData.name" placeholder></el-input>
+              <el-input v-model="formData.zgaA03A090" placeholder></el-input>
             </el-form-item>
             <el-form-item label="项目负责人">
-              <el-input v-model="formData.name" placeholder></el-input>
+              <el-input v-model="formData.zgaA03A100" placeholder></el-input>
             </el-form-item>
             <el-form-item label="负责人电话">
-              <el-input v-model="formData.name" placeholder></el-input>
+              <el-input v-model="formData.zgaA03A110" placeholder></el-input>
             </el-form-item>
             <el-form-item label="方案完成时间">
               <el-date-picker
                 type="date"
-                v-model="formData.date"
+                v-model="formData.zgaA03A120"
                 placeholder="选择时间"
               ></el-date-picker>
             </el-form-item>
             <el-form-item label="项目设计预算(万元)">
               <el-input-number
-                v-model="formData.name"
+                v-model="formData.zgaA03A130"
                 :min="1"
                 :controls="false"
                 :max="10"
                 label
               ></el-input-number>
             </el-form-item>
-            <comAttachment
+            <!-- <comAttachment
               v-model="formData.attachments"
               :fileOption="fileOption"
               class="form-attachment"
-            />
+            />-->
           </div>
         </div>
 
         <div class="form-item">
-          <h2 ref="zzjcH4">实施阶段</h2>
+          <h2 ref="lljsH4">实施阶段</h2>
           <div class="form-item-wapper">
             <el-form-item label="招标时间">
               <el-date-picker
                 type="date"
-                v-model="formData.date"
+                v-model="formData.zgaA03A140"
                 placeholder="选择时间"
               ></el-date-picker>
             </el-form-item>
             <el-form-item label="中标时间">
               <el-date-picker
                 type="date"
-                v-model="formData.date"
+                v-model="formData.zgaA03A150"
                 placeholder="选择时间"
               ></el-date-picker>
             </el-form-item>
             <el-form-item label="开工时间">
               <el-date-picker
                 type="date"
-                v-model="formData.date"
+                v-model="formData.zgaA03A160"
                 placeholder="选择时间"
               ></el-date-picker>
             </el-form-item>
             <el-form-item label="完工时间">
               <el-date-picker
                 type="date"
-                v-model="formData.date"
+                v-model="formData.zgaA03A170"
                 placeholder="选择时间"
               ></el-date-picker>
             </el-form-item>
             <el-form-item label="实施单位">
-              <el-input v-model="formData.name" placeholder></el-input>
+              <el-input v-model="formData.zgaA03A180" placeholder></el-input>
             </el-form-item>
             <el-form-item label="项目负责人">
-              <el-input v-model="formData.name" placeholder></el-input>
+              <el-input v-model="formData.zgaA03A190" placeholder></el-input>
             </el-form-item>
             <el-form-item label="电话">
-              <el-input v-model="formData.name" placeholder></el-input>
+              <el-input v-model="formData.zgaA03A200" placeholder></el-input>
             </el-form-item>
           </div>
         </div>
 
         <div class="form-item">
-          <h2 ref="zzjcH4">验收阶段</h2>
+          <h2 ref="lljsH4">验收阶段</h2>
           <div class="form-item-wapper">
             <el-form-item label="验收组织单位">
-              <el-input v-model="formData.name" placeholder></el-input>
+              <el-input v-model="formData.zgaA03A210" placeholder></el-input>
             </el-form-item>
             <el-form-item label="完成验收时间">
-              <el-input v-model="formData.name" placeholder></el-input>
+              <el-input v-model="formData.zgaA03A220" placeholder></el-input>
             </el-form-item>
           </div>
         </div>
 
         <div class="form-item">
-          <h2 ref="zzjcH4">资金来源</h2>
+          <h2 ref="lljsH4">资金来源</h2>
           <div class="form-item-wapper">
             <el-form-item label="下达资金(万元)">
               <el-input-number
-                v-model="formData.name"
+                v-model="formData.zgaA03A230"
                 :min="1"
                 :controls="false"
                 :max="10"
@@ -144,14 +157,14 @@
             </el-form-item>
             <el-form-item label="中省资金(万元)">
               <el-input-number
-                v-model="formData.name"
+                v-model="formData.zgaA03A240"
                 :min="1"
                 :controls="false"
                 :max="10"
                 label
               ></el-input-number>
             </el-form-item>
-            <div v-for="(monitor, index) in formData.monitor" :key="index">
+            <!-- <div v-for="(monitor, index) in formData.monitor" :key="index">
               <el-form-item
                 label="中省资金文件"
                 :prop="'monitor[' + index + '].name'"
@@ -178,11 +191,11 @@
                   :icon="index === 0 ? 'el-icon-plus' : 'el-icon-minus'"
                 ></el-button>
               </el-form-item>
-            </div>
+            </div>-->
 
             <el-form-item label="市级资金(万元)">
               <el-input-number
-                v-model="formData.name"
+                v-model="formData.zgaA03A250"
                 :min="1"
                 :controls="false"
                 :max="10"
@@ -191,7 +204,7 @@
             </el-form-item>
             <el-form-item label="县级资金(万元)">
               <el-input-number
-                v-model="formData.name"
+                v-model="formData.zgaA03A260"
                 :min="1"
                 :controls="false"
                 :max="10"
@@ -202,11 +215,11 @@
         </div>
 
         <div class="form-item">
-          <h2 ref="zzjcH4">中省资金使用</h2>
+          <h2 ref="lljsH4">中省资金使用</h2>
           <div class="form-item-wapper">
             <el-form-item label="累计拨付资金(万元)">
               <el-input-number
-                v-model="formData.name"
+                v-model="formData.zgaA03A270"
                 :min="1"
                 :controls="false"
                 :max="10"
@@ -215,7 +228,7 @@
             </el-form-item>
             <el-form-item label="结存资金(万元)">
               <el-input-number
-                v-model="formData.name"
+                v-model="formData.zgaA03A280"
                 :min="1"
                 :controls="false"
                 :max="10"
@@ -224,7 +237,7 @@
             </el-form-item>
             <el-form-item label="结余资金(万元)">
               <el-input-number
-                v-model="formData.name"
+                v-model="formData.zgaA03A290"
                 :min="1"
                 :controls="false"
                 :max="10"
@@ -240,88 +253,62 @@
               <el-input
                 type="textarea"
                 :rows="3"
-                v-model="formData.name"
+                v-model="formData.zgaA03A990"
                 placeholder
               ></el-input>
             </el-form-item>
-            <comAttachment
+            <!-- <comAttachment
               v-model="formData.attachments"
               :fileOption="otherFileOption"
               class="form-attachment"
-            />
+            />-->
           </div>
         </div>
       </el-form>
-      <!-- <div class="form-item-step" v-show="isShowAudit">
+      <div class="form-item-step" v-show="isShowAudit">
         <time-line :processes="formData.processes"></time-line>
-      </div>-->
+      </div>
     </div>
     <div class="form-foot-btn">
-      <el-button type="primary" @click="saveFormSub" :disabled="ownDisabled">
-        {{ disabled === false ? "保存" : "返回" }}
-      </el-button>
+      <el-button type="primary" @click="$router.go(-1)">返回</el-button>
+      <el-button v-if="canEdit" type="primary" @click="saveForm"
+        >保存</el-button
+      >
     </div>
   </div>
 </template>
 
 <script>
-// import timeLine from "@/view/components/timeLine.vue";
+import timeLine from "@/view/components/timeLine.vue";
 export default {
-  name: "ZzjcForm",
-  // components: { timeLine },
-  props: {
-    disabled: Boolean,
-    canEdit: {
-      type: Boolean,
-      default: false
-    },
-    btnExcuteFunc: {
-      type: Function,
-      default: () => {}
-    },
-    formData: {
-      type: Object,
-      default: null
-    }
-  },
-  computed: {
-    fileOption() {
-      return {
-        tag: ["评审意见"],
-        upload: this.canEdit,
-        accept: ""
-      };
-    },
-    otherFileOption() {
-      return {
-        tag: ["其他附件"],
-        upload: this.canEdit,
-        accept: ""
-      };
-    }
-    // proccessActive() {
-    //   return this.formData.processes
-    //     ? this.formData.processes.length
-    //     : undefined;
-    // },
-    // isShowAudit() {
-    //   return !this.canEdit ? (this.proccessActive ? true : false) : false;
-    // }
-  },
+  name: "LljsForm",
+  components: { timeLine },
   data() {
     return {
       ownDisabled: false,
       rules: {
-        projectName: [{ max: 200, message: "长度在 200 个字符以内" }],
-        period: [
-          { max: 50, message: "长度在 50 个字符以内" },
+        zgaA03A020: [
           {
             required: true,
             trigger: "blur",
-            message: "隐患点治理期数不能为空"
+            message: "请选择市州"
           }
         ],
-        location: [{ max: 500, message: "长度在 500 个字符以内" }]
+        zgaA03A030: [
+          {
+            required: true,
+            trigger: "blur",
+            message: "请选择区县"
+          }
+        ],
+        zgaA03A070: [
+          { max: 100, message: "长度在 100 个字符以内" },
+          {
+            required: true,
+            trigger: "blur",
+            message: "省级任务书编号不能为空"
+          }
+        ]
       },
       options: [
         {
@@ -366,13 +353,123 @@ export default {
             }
           ]
         }
-      ]
+      ],
+      formData: {
+        zgaA03A020: "510100",
+        zgaA03A030: "",
+        zgaA03A040: "",
+        zgaA03A050: "",
+        zgaA03A060: "",
+        zgaA03A070: "",
+        zgaA03A080: "",
+        zgaA03A090: "",
+        zgaA03A100: "",
+        zgaA03A110: "",
+        zgaA03A120: null,
+        zgaA03A130: undefined,
+        zgaA03A140: null,
+        zgaA03A150: null,
+        zgaA03A160: null,
+        zgaA03A170: null,
+        zgaA03A180: "",
+        zgaA03A190: "",
+        zgaA03A200: "",
+        zgaA03A210: "",
+        zgaA03A220: null,
+        zgaA03A230: undefined,
+        zgaA03A240: undefined,
+        zgaA03A250: undefined,
+        zgaA03A260: undefined,
+        zgaA03A270: undefined,
+        zgaA03A280: undefined,
+        zgaA03A290: undefined,
+        zgaA03A300: "",
+        zgaA03A310: null,
+        zgaA03A320: "",
+        zgaA03A330: "",
+        zgaA03A340: null,
+        zgaA03A350: "",
+        zgaA03A360: "",
+        zgaA03A370: null,
+        zgaA03A990: "",
+        id: 0
+      },
+      canEdit: true,
+      townList: {}
     };
   },
-  updated() {
-    // if (!this.canEdit) {
-    //   this.$refs["zzjc"].clearValidate();
+  computed: {
+    formType() {
+      return this.$route.meta.formType;
+    },
+    currenLevel() {
+      return this.$store.getters.area.level;
+    },
+    user() {
+      return this.$store.getters.area;
+    },
+    fileOption() {
+      return {
+        tag: ["评审意见"],
+        upload: this.canEdit,
+        accept: ""
+      };
+    },
+    otherFileOption() {
+      return {
+        tag: ["其他附件"],
+        upload: this.canEdit,
+        accept: ""
+      };
+    },
+    proccessActive() {
+      return this.formData.processes
+        ? this.formData.processes.length
+        : undefined;
+    },
+    isShowAudit() {
+      return !this.canEdit ? (this.proccessActive ? true : false) : false;
+    }
+    // proccessActive() {
+    //   return this.formData.processes
+    //     ? this.formData.processes.length
+    //     : undefined;
+    // },
+    // isShowAudit() {
+    //   return !this.canEdit ? (this.proccessActive ? true : false) : false;
     // }
+  },
+  created() {
+    this.$store
+      .dispatch("organization/getAdministrative", "510100")
+      .then(res => {
+        if (this.currenLevel == 3) {
+          this.formData.zgaA03A030 = this.user.adminCode;
+        }
+        this.townList = res;
+      });
+    let api;
+    if (this.formType == "create") {
+      this.canEdit = true;
+    } else if (this.formType == "edit") {
+      api = "report/lljs/edit";
+      this.canEdit = true;
+    } else {
+      api = "report/lljs/getById";
+      this.canEdit = false;
+    }
+    if (this.formType != "create") {
+      this.$store.dispatch(api, this.$route.query.id).then(res => {
+        if (res.data.success) {
+          this.formData = res.data.result;
+        }
+      });
+    }
+  },
+  updated() {
+    if (!this.canEdit) {
+      this.$refs["lljs"].clearValidate();
+    }
   },
   methods: {
     addMonitor() {
@@ -390,26 +487,33 @@ export default {
     valueChanged() {
       //   this.formData.code = this.formData.site.code;
     },
-    saveFormSub() {
-      //   this.$refs["zzjc"].validate(async valid => {
-      //     if (valid) {
-      //       if (this.formData.site.code) {
-      //         this.ownDisabled = true;
-      //         let r = await this.btnExcuteFunc();
-      //         if (r === false) {
-      //           this.ownDisabled = r;
-      //         }
-      //       } else {
-      //         this.$message({
-      //           type: "info",
-      //           message: "保存不成功"
-      //         });
-      //         return false;
-      //       }
-      //     } else {
-      //       this.$message.error("验证未通过");
-      //     }
-      //   });
+    saveForm() {
+      this.$refs["lljs"].validate(async valid => {
+        if (valid) {
+          //  新增;
+          if (this.formType == "create") {
+            this.$store
+              .dispatch("report/lljs/create", this.formData)
+              .then(res => {
+                this.ownDisabled = false;
+                if (this.$util.addSaveConfirm(res.data.success)) {
+                  this.formData.zgaA03A030 =
+                    this.formData.zgaA03A030 + "000000";
+                }
+              });
+            //  编辑
+          } else {
+            this.$store
+              .dispatch("report/lljs/update", this.formData)
+              .then(res => {
+                this.$util.editSaveMessage(res.data.success);
+                this.ownDisabled = false;
+              });
+          }
+        } else {
+          this.$message.error("验证未通过");
+        }
+      });
     }
   }
 };

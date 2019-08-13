@@ -802,7 +802,7 @@ export default [
           {
             name: "report.addZzjc",
             path: "add",
-            component: () => import("@/view/report/zzjc/addZzjc"),
+            component: () => import("@/view/forms/zzjcForm/default"),
             meta: {
               title: "新增专职监测",
               permission: "Pages.Data.Report",
@@ -812,7 +812,7 @@ export default [
           {
             name: "report.editZzjc",
             path: "edit",
-            component: () => import("@/view/report/zzjc/editZzjc"),
+            component: () => import("@/view/forms/zzjcForm/default"),
             meta: {
               title: "编辑专职监测",
               permission: "Pages.Data.Report",
@@ -822,7 +822,7 @@ export default [
           {
             name: "report.viewZzjc",
             path: "view",
-            component: () => import("@/view/components/formViewId/viewZzjc"),
+            component: () => import("@/view/forms/zzjcForm/default"),
             meta: {
               title: "查看专职监测",
               permission: "Pages.Data.Report",
@@ -855,7 +855,7 @@ export default [
           {
             name: "report.addLljs",
             path: "add",
-            component: () => import("@/view/report/lljs/addLljs"),
+            component: () => import("@/view/forms/lljsForm/default"),
             meta: {
               title: "新增能力建设",
               permission: "Pages.Data.Report",
@@ -865,7 +865,7 @@ export default [
           {
             name: "report.editLljs",
             path: "edit",
-            component: () => import("@/view/report/lljs/editLljs"),
+            component: () => import("@/view/forms/lljsForm/default"),
             meta: {
               title: "编辑能力建设",
               permission: "Pages.Data.Report",
@@ -875,7 +875,7 @@ export default [
           {
             name: "report.viewLljs",
             path: "view",
-            component: () => import("@/view/components/formViewId/viewLljs"),
+            component: () => import("@/view/forms/lljsForm/default"),
             meta: {
               title: "查看能力建设",
               permission: "Pages.Data.Report",

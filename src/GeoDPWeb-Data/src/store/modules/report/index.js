@@ -15,6 +15,8 @@ import heritageProtection from "./heritageProtection";
 import mineInformation from "./mineInformation";
 import governDataCollect from "./governDataCollect";
 import bqgh from "./bqgh";
+import zzjc from "./zzjc";
+import lljs from "./lljs";
 export default {
   namespaced: true,
   modules: {
@@ -32,7 +34,9 @@ export default {
     heritageProtection,
     mineInformation,
     governDataCollect,
-    bqgh
+    bqgh,
+    zzjc,
+    lljs
   },
   state: {},
   mutations: {},
