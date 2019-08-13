@@ -1,5 +1,5 @@
 <template>
-  <div class="report-preventPlan">
+  <div class="report-bqgh">
     <report-layout
       :tab="tab"
       :queryForm="queryForm"
@@ -70,13 +70,13 @@
 <script>
 import ReportLayout from "@/view/report/components/reportLayout";
 export default {
-  name: "PreventPlan",
+  name: "Bqgh",
   components: {
     ReportLayout
   },
   computed: {
     tableData() {
-      return this.$store.state.report.preventPlan.tableData;
+      return this.$store.state.report.bqgh.tableData;
     },
     activeName() {
       return this.tab.activeName;
@@ -115,76 +115,19 @@ export default {
         [this.$util.appconst.DataStatusEnum.UnCommit]: {
           title: [
             {
-              prop: "isCanceled",
-              label: "是否销号",
-              parent: "site",
-              render: row => {
-                if (row.site.isCanceled) {
-                  return <el-tag type="success">已销号</el-tag>;
-                } else {
-                  return <el-tag type="warning">未销号</el-tag>;
-                }
-              }
+              parent: "admin",
+              prop: "city",
+              label: "市州"
             },
             {
-              parent: "site",
-              prop: "name",
-              label: "隐患点名称"
+              parent: "admin",
+              prop: "country",
+              label: "区县"
             },
             {
-              parent: "site",
-              prop: "code",
-              label: "隐患点编号"
+              prop: "zgaA05A050",
+              label: "县域地质灾害避险搬迁安置规划名称"
             },
-            {
-              parent: "site",
-              prop: "disasterTypeCode",
-              label: "隐患点类型",
-              render: row => (
-                <span>
-                  {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
-                </span>
-              )
-            },
-            {
-              parent: "site",
-              prop: "disasterScaleLevel",
-              label: "灾害规模",
-              render: row => (
-                <span>
-                  {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
-                </span>
-              )
-            },
-            {
-              parent: "site",
-              prop: "location",
-              label: "地理位置"
-            },
-            {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
-            },
-            {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
-            },
-            {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
-            },
-            {
-              parent: "site",
-              prop: "prenventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
-            },
-
             {
               type: "func",
               label: "操作",
@@ -237,76 +180,19 @@ export default {
         [this.$util.appconst.DataStatusEnum.Approval]: {
           title: [
             {
-              prop: "isCanceled",
-              label: "是否销号",
-              parent: "site",
-              render: row => {
-                if (row.site.isCanceled) {
-                  return <el-tag type="success">已销号</el-tag>;
-                } else {
-                  return <el-tag type="success">未销号</el-tag>;
-                }
-              }
+              parent: "admin",
+              prop: "city",
+              label: "市州"
             },
             {
-              parent: "site",
-              prop: "name",
-              label: "隐患点名称"
+              parent: "admin",
+              prop: "country",
+              label: "区县"
             },
             {
-              parent: "site",
-              prop: "code",
-              label: "隐患点编号"
+              prop: "zgaA05A050",
+              label: "县域地质灾害避险搬迁安置规划名称"
             },
-            {
-              parent: "site",
-              prop: "disasterTypeCode",
-              label: "隐患点类型",
-              render: row => (
-                <span>
-                  {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
-                </span>
-              )
-            },
-            {
-              parent: "site",
-              prop: "disasterScaleLevel",
-              label: "灾害规模",
-              render: row => (
-                <span>
-                  {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
-                </span>
-              )
-            },
-            {
-              parent: "site",
-              prop: "location",
-              label: "地理位置"
-            },
-            {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
-            },
-            {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
-            },
-            {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
-            },
-            {
-              parent: "site",
-              prop: "preventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
-            },
-
             {
               type: "func",
               label: "操作",
@@ -319,76 +205,19 @@ export default {
         [this.$util.appconst.DataStatusEnum.Disapproval]: {
           title: [
             {
-              parent: "site",
-              prop: "isCanceled",
-              label: "是否销号",
-              render: row => {
-                if (row.site.isCanceled) {
-                  return <el-tag type="success">已销号</el-tag>;
-                } else {
-                  return <el-tag type="success">未销号</el-tag>;
-                }
-              }
+              parent: "admin",
+              prop: "city",
+              label: "市州"
             },
             {
-              parent: "site",
-              prop: "name",
-              label: "隐患点名称"
+              parent: "admin",
+              prop: "country",
+              label: "区县"
             },
             {
-              parent: "site",
-              prop: "code",
-              label: "隐患点编号"
+              prop: "zgaA05A050",
+              label: "县域地质灾害避险搬迁安置规划名称"
             },
-            {
-              parent: "site",
-              prop: "disasterTypeCode",
-              label: "隐患点类型",
-              render: row => (
-                <span>
-                  {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
-                </span>
-              )
-            },
-            {
-              parent: "site",
-              prop: "disasterScaleLevel",
-              label: "灾害规模",
-              render: row => (
-                <span>
-                  {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
-                </span>
-              )
-            },
-            {
-              parent: "site",
-              prop: "location",
-              label: "地理位置"
-            },
-            {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
-            },
-            {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
-            },
-            {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
-            },
-            {
-              parent: "site",
-              prop: "preventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
-            },
-
             {
               type: "func",
               label: "操作",
@@ -421,8 +250,7 @@ export default {
         // loading: false // 表格动画
         // initTable: true // 是否一挂载就加载数据
       },
-      selectionList: [],
-      dataType: null
+      selectionList: []
     };
   },
   watch: {
@@ -440,7 +268,6 @@ export default {
     }
   },
   created() {
-    this.dataType = this.$util.appconst.dataType[this.$route.meta.title];
     this.options.expand =
       this.tab.activeName == this.$util.appconst.DataStatusEnum.Processing;
     this.options.mutiSelect =
@@ -456,27 +283,26 @@ export default {
       this.query();
     },
     query() {
-      //   let parmas = {
-      //     status: [this.tab.activeName], // 审核状态
-      //     key: this.queryForm.key, // 查询字段
-      //     skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize, // 跳过条数
-      //     maxResultCount: this.pagination.pageSize, // 查询条数
-      //     dataType: this.dataType
-      //   };
-      //   this.$store.dispatch("report/preventPlan/query", parmas).then(res => {
-      //     this.pagination.total = res.totalCount;
-      //     this.columns[this.activeName].data = this.tableData;
-      //   });
+      let parmas = {
+        status: [this.tab.activeName], // 审核状态
+        key: this.queryForm.key, // 查询字段
+        skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize, // 跳过条数
+        maxResultCount: this.pagination.pageSize
+      };
+      this.$store.dispatch("report/bqgh/query", parmas).then(res => {
+        this.pagination.total = res.totalCount;
+        this.columns[this.activeName].data = this.tableData;
+      });
     },
     view(row) {
       this.$router.push({
-        path: "/report/preventPlan/view",
+        path: "/report/bqgh/view",
         query: { id: row.id, code: row.code }
       });
     },
     edit(row) {
       this.$router.push({
-        path: "/report/preventPlan/edit",
+        path: "/report/bqgh/edit",
         query: { id: row.id }
       });
     },
@@ -497,18 +323,19 @@ export default {
               dataIds: []
             };
             parmas.dataIds = this.selectionList.map(item => item.id);
-            this.$store
-              .dispatch("report/preventPlan/commit", parmas)
-              .then(res => {
-                if (res.data.success) {
-                  this.$message({
-                    type: "success",
-                    message: "提交成功!"
-                  });
-                  this.pagination.pageIndex = 1;
-                  this.query();
-                }
-              });
+            this.$store.dispatch("report/bqgh/commit", parmas).then(res => {
+              if (res.data.success) {
+                this.$message({
+                  type: "success",
+                  message:
+                    "提交成功! 数据进入【" +
+                    this.$t("DataStatus." + res.data.result.status) +
+                    "】"
+                });
+                this.pagination.pageIndex = 1;
+                this.query();
+              }
+            });
           })
           .catch(() => {
             this.$message({
@@ -531,18 +358,16 @@ export default {
         type: "warning"
       })
         .then(() => {
-          this.$store
-            .dispatch("report/preventPlan/cancelCommit", row.id)
-            .then(res => {
-              if (res.data.success) {
-                this.$message({
-                  type: "success",
-                  message: "撤销成功!"
-                });
-                this.pagination.pageIndex = 1;
-                this.query();
-              }
-            });
+          this.$store.dispatch("report/bqgh/cancelCommit", row.id).then(res => {
+            if (res.data.success) {
+              this.$message({
+                type: "success",
+                message: "撤销成功!"
+              });
+              this.pagination.pageIndex = 1;
+              this.query();
+            }
+          });
         })
         .catch(() => {
           this.$message({
@@ -559,18 +384,16 @@ export default {
         type: "warning"
       })
         .then(() => {
-          this.$store
-            .dispatch("report/preventPlan/delData", row.id)
-            .then(res => {
-              if (res.data.success) {
-                this.$message({
-                  type: "success",
-                  message: "删除成功!"
-                });
-                this.pagination.pageIndex = 1;
-                this.query();
-              }
-            });
+          this.$store.dispatch("report/bqgh/delData", row.id).then(res => {
+            if (res.data.success) {
+              this.$message({
+                type: "success",
+                message: "删除成功!"
+              });
+              this.pagination.pageIndex = 1;
+              this.query();
+            }
+          });
         })
         .catch(() => {
           this.$message({

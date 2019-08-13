@@ -14,6 +14,7 @@ import training from "./training";
 import heritageProtection from "./heritageProtection";
 import mineInformation from "./mineInformation";
 import governDataCollect from "./governDataCollect";
+import bqgh from "./bqgh";
 export default {
   namespaced: true,
   modules: {
@@ -30,7 +31,8 @@ export default {
     training,
     heritageProtection,
     mineInformation,
-    governDataCollect
+    governDataCollect,
+    bqgh
   },
   state: {},
   mutations: {},
