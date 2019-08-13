@@ -1,0 +1,447 @@
+<template>
+  <div class="form-wrapper">
+    <div class="form-wapper-it">
+      <el-form
+        label-position="right"
+        label-suffix=":"
+        inline
+        :model="formData"
+        label-width="140px"
+        ref="governProject"
+        :rules="rules"
+        :disabled="disabled"
+      >
+        <div class="form-item">
+          <h2>基本信息</h2>
+
+          <div class="form-item-wapper">
+            <basicinfo-selector
+              v-model="formData.site"
+              @input="valueChanged"
+              :isAdd="canEdit"
+            />
+          </div>
+        </div>
+        <div class="form-item">
+          <h2 ref="governProjectH1">排危除险</h2>
+          <div class="form-item-wapper">
+            <el-form-item label="排危除险名称">
+              <el-input
+                v-model="formData.name"
+                placeholder="请输入排危除险名称"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="保护财产(万元)" prop="threatPeople">
+              <el-input-number
+                :controls="false"
+                :min="0"
+                placeholder="请输入"
+                :max="99999999"
+                v-model.number="formData.threatPeople"
+              ></el-input-number>
+            </el-form-item>
+            <el-form-item label="保护人数" prop="threatPeople">
+              <el-input-number
+                :controls="false"
+                :min="0"
+                placeholder="请输入"
+                :max="99999999"
+                v-model.number="formData.threatPeople"
+              ></el-input-number>
+            </el-form-item>
+            <el-form-item label="省级任务书编号">
+              <el-cascader :options="options" clearable></el-cascader>
+            </el-form-item>
+            <el-form-item label="市州任务书编号">
+              <el-input v-model="formData.name" placeholder></el-input>
+            </el-form-item>
+          </div>
+        </div>
+        <div class="form-item">
+          <h2 ref="zhzzH4">方案编制</h2>
+          <div class="form-item-wapper">
+            <el-form-item label="方案编制单位">
+              <el-input v-model="formData.name" placeholder></el-input>
+            </el-form-item>
+            <el-form-item label="项目负责人">
+              <el-input v-model="formData.name" placeholder></el-input>
+            </el-form-item>
+            <el-form-item label="负责人电话">
+              <el-input v-model="formData.name" placeholder></el-input>
+            </el-form-item>
+            <el-form-item label="开工时间">
+              <el-date-picker
+                type="date"
+                v-model="formData.date"
+                placeholder="选择时间"
+              ></el-date-picker>
+            </el-form-item>
+            <el-form-item label="完工时间">
+              <el-date-picker
+                type="date"
+                v-model="formData.date"
+                placeholder="选择时间"
+              ></el-date-picker>
+            </el-form-item>
+            <el-form-item label="概算资金(万元)">
+              <el-input-number
+                v-model="formData.name"
+                :min="1"
+                :controls="false"
+                :max="10"
+                label
+              ></el-input-number>
+            </el-form-item>
+            <el-form-item label="是否入库">
+              <el-select v-model="formData.sfrk" placeholder>
+                <el-option label="是" :value="true"></el-option>
+                <el-option label="否" :value="false"></el-option>
+              </el-select>
+            </el-form-item>
+
+            <comAttachment
+              v-model="formData.attachments"
+              :fileOption="fileOption"
+              class="form-attachment"
+            />
+          </div>
+        </div>
+        <div class="form-item">
+          <h2 ref="zhzzH4">资金来源</h2>
+          <div class="form-item-wapper">
+            <el-form-item label="下达资金(万元)">
+              <el-input-number
+                v-model="formData.name"
+                :min="1"
+                :controls="false"
+                :max="10"
+                label
+              ></el-input-number>
+            </el-form-item>
+            <el-form-item label="中省资金(万元)">
+              <el-input-number
+                v-model="formData.name"
+                :min="1"
+                :controls="false"
+                :max="10"
+                label
+              ></el-input-number>
+            </el-form-item>
+            <div v-for="(monitor, index) in formData.monitor" :key="index">
+              <el-form-item
+                label="中省资金文件"
+                :prop="'monitor[' + index + '].name'"
+              >
+                <el-input v-model="monitor.name" placeholder></el-input>
+              </el-form-item>
+              <el-form-item
+                label="额度(万元)"
+                :prop="'monitor[' + index + '].phone'"
+                class="form-item-btn"
+              >
+                <el-input-number
+                  v-model="formData.name"
+                  :min="1"
+                  :controls="false"
+                  :max="10"
+                ></el-input-number>
+                <el-button
+                  @click="index === 0 ? addMonitor() : deleteMonitor(index)"
+                  circle
+                  :title="index === 0 ? '添加中省资金文件' : '删除中省资金文件'"
+                  plain
+                  :type="index === 0 ? 'primary' : 'danger'"
+                  :icon="index === 0 ? 'el-icon-plus' : 'el-icon-minus'"
+                ></el-button>
+              </el-form-item>
+            </div>
+
+            <el-form-item label="市级资金(万元)">
+              <el-input-number
+                v-model="formData.name"
+                :min="1"
+                :controls="false"
+                :max="10"
+                label
+              ></el-input-number>
+            </el-form-item>
+            <el-form-item label="县级资金(万元)">
+              <el-input-number
+                v-model="formData.name"
+                :min="1"
+                :controls="false"
+                :max="10"
+                label
+              ></el-input-number>
+            </el-form-item>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <h2 ref="zhzzH4">中省资金使用</h2>
+          <div class="form-item-wapper">
+            <el-form-item label="累计拨付资金(万元)">
+              <el-input-number
+                v-model="formData.name"
+                :min="1"
+                :controls="false"
+                :max="10"
+                label
+              ></el-input-number>
+            </el-form-item>
+            <el-form-item label="结存资金(万元)">
+              <el-input-number
+                v-model="formData.name"
+                :min="1"
+                :controls="false"
+                :max="10"
+                label
+              ></el-input-number>
+            </el-form-item>
+            <el-form-item label="结余资金(万元)">
+              <el-input-number
+                v-model="formData.name"
+                :min="1"
+                :controls="false"
+                :max="10"
+                label
+              ></el-input-number>
+            </el-form-item>
+            <el-form-item label="备注">
+              <el-input
+                type="textarea"
+                :rows="3"
+                v-model="formData.name"
+                placeholder
+              ></el-input>
+            </el-form-item>
+            <comAttachment
+              v-model="formData.attachments"
+              :fileOption="otherFileOption"
+              class="form-attachment"
+            />
+          </div>
+        </div>
+      </el-form>
+      <!-- <div class="form-item-step" v-show="isShowAudit">
+        <time-line :processes="formData.processes"></time-line>
+      </div>-->
+    </div>
+    <div class="form-foot-btn">
+      <el-button type="primary" @click="saveFormSub" :disabled="ownDisabled">
+        {{ disabled === false ? "保存" : "返回" }}
+      </el-button>
+    </div>
+  </div>
+</template>
+
+<script>
+// import timeLine from "@/view/components/timeLine.vue";
+import basicinfoSelector from "@/view/components/basicinfoSelector";
+export default {
+  name: "EngineerForm",
+  components: { basicinfoSelector },
+  props: {
+    disabled: Boolean,
+    canEdit: {
+      type: Boolean,
+      default: false
+    },
+    btnExcuteFunc: {
+      type: Function,
+      default: () => {}
+    }
+  },
+  computed: {
+    fileOption() {
+      return {
+        tag: ["附件上传"],
+        upload: this.canEdit,
+        accept: ""
+      };
+    },
+    otherFileOption() {
+      return {
+        tag: ["其他附件"],
+        upload: this.canEdit,
+        accept: ""
+      };
+    },
+    isNdfa() {
+      if (this.canEdit) {
+        return !this.formData.ndfa;
+      }
+      return true;
+    }
+
+    // proccessActive() {
+    //   return this.formData.processes
+    //     ? this.formData.processes.length
+    //     : undefined;
+    // },
+    // isShowAudit() {
+    //   return !this.canEdit ? (this.proccessActive ? true : false) : false;
+    // }
+  },
+  data() {
+    return {
+      ownDisabled: false,
+      rules: {
+        projectName: [{ max: 200, message: "长度在 200 个字符以内" }],
+        period: [
+          { max: 50, message: "长度在 50 个字符以内" },
+          {
+            required: true,
+            trigger: "blur",
+            message: "隐患点治理期数不能为空"
+          }
+        ],
+        location: [{ max: 500, message: "长度在 500 个字符以内" }]
+      },
+      options: [
+        {
+          value: "zhinan",
+          label: "指南",
+          children: [
+            {
+              value: "shejiyuanze",
+              label: "设计原则",
+              children: [
+                {
+                  value: "yizhi",
+                  label: "一致"
+                },
+                {
+                  value: "fankui",
+                  label: "反馈"
+                },
+                {
+                  value: "xiaolv",
+                  label: "效率"
+                },
+                {
+                  value: "kekong",
+                  label: "可控"
+                }
+              ]
+            },
+            {
+              value: "daohang",
+              label: "导航",
+              children: [
+                {
+                  value: "cexiangdaohang",
+                  label: "侧向导航"
+                },
+                {
+                  value: "dingbudaohang",
+                  label: "顶部导航"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      formData: {
+        site: {
+          disasterTypeCode: "",
+          name: "",
+          developmentTrendCode: "",
+          townCode: "",
+          village: "",
+          group: "",
+          location: "",
+          longitude: 0,
+          latitude: 0,
+          yaw: 0,
+          isCanceled: true,
+          cancelTime: "",
+          cancelReason: "",
+          disasterScale: 0,
+          disasterScaleLevel: 0,
+          threatProperty: 0,
+          threatHouses: 0,
+          threatPeople: 0,
+          preventOwnerName: "",
+          preventOwnerPhone: "",
+          monitorOwnerName: "",
+          monitorOwnerPhone: "",
+          monitorName: "",
+          monitorPhone: "",
+          code: "",
+          countryApproval: "",
+          countryComment: "",
+          countryApprovalTime: "",
+          cityApproval: "",
+          cityComment: "",
+          cityApprovalTime: "",
+          adminCode: "",
+          admin: {
+            province: "",
+            city: "",
+            country: "",
+            town: ""
+          },
+          status: 0,
+          id: 0
+        },
+        monitor: [
+          {
+            personClass: 10,
+            orgUnitId: 0,
+            name: "",
+            phone: "",
+            jobPost: "",
+            idNumber: "",
+            sex: "",
+            id: 0
+          }
+        ]
+      }
+    };
+  },
+  updated() {
+    // if (!this.canEdit) {
+    //   this.$refs["governProject"].clearValidate();
+    // }
+  },
+  methods: {
+    addMonitor() {
+      this.formData.monitor.push({
+        name: "",
+        phone: "",
+        jobPost: "",
+        idNumber: "",
+        sex: ""
+      });
+    },
+    deleteMonitor(index) {
+      this.formData.monitor.splice(index, 1);
+    },
+    valueChanged() {
+      //   this.formData.code = this.formData.site.code;
+    },
+    saveFormSub() {
+      //   this.$refs["governProject"].validate(async valid => {
+      //     if (valid) {
+      //       if (this.formData.site.code) {
+      //         this.ownDisabled = true;
+      //         let r = await this.btnExcuteFunc();
+      //         if (r === false) {
+      //           this.ownDisabled = r;
+      //         }
+      //       } else {
+      //         this.$message({
+      //           type: "info",
+      //           message: "保存不成功"
+      //         });
+      //         return false;
+      //       }
+      //     } else {
+      //       this.$message.error("验证未通过");
+      //     }
+      //   });
+    }
+  }
+};
+</script>

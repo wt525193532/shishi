@@ -749,29 +749,31 @@ export default [
           {
             name: "report.addBqgh",
             path: "add",
-            component: () => import("@/view/report/bqgh/addBqgh"),
+            component: () => import("@/view/forms/bqghForm/default"),
             meta: {
               title: "新增搬迁规划",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
             name: "report.editBqgh",
             path: "edit",
-            component: () => import("@/view/report/bqgh/editBqgh"),
+            component: () => import("@/view/forms/bqghForm/default"),
             meta: {
               title: "编辑搬迁规划",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
             name: "report.viewBqgh",
             path: "view",
-            component: () => import("@/view/components/formViewId/viewBqgh"),
+            component: () => import("@/view/forms/bqghForm/default"),
             meta: {
               title: "查看搬迁规划",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -804,7 +806,7 @@ export default [
             meta: {
               title: "新增专职监测",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
@@ -813,7 +815,8 @@ export default [
             component: () => import("@/view/report/zzjc/editZzjc"),
             meta: {
               title: "编辑专职监测",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
@@ -822,7 +825,8 @@ export default [
             component: () => import("@/view/components/formViewId/viewZzjc"),
             meta: {
               title: "查看专职监测",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -855,7 +859,7 @@ export default [
             meta: {
               title: "新增能力建设",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
@@ -864,7 +868,8 @@ export default [
             component: () => import("@/view/report/lljs/editLljs"),
             meta: {
               title: "编辑能力建设",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
@@ -873,7 +878,8 @@ export default [
             component: () => import("@/view/components/formViewId/viewLljs"),
             meta: {
               title: "查看能力建设",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -906,7 +912,7 @@ export default [
             meta: {
               title: "新增综合整治",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
@@ -915,7 +921,8 @@ export default [
             component: () => import("@/view/report/zhzz/editZhzz"),
             meta: {
               title: "编辑综合整治",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
@@ -924,7 +931,8 @@ export default [
             component: () => import("@/view/components/formViewId/viewZhzz"),
             meta: {
               title: "查看综合整治",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -957,7 +965,7 @@ export default [
             meta: {
               title: "新增地质灾害巡、排查",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
@@ -966,7 +974,8 @@ export default [
             component: () => import("@/view/report/dzxpc/editDzxpc"),
             meta: {
               title: "编辑地质灾害巡、排查",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
@@ -975,7 +984,8 @@ export default [
             component: () => import("@/view/components/formViewId/viewDzxpc"),
             meta: {
               title: "查看地质灾害巡、排查",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -1008,7 +1018,7 @@ export default [
             meta: {
               title: "新增地质灾害驻守技术支撑抢险调查表",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
@@ -1017,7 +1027,8 @@ export default [
             component: () => import("@/view/report/dzzsqx/editDzzsqx"),
             meta: {
               title: "编辑地质灾害驻守技术支撑抢险调查表",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
@@ -1026,7 +1037,8 @@ export default [
             component: () => import("@/view/components/formViewId/viewDzzsqx"),
             meta: {
               title: "查看地质灾害驻守技术支撑抢险调查表",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -1059,7 +1071,7 @@ export default [
             meta: {
               title: "新增民生工程",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
@@ -1068,7 +1080,8 @@ export default [
             component: () => import("@/view/report/msgc/editMsgc"),
             meta: {
               title: "编辑民生工程",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
@@ -1077,7 +1090,8 @@ export default [
             component: () => import("@/view/components/formViewId/viewMsgc"),
             meta: {
               title: "查看民生工程",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -1110,7 +1124,7 @@ export default [
             meta: {
               title: "新增地质灾害驻守技术支撑单位一览表",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
@@ -1119,7 +1133,8 @@ export default [
             component: () => import("@/view/report/dzzsdw/editDzzsdw"),
             meta: {
               title: "编辑地质灾害驻守技术支撑单位一览表",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
@@ -1128,7 +1143,8 @@ export default [
             component: () => import("@/view/components/formViewId/viewDzzsdw"),
             meta: {
               title: "查看地质灾害驻守技术支撑单位一览表",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -1161,7 +1177,7 @@ export default [
             meta: {
               title: "新增地质灾害驻守技术支撑工作报表",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
@@ -1170,7 +1186,8 @@ export default [
             component: () => import("@/view/report/dzzsbb/editDzzsbb"),
             meta: {
               title: "编辑地质灾害驻守技术支撑工作报表",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
@@ -1179,7 +1196,8 @@ export default [
             component: () => import("@/view/components/formViewId/viewDzzsbb"),
             meta: {
               title: "查看地质灾害驻守技术支撑工作报表",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
@@ -1212,7 +1230,7 @@ export default [
             meta: {
               title: "新增自动化实时监测预警明细表",
               permission: "Pages.Data.Report",
-              icon: ""
+              formType: "create"
             }
           },
           {
@@ -1221,7 +1239,8 @@ export default [
             component: () => import("@/view/report/ssjcyj/editSsjcyj"),
             meta: {
               title: "编辑自动化实时监测预警明细表",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "edit"
             }
           },
           {
@@ -1230,7 +1249,61 @@ export default [
             component: () => import("@/view/components/formViewId/viewSsjcyj"),
             meta: {
               title: "查看自动化实时监测预警明细表",
-              permission: "Pages.Data.Report"
+              permission: "Pages.Data.Report",
+              formType: "view"
+            }
+          }
+        ]
+      },
+      {
+        name: "report.pwcx",
+        path: "pwcx",
+        component: ReportLayout,
+        meta: {
+          title: "排危除险",
+          permission: "Pages.Data.Report",
+          icon: "hiddenTrouble"
+        },
+        redirect: "/report/pwcx/index",
+        children: [
+          {
+            name: "report.pwcxIndex",
+            path: "index",
+            component: () => import("@/view/report/pwcx/pwcx"),
+            meta: {
+              title: "排危除险",
+              permission: "Pages.Data.Report",
+              icon: ""
+            }
+          },
+          {
+            name: "report.addpwcx",
+            path: "add",
+            component: () => import("@/view/forms/pwcxForm/default"),
+            meta: {
+              title: "新增排危除险",
+              permission: "Pages.Data.Report",
+              formType: "create"
+            }
+          },
+          {
+            name: "report.editpwcx",
+            path: "edit",
+            component: () => import("@/view/forms/pwcxForm/default"),
+            meta: {
+              title: "编辑排危除险",
+              permission: "Pages.Data.Report",
+              formType: "edit"
+            }
+          },
+          {
+            name: "report.viewpwcx",
+            path: "view",
+            component: () => import("@/view/forms/pwcxForm/default"),
+            meta: {
+              title: "查看排危除险",
+              permission: "Pages.Data.Report",
+              formType: "view"
             }
           }
         ]
