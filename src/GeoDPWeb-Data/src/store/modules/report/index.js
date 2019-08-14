@@ -18,6 +18,7 @@ import bqgh from "./bqgh";
 import zzjc from "./zzjc";
 import lljs from "./lljs";
 import zhzz from "./zhzz";
+import dzxpc from "./dzxpc";
 export default {
   namespaced: true,
   modules: {
@@ -38,7 +39,8 @@ export default {
     bqgh,
     zzjc,
     lljs,
-    zhzz
+    zhzz,
+    dzxpc
   },
   state: {},
   mutations: {},

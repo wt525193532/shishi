@@ -961,7 +961,7 @@ export default [
           {
             name: "report.addDzxpc",
             path: "add",
-            component: () => import("@/view/report/dzxpc/addDzxpc"),
+            component: () => import("@/view/forms/dzxpcForm/default"),
             meta: {
               title: "新增地质灾害巡、排查",
               permission: "Pages.Data.Report",
@@ -971,7 +971,7 @@ export default [
           {
             name: "report.editDzxpc",
             path: "edit",
-            component: () => import("@/view/report/dzxpc/editDzxpc"),
+            component: () => import("@/view/forms/dzxpcForm/default"),
             meta: {
               title: "编辑地质灾害巡、排查",
               permission: "Pages.Data.Report",
@@ -981,7 +981,7 @@ export default [
           {
             name: "report.viewDzxpc",
             path: "view",
-            component: () => import("@/view/components/formViewId/viewDzxpc"),
+            component: () => import("@/view/forms/dzxpcForm/default"),
             meta: {
               title: "查看地质灾害巡、排查",
               permission: "Pages.Data.Report",
