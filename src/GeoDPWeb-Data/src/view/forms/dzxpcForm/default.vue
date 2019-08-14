@@ -260,10 +260,9 @@ export default {
   },
   methods: {
     saveForm() {
-      console.log(this.formData);
-
       this.$refs["dzxpcForm"].validate(async valid => {
         if (valid) {
+          this.ownDisabled = true;
           //  新增;
           if (this.formType == "create") {
             this.$store

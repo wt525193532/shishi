@@ -482,6 +482,7 @@ export default {
     saveForm() {
       this.$refs["lljs"].validate(async valid => {
         if (valid) {
+          this.ownDisabled = true;
           //  新增;
           if (this.formType == "create") {
             this.$store

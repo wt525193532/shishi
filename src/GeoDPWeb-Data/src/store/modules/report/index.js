@@ -19,6 +19,7 @@ import zzjc from "./zzjc";
 import lljs from "./lljs";
 import zhzz from "./zhzz";
 import dzxpc from "./dzxpc";
+import dzzsdw from "./dzzsdw";
 export default {
   namespaced: true,
   modules: {
@@ -40,7 +41,8 @@ export default {
     zzjc,
     lljs,
     zhzz,
-    dzxpc
+    dzxpc,
+    dzzsdw
   },
   state: {},
   mutations: {},
