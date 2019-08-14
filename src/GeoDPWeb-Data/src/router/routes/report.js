@@ -908,7 +908,7 @@ export default [
           {
             name: "report.addZhzz",
             path: "add",
-            component: () => import("@/view/report/zhzz/addZhzz"),
+            component: () => import("@/view/forms/zhzzForm/default"),
             meta: {
               title: "新增综合整治",
               permission: "Pages.Data.Report",
@@ -918,7 +918,7 @@ export default [
           {
             name: "report.editZhzz",
             path: "edit",
-            component: () => import("@/view/report/zhzz/editZhzz"),
+            component: () => import("@/view/forms/zhzzForm/default"),
             meta: {
               title: "编辑综合整治",
               permission: "Pages.Data.Report",
@@ -928,7 +928,7 @@ export default [
           {
             name: "report.viewZhzz",
             path: "view",
-            component: () => import("@/view/components/formViewId/viewZhzz"),
+            component: () => import("@/view/forms/zhzzForm/default"),
             meta: {
               title: "查看综合整治",
               permission: "Pages.Data.Report",

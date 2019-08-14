@@ -74,9 +74,9 @@
             <el-form-item label="项目设计预算(万元)">
               <el-input-number
                 v-model="formData.zgaA03A130"
-                :min="1"
                 :controls="false"
-                :max="10"
+                :precision="2"
+                :max="99999999.99"
                 label
               ></el-input-number>
             </el-form-item>
@@ -149,9 +149,9 @@
             <el-form-item label="下达资金(万元)">
               <el-input-number
                 v-model="formData.zgaA03A230"
-                :min="1"
                 :controls="false"
-                :max="10"
+                :precision="2"
+                :max="99999999.99"
                 label
               ></el-input-number>
             </el-form-item>
@@ -196,18 +196,18 @@
             <el-form-item label="市级资金(万元)">
               <el-input-number
                 v-model="formData.zgaA03A250"
-                :min="1"
                 :controls="false"
-                :max="10"
+                :precision="2"
+                :max="99999999.99"
                 label
               ></el-input-number>
             </el-form-item>
             <el-form-item label="县级资金(万元)">
               <el-input-number
                 v-model="formData.zgaA03A260"
-                :min="1"
                 :controls="false"
-                :max="10"
+                :precision="2"
+                :max="99999999.99"
                 label
               ></el-input-number>
             </el-form-item>
@@ -220,27 +220,27 @@
             <el-form-item label="累计拨付资金(万元)">
               <el-input-number
                 v-model="formData.zgaA03A270"
-                :min="1"
                 :controls="false"
-                :max="10"
+                :precision="2"
+                :max="99999999.99"
                 label
               ></el-input-number>
             </el-form-item>
             <el-form-item label="结存资金(万元)">
               <el-input-number
                 v-model="formData.zgaA03A280"
-                :min="1"
                 :controls="false"
-                :max="10"
+                :precision="2"
+                :max="99999999.99"
                 label
               ></el-input-number>
             </el-form-item>
             <el-form-item label="结余资金(万元)">
               <el-input-number
                 v-model="formData.zgaA03A290"
-                :min="1"
                 :controls="false"
-                :max="10"
+                :precision="2"
+                :max="99999999.99"
                 label
               ></el-input-number>
             </el-form-item>
@@ -430,14 +430,6 @@ export default {
     isShowAudit() {
       return !this.canEdit ? (this.proccessActive ? true : false) : false;
     }
-    // proccessActive() {
-    //   return this.formData.processes
-    //     ? this.formData.processes.length
-    //     : undefined;
-    // },
-    // isShowAudit() {
-    //   return !this.canEdit ? (this.proccessActive ? true : false) : false;
-    // }
   },
   created() {
     this.$store

@@ -17,6 +17,7 @@ import governDataCollect from "./governDataCollect";
 import bqgh from "./bqgh";
 import zzjc from "./zzjc";
 import lljs from "./lljs";
+import zhzz from "./zhzz";
 export default {
   namespaced: true,
   modules: {
@@ -36,7 +37,8 @@ export default {
     governDataCollect,
     bqgh,
     zzjc,
-    lljs
+    lljs,
+    zhzz
   },
   state: {},
   mutations: {},

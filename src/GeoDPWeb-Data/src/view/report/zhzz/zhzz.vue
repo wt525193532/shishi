@@ -1,5 +1,5 @@
 <template>
-  <div class="report-preventPlan">
+  <div class="report-zhzz">
     <report-layout
       :tab="tab"
       :queryForm="queryForm"
@@ -70,13 +70,13 @@
 <script>
 import ReportLayout from "@/view/report/components/reportLayout";
 export default {
-  name: "PreventPlan",
+  name: "Zhzz",
   components: {
     ReportLayout
   },
   computed: {
     tableData() {
-      return this.$store.state.report.preventPlan.tableData;
+      return this.$store.state.report.zhzz.tableData;
     },
     activeName() {
       return this.tab.activeName;
@@ -115,76 +115,29 @@ export default {
         [this.$util.appconst.DataStatusEnum.UnCommit]: {
           title: [
             {
-              prop: "isCanceled",
-              label: "是否销号",
-              parent: "site",
-              render: row => {
-                if (row.site.isCanceled) {
-                  return <el-tag type="success">已销号</el-tag>;
-                } else {
-                  return <el-tag type="warning">未销号</el-tag>;
-                }
-              }
+              prop: "zgaA01A050",
+              label: "工程名称"
             },
             {
-              parent: "site",
-              prop: "name",
-              label: "隐患点名称"
+              prop: "zgaA01A060",
+              label: "保护人数"
             },
             {
-              parent: "site",
-              prop: "code",
-              label: "隐患点编号"
+              prop: "zgaA01A070",
+              label: "保护财产"
             },
             {
-              parent: "site",
-              prop: "disasterTypeCode",
-              label: "隐患点类型",
-              render: row => (
-                <span>
-                  {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
-                </span>
-              )
+              prop: "zgaA01A180",
+              label: "工程概况"
             },
             {
-              parent: "site",
-              prop: "disasterScaleLevel",
-              label: "灾害规模",
-              render: row => (
-                <span>
-                  {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
-                </span>
-              )
+              prop: "zgaA01A310",
+              label: "下达资金"
             },
             {
-              parent: "site",
-              prop: "location",
-              label: "地理位置"
+              prop: "zgaA01A240",
+              label: "完成进度"
             },
-            {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
-            },
-            {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
-            },
-            {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
-            },
-            {
-              parent: "site",
-              prop: "prenventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
-            },
-
             {
               type: "func",
               label: "操作",
@@ -237,76 +190,29 @@ export default {
         [this.$util.appconst.DataStatusEnum.Approval]: {
           title: [
             {
-              prop: "isCanceled",
-              label: "是否销号",
-              parent: "site",
-              render: row => {
-                if (row.site.isCanceled) {
-                  return <el-tag type="success">已销号</el-tag>;
-                } else {
-                  return <el-tag type="success">未销号</el-tag>;
-                }
-              }
+              prop: "zgaA01A050",
+              label: "工程名称"
             },
             {
-              parent: "site",
-              prop: "name",
-              label: "隐患点名称"
+              prop: "zgaA01A060",
+              label: "保护人数"
             },
             {
-              parent: "site",
-              prop: "code",
-              label: "隐患点编号"
+              prop: "zgaA01A070",
+              label: "保护财产"
             },
             {
-              parent: "site",
-              prop: "disasterTypeCode",
-              label: "隐患点类型",
-              render: row => (
-                <span>
-                  {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
-                </span>
-              )
+              prop: "zgaA01A180",
+              label: "工程概况"
             },
             {
-              parent: "site",
-              prop: "disasterScaleLevel",
-              label: "灾害规模",
-              render: row => (
-                <span>
-                  {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
-                </span>
-              )
+              prop: "zgaA01A310",
+              label: "下达资金"
             },
             {
-              parent: "site",
-              prop: "location",
-              label: "地理位置"
+              prop: "zgaA01A240",
+              label: "完成进度"
             },
-            {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
-            },
-            {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
-            },
-            {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
-            },
-            {
-              parent: "site",
-              prop: "preventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
-            },
-
             {
               type: "func",
               label: "操作",
@@ -319,76 +225,29 @@ export default {
         [this.$util.appconst.DataStatusEnum.Disapproval]: {
           title: [
             {
-              parent: "site",
-              prop: "isCanceled",
-              label: "是否销号",
-              render: row => {
-                if (row.site.isCanceled) {
-                  return <el-tag type="success">已销号</el-tag>;
-                } else {
-                  return <el-tag type="success">未销号</el-tag>;
-                }
-              }
+              prop: "zgaA01A050",
+              label: "工程名称"
             },
             {
-              parent: "site",
-              prop: "name",
-              label: "隐患点名称"
+              prop: "zgaA01A060",
+              label: "保护人数"
             },
             {
-              parent: "site",
-              prop: "code",
-              label: "隐患点编号"
+              prop: "zgaA01A070",
+              label: "保护财产"
             },
             {
-              parent: "site",
-              prop: "disasterTypeCode",
-              label: "隐患点类型",
-              render: row => (
-                <span>
-                  {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
-                </span>
-              )
+              prop: "zgaA01A180",
+              label: "工程概况"
             },
             {
-              parent: "site",
-              prop: "disasterScaleLevel",
-              label: "灾害规模",
-              render: row => (
-                <span>
-                  {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
-                </span>
-              )
+              prop: "zgaA01A310",
+              label: "下达资金"
             },
             {
-              parent: "site",
-              prop: "location",
-              label: "地理位置"
+              prop: "zgaA01A240",
+              label: "完成进度"
             },
-            {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
-            },
-            {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
-            },
-            {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
-            },
-            {
-              parent: "site",
-              prop: "preventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
-            },
-
             {
               type: "func",
               label: "操作",
@@ -456,17 +315,16 @@ export default {
       this.query();
     },
     query() {
-      //   let parmas = {
-      //     status: [this.tab.activeName], // 审核状态
-      //     key: this.queryForm.key, // 查询字段
-      //     skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize, // 跳过条数
-      //     maxResultCount: this.pagination.pageSize, // 查询条数
-      //     dataType: this.dataType
-      //   };
-      //   this.$store.dispatch("report/preventPlan/query", parmas).then(res => {
-      //     this.pagination.total = res.totalCount;
-      //     this.columns[this.activeName].data = this.tableData;
-      //   });
+      let parmas = {
+        status: [this.tab.activeName], // 审核状态
+        key: this.queryForm.key, // 查询字段
+        skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize, // 跳过条数
+        maxResultCount: this.pagination.pageSize // 查询条数
+      };
+      this.$store.dispatch("report/zhzz/query", parmas).then(res => {
+        this.pagination.total = res.totalCount;
+        this.columns[this.activeName].data = this.tableData;
+      });
     },
     view(row) {
       this.$router.push({
@@ -497,18 +355,19 @@ export default {
               dataIds: []
             };
             parmas.dataIds = this.selectionList.map(item => item.id);
-            this.$store
-              .dispatch("report/preventPlan/commit", parmas)
-              .then(res => {
-                if (res.data.success) {
-                  this.$message({
-                    type: "success",
-                    message: "提交成功!"
-                  });
-                  this.pagination.pageIndex = 1;
-                  this.query();
-                }
-              });
+            this.$store.dispatch("report/zhzz/commit", parmas).then(res => {
+              if (res.data.success) {
+                this.$message({
+                  type: "success",
+                  message:
+                    "提交成功! 数据进入【" +
+                    this.$t("DataStatus." + res.data.result.status) +
+                    "】"
+                });
+                this.pagination.pageIndex = 1;
+                this.query();
+              }
+            });
           })
           .catch(() => {
             this.$message({
@@ -531,18 +390,16 @@ export default {
         type: "warning"
       })
         .then(() => {
-          this.$store
-            .dispatch("report/preventPlan/cancelCommit", row.id)
-            .then(res => {
-              if (res.data.success) {
-                this.$message({
-                  type: "success",
-                  message: "撤销成功!"
-                });
-                this.pagination.pageIndex = 1;
-                this.query();
-              }
-            });
+          this.$store.dispatch("report/zhzz/cancelCommit", row.id).then(res => {
+            if (res.data.success) {
+              this.$message({
+                type: "success",
+                message: "撤销成功!"
+              });
+              this.pagination.pageIndex = 1;
+              this.query();
+            }
+          });
         })
         .catch(() => {
           this.$message({
@@ -559,18 +416,16 @@ export default {
         type: "warning"
       })
         .then(() => {
-          this.$store
-            .dispatch("report/preventPlan/delData", row.id)
-            .then(res => {
-              if (res.data.success) {
-                this.$message({
-                  type: "success",
-                  message: "删除成功!"
-                });
-                this.pagination.pageIndex = 1;
-                this.query();
-              }
-            });
+          this.$store.dispatch("report/zhzz/delData", row.id).then(res => {
+            if (res.data.success) {
+              this.$message({
+                type: "success",
+                message: "删除成功!"
+              });
+              this.pagination.pageIndex = 1;
+              this.query();
+            }
+          });
         })
         .catch(() => {
           this.$message({
