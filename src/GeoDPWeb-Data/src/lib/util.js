@@ -154,6 +154,16 @@ class Util {
   transTime(time) {
     return time ? moment(time).format(time, "YYYY-MM-DD HH:mm:ss") : "--";
   }
+  weekToDate(time) {
+    return time
+      ? moment(time, "YYYY/w")
+          .add(1, "d")
+          .toDate()
+      : "";
+  }
+  dateToWeek(time) {
+    return time ? moment(time).format("YYYY/w") : "";
+  }
   async addSaveConfirm(flag) {
     let res;
     if (flag) {
@@ -187,7 +197,6 @@ class Util {
         message: "保存不成功，验证未通过"
       });
     }
-
     return res;
   }
 

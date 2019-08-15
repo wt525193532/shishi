@@ -1173,7 +1173,7 @@ export default [
           {
             name: "report.addDzzsbb",
             path: "add",
-            component: () => import("@/view/report/dzzsbb/addDzzsbb"),
+            component: () => import("@/view/forms/dzzsbbForm/default"),
             meta: {
               title: "新增地质灾害驻守技术支撑工作报表",
               permission: "Pages.Data.Report",
@@ -1183,7 +1183,7 @@ export default [
           {
             name: "report.editDzzsbb",
             path: "edit",
-            component: () => import("@/view/report/dzzsbb/editDzzsbb"),
+            component: () => import("@/view/forms/dzzsbbForm/default"),
             meta: {
               title: "编辑地质灾害驻守技术支撑工作报表",
               permission: "Pages.Data.Report",
@@ -1193,7 +1193,7 @@ export default [
           {
             name: "report.viewDzzsbb",
             path: "view",
-            component: () => import("@/view/components/formViewId/viewDzzsbb"),
+            component: () => import("@/view/forms/dzzsbbForm/default"),
             meta: {
               title: "查看地质灾害驻守技术支撑工作报表",
               permission: "Pages.Data.Report",
