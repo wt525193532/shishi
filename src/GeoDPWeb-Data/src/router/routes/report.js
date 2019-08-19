@@ -1014,7 +1014,7 @@ export default [
           {
             name: "report.addDzzsqx",
             path: "add",
-            component: () => import("@/view/report/dzzsqx/addDzzsqx"),
+            component: () => import("@/view/forms/dzzsqxForm/default"),
             meta: {
               title: "新增地质灾害驻守技术支撑抢险调查表",
               permission: "Pages.Data.Report",
@@ -1024,7 +1024,7 @@ export default [
           {
             name: "report.editDzzsqx",
             path: "edit",
-            component: () => import("@/view/report/dzzsqx/editDzzsqx"),
+            component: () => import("@/view/forms/dzzsqxForm/default"),
             meta: {
               title: "编辑地质灾害驻守技术支撑抢险调查表",
               permission: "Pages.Data.Report",
@@ -1034,7 +1034,7 @@ export default [
           {
             name: "report.viewDzzsqx",
             path: "view",
-            component: () => import("@/view/components/formViewId/viewDzzsqx"),
+            component: () => import("@/view/forms/dzzsqxForm/default"),
             meta: {
               title: "查看地质灾害驻守技术支撑抢险调查表",
               permission: "Pages.Data.Report",

@@ -51,25 +51,33 @@ export default {
     async edit({ commit }, id) {
       const res = await api.edit(id);
       commit("setCurrentData", res);
-      res.data.result.zgaA08A030 = res.data.result.zgaA08A030 + "000000";
+      res.data.result.ydsJ02A310 = res.data.result.ydsJ02A310.split(",");
+      res.data.result.ydsJ02A320 = res.data.result.ydsJ02A320.split(",");
+      res.data.result.ydsJ02A330 = res.data.result.ydsJ02A330.split(",");
       return res;
     },
     // 编辑
     async update({ commit }, data) {
-      data.zgaA08A030 = data.zgaA08A030.substring(0, 6);
+      data.ydsJ02A310 = data.ydsJ02A310.join(",");
+      data.ydsJ02A320 = data.ydsJ02A320.join(",");
+      data.ydsJ02A330 = data.ydsJ02A330.join(",");
       const res = await api.update(data);
       return res;
     },
     // 新增
     async create({ commit }, data) {
-      data.zgaA08A030 = data.zgaA08A030.substring(0, 6);
+      data.ydsJ02A310 = data.ydsJ02A310.join(",");
+      data.ydsJ02A320 = data.ydsJ02A320.join(",");
+      data.ydsJ02A330 = data.ydsJ02A330.join(",");
       const res = await api.create(data);
       return res;
     },
     async getById({ commit }, id) {
       const res = await api.getById(id);
       commit("setCurrentData", res);
-      res.data.result.zgaA08A030 = res.data.result.zgaA08A030 + "000000";
+      res.data.result.ydsJ02A310 = res.data.result.ydsJ02A310.split(",");
+      res.data.result.ydsJ02A320 = res.data.result.ydsJ02A320.split(",");
+      res.data.result.ydsJ02A330 = res.data.result.ydsJ02A330.split(",");
       return res;
     },
     async cancelCommit({ commit }, formId) {

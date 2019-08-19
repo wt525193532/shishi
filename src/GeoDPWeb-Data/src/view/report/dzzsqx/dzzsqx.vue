@@ -1,5 +1,5 @@
 <template>
-  <div class="report-preventPlan">
+  <div class="report-dzzsqx">
     <report-layout
       :tab="tab"
       :queryForm="queryForm"
@@ -70,13 +70,13 @@
 <script>
 import ReportLayout from "@/view/report/components/reportLayout";
 export default {
-  name: "PreventPlan",
+  name: "Dzzsqx",
   components: {
     ReportLayout
   },
   computed: {
     tableData() {
-      return this.$store.state.report.preventPlan.tableData;
+      return this.$store.state.report.dzzsqx.tableData;
     },
     activeName() {
       return this.tab.activeName;
@@ -115,76 +115,78 @@ export default {
         [this.$util.appconst.DataStatusEnum.UnCommit]: {
           title: [
             {
-              prop: "isCanceled",
-              label: "是否销号",
-              parent: "site",
-              render: row => {
-                if (row.site.isCanceled) {
-                  return <el-tag type="success">已销号</el-tag>;
-                } else {
-                  return <el-tag type="warning">未销号</el-tag>;
-                }
-              }
+              prop: "ydsJ02A560",
+              label: "隐患点名称",
+              width: 100
             },
             {
-              parent: "site",
-              prop: "name",
-              label: "隐患点名称"
+              prop: "ydsJ02A550",
+              label: "隐患点编号",
+              width: 100
             },
             {
-              parent: "site",
-              prop: "code",
-              label: "隐患点编号"
+              parent: "admin",
+              prop: "country",
+              label: "区县"
             },
             {
-              parent: "site",
-              prop: "disasterTypeCode",
-              label: "隐患点类型",
-              render: row => (
-                <span>
-                  {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
-                </span>
-              )
+              parent: "admin",
+              prop: "town",
+              label: "乡镇"
             },
             {
-              parent: "site",
-              prop: "disasterScaleLevel",
-              label: "灾害规模",
-              render: row => (
-                <span>
-                  {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
-                </span>
-              )
+              prop: "ydsJ02A070",
+              label: "规模"
             },
             {
-              parent: "site",
-              prop: "location",
-              label: "地理位置"
+              prop: "ydsJ02A090",
+              label: "死亡人数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
+              prop: "ydsJ02A100",
+              label: "失踪人数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
+              prop: "ydsJ02A110",
+              label: "受伤人数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
+              prop: "ydsJ02A120",
+              label: "损失户数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "prenventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
+              prop: "ydsJ02A130",
+              label: "人数(人)"
             },
-
+            {
+              prop: "ydsJ02A150",
+              label: "损毁房屋(间)",
+              width: 105
+            },
+            {
+              prop: "ydsJ02A160",
+              label: "损毁耕地(亩)",
+              width: 105
+            },
+            {
+              prop: "ydsJ02A170",
+              label: "损毁森林(亩)",
+              width: 105
+            },
+            {
+              prop: "ydsJ02A180",
+              label: "损毁道路(m)",
+              width: 100
+            },
+            {
+              prop: "ydsJ02A190",
+              label: "直接经济损失(万元)",
+              width: 150
+            },
             {
               type: "func",
               label: "操作",
@@ -237,76 +239,78 @@ export default {
         [this.$util.appconst.DataStatusEnum.Approval]: {
           title: [
             {
-              prop: "isCanceled",
-              label: "是否销号",
-              parent: "site",
-              render: row => {
-                if (row.site.isCanceled) {
-                  return <el-tag type="success">已销号</el-tag>;
-                } else {
-                  return <el-tag type="success">未销号</el-tag>;
-                }
-              }
+              prop: "ydsJ02A560",
+              label: "隐患点名称",
+              width: 100
             },
             {
-              parent: "site",
-              prop: "name",
-              label: "隐患点名称"
+              prop: "ydsJ02A550",
+              label: "隐患点编号",
+              width: 100
             },
             {
-              parent: "site",
-              prop: "code",
-              label: "隐患点编号"
+              parent: "admin",
+              prop: "country",
+              label: "区县"
             },
             {
-              parent: "site",
-              prop: "disasterTypeCode",
-              label: "隐患点类型",
-              render: row => (
-                <span>
-                  {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
-                </span>
-              )
+              parent: "admin",
+              prop: "town",
+              label: "乡镇"
             },
             {
-              parent: "site",
-              prop: "disasterScaleLevel",
-              label: "灾害规模",
-              render: row => (
-                <span>
-                  {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
-                </span>
-              )
+              prop: "ydsJ02A070",
+              label: "规模"
             },
             {
-              parent: "site",
-              prop: "location",
-              label: "地理位置"
+              prop: "ydsJ02A090",
+              label: "死亡人数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
+              prop: "ydsJ02A100",
+              label: "失踪人数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
+              prop: "ydsJ02A110",
+              label: "受伤人数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
+              prop: "ydsJ02A120",
+              label: "损失户数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "preventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
+              prop: "ydsJ02A130",
+              label: "人数(人)"
             },
-
+            {
+              prop: "ydsJ02A150",
+              label: "损毁房屋(间)",
+              width: 105
+            },
+            {
+              prop: "ydsJ02A160",
+              label: "损毁耕地(亩)",
+              width: 105
+            },
+            {
+              prop: "ydsJ02A170",
+              label: "损毁森林(亩)",
+              width: 105
+            },
+            {
+              prop: "ydsJ02A180",
+              label: "损毁道路(m)",
+              width: 100
+            },
+            {
+              prop: "ydsJ02A190",
+              label: "直接经济损失(万元)",
+              width: 150
+            },
             {
               type: "func",
               label: "操作",
@@ -319,76 +323,78 @@ export default {
         [this.$util.appconst.DataStatusEnum.Disapproval]: {
           title: [
             {
-              parent: "site",
-              prop: "isCanceled",
-              label: "是否销号",
-              render: row => {
-                if (row.site.isCanceled) {
-                  return <el-tag type="success">已销号</el-tag>;
-                } else {
-                  return <el-tag type="success">未销号</el-tag>;
-                }
-              }
+              prop: "ydsJ02A560",
+              label: "隐患点名称",
+              width: 100
             },
             {
-              parent: "site",
-              prop: "name",
-              label: "隐患点名称"
+              prop: "ydsJ02A550",
+              label: "隐患点编号",
+              width: 100
             },
             {
-              parent: "site",
-              prop: "code",
-              label: "隐患点编号"
+              parent: "admin",
+              prop: "country",
+              label: "区县"
             },
             {
-              parent: "site",
-              prop: "disasterTypeCode",
-              label: "隐患点类型",
-              render: row => (
-                <span>
-                  {this.$t(`codes.DisasterType[${row.site.disasterTypeCode}]`)}
-                </span>
-              )
+              parent: "admin",
+              prop: "town",
+              label: "乡镇"
             },
             {
-              parent: "site",
-              prop: "disasterScaleLevel",
-              label: "灾害规模",
-              render: row => (
-                <span>
-                  {this.$t(`enums.ScaleLevel[${row.site.disasterScaleLevel}]`)}
-                </span>
-              )
+              prop: "ydsJ02A070",
+              label: "规模"
             },
             {
-              parent: "site",
-              prop: "location",
-              label: "地理位置"
+              prop: "ydsJ02A090",
+              label: "死亡人数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "threatPeople",
-              label: "威胁人数"
+              prop: "ydsJ02A100",
+              label: "失踪人数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "threatHouses",
-              label: "威胁户数"
+              prop: "ydsJ02A110",
+              label: "受伤人数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "threatProperty",
-              label: "威胁财产"
+              prop: "ydsJ02A120",
+              label: "损失户数(人)",
+              width: 105
             },
             {
-              parent: "site",
-              prop: "preventOwnerName",
-              label: "防灾负责人",
-              render: r => (
-                <span>{r.preventOwnerName ? r.preventOwnerName : "--"}</span>
-              )
+              prop: "ydsJ02A130",
+              label: "人数(人)"
             },
-
+            {
+              prop: "ydsJ02A150",
+              label: "损毁房屋(间)",
+              width: 105
+            },
+            {
+              prop: "ydsJ02A160",
+              label: "损毁耕地(亩)",
+              width: 105
+            },
+            {
+              prop: "ydsJ02A170",
+              label: "损毁森林(亩)",
+              width: 105
+            },
+            {
+              prop: "ydsJ02A180",
+              label: "损毁道路(m)",
+              width: 100
+            },
+            {
+              prop: "ydsJ02A190",
+              label: "直接经济损失(万元)",
+              width: 150
+            },
             {
               type: "func",
               label: "操作",
@@ -456,17 +462,16 @@ export default {
       this.query();
     },
     query() {
-      //   let parmas = {
-      //     status: [this.tab.activeName], // 审核状态
-      //     key: this.queryForm.key, // 查询字段
-      //     skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize, // 跳过条数
-      //     maxResultCount: this.pagination.pageSize, // 查询条数
-      //     dataType: this.dataType
-      //   };
-      //   this.$store.dispatch("report/preventPlan/query", parmas).then(res => {
-      //     this.pagination.total = res.totalCount;
-      //     this.columns[this.activeName].data = this.tableData;
-      //   });
+      let parmas = {
+        status: [this.tab.activeName], // 审核状态
+        key: this.queryForm.key, // 查询字段
+        skipCount: (this.pagination.pageIndex - 1) * this.pagination.pageSize, // 跳过条数
+        maxResultCount: this.pagination.pageSize // 查询条数
+      };
+      this.$store.dispatch("report/dzzsqx/query", parmas).then(res => {
+        this.pagination.total = res.totalCount;
+        this.columns[this.activeName].data = this.tableData;
+      });
     },
     view(row) {
       this.$router.push({
@@ -497,18 +502,19 @@ export default {
               dataIds: []
             };
             parmas.dataIds = this.selectionList.map(item => item.id);
-            this.$store
-              .dispatch("report/preventPlan/commit", parmas)
-              .then(res => {
-                if (res.data.success) {
-                  this.$message({
-                    type: "success",
-                    message: "提交成功!"
-                  });
-                  this.pagination.pageIndex = 1;
-                  this.query();
-                }
-              });
+            this.$store.dispatch("report/dzzsqx/commit", parmas).then(res => {
+              if (res.data.success) {
+                this.$message({
+                  type: "success",
+                  message:
+                    "提交成功! 数据进入【" +
+                    this.$t("DataStatus." + res.data.result.status) +
+                    "】"
+                });
+                this.pagination.pageIndex = 1;
+                this.query();
+              }
+            });
           })
           .catch(() => {
             this.$message({
@@ -532,7 +538,7 @@ export default {
       })
         .then(() => {
           this.$store
-            .dispatch("report/preventPlan/cancelCommit", row.id)
+            .dispatch("report/dzzsqx/cancelCommit", row.id)
             .then(res => {
               if (res.data.success) {
                 this.$message({
@@ -559,18 +565,16 @@ export default {
         type: "warning"
       })
         .then(() => {
-          this.$store
-            .dispatch("report/preventPlan/delData", row.id)
-            .then(res => {
-              if (res.data.success) {
-                this.$message({
-                  type: "success",
-                  message: "删除成功!"
-                });
-                this.pagination.pageIndex = 1;
-                this.query();
-              }
-            });
+          this.$store.dispatch("report/dzzsqx/delData", row.id).then(res => {
+            if (res.data.success) {
+              this.$message({
+                type: "success",
+                message: "删除成功!"
+              });
+              this.pagination.pageIndex = 1;
+              this.query();
+            }
+          });
         })
         .catch(() => {
           this.$message({
