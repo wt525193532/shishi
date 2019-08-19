@@ -43,7 +43,6 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     store.commit("app/loading", false);
-    if (!response.data.success) console.log(response.data.error);
     return response;
   },
 

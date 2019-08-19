@@ -24,6 +24,7 @@ import ssjcyj from "./ssjcyj";
 import msgc from "./msgc";
 import dzzsqx from "./dzzsqx";
 import dzzsbb from "./dzzsbb";
+import pwcx from "./pwcx";
 export default {
   namespaced: true,
   modules: {
@@ -50,7 +51,8 @@ export default {
     ssjcyj,
     msgc,
     dzzsqx,
-    dzzsbb
+    dzzsbb,
+    pwcx
   },
   state: {},
   mutations: {},

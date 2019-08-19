@@ -8,6 +8,7 @@ import query from "./modules/query";
 import statistic from "./modules/statistic";
 import querypage from "./modules/querypage";
 import organization from "./modules/organization";
+import rwszszj from "./modules/rwszszj";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -28,7 +29,8 @@ export default new Vuex.Store({
     query,
     statistic,
     querypage,
-    organization
+    organization,
+    rwszszj
   },
   getters: {
     menuList: state => state.app.menuList,

@@ -156,13 +156,13 @@ class Util {
   }
   weekToDate(time) {
     return time
-      ? moment(time, "YYYY/w")
+      ? moment(time, "YYYYw")
           .add(1, "d")
           .toDate()
       : "";
   }
   dateToWeek(time) {
-    return time ? moment(time).format("YYYY/w") : "";
+    return time ? moment(time).format("YYYYw") : "";
   }
   async addSaveConfirm(flag) {
     let res;
