@@ -160,31 +160,21 @@ export default {
       tableData: [],
       selectList: [],
       columns: [
-        {
-          prop: "isCanceled",
-          label: "是否销号",
-          render: row => {
-            if (row.isCanceled) {
-              return <el-tag type="success">已销号</el-tag>;
-            } else {
-              return <el-tag type="success">未销号</el-tag>;
-            }
-          }
-        },
+        
         {
           prop: "site_Name",
           label: "隐患点名称",
-          width: 100
+          width: 170
         },
         {
           prop: "code",
           label: "隐患点编号",
-          width: 100
+          width: 160
         },
         {
           prop: "disasterTypeCode",
-          label: "隐患点类型",
-          width: 100,
+          label: "灾害类型",
+          width: 120,
           render: row => (
             <span>
               {row.site_DisasterTypeCode
@@ -196,22 +186,65 @@ export default {
         {
           prop: "disasterScaleLevel",
           label: "灾害规模",
-          render: row => (
-            <span>
-              {row.site_DisasterScaleLevel
-                ? this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)
-                : "--"}
-            </span>
-          )
+          render: row => {
+            // <span>
+            //   {row.site_DisasterScaleLevel
+            //     ? this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)
+            //     : "--"}
+            // </span>
+            if (row.site_DisasterScaleLevel==3) {
+              return <el-tag type="danger">大型</el-tag>;
+            } else if(row.site_DisasterScaleLevel==2) {
+              return <el-tag type="warning">中型</el-tag>;
+            }else {
+              return <el-tag type="success">小型</el-tag>;
+            }
+          },
+          width:120
         },
         {
           prop: "site_Location",
-          label: "地理位置"
+          label: "地理位置",
+
+        },
+        {
+          prop: "isCanceled",
+          label: "是否销号",
+          render: row => {
+            if (row.site_IsCanceled) {
+              return <el-tag type="success">已销号</el-tag>;
+            } else {
+              return <el-tag type="warning">未销号</el-tag>;
+            }
+          },
+          width:120
+        },
+         {
+          prop: "site_Status",
+          label: "审核状态",
+          render: row => {
+            if (row.site_Status==0) {
+              return <span>未提交</span>;
+            } else if(row.site_Status==1) {
+              return <span>已提交</span>;
+            }else if(row.site_Status==2) {
+              return <span>审核中</span>;
+            }else if(row.site_Status==3) {
+              return <span>撤销中</span>;
+            }else if(row.site_Status==4) {
+              return <span>已撤销</span>;
+            }else if(row.site_Status==8) {
+              return <span>未通过</span>;
+            }else {
+              return <span>通过</span>;
+            }
+          },
+          width:120
         },
         {
           prop: "mntMethods",
           label: "简易监测方法",
-          width: 120,
+          width: 200,
           render: row => {
             let transArr = row.mntMethods.map(item =>
               this.$t(`codes.SimpleMntMethod["${item}"]`)
@@ -277,6 +310,7 @@ export default {
   methods: {
     reset(queryForm) {
       this.$refs[queryForm].resetFields();
+      this. queryBtn()
     },
     view(row) {
       this.$router.push({
@@ -307,17 +341,19 @@ export default {
       if (dataList.length) {
         import("@/lib/Export2Excel").then(excel => {
           const tHeader = [
+            "审核状态",
             "是否销号",
             "隐患点编号",
             "隐患点名称",
             "地理位置",
             "灾害类型",
             "灾害规模",
-            "简易方法",
+            "简易监测方法",
             "滑坡伸缩仪套数",
             "裂缝报警器套数"
           ];
           const filterVal = [
+            "status",
             "isCanceled",
             "code",
             "name",
@@ -343,19 +379,24 @@ export default {
     formatJson(filterVal, jsonData) {
       return jsonData.map(v =>
         filterVal.map(j => {
-          if (j === "isCanceled") return v[j] ? "已销号" : "未销号";
-          else if (j === "name") return v[j];
-          else if (j === "location") return v[j];
-          else if (j === "disasterTypeCode")
-            return this.$t(`codes.DisasterType[${v.disasterTypeCode}]`);
-          else if (j === "disasterScaleLevel")
-            return this.$t(`enums.ScaleLevel[${v.disasterScaleLevel}]`);
-          else if (j === "mntMethods") {
-            let transArr = v.mntMethods.map(item =>
-              this.$t(`codes.SimpleMntMethod["${item}"]`)
-            );
-            return transArr.join("、");
-          } else return v[j];
+          switch (j) {
+            case "isCanceled":
+              return v.site_IsCanceled ? "已销号" : "未销号";
+            case "name":
+              return v.site_Name;
+            case "status":
+              return this.$t(`enums.DataStatus[${v.site_Status}]`);
+            case "location":
+              return v.site_Location;
+            case "disasterTypeCode":
+              return this.$t(`codes.DisasterType[${v.site_DisasterTypeCode}]`);
+            case "disasterScaleLevel":
+              return this.$t(`enums.ScaleLevel[${v.site_DisasterScaleLevel}]`);
+            case "mntMethods":
+              return this.$t(`codes.SimpleMntMethod.` + v.mntMethods);
+            default:
+              return v[j];
+          }
         })
       );
     }

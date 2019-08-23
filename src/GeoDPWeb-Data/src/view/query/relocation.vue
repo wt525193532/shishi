@@ -176,17 +176,7 @@ export default {
       tableData: [],
       selectList: [],
       columns: [
-        {
-          prop: "isCanceled",
-          label: "是否销号",
-          render: row => {
-            if (row.isCanceled) {
-              return <el-tag type="success">已销号</el-tag>;
-            } else {
-              return <el-tag type="success">未销号</el-tag>;
-            }
-          }
-        },
+        
         {
           prop: "site_Name",
           label: "隐患点名称"
@@ -197,7 +187,7 @@ export default {
         },
         {
           prop: "disasterTypeCode",
-          label: "隐患点类型",
+          label: "灾害类型",
           render: row => (
             <span>
               {row.site_DisasterTypeCode
@@ -223,6 +213,39 @@ export default {
               {this.$t(`codes.RelocationProcess[${row.relocationProcessCode}]`)}
             </span>
           )
+        },
+        {
+          prop: "site_Status",
+          label: "审核状态",
+          render: row => {
+            if (row.site_Status==0) {
+              return <span>未提交</span>;
+            } else if(row.site_Status==1) {
+              return <span>已提交</span>;
+            }else if(row.site_Status==2) {
+              return <span>审核中</span>;
+            }else if(row.site_Status==3) {
+              return <span>撤销中</span>;
+            }else if(row.site_Status==4) {
+              return <span>已撤销</span>;
+            }else if(row.site_Status==8) {
+              return <span>未通过</span>;
+            }else {
+              return <span>通过</span>;
+            }
+          },
+          width:120
+        },
+        {
+          prop: "isCanceled",
+          label: "是否销号",
+          render: row => {
+            if (row.site_IsCanceled) {
+              return <el-tag type="success">已销号</el-tag>;
+            } else {
+              return <el-tag type="warning">未销号</el-tag>;
+            }
+          }
         },
         {
           prop: "placeTypeCode",
@@ -287,6 +310,7 @@ export default {
   methods: {
     reset(queryForm) {
       this.$refs[queryForm].resetFields();
+      this.queryBtn()
     },
     view(row) {
       this.$router.push({
@@ -317,6 +341,7 @@ export default {
       if (dataList.length) {
         import("@/lib/Export2Excel").then(excel => {
           const tHeader = [
+            "审核状态",
             "是否销号",
             "隐患点编号",
             "隐患点名称",
@@ -326,10 +351,10 @@ export default {
             "搬迁进度",
             "安置方式",
             "户主",
-            "家庭人口",
-            "省厅任务下达文号"
+            "家庭人口"
           ];
           const filterVal = [
+            "status",
             "isCanceled",
             "code",
             "name",
@@ -358,15 +383,22 @@ export default {
         filterVal.map(j => {
           switch (j) {
             case "isCanceled":
-              return v[j] ? "已销号" : "未销号";
+              return v.site_IsCanceled ? "已销号" : "未销号";
             case "name":
-              return v[j];
+              return v.site_Name;
+            case "status":
+              return this.$t(`enums.DataStatus[${v.site_Status}]`);
+            case "code":
+              return v.code;
             case "location":
-              return v[j];
+              return v.site_Location;
+            case "houseHolder":
+              return v.houseHolder;
+            case "familyMembers":
+              return v.familyMembers;  
             case "disasterTypeCode":
-              return this.$t(`codes.DisasterType[${v.disasterTypeCode}]`);
-            case "disasterScaleLevel":
-              return this.$t(`enums.ScaleLevel[${v.disasterScaleLevel}]`);
+              return this.$t(`codes.DisasterType[${v.site_DisasterTypeCode}]`);
+            
             case "relocationTypeCode":
               return this.$t(`codes.RelocationType[${v.relocationTypeCode}]`);
             case "relocationProcessCode":
@@ -375,6 +407,7 @@ export default {
               );
             case "placeTypeCode":
               return this.$t(`codes.PlaceType[${v.placeTypeCode}]`);
+
             default:
               return v[j];
           }

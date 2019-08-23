@@ -175,6 +175,70 @@ export default {
           label: "地理位置"
         },
         {
+          prop: "disasterTypeCode",
+          label: "灾害类型",
+          width: 130,
+          render: row => (
+            <span>
+              {row.site_DisasterTypeCode
+                ? this.$t(`codes.DisasterType[${row.site_DisasterTypeCode}]`)
+                : "--"}
+            </span>
+          )
+        },
+        // {
+        //   prop: "disasterScaleLevel",
+        //   label: "灾害规模",
+        //   render: row => {
+        //     // <span>
+        //     //   {row.site_DisasterScaleLevel
+        //     //     ? this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)
+        //     //     : "--"}
+        //     // </span>
+        //     if (row.site_DisasterScaleLevel==3) {
+        //       return <el-tag type="danger">大型</el-tag>;
+        //     } else if(row.site_DisasterScaleLevel==2) {
+        //       return <el-tag type="warning">中型</el-tag>;
+        //     }else {
+        //       return <el-tag type="success">小型</el-tag>;
+        //     }
+        //   },
+        //   width:100
+        // },
+        {
+          prop: "site_Status",
+          label: "审核状态",
+          render: row => {
+            if (row.site_Status==0) {
+              return <span>未提交</span>;
+            } else if(row.site_Status==1) {
+              return <span>已提交</span>;
+            }else if(row.site_Status==2) {
+              return <span>审核中</span>;
+            }else if(row.site_Status==3) {
+              return <span>撤销中</span>;
+            }else if(row.site_Status==4) {
+              return <span>已撤销</span>;
+            }else if(row.site_Status==8) {
+              return <span>未通过</span>;
+            }else {
+              return <span>通过</span>;
+            }
+          }
+        },
+        {
+          prop: "isCanceled",
+          label: "是否销号",
+          render: row => {
+            if (row.site_IsCanceled) {
+              return <el-tag type="success">已销号</el-tag>;
+            } else {
+              return <el-tag type="warning">未销号</el-tag>;
+            }
+          },
+          width:130
+        },
+        {
           prop: "houseHoldName",
           label: "户主"
         },
@@ -188,7 +252,8 @@ export default {
         },
         {
           prop: "houseAddress",
-          label: "家庭住址"
+          label: "家庭住址",
+          width:250
         },
         {
           type: "func",
@@ -238,6 +303,7 @@ export default {
   methods: {
     reset(queryForm) {
       this.$refs[queryForm].resetFields();
+       this.queryBtn();
     },
     view(row) {
       this.$router.push({
@@ -269,48 +335,29 @@ export default {
       if (dataList.length) {
         import("@/lib/Export2Excel").then(excel => {
           const tHeader = [
+            "审核状态",
             "是否销号",
             "隐患点编号",
             "隐患点名称",
             "地理位置",
             "灾害类型",
-            "灾害规模",
             "户主姓名",
-            "联系电话",
             "家庭人数",
             "房屋类型",
             "家庭地址",
-            "安置单位名称",
-            "单位负责人",
-            "单位联系电话",
-            "救护单位",
-            "单位负责人",
-            "单位联系电话",
-            "本卡发放单位",
-            "单位负责人",
-            "单位联系电话"
+            
           ];
           const filterVal = [
+            "status",
             "isCanceled",
             "code",
             "name",
             "location",
             "disasterTypeCode",
-            "disasterScaleLevel",
             "houseHoldName",
-            "houseHoldPhone",
             "familyMemberCount",
             "houseType",
             "houseAddress",
-            "resettleCoName",
-            "resettleCoPrincipal",
-            "resettleCoPhone",
-            "rescueCoName",
-            "rescueCoPrincipal",
-            "rescueCoPhone",
-            "sentCoName",
-            "sentCoPrincipal",
-            "sentColPhone"
           ];
           const data = this.formatJson(filterVal, dataList);
           excel.export_json_to_excel({
@@ -329,15 +376,17 @@ export default {
         filterVal.map(j => {
           switch (j) {
             case "isCanceled":
-              return v[j] ? "已销号" : "未销号";
+              return v.site_IsCanceled ? "已销号" : "未销号";
             case "name":
-              return v[j];
+              return v.site_Name;
             case "location":
-              return v[j];
+              return v.site_Location;
             case "disasterTypeCode":
-              return this.$t(`codes.DisasterType[${v.disasterTypeCode}]`);
-            case "disasterScaleLevel":
-              return this.$t(`enums.ScaleLevel[${v.disasterScaleLevel}]`);
+              return this.$t(`codes.DisasterType[${v.site_DisasterTypeCode}]`);
+            // case "disasterScaleLevel":
+            //   return this.$t(`enums.ScaleLevel[${v.site_DisasterScaleLevel}]`);
+            case "status" :
+               return this.$t(`enums.DataStatus[${v.site_Status}]`);
             default:
               return v[j];
           }

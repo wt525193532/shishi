@@ -161,30 +161,19 @@ export default {
       selectList: [],
       columns: [
         {
-          prop: "isCanceled",
-          label: "是否销号",
-          render: row => {
-            if (row.isCanceled) {
-              return <el-tag type="success">已销号</el-tag>;
-            } else {
-              return <el-tag type="success">未销号</el-tag>;
-            }
-          }
-        },
-        {
           prop: "site_Name",
           label: "隐患点名称",
-          width: 100
+          width: 250
         },
         {
           prop: "code",
           label: "隐患点编号",
-          width: 100
+          width: 150
         },
         {
           prop: "disasterTypeCode",
-          label: "隐患点类型",
-          width: 100,
+          label: "灾害类型",
+          width: 130,
           render: row => (
             <span>
               {row.site_DisasterTypeCode
@@ -196,17 +185,59 @@ export default {
         {
           prop: "disasterScaleLevel",
           label: "灾害规模",
-          render: row => (
-            <span>
-              {row.site_DisasterScaleLevel
-                ? this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)
-                : "--"}
-            </span>
-          )
+          // render: row => (
+          //   <el-tag>
+          //     {row.site_DisasterScaleLevel
+          //       ? this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)
+          //       : "--"}
+          //   </el-tag>
+          // )
+           render: row => {
+            if (row.site_DisasterScaleLevel==3) {
+              return <el-tag type="danger">{this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)}</el-tag>;
+            } else if(row.site_DisasterScaleLevel==2) {
+              return <el-tag type="warning">{this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)}</el-tag>;
+            }else {
+              return <el-tag type="success">{this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)}</el-tag>;
+            }
+          }
         },
         {
           prop: "site_Location",
-          label: "地理位置"
+          label: "地理位置",
+          width:180
+        },
+         {
+          prop: "isCanceled",
+          label: "是否销号",
+          render: row => {
+            if (row.site_IsCanceled) {
+              return <el-tag type="success">已销号</el-tag>;
+            } else {
+              return <el-tag type="warning">未销号</el-tag>;
+            }
+          }
+        },
+        {
+          prop: "site_Status",
+          label: "审核状态",
+          render: row => {
+            if (row.site_Status==0) {
+              return <span>未提交</span>;
+            } else if(row.site_Status==1) {
+              return <span>已提交</span>;
+            }else if(row.site_Status==2) {
+              return <span>审核中</span>;
+            }else if(row.site_Status==3) {
+              return <span>撤销中</span>;
+            }else if(row.site_Status==4) {
+              return <span>已撤销</span>;
+            }else if(row.site_Status==8) {
+              return <span>未通过</span>;
+            }else {
+              return <span>通过</span>;
+            }
+          }
         },
         {
           prop: "rescueCoName",
@@ -271,6 +302,7 @@ export default {
   methods: {
     reset(queryForm) {
       this.$refs[queryForm].resetFields();
+      this.queryBtn()
     },
     view(row) {
       this.$router.push({
@@ -302,6 +334,7 @@ export default {
       if (dataList.length) {
         import("@/lib/Export2Excel").then(excel => {
           const tHeader = [
+            "审核状态",
             "是否销号",
             "隐患点编号",
             "隐患点名称",
@@ -309,19 +342,11 @@ export default {
             "灾害类型",
             "灾害规模",
             "抢排险单位名称",
-            "抢排险单位负责人",
-            "抢排险单位联系电话",
             "治安保卫单位名称",
-            "治安保卫单位负责人",
-            "治安保卫单位联系电话",
-            "医疗救护单位名称",
-            "医疗救护单位负责人",
-            "医疗救护单位联系电话",
-            "本卡发放单位名称",
-            "本卡发放单位负责人",
-            "本卡发放单位联系电话"
+            "医疗救护单位名称",  
           ];
           const filterVal = [
+            "status",
             "isCanceled",
             "code",
             "name",
@@ -329,17 +354,8 @@ export default {
             "disasterTypeCode",
             "disasterScaleLevel",
             "rescueCoName",
-            "rescueCoPrincipal",
-            "rescueCoPhone",
             "safetyCoName",
-            "safetyCoPrincipal",
-            "safetyCoPhone",
             "medicalCoName",
-            "medicalCoPrincipal",
-            "medicalPhone",
-            "sentCoName",
-            "sentCoPrincipal",
-            "sentCoPhone"
           ];
           const data = this.formatJson(filterVal, dataList);
           excel.export_json_to_excel({
@@ -358,15 +374,19 @@ export default {
         filterVal.map(j => {
           switch (j) {
             case "isCanceled":
-              return v.site[j] ? "已销号" : "未销号";
+              return v.site_IsCanceled ? "已销号" : "未销号";
             case "name":
-              return v.site[j];
+              return v.site_Name;
             case "location":
-              return v.site[j];
+              return v.site_Location;
+            case "code":
+              return v.code;  
             case "disasterTypeCode":
-              return this.$t(`codes.DisasterType[${v.site.disasterTypeCode}]`);
+              return this.$t(`codes.DisasterType[${v.site_DisasterTypeCode}]`);
             case "disasterScaleLevel":
-              return this.$t(`enums.ScaleLevel[${v.site.disasterScaleLevel}]`);
+              return this.$t(`enums.ScaleLevel[${v.site_DisasterScaleLevel}]`);
+            case "status" :
+              return this.$t(`enums.DataStatus[${v.site_Status}]`);
             default:
               return v[j];
           }

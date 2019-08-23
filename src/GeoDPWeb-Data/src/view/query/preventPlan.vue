@@ -162,17 +162,6 @@ export default {
       selectList: [],
       columns: [
         {
-          prop: "isCanceled",
-          label: "是否销号",
-          render: row => {
-            if (row.isCanceled) {
-              return <el-tag type="success">已销号</el-tag>;
-            } else {
-              return <el-tag type="success">未销号</el-tag>;
-            }
-          }
-        },
-        {
           prop: "site_Name",
           label: "隐患点名称"
         },
@@ -182,8 +171,8 @@ export default {
         },
         {
           prop: "disasterTypeCode",
-          label: "隐患点类型",
-          width: 100,
+          label: "灾害类型",
+          width: 130,
           render: row => (
             <span>
               {row.site_DisasterTypeCode
@@ -195,17 +184,58 @@ export default {
         {
           prop: "disasterScaleLevel",
           label: "灾害规模",
-          render: row => (
-            <span>
-              {row.site_DisasterScaleLevel
-                ? this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)
-                : "--"}
-            </span>
-          )
+          render: row => {
+            // <span>
+            //   {row.site_DisasterScaleLevel
+            //     ? this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)
+            //     : "--"}
+            // </span>
+            if (row.site_DisasterScaleLevel==3) {
+              return <el-tag type="danger">大型</el-tag>;
+            } else if(row.site_DisasterScaleLevel==2) {
+              return <el-tag type="warning">中型</el-tag>;
+            }else {
+              return <el-tag type="success">小型</el-tag>;
+            }
+          },
+          width:100
         },
         {
           prop: "site_Location",
           label: "地理位置"
+        },
+        {
+          prop: "site_Status",
+          label: "审核状态",
+          render: row => {
+            if (row.site_Status==0) {
+              return <span>未提交</span>;
+            } else if(row.site_Status==1) {
+              return <span>已提交</span>;
+            }else if(row.site_Status==2) {
+              return <span>审核中</span>;
+            }else if(row.site_Status==3) {
+              return <span>撤销中</span>;
+            }else if(row.site_Status==4) {
+              return <span>已撤销</span>;
+            }else if(row.site_Status==8) {
+              return <span>未通过</span>;
+            }else {
+              return <span>通过</span>;
+            }
+          }
+        },
+        {
+          prop: "isCanceled",
+          label: "是否销号",
+          render: row => {
+            if (row.site_IsCanceled) {
+              return <el-tag type="success">已销号</el-tag>;
+            } else {
+              return <el-tag type="warning">未销号</el-tag>;
+            }
+          },
+          width:130
         },
         {
           prop: "site_ThreatPeople",
@@ -274,6 +304,7 @@ export default {
   methods: {
     reset(queryForm) {
       this.$refs[queryForm].resetFields();
+      this.queryBtn();
     },
     view(row) {
       this.$router.push({
@@ -304,22 +335,26 @@ export default {
       if (dataList.length) {
         import("@/lib/Export2Excel").then(excel => {
           const tHeader = [
+            "审核状态",
             "是否销号",
-            "隐患点编号",
             "隐患点名称",
+            "隐患点编号",
+            "隐患点类型",
+            "灾害规模",
             "地理位置",
-            "灾害类型",
             "威胁人口",
             "威胁户数",
             "威胁财产",
             "防灾责任人"
           ];
           const filterVal = [
-            "isCanceled",
-            "code",
+           "site_Status",
+           "isCanceled",
             "name",
-            "location",
+            "code",
             "disasterTypeCode",
+            "ScaleLevel",
+            "location",
             "threatPeople",
             "threatHouses",
             "threatProperty",
@@ -344,13 +379,45 @@ export default {
             case "status":
               return this.$t(`enums.DataStatus[${v[j]}]`);
             case "isCanceled":
-              return v[j] ? "已销号" : "未销号";
+              return v.site_IsCanceled ? "已销号" : "未销号";
             case "name":
-              return v[j];
+              return v.site_Name;
             case "location":
-              return v[j];
+              return v.site_Location;
             case "disasterTypeCode":
-              return this.$t(`codes.DisasterType[${v.disasterTypeCode}]`);
+              return this.$t(`codes.DisasterType[${v.site_DisasterTypeCode}]`);
+            case "ScaleLevel":
+               if(v.site_DisasterScaleLevel==1){
+                 return "小型"
+               }else if(v.site_DisasterScaleLevel==2){
+                 return "中型"
+               }else{
+                 return "大型"
+               };
+            case "threatPeople":
+              return v.site_ThreatPeople;
+             case "threatHouses":
+              return v.site_ThreatHouses;
+            case "threatProperty":
+              return v.site_ThreatProperty;
+            case "preventOwner":
+              return v.preventOwnerName;
+            case "site_Status" :
+                if (v.site_Status==0) {
+                return "未提交";
+              } else if(v.site_Status==1) {
+                return "已提交";
+              }else if(v.site_Status==2) {
+                return "审核中";
+              }else if(v.site_Status==3) {
+                return "撤销中";
+              }else if(v.site_Status==4) {
+                return "已撤销";
+              }else if(v.site_Status==8) {
+                return "未通过";
+              }else {
+                return "通过";
+              };
             default:
               return v[j];
           }

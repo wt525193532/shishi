@@ -10,10 +10,13 @@
       >
         <el-form-item label="行政区划" prop="adminCode">
           <el-cascader
+          filterable
             v-model="queryForm.adminCode"
             :props="adminCodeProps"
             placeholder="-- 请选择行政区划 --"
             collapse-tags
+            filterable
+           
           ></el-cascader>
         </el-form-item>
         <el-form-item label="关键字" prop="key">
@@ -208,7 +211,8 @@ export default {
         {
           parent: "admin",
           prop: "town",
-          label: "乡镇"
+          label: "乡镇",
+          width:100
         },
         {
           prop: "code",
@@ -223,7 +227,7 @@ export default {
         {
           prop: "location",
           label: "地理位置",
-          width: 250
+          width: 200
         },
         {
           label: "灾害类型",
@@ -231,26 +235,95 @@ export default {
             <span>
               {this.$t(`codes.DisasterType[${row.disasterTypeCode}]`)}
             </span>
-          )
+          ),
+          width:110
         },
         {
           prop: "threatPeople",
           label: "威胁人口(人)",
-          width: 110
+          width: 110,
+           render: row => {
+            if (row.threatPeople>100) {
+              return <el-tag type="danger">{row.threatPeople}</el-tag>;
+            } else if(row.threatPeople>10) {
+              return <el-tag type="warning">{row.threatPeople}</el-tag>;
+            }else {
+              return <el-tag type="success">{row.threatPeople}</el-tag>;
+            }
+          }
         },
         {
           prop: "threatHouses",
           label: "威胁户数(户)",
-          width: 110
+          width: 110,
+          render: row => {
+            if (row.threatHouses>100) {
+              return <el-tag type="danger">{row.threatHouses}</el-tag>;
+            } else if(row.threatHouses>10) {
+              return <el-tag type="warning">{row.threatHouses}</el-tag>;
+            }else {
+              return <el-tag type="success">{row.threatHouses}</el-tag>;
+            }
+          }
         },
         {
           prop: "threatProperty",
           label: "威胁财产(万元)",
-          width: 120
+          width: 120,
+          render: row => {
+            if (row.threatProperty>100) {
+              return <el-tag type="danger">{row.threatProperty}</el-tag>;
+            } else if(row.threatProperty>10) {
+              return <el-tag type="warning">{row.threatProperty}</el-tag>;
+            }else {
+              return <el-tag type="success">{row.threatProperty}</el-tag>;
+            }
+          }
         },
+       
         {
           prop: "status",
           label: "审核状态"
+
+        },
+         {
+          prop: "isCanceled",
+          label: "是否销号",
+          render: row => {
+            if (row.isCanceled) {
+              return <el-tag type="success">已销号</el-tag>;
+            } else {
+              return <el-tag type="warning">未销号</el-tag>;
+            }
+          },
+          width:120
+
+        },
+        {
+          prop: "isTransferred",
+          label: "是否转行业",
+          render: row => {
+            if (row.isTransferred) {
+              return <span>是</span>;
+            } else {
+              return <span>否</span>;
+            }
+          },
+          width:100
+
+        },
+        {
+          prop: "isProvincial",
+          label: "是否纳入省级补助",
+          render: row => {
+            if (row.isProvincial) {
+              return <span>是</span>;
+            } else {
+              return <span>否</span>;
+            }
+          },
+          width:100
+
         },
         {
           label: "防灾负责人",
@@ -333,6 +406,7 @@ export default {
             } else {
               resolve([this.user]);
             }
+             
           } else if (node.level >= 1) {
             this.$store
               .dispatch("organization/getAdministrative", node.value)
@@ -350,6 +424,7 @@ export default {
   methods: {
     reset(queryForm) {
       this.$refs[queryForm].resetFields();
+      this.queryBtn()
     },
     view(row) {
       this.$router.push({
@@ -383,38 +458,46 @@ export default {
           const tHeader = [
             "状态",
             "是否销号",
+            "省",
             "市州",
             "区县",
             "乡镇",
-            "村",
             "隐患点编号",
             "隐患点名称",
             "地理位置",
             "灾害类型",
+            "是否纳入省级补助",
             "威胁人口",
             "威胁户数",
+            "威胁财产",
             "防灾责任人名称",
             "防灾责任人电话",
             "监测责任人名称",
-            "监测责任人电话"
+            "监测责任人电话",
+            "监测人名称",
+            "监测人电话"
           ];
           const filterVal = [
             "status",
             "isCanceled",
+            "province",
             "city",
             "country",
-            "province",
             "town",
             "code",
             "name",
             "location",
             "disasterTypeCode",
+            "isProvincial",
             "threatPeople",
             "threatHouses",
+            "threatProperty",
             "preventOwnerName",
             "preventOwnerPhone",
             "monitorOwnerName",
-            "monitorOwnerPhone"
+            "monitorOwnerPhone",
+            "monitorName",
+            "monitorPhone"
           ];
           const data = this.formatJson(filterVal, dataList);
           excel.export_json_to_excel({
@@ -436,6 +519,8 @@ export default {
               return this.$t(`enums.DataStatus[${v[j]}]`) || "";
             case "isCanceled":
               return v.isCanceled ? "已销号" : "未销号" || "";
+            case "isProvincial":
+              return v.isProvincial ? "是" : "否" || ""; 
             case "city":
               return v.admin[j] || "";
             case "country":
@@ -454,6 +539,8 @@ export default {
               return v.threatPeople || "";
             case "threatHouses":
               return v.threatHouses || "";
+            case "threatProperty":
+              return v.threatProperty || "";
             case "preventOwnerName":
               return v.preventOwner ? v.preventOwner.name : "";
             case "preventOwnerPhone":
@@ -462,6 +549,10 @@ export default {
               return v.monitorOwner ? v.monitorOwner.name : "";
             case "monitorOwnerPhone":
               return v.monitorOwner ? v.monitorOwner.phone : "";
+            case "monitorName":
+              return v.monitor ? v.monitor[0].name : "";
+            case "monitorPhone":
+              return v.monitor ? v.monitor[0].phone : "";
             default:
               return v[j] || "";
           }

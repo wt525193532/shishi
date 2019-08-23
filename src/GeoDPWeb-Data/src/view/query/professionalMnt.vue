@@ -176,17 +176,7 @@ export default {
       tableData: [],
       selectList: [],
       columns: [
-        {
-          prop: "isCanceled",
-          label: "是否销号",
-          render: row => {
-            if (row.isCanceled) {
-              return <el-tag type="success">已销号</el-tag>;
-            } else {
-              return <el-tag type="success">未销号</el-tag>;
-            }
-          }
-        },
+       
         {
           prop: "site_Name",
           label: "隐患点名称",
@@ -199,7 +189,7 @@ export default {
         },
         {
           prop: "disasterTypeCode",
-          label: "隐患点类型",
+          label: "灾害类型",
           width: 100,
           render: row => (
             <span>
@@ -212,17 +202,56 @@ export default {
         {
           prop: "disasterScaleLevel",
           label: "灾害规模",
-          render: row => (
-            <span>
-              {row.site_DisasterScaleLevel
-                ? this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)
-                : "--"}
-            </span>
-          )
+         render: row => {
+            // <span>
+            //   {row.site_DisasterScaleLevel
+            //     ? this.$t(`enums.ScaleLevel[${row.site_DisasterScaleLevel}]`)
+            //     : "--"}
+            // </span>
+            if (row.site_DisasterScaleLevel==3) {
+              return <el-tag type="danger">大型</el-tag>;
+            } else if(row.site_DisasterScaleLevel==2) {
+              return <el-tag type="warning">中型</el-tag>;
+            }else {
+              return <el-tag type="success">小型</el-tag>;
+            }
+          },
         },
         {
           prop: "site_Location",
           label: "地理位置"
+        },
+         {
+          prop: "site_Status",
+          label: "审核状态",
+          render: row => {
+            if (row.site_Status==0) {
+              return <span>未提交</span>;
+            } else if(row.site_Status==1) {
+              return <span>已提交</span>;
+            }else if(row.site_Status==2) {
+              return <span>审核中</span>;
+            }else if(row.site_Status==3) {
+              return <span>撤销中</span>;
+            }else if(row.site_Status==4) {
+              return <span>已撤销</span>;
+            }else if(row.site_Status==8) {
+              return <span>未通过</span>;
+            }else {
+              return <span>通过</span>;
+            }
+          }
+        },
+         {
+          prop: "isCanceled",
+          label: "是否销号",
+          render: row => {
+            if (row.site_IsCanceled) {
+              return <el-tag type="success">已销号</el-tag>;
+            } else {
+              return <el-tag type="warning">未销号</el-tag>;
+            }
+          }
         },
         {
           prop: "mntTypeCode",
@@ -300,6 +329,7 @@ export default {
   methods: {
     reset(queryForm) {
       this.$refs[queryForm].resetFields();
+      this.queryBtn()
     },
     view(row) {
       this.$router.push({
@@ -331,6 +361,7 @@ export default {
       if (dataList.length) {
         import("@/lib/Export2Excel").then(excel => {
           const tHeader = [
+            "审核状态",
             "是否销号",
             "隐患点编号",
             "隐患点名称",
@@ -340,9 +371,11 @@ export default {
             "监测点编号",
             "监测类型",
             "预警阈值",
-            "预警阈值单位"
+            "预警阈值单位",
+            "年度"
           ];
           const filterVal = [
+            "status",
             "isCanceled",
             "code",
             "name",
@@ -352,7 +385,8 @@ export default {
             "mntSiteCode",
             "mntTypeCode",
             "alarmThreshold",
-            "alarmThresholdUnit"
+            "alarmThresholdUnit",
+            "fillYear"
           ];
           const data = this.formatJson(filterVal, dataList);
           excel.export_json_to_excel({
@@ -371,15 +405,19 @@ export default {
         filterVal.map(j => {
           switch (j) {
             case "isCanceled":
-              return v[j] ? "已销号" : "未销号";
+              return v.site_IsCanceled ? "已销号" : "未销号";
             case "name":
-              return v[j];
+              return v.site_Name;
+            case "status":
+              return this.$t(`enums.DataStatus[${v.site_Status}]`);
+            case "fillYear":
+              return v.fillYear;
             case "location":
-              return v[j];
+              return v.site_Location;
             case "disasterTypeCode":
-              return this.$t(`codes.DisasterType[${v.disasterTypeCode}]`);
+              return this.$t(`codes.DisasterType[${v.site_DisasterTypeCode}]`);
             case "disasterScaleLevel":
-              return this.$t(`enums.ScaleLevel[${v.disasterScaleLevel}]`);
+              return this.$t(`enums.ScaleLevel[${v.site_DisasterScaleLevel}]`);
             case "mntTypeCode":
               return this.$t(`codes.ProfessionalMntType.` + v.mntTypeCode);
             default:

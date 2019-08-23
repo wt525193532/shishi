@@ -6,6 +6,7 @@
       border
       @selection-change="handleSelectionChange"
       header-row-class-name="table-header-row"
+      highlight-current-row
     >
       <!-- 是否需要展开 -->
       <el-table-column type="expand" v-if="options.expand">
@@ -71,6 +72,7 @@
     </el-table>
     <!-- 分页 -->
     <el-pagination
+      background
       v-if="pagination"
       :current-page.sync="pagination.pageIndex"
       :total="pagination.total"
@@ -156,11 +158,13 @@ export default {
       this.pagination.pageIndex = current;
       this.query();
     }
+  
   },
   computed: {
     bodyLoading() {
       return this.$store.state.app.loading;
     }
+    
   }
 };
 </script>
@@ -169,4 +173,5 @@ export default {
   margin-top: 20px;
   text-align: center;
 }
+ 
 </style>

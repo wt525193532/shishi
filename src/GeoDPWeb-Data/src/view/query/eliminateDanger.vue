@@ -177,17 +177,7 @@ export default {
       tableData: [],
       selectList: [],
       columns: [
-        {
-          prop: "isCanceled",
-          label: "是否销号",
-          render: row => {
-            if (row.isCanceled) {
-              return <el-tag type="success">已销号</el-tag>;
-            } else {
-              return <el-tag type="success">未销号</el-tag>;
-            }
-          }
-        },
+        
         {
           prop: "site_Name",
           label: "隐患点名称"
@@ -198,7 +188,7 @@ export default {
         },
         {
           prop: "disasterTypeCode",
-          label: "隐患点类型",
+          label: "灾害类型",
           render: row => (
             <span>
               {row.site_DisasterTypeCode
@@ -210,6 +200,39 @@ export default {
         {
           prop: "buildYear",
           label: "实施年度"
+        },
+         {
+          prop: "site_Status",
+          label: "审核状态",
+          render: row => {
+            if (row.site_Status==0) {
+              return <span>未提交</span>;
+            } else if(row.site_Status==1) {
+              return <span>已提交</span>;
+            }else if(row.site_Status==2) {
+              return <span>审核中</span>;
+            }else if(row.site_Status==3) {
+              return <span>撤销中</span>;
+            }else if(row.site_Status==4) {
+              return <span>已撤销</span>;
+            }else if(row.site_Status==8) {
+              return <span>未通过</span>;
+            }else {
+              return <span>通过</span>;
+            }
+          },
+          width:120
+        },
+        {
+          prop: "isCanceled",
+          label: "是否销号",
+          render: row => {
+            if (row.site_IsCanceled) {
+              return <el-tag type="success">已销号</el-tag>;
+            } else {
+              return <el-tag type="warning">未销号</el-tag>;
+            }
+          }
         },
         {
           prop: "buildUnitName",
@@ -299,6 +322,7 @@ export default {
   methods: {
     reset(queryForm) {
       this.$refs[queryForm].resetFields();
+      this. queryBtn()
     },
     view(row) {
       this.$router.push({
@@ -329,6 +353,7 @@ export default {
       if (dataList.length) {
         import("@/lib/Export2Excel").then(excel => {
           const tHeader = [
+            "审核状态",
             "是否销号",
             "隐患点编号",
             "隐患点名称",
@@ -336,22 +361,12 @@ export default {
             "灾害类型",
             "实施年度",
             "建设单位",
-            "负责人",
-            "电话",
             "勘察单位",
-            "负责人",
-            "电话",
             "设计单位",
-            "负责人",
-            "电话",
-            "施工单位",
-            "负责人",
-            "电话",
-            "监理单位",
-            "负责人",
-            "电话"
+            "施工单位"
           ];
           const filterVal = [
+            "status",
             "isCanceled",
             "code",
             "name",
@@ -359,20 +374,9 @@ export default {
             "disasterTypeCode",
             "buildYear",
             "buildUnitName",
-            "buildUnitOwner",
-            "buildUnitOwnerPhone",
             "surveyUnitName",
-            "surveyUnitOwner",
-            "surveyUnitOwnerPhone",
             "designUnitName",
-            "designUnitOwner",
-            "designUnitOwnerPhone",
-            "constructionUnitName",
-            "constructionUnitOwner",
-            "constructionUnitOwnerPhone",
-            "supervisoryUnitName",
-            "supervisoryUnitOwner",
-            "supervisoryUnitOwnerPhone"
+            "constructionUnitName"
           ];
           const data = this.formatJson(filterVal, dataList);
           excel.export_json_to_excel({
@@ -391,45 +395,32 @@ export default {
         filterVal.map(j => {
           switch (j) {
             case "isCanceled":
-              return v[j] ? "已销号" : "未销号";
+              return v.site_IsCanceled ? "已销号" : "未销号";
             case "name":
-              return v[j];
+              return v.site_Name;
+            case "status":
+              return this.$t(`enums.DataStatus[${v.site_Status}]`);
+            case "code":
+              return v.code;
             case "location":
-              return v[j];
+              return v.site_Location;
             case "disasterTypeCode":
-              return this.$t(`codes.DisasterType[${v.disasterTypeCode}]`);
-            case "disasterScaleLevel":
-              return this.$t(`enums.ScaleLevel[${v.disasterScaleLevel}]`);
+              return this.$t(`codes.DisasterType[${v.site_DisasterTypeCode}]`);
+            // case "disasterScaleLevel":
+            //   return this.$t(`enums.ScaleLevel[${v.site_DisasterScaleLevel}]`);
             case "buildUnitName":
-              return v.buildUnit.name;
-            case "buildUnitOwner":
-              return v.buildUnit.owner;
-            case "buildUnitOwnerPhone":
-              return v.buildUnit.ownerPhone;
+              return v.buildUnitName;
+           
             case "surveyUnitName":
-              return v.surveyUnit.name;
-            case "surveyUnitOwner":
-              return v.surveyUnit.owner;
-            case "surveyUnitOwnerPhone":
-              return v.surveyUnit.ownerPhone;
+              return v.surveyUnitName;
+            
             case "designUnitName":
-              return v.designUnit.name;
-            case "designUnitOwner":
-              return v.designUnit.owner;
-            case "designUnitOwnerPhone":
-              return v.designUnit.ownerPhone;
+              return v.designUnitName;
+            
             case "constructionUnitName":
-              return v.constructionUnit.name;
-            case "constructionUnitOwner":
-              return v.constructionUnit.owner;
-            case "constructionUnitPhone":
-              return v.constructionUnit.ownerPhone;
-            case "supervisoryUnitName":
-              return v.supervisoryUnit.name;
-            case "supervisoryUnitOwner":
-              return v.supervisoryUnit.owner;
-            case "supervisoryUnitPhone":
-              return v.supervisoryUnit.ownerPhone;
+              return v.constructionUnitName;
+          
+           
             default:
               return v[j];
           }
