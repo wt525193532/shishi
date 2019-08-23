@@ -15,7 +15,7 @@
             placeholder="-- 请选择行政区划 --"
             collapse-tags
           ></el-cascader>
-        </el-form-item>
+        </el-form-item>   
         <el-form-item label="关键字" prop="key">
           <el-input
             class="input-min-width"
