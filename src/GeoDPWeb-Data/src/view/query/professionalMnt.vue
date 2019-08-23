@@ -21,6 +21,7 @@
             class="input-min-width"
             v-model="queryForm.key"
             placeholder="请输入隐患点名称/村/组"
+            
           ></el-input>
         </el-form-item>
         <el-form-item v-if="!onShow">
